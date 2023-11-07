@@ -1,5 +1,6 @@
 package chapter1.building_blocks;
 
+import java.util.*;
 import java.util.Random;
 
 public class OrderOfElements {

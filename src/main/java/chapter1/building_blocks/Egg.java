@@ -4,7 +4,7 @@ public class Egg {
     public Egg() {
         number = 5;
     }
-    public static void main(String[] args) {
+    public static void main(String[] eggcellent) {
         System.out.println("main method");
         Egg egg = new Egg();
         System.out.println(egg.number);

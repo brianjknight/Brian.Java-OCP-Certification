@@ -42,7 +42,7 @@ public class VariableInitializer {
     Primitives p = new Primitives();
 
 
-    public static void main(String    ... args) {
+    public static void main(String    ...    args    ) {
 
         System.out.println(Primitives.code);
 

@@ -3,6 +3,11 @@ package chapter1.building_blocks;
 public class Chick {
     { System.out.println("setting field"); }
 
+    /**
+	  Javadocs and multi-line comments do not require '*' on every line 
+     * 
+     
+     */
     public Chick() {
          name = "Tiny";
          System.out.println("setting constructor");
