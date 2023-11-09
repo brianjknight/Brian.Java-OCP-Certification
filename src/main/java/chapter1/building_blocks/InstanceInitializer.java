@@ -1,14 +1,27 @@
 package chapter1.building_blocks;
 
 public class InstanceInitializer {
-    String hello = "Hello in class";
+    
+	{hello = "HELLO!";}
+	
+//	{System.out.println(hello);}
+	
+	{System.out.println("test 1");}
+	
+	String hello = "Hello in class";
+	
+	{System.out.println("test 2");}
+	
+	{hello = "hi";}
+	
+	
     {
         // instance initializer block i.e. code block outside of a method
-        System.out.println(hello + " before main");
+        System.out.println(hello + " object iniitialization");
     }
 
     InstanceInitializer() {
-        System.out.println("Constructor called.");
+        System.out.println("Constructor runs.");
     }
 
 
