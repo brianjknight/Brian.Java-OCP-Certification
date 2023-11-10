@@ -1,7 +1,18 @@
 package chapter1.building_blocks;
 
 public class VariableInitializer {
-
+	
+	void declareVars() {
+//		var a = 1, b = 2;  multiple declaration not allowed with var
+//		var a = null; // Java must know var reference type at compile time
+		var a = "AAA";
+		a = null;
+		
+		var four = 
+					
+				'4';
+		
+	}
 
     public void setTwo() {
         two = 2;
@@ -33,14 +44,7 @@ public class VariableInitializer {
         int a;
     }
 
-    public void var() {
-        var var
-                = 4;
-
-    }
-
     Primitives p = new Primitives();
-
 
     public static void main(String    ...    args    ) {
 
