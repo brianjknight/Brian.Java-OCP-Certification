@@ -16,6 +16,7 @@ public class Casting {
         System.out.println("num1=" + num1);
         System.out.println("num2=" + num2);
 //        short num3 = (short) 2_147_483_648;
+        short num3 = (short) 2_147_483_648L;
 
 //        long num4 = (long) 2_147_483_648;
         long num5 = (long) 2_147_483_648L;
@@ -31,6 +32,10 @@ public class Casting {
         
         //-139 underflows to +117
 //        byte bad = 11 + (byte)-139; // 117 + 11 = 128 is out of range for byte   
-        byte good = 10 + (byte)-139; // 117 + 10 = 127 within byte range value 
+        byte good = 10 + (byte)-139; // 117 + 10 = 127 within byte range value
+  
+//        byte badAgain = 100 + 30;
+        byte goodAgain = 100 + 27;
+        
     }
 }
