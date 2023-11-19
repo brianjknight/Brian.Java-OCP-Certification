@@ -3,6 +3,7 @@ package chapter3.making_decisions;
 public class SwitchStatements {
 
     public static void main(String[] args) {
+//        long x = 1; type not allowed for switch parameter
         int x = 9;
         switch (x) {
             case 1,2:
@@ -11,7 +12,7 @@ public class SwitchStatements {
             case 9/3:
                 System.out.println("three");
                 break;
-            case 4: case 5:
+            case 4: case 5: // equivalent to case 4,5:
                 System.out.print("four ");
                 System.out.println("or five");
                 break;

@@ -11,7 +11,8 @@ public class PatternMatching {
         if (one instanceof Integer)
             System.out.println("it's an Integer");
         // I think this is allowed to compile because one reference type is an abstract class and List is an interface. make more sense after you read Chapter 7
-        if (one instanceof List<?>)
+//        if (one instanceof List<?>) // also compiles
+        if (one instanceof List)
             System.out.println("It is a list");
 
         Integer two = (Integer) 2;
