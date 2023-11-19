@@ -4,7 +4,7 @@ public class Child extends Parent{
 	// variables are never overridden only hidden
 	private Number age = 15;
 	
-	@Override // annotation not required but can be useful in avoiding erorrs
+	@Override // annotation not required but can be useful in avoiding errors
 	public Integer getAge() {
 		return super.getAge().intValue() - 20;
 	}

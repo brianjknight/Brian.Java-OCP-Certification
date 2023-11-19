@@ -33,5 +33,13 @@ public class Loops {
             System.out.println(i);
         }
 
+
+        System.out.println("#####################");
+        int j = 100;
+        // iterative for loop only requires 2 semicolons for valid syntax
+        for(;;) {
+            System.out.println(j++);
+            if (j==120) break;
+        }
     }
 }
