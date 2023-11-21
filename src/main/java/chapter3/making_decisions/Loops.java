@@ -1,10 +1,21 @@
 package chapter3.making_decisions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Loops {
     public static void main(String[] args) {
+        boolean truthy = true;
+        HONESTY: if (truthy)
+            System.out.println("honest");
+        else {
+            System.out.println("liar");
+        }
+
+
         int hungryHippopotamus = 8;
         while(hungryHippopotamus>0) {
-            do {
+            UNUSED_LABEL: do {
                 hungryHippopotamus -= 2;
             } while (hungryHippopotamus>5); // notice no statement or block after this while
 
@@ -41,5 +52,6 @@ public class Loops {
             System.out.println(j++);
             if (j==120) break;
         }
+
     }
 }

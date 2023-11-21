@@ -94,5 +94,30 @@ public class SwitchStatements {
             case e:
             case 'F': System.out.print("not good ");
         }
+
+        System.out.println("");
+
+        String empty = "";
+        switch(empty) {
+
+        }
+
+        String blank = "";
+        int zero = switch(blank) {
+            default -> 0;
+        };
+
+        char Q = 'z';
+        var queue = switch (Q) {
+            case 'Q' -> {
+                yield "QQQ";
+            }
+            case 'z' -> {
+                yield "zzz";
+            }
+
+            default -> "default";
+        };
+        System.out.println("queue = " + queue);
     }
 }
