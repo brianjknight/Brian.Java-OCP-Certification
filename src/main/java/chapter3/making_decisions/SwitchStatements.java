@@ -37,7 +37,7 @@ public class SwitchStatements {
                 System.out.println("twelve");
         }
 
-        System.out.println("$".repeat(100));
+        System.out.println("$".repeat(20));
 
         int y = 6;
         int six = 6;
@@ -84,18 +84,21 @@ public class SwitchStatements {
 //                System.out.println("1");
 //        }
 
+        System.out.println("###############");
+        System.out.println("grades");
         final char a = 'A', e = 'E';
-        char grade = 'B';
+        char grade = 'F';
         switch (grade) {
-            default:
+            default: System.out.print(" default ");
             case a:
             case 'B': System.out.print("great ");
             case 'D': System.out.print("good "); break;
             case e:
             case 'F': System.out.print("not good ");
         }
-
         System.out.println("");
+        System.out.println("###############");
+       
 
         String empty = "";
         switch(empty) {
@@ -119,5 +122,35 @@ public class SwitchStatements {
             default -> "default";
         };
         System.out.println("queue = " + queue);
+        
+        
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        
+        
+        // not execution first happens for a case match then continues, including default, until a break
+        // no case match, starts executing at default branch then continues until a break
+        byte number = 1;
+        byte NUMBER = 5;
+        switch (number) {
+			case 1:
+				System.out.println(1);
+			case 2: 
+				System.out.println(2);
+	
+			default:
+				System.out.println("default");
+			case (byte)500: 
+				System.out.println(3);
+				
+		}
+        
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        switch (number) {
+        	case 1 -> System.out.println(1);
+        	case 2 -> {
+        		System.out.println(2);
+        		break;
+        	}
+        }
     }
 }

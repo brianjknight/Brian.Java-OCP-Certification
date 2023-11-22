@@ -10,6 +10,11 @@ public class StringMethods {
         System.out.println("pChar index: " + pChar);
         System.out.println("pInt index: " + pInt);
 
+//        System.out.println(animal.startsWith('a'));
+        System.out.println(animal.startsWith("e"));
+        System.out.println(animal.contains("ant"));
+        
+        
         // substring index
         System.out.println(animal.substring(0,3));
         // IndexOutOfBoundsException -> RuntimeException
@@ -26,7 +31,28 @@ public class StringMethods {
         System.out.println(String.format("format number 2 decimals %.2f", n));
         System.out.println(String.format("format number 2 decimals %1.2f", n));
         System.out.println(String.format("format number 2 decimals %12.4f", n));
-        System.out.println(String.format("format number 2 decimals %012.4f", n));
+        System.out.println(String.format("format number 2 decimals %08.4f", n));
+        
+        
+        // String pool
+        var a = "Hello World";
+        var b = "Hello World"; // literal
+        var b2 = "Hello" + " World"; //compile time constant
+        var world = " World";
+        var b3 = "Hello" + world;
+        var c = new String("Hello World");
+        var d = "Hello World".strip();
+        var e = " Hello World\n".strip();
+        var f = new String("Hello World").intern();
+        
+        System.out.println("###String pool###");
+        System.out.println(a==b);
+        System.out.println(a==b2);
+        System.out.println(a==b3);
+        System.out.println(a==c);
+        System.out.println(a==d);
+        System.out.println(a==e);
+        System.out.println(a==f);
     }
 
 
