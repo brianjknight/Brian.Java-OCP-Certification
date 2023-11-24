@@ -1,7 +1,5 @@
 package chapter4.core_APIs;
 
-import javax.sound.midi.Soundbank;
-
 public class StringBuilderMethods {
     public static void main(String[] args) {
         StringBuilder sb = new StringBuilder("abcdef");

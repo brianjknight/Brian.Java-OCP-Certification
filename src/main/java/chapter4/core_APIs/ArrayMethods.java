@@ -25,10 +25,35 @@ public class ArrayMethods {
 
         // comparing arrays
         int[] one = {2,4,6};
-        int[] two = {1};
+        int[] two = {3};
         System.out.println(Arrays.compare(one,two));
+        System.out.println(Arrays.compare(two,one));
 
         int[] oneDifferentOrder = {4,6,2};
         System.out.println(Arrays.mismatch(one, oneDifferentOrder));
+        
+        System.out.println(Arrays.equals(one, oneDifferentOrder));
+        Arrays.sort(oneDifferentOrder);
+        System.out.println(Arrays.equals(one, oneDifferentOrder));
+        
+        
+        int[][] abc = new int[4][4];
+        int def[][] = new int[4][];
+        def[0] = new int[4];
+        
+        int[] f[], g[][], h[][][][];
+
+        int i[], j;
+        j = 2;
+        i = new int[] {1,j};
+        
+        int[] x = new int[2];
+        String[] y = new String[2];
+        Integer[] z = new Integer[] {1,2};
+        // must be of same type
+//        Arrays.equals(x, y);
+//        Arrays.mismatch(x, y);
+//        Arrays.compare(x, y);
+//        Arrays.equals(x, z);
     }
 }

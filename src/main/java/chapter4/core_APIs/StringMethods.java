@@ -45,14 +45,18 @@ public class StringMethods {
         var e = " Hello World\n".strip();
         var f = new String("Hello World").intern();
         
+        System.out.println("");
         System.out.println("###String pool###");
-        System.out.println(a==b);
-        System.out.println(a==b2);
-        System.out.println(a==b3);
-        System.out.println(a==c);
-        System.out.println(a==d);
-        System.out.println(a==e);
-        System.out.println(a==f);
+        System.out.println("-----");
+        System.out.println("a==b: " + a == b); //order of operations binary before equality "a==b: Hello World" == b
+        System.out.println("a==b: " + (a==b));
+        System.out.println("-----");
+        System.out.println("a==b2: " + (a==b2));
+        System.out.println("a==b3: " + (a==b3));
+        System.out.println("a==c: " + (a==c));
+        System.out.println("a==d: " + (a==d));
+        System.out.println("a==e: " + (a==e));
+        System.out.println("a==f: " + (a==f));
     }
 
 

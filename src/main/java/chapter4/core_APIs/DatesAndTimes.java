@@ -1,17 +1,21 @@
 package chapter4.core_APIs;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 
 public class DatesAndTimes {
     public static void main(String[] args) {
         // compiles but produces RuntimeException since date doesn't exist in Feb
-        // LocalDate d = LocalDate.of(2022, Month.FEBRUARY, 30);
+//         LocalDate d = LocalDate.of(2022, Month.FEBRUARY, 31);
         // System.out.println(d);
         LocalDate d = LocalDate.of(2022, Month.FEBRUARY, 1);
 
@@ -27,6 +31,9 @@ public class DatesAndTimes {
             start = start.plus(p);
         }
 
+        LocalTime timeNow = LocalTime.now();
+//        timeNow = timeNow.plus(p); // throws runtime exception
+        
         Period x = Period.ofYears(1).ofMonths(6);
         System.out.println("x = " + x);
 
@@ -54,6 +61,13 @@ public class DatesAndTimes {
         TemporalUnit t = ChronoUnit.MINUTES;
         Duration other = Duration.of(200, t);
         System.out.println("other: " + other);
+        
+        var localDate = LocalDate.of(2022,1,20);
+        var localTime = LocalTime.of(6, 15);
+        var zdt = ZonedDateTime.of(localDate, localTime, ZoneId.of("US/Eastern"));
+        Instant instant = zdt.toInstant();
+        System.out.println("zdt: " + zdt);
+        System.out.println("instant: " + instant);
     }
 
 }
