@@ -55,5 +55,9 @@ public class ArrayMethods {
 //        Arrays.mismatch(x, y);
 //        Arrays.compare(x, y);
 //        Arrays.equals(x, z);
+        
+        // compiles but throws runtime outofbounds exception
+        String[][][] threeD = new String[3][0][5];
+        threeD[0][0][1] = "hello";
     }
 }

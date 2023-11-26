@@ -36,8 +36,11 @@ public class MethodDesign {
     // compiles but with unreachable code
 
     public String method6(int x) {
-        if (5<10) return "less";
-        return "greater";
+        if (5<10) {
+        	return "less";
+//        	System.out.println("unreachable compile error");
+        }
+        return "greater"; // unreachable warning since method must return String for all branches
     }
 
 
