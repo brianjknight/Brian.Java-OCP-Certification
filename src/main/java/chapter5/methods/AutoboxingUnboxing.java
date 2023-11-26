@@ -3,10 +3,13 @@ package chapter5.methods;
 public class AutoboxingUnboxing {
     public static void main(String[] args) {
         // Java will not autobox and implicit cast at the same time.
-        // Long a = 8;
+        // Long a = 8; 
         Long b = 8L;
-        long c = 8;
+        long c = 8; // int literal 8 needs to be implicitly cast to a long widening type
 
+        Short five = 5; // Java knows int literal 5 can fit in the narrowing type short
+        short FIVE = 5;
+        
         // however, Java can unbox and implicit cast at the same time
 
         Integer d = 8;

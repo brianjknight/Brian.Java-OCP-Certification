@@ -24,9 +24,13 @@ public class StaticClass {
 //	{greeting = "Good morning";}
 	static {
 		first = "BRIAN";
+//		middle = "james"; non-static variable
 	}
 	static {
 		age = 39;
+	}
+	{
+		title = "Mr";
 	}
 	
 	StaticClass() {
