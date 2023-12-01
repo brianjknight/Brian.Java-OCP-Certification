@@ -1,9 +1,12 @@
 package chapter6.classDesign;
 
+import java.io.FileNotFoundException;
+
 public class Parent {
 	private Number age = 40;
+	final String name = "Brian";
 	
-	protected Number getAge() {
+	protected Number getAge() throws FileNotFoundException, IndexOutOfBoundsException {
 		return age;
 	}
 	
@@ -21,4 +24,11 @@ public class Parent {
 		return true;
 	}
 	
+	public void doWork() {
+		System.out.println("get to work");
+	}
+	
+	public void sayGoodBye() {
+		System.out.println("good bye from parent");
+	}
 }

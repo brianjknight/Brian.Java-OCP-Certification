@@ -2,7 +2,9 @@ package chapter6.classDesign;
 
 public class CreateAClass {
 
-    static String name = "Brian";
+    static String first = "Brian";
+    String middle;
+    String last;
     String color = null;
     int num = 10;
 
@@ -13,6 +15,7 @@ public class CreateAClass {
         
         System.out.println("this.color = " + this.color);
 
+        // "this" is allowed because an instance is being created
         this.color = color;
         System.out.println("this.color = " + this.color);
 
@@ -25,6 +28,12 @@ public class CreateAClass {
 
     static void changeName() {
         // this.name = "Jim"; // this keyword cannot be referenced in a static context. an instance of the class is required
+    	first = "James";
+    }
+    
+    public void setMiddleANdLast(String newMiddle, String last) {
+    	middle = newMiddle;
+    	this.last = last;
     }
 
 
