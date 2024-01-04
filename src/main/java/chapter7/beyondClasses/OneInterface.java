@@ -27,9 +27,12 @@ public interface OneInterface {
 	
 	default int doMath() {
 		staticHelper();
-		divide();
+		divide(); // access to an abstract method not yet implemented
 		return 1 + 2;
 	}
 	
-	
+	// if not declared private, default, or static methods are implicitly abstract
+//	public int getFive() {
+//		return 5;
+//	}
 }

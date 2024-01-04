@@ -4,19 +4,16 @@ public class ConcreteClass implements TwoInterface {
 
 	@Override
 	public void divide() {
-		// TODO Auto-generated method stub
 		System.out.println("doing division");
 	}
 
 	@Override
 	public void methodA() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void methodB() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -28,5 +25,7 @@ public class ConcreteClass implements TwoInterface {
 		System.out.println("***********");
 		
 		OneInterface.caller();
+		
+//		TwoInterface.caller(); // static interface members are not inherited
 	}
 }
