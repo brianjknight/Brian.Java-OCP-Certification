@@ -9,6 +9,7 @@ public enum Season {
 		public String getTemp() {
 			return "-10 to 40";
 		}
+		@Override
 		public String getHours() {
 			return "10 to 4";
 		}
@@ -66,7 +67,7 @@ public enum Season {
 	public static void main(String[] args) {
 		System.out.println("winter toString: " + Season.WINTER);
 		System.out.println("winter name: " + Season.WINTER.name());
-		System.out.println("winter ordinal" + Season.WINTER.ordinal());
+		System.out.println("winter ordinal: " + Season.WINTER.ordinal());
 		
 		System.out.println("Seasons values: " + Arrays.toString(Season.values()));
 		

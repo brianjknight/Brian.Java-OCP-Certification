@@ -9,5 +9,8 @@ public class RecordTest {
 		System.out.println(brian.favortieFood());
 		System.out.println(brian.weight());
 		System.out.println(PersonRecord.species);
+		
+		PersonRecord allison = new PersonRecord("Allison","Fedorowicz");
+		System.out.println(allison);
 	}
 }

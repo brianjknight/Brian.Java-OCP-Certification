@@ -1,6 +1,6 @@
 package chapter7.beyondClasses;
 
-public interface TwoInterface extends OneInterface, MyFirstInterface {
+public interface TwoInterface extends OneInterface {
 	
 	public abstract void methodA();
 	

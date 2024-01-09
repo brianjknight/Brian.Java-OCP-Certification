@@ -1,7 +1,6 @@
 package chapter7.beyondClasses;
 
-public interface OneInterface {
-
+public non-sealed interface OneInterface extends MyFirstInterface {
 	
 	void divide();
 	

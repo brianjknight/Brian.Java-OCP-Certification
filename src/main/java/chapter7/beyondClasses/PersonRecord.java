@@ -10,17 +10,21 @@ public record PersonRecord(String first, String last, int age, int weight, doubl
  //			this.last = "last"; // cannot modify the fields
 		}
 		
-		if (weight <= 0) throw new IllegalArgumentException("Weigth cannot be negative!");
+		if (weight < 0) throw new IllegalArgumentException("Weigth cannot be negative!");
 
+		// allowed because first is the constructor param
 		first = first.toUpperCase();
+		
+		// the long constructor is implicitly called at the end of compact constructor
 	}
 	
-	// Overloaded cosntructor
+	// Overloaded constructor
 	public PersonRecord(String first, String last) {
-		this(first, last, 0, 0, 0, "pickels");
+		this(first, last, 0, 0, 0, "pickles");
 	}
 
 	// override weight accessor
+	@Override // optional annotation
 	public int weight() {
 		return this.weight - 5;
 	}
