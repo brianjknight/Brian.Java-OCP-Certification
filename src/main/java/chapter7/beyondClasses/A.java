@@ -10,31 +10,42 @@ public class A {
 			private int x = 30;
 			
 			public void printX() {
-				System.out.println(this.x);
+				int xOfC = x;
+				class F {
+										
+					int getXofC() {
+						return xOfC;
+					}
+				}
+				
+//				xOfC += 1; // local classes like F can only access effectively final local variables like xOfC
+				
+				F f = new F();
+				System.out.println(f.getXofC());
 				
 				B b = new B();
 				System.out.println(b.x);
-				
 				System.out.println(B.this.x);
 				System.out.println(A.this.x);
 			}
 		}
+		
+		void changeX() {
+			x += 1;
+		}
+		
+		// look in JetSki class
+		static class D {
+			public static int y = 25;
+			private static int z = 50;
+		}
 	}
 	
-	static class D {
-		public int y = 25;
-		private int z = 50;
-	}
 	
 	public static void doSomething() {
 //		B b0 = new B(); // inside this class/static method needs an instance of A
 		B b1 = new A().new B();
 		System.out.println(b1.x);
-
-		// instance of A is not required for nested static class D
-		D d = new D();
-		System.out.println(d.y);
-		System.out.println(d.z);
 	}
 	
 	public static void main(String[] args) {
@@ -57,6 +68,10 @@ public class A {
 		System.out.println("c1.x = " + c1.x); // private variable of nested class is accessible within the file declaration
 		
 //		System.out.println("for js j=" + new JetSki().j); // private field not visible outside of class declaration
+		
+		// instance of A is not required for nested static class D
+		System.out.println(A.B.D.y);
+		System.out.println(A.B.D.z); // private member is accessible within the enclosing class/file
 	}
 	
 }

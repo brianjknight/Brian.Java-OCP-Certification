@@ -9,7 +9,10 @@ public interface TwoInterface extends OneInterface {
 //	protected void methodC();
 //	private void methodD();
 	
+	private void methodE() {}
+
 	private static void methodF() {
+//		methodE();
 		System.out.println("methodF");
 	}
 	
