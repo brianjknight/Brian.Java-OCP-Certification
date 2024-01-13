@@ -28,10 +28,11 @@ public class LambdaTest {
 			
 			// more than one statement requires code block with return
 			String legsBreturn = testTrait(a, x -> {
-				int numLegs = x.numLegs();
-				if (numLegs == 2) {return "biped";}
-				return "not biped";
-			});
+					int numLegs = x.numLegs();
+					if (numLegs == 2) {return "biped";}
+					return "not biped";
+				}
+			);
 			
 			// returns String to match TraitChecker input/return type but different from CheckIsBiped class
 			String legsC = testTrait(a, x -> Integer.toString(x.numLegs())); 
@@ -42,6 +43,10 @@ public class LambdaTest {
 			String dangB = testTrait(a, x -> x.isDangerous() ? "dangerous" : "not dangerous" );
 			String dangC = testTrait(a, x -> Boolean.toString(x.isDangerous()) );
 			System.out.println("\t dangA: " + dangA + " || dangB: " + dangB + " || dangC: " + dangC);
+			
+			// method reference
+			String species = testTrait(a, Animal::species); // .species() returns String compitable with TraitChecker interface param
+			System.out.println("\t Species: " + species);
 		}
 	}
 	
