@@ -1,6 +1,6 @@
 package chapter8.lambdasFunctionalInterfaces;
 
-@FunctionalInterface  // not required but prevents additional abstract methods from being added
+@FunctionalInterface
 public interface TraitChecker {
 	int num = 0;
 

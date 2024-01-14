@@ -18,7 +18,7 @@ public class MethodReference {
 		System.out.println("method reference startsWith(A): " + paramChecker.check("A"));
 		
 		// first param is always the object
-		StringParamChecker paramCheckerX = String::isEmpty;  // technically not a static method?
+		StringParamChecker paramCheckerX = String::isEmpty;  // technically not a static method
 		System.out.println("method reference isEmpty(): " + paramCheckerX.check(name));
 		
 		
