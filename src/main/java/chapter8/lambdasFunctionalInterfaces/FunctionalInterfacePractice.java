@@ -63,6 +63,7 @@ public class FunctionalInterfacePractice {
 		
 //		BinaryOperator<Double> bo1 = Double::compareTo; // return of compareTo int is incompatible with <Double,Double,Double>
 		BinaryOperator<String> b02 = (a,b) -> a.concat(b);
+		BinaryOperator<String> b03 = String::concat;
 		System.out.println("greeting: " + b02.apply(uo1.apply("hello"), uo1.apply(" world")));
 		
 	}
