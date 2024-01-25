@@ -22,7 +22,7 @@ public class LambdaTest {
 			// notice legsB and LegsC are both lambdas returning a string as required by TraitChecker interface
 			
 			// lambda for legsB is the same as the implementing class without needing to create it
-			// functional interface is effectively declaring and using an anonymous class
+			// functional interface is effectively declaring and using an anonymous class and its method
 			// single statement does not require return and code block
 			String legsB = testTrait(a, x -> x.numLegs()  == 2 ? "biped" : "not biped" );
 			
@@ -32,14 +32,18 @@ public class LambdaTest {
 					if (numLegs == 2) {return "biped";}
 					return "not biped";
 				}
-			);
+			); // don't forget the semi-colon when assigning the return to a variable
 			
 			// returns String to match TraitChecker input/return type but different from CheckIsBiped class
 			String legsC = testTrait(a, x -> Integer.toString(x.numLegs())); 
 			
-			System.out.println("\t legsA: " + legsA + " || legsB: " + legsB + " || legsBreturn: " + legsBreturn + " || legsC: " + legsC);
+			System.out.println("\t legsA: " + legsA + " || legsB: " + legsB + 
+					" || legsBreturn: " + legsBreturn + " || legsC: " + legsC);
 			
-			String dangA = testTrait(a, new CheckIsDangerous());
+			TraitChecker tc = x -> x.isDangerous() ? "dangerous" : "not dangerous";
+			TraitCheckerChild tcChild = new CheckIsDangerous();
+			CheckIsDangerous chIsDang = new CheckIsDangerous();
+			String dangA = testTrait(a, tc);
 			String dangB = testTrait(a, x -> x.isDangerous() ? "dangerous" : "not dangerous" );
 			String dangC = testTrait(a, x -> Boolean.toString(x.isDangerous()) );
 			System.out.println("\t dangA: " + dangA + " || dangB: " + dangB + " || dangC: " + dangC);

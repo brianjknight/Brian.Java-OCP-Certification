@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /****************************************************************************
- * <b>Title:</b> FunctInterDefault.java <br>
+ * <b>Title:</b> FunctInterConvMethods.java <br>
  * <b>Project:</b> Brian.Java-OCP-Certification <br>
  * <b>Description:</b> CHANGE ME! <br>
  * <b>Copyright:</b> Copyright (c) 2022 <br>
@@ -18,7 +18,7 @@ import java.util.function.Predicate;
  * 
  ****************************************************************************/
 
-public class FunctInterDefault {
+public class FunctInterConvMethods {
 
 	public static void main(String[] args) {
 		
@@ -47,12 +47,13 @@ public class FunctInterDefault {
 		
 		Predicate<String> isBrownEgg = isEgg.and(isBrown);
 		Predicate<String> notBrownEgg = isEgg.and(isBrown.negate());
-		Predicate<String> isBrownOrGreenEgg = isEgg.and(isBrownEgg).or(isGreen);
+		Predicate<String> isBrownOrGreenEgg = isEgg.and(isBrownEgg).or(isEgg.and(isGreen));
 		
 		System.out.println("is brown eggyBrown: " + isBrownEgg.test(eggyBrown));
 		System.out.println("not brown eggyBrown: " + notBrownEgg.test(eggyBrown));
 		System.out.println("is brown eggyPurple: " + isBrownEgg.test(eggyPurple));
 		System.out.println("brown or green eggyGreenBrown: " + isBrownOrGreenEgg.test(eggyGreenBrown));
+		System.out.println("\"green brown chicken\" on isBrownOrGreenEgg: " + isBrownOrGreenEgg.test("green brown chicken"));
 		System.out.println();
 		
 		Consumer<String> hi = name -> System.out.println("Hi " + name);;
@@ -69,14 +70,14 @@ public class FunctInterDefault {
 		
 		Function<Integer, Integer> multiply2 = x -> 2 * x; 
 		Function<Integer, Integer> add3 = x -> 3 + x;
-		Function<Integer, Integer> multAdd = multiply2.andThen(add3); // applies input after this
-		Function<Integer, Integer> addMult = multiply2.compose(add3); // applies input before this
+		Function<Integer, Integer> multAndThenAdd = multiply2.andThen(add3); // applies input after this
+		Function<Integer, Integer> multComposeAdd = multiply2.compose(add3); // applies input before this
 		
 		Integer n = 7;
-		Integer a = multAdd.apply(n);
-		Integer b = addMult.apply(n);
-		System.out.println("a = " + a);
-		System.out.println("b = " + b);
+		Integer a = multAndThenAdd.apply(n);
+		Integer b = multComposeAdd.apply(n);
+		System.out.println("multAndThenAdd n: " + a);
+		System.out.println("multComposeAdd n:  " + b);
 		
 		
 	}

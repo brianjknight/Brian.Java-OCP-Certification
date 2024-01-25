@@ -1,6 +1,6 @@
 package chapter8.lambdasFunctionalInterfaces;
 
-public class CheckIsDangerous implements TraitChecker{
+public class CheckIsDangerous implements TraitCheckerChild{
 
 	@Override
 	public String test(Animal a) {

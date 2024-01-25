@@ -34,7 +34,8 @@ public class InstanceInitializer {
         }
     }
 
-    public static void main(final String[] args) {
+    // main method compiles but not best practice
+    static final public void main(final String args[]) {
         System.out.println("hello from main");
         InstanceInitializer i = new InstanceInitializer();
         {

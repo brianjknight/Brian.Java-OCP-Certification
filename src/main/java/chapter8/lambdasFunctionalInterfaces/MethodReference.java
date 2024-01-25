@@ -21,7 +21,6 @@ public class MethodReference {
 		StringParamChecker paramCheckerX = String::isEmpty;  // technically not a static method
 		System.out.println("method reference isEmpty(): " + paramCheckerX.check(name));
 		
-		
 		StringTwoParamChecker lambdaTwoParamChecker = (s,p) -> s.startsWith(p);
 		System.out.println("lambdaTwoParamChecker: " + lambdaTwoParamChecker.check(name, "B"));
 		// first param is always the object
@@ -66,3 +65,5 @@ interface StringCopier {
 interface AnimalCreator {
 	Animal create(String species, int numLegs, boolean isDangerous);
 }
+
+

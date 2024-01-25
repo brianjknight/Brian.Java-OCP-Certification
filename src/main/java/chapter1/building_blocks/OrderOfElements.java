@@ -8,7 +8,7 @@ public class OrderOfElements {
     Random r = new Random();
     public void print(String text) {
         System.out.println(text);
-        System.out.println(r.nextInt(10));
+        System.out.println(r.nextInt(100));
     }
     public OrderOfElements(){};
     private int num;
