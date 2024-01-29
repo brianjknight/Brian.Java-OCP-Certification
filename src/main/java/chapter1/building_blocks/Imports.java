@@ -18,6 +18,7 @@ package chapter1.building_blocks;
 //import java.util.*; 
 //import java.sql.*;
 
+// better imports to compile code
 //import java.util.Date;
 //import java.sql.*;
 
@@ -32,7 +33,7 @@ public class Imports {
 //		java.sql.Date sqlDate = new java.sql.Date(0);
 		
 		// without imports:
-//		java.util.Date utilDate = new Date(); // does snot compile if import is missing
+//		java.util.Date utilDateBad = new Date(); // does snot compile if import is missing
 		java.util.Date utilDate = new java.util.Date();
 		java.sql.Date sqlDate = new java.sql.Date(0);
 	}
