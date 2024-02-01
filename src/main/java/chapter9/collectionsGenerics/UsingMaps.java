@@ -2,6 +2,10 @@ package chapter9.collectionsGenerics;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.BinaryOperator;
 
 public class UsingMaps {
 	
@@ -31,6 +35,46 @@ public class UsingMaps {
 		System.out.println("chaseAge: " + chaseAge);
 		System.out.println(ages);
 		
+		
+		Map<String, String> favs = new HashMap<>();
+		favs.put("Sally", "bike");
+		favs.put("Ann", "shuttle");
+		favs.put("Zach", null);
+		favs.put("Tim", "unicycle");
+		System.out.println(favs);
+		
+		BinaryOperator<String> longer = (a,b) -> a.length() > b.length() ? a : b;
+		String sally = favs.merge("Sally", "airplane", longer);
+		String zach = favs.merge("Zach", "boat", longer); // note because Zach value is null the function is NOT called. merge() just adds the value
+		String tim = favs.merge("Tim", "walk" , longer);
+		System.out.println("returns set value: " + sally + " | " + zach + " | " + tim);
+		System.out.println(favs);
+		
+		BinaryOperator<String> nullRemovesKey = (a,b) -> a.length() > b.length() ? a : null;
+		favs.merge("Sally", "airplane", nullRemovesKey);
+		favs.merge("Zach", "motorcycle", nullRemovesKey);
+		System.out.println(favs);
+		
+		favs.put("Ann", null);
+		favs.put("TIM", "tricycle");
+		System.out.println(favs);
+		
+		
+		Map<String, String> treeMap = new TreeMap<>();
+		treeMap.put("A", "value");
+		treeMap.put("F", "value");
+		treeMap.put("D","value");
+		treeMap.put("B", null);
+//		treeMap.put(null, "value"); // sorted data structure does not allow null key
+		System.out.println(treeMap);
+		
+		
+		Set<Integer> treeSet = new TreeSet<>();
+		treeSet.add(10);
+		treeSet.add(3);
+		treeSet.add(7);
+//		treeSet.add(null); // compiles but throws runtime NullPointerException
+		System.out.println(treeSet);
 	}
 	
 }
