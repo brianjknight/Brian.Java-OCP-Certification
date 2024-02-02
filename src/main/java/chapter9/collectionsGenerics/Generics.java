@@ -3,7 +3,7 @@ package chapter9.collectionsGenerics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Generics<T, U> {
+public class Generics<T, U, HAMBURGER, _H0td$9> { // follows naming convention of variables
 	private T name;
 	private U age;
 	
@@ -24,12 +24,12 @@ public class Generics<T, U> {
 	public List<CharSequence> getter() {return new ArrayList<>();}
 	
 	public static void main(String[] args) {
-		Generics omitDiamond = new Generics<String, Integer>("Brian", 39);  // DECLARATION OMITS <> AND PARAM TYPES java infers both as Object
+		Generics omitDiamond = new Generics<String, Integer, Object, Object>("Brian", 39);  // DECLARATION OMITS <> AND PARAM TYPES java infers both as Object
 //		System.out.println(g.getName() + g.getAge()); // does not compile '+' operator undefined for Object
 		System.out.println(omitDiamond.getName()); // works because Object is the reference type but implementation is String toString() method 
 		System.out.println(omitDiamond.getName().toString() + omitDiamond.getAge().toString()); 
 		
-		Generics<String, Integer> includeParamTypes = new Generics<>("Brian", 39);
+		Generics<String, Integer, Object, Object> includeParamTypes = new Generics<>("Brian", 39);
 		// TYPE ERASURE after Java compiles all generics are Objects, however the compilier adds relevant casting behind the scenes for declared type
 		// now  getName() is cast as a String and getAge() cast as Integer, so operator works with operator using Integer.toString()
 		System.out.println(includeParamTypes.getName() + includeParamTypes.getAge()); 
@@ -54,19 +54,7 @@ public class Generics<T, U> {
 		System.out.println(intList);
 		
 		
-		// bounding with wildcard
-		List<?> a = new ArrayList<String>();
-		
-		List<? extends Mammal> mammals = new ArrayList<Mammal>();
-		List<? extends Mammal> goats = new ArrayList<Goat>();
-		List<? extends Mammal> goatBabby = new ArrayList<GoatBabby>();
-//		List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
-		
-		List<? super Goat> goatList = new ArrayList<Goat>();
-		List<? super Goat> mammalList = new ArrayList<Mammal>();
-		List<? super Goat> objList = new ArrayList<Object>();
-//		List<? super Goat> goatBabby = new ArrayList<GoatBabby>(); //does not compile GoatBabby breaks lower bound
-		
+//		List<Object> objList = new ArrayList<Integer>(); // not allowed to mix types even if a sub type
 		
 		
 	}
