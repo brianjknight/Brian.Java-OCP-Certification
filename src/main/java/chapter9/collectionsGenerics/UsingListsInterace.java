@@ -12,13 +12,13 @@ public class UsingListsInterace {
 		System.out.println(nums);
 		// Arrays.asList() returns a fixed size list from which you cannot add or delete elements
 //		nums.add(4); // compiles but throws runtime exception. 
-//		System.out.println(nums);
+		
 		nums.set(2, 4);
 		System.out.println(nums);
 		
 		String[] words = {"one","two","three"};
-		List<String> of = List.of("one","two","three");
 		List<String> asList = Arrays.asList(words);
+		List<String> of = List.of("one","two","three");
 		List<String> copyOf = List.copyOf(asList);
 		// List.of() return immutable list
 		asList.set(0, "ten");
@@ -26,7 +26,7 @@ public class UsingListsInterace {
 //		copyOf.set(0, "ten"); // runtime exception
 		System.out.println(asList);
 		
-//		var longs = new ArrayList<Long>();
+//		var long = new ArrayList<Long>(); // List of Long
 		var longs = new ArrayList<>(); // omit type and default is <Object>
 		longs.add("one");
 		System.out.println(longs);
@@ -34,6 +34,11 @@ public class UsingListsInterace {
 		System.out.println(longs);
 		
 //		for (String s : longs) System.out.println(s); // does not compile
+//		for (String (String) s : longs) System.out.println(s); // does not allow casting and will not compile
+//		for (Object s : longs) {
+//			System.out.println((String) s); // compiles but throws class exception on the Long
+//		}
+		for (Object s : longs) if (s instanceof String str) System.out.println(str); 
 		for (Object o : longs) System.out.println(o); 
 		
 		longs.replaceAll(o -> o + "!");
@@ -48,6 +53,7 @@ public class UsingListsInterace {
 		z.add(8);
 		z.add(10);
 
+		System.out.println();
 		System.out.println(z);
 		z.remove(2); // Collections inherited remove(int index)
 		System.out.println(z);
@@ -63,7 +69,7 @@ public class UsingListsInterace {
 		chars.add('b');
 		chars.add('c');
 		
-		Object[] objsArray = chars.toArray();
+		Object[] objsArray = chars.toArray(); // default is a new Object array
 //		Character[] bad = chars.toArray(new Character[]);
 		Character[] charArray = chars.toArray(new Character[0]);
 		Character[] big = chars.toArray(new Character[10]);
@@ -75,6 +81,11 @@ public class UsingListsInterace {
 		System.out.println("big: " + Arrays.toString(big));
 		System.out.println("small: " + Arrays.toString(small));
 		
+		List<Integer> moreInts = new ArrayList<>();
+		moreInts.add(10);
+//		moreInts.add(15, 2); // index out of bounds
+		System.out.println();
+		System.out.println(moreInts);
 	}
 }
 

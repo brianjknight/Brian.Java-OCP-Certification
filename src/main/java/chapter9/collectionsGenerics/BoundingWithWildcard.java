@@ -14,8 +14,9 @@ public class BoundingWithWildcard<T> {
 			List<?> a = new ArrayList<String>(); // unbounded list
 			
 			List<Object> objectList = new ArrayList<>();
+//			List<Object> oList = new ArrayList<String>();
 			List<String> stringList = new ArrayList<>();
-//			bww.addToList(myObjList); // cannot pass a List<String> when expecting a List<Object>
+//			bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
 			bww.addToLowerBoundList(objectList);
 			bww.addToLowerBoundList(stringList);
 			
@@ -26,15 +27,15 @@ public class BoundingWithWildcard<T> {
 			List<? extends Mammal> mammals = mams;
 			List<? extends Mammal> goats = new ArrayList<Goat>();
 			List<? extends Mammal> goatBabby = new ArrayList<GoatBabby>();
-//				List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
+//			List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
 			
-//				mammals.add(new Goat()); // upper bound & unbound list become immutable
-//				mammals.add(new Mammal()); // even if it the upper bound; the list could be of Mamaml or any sub type
+//			mammals.add(new Goat()); // upper bound & unbound list become immutable
+//			mammals.add(new Mammal()); // even if it is the upper bound; the list could be of Mamaml or any sub type
 			
 			List<? super Goat> goatList = new ArrayList<Goat>();
 			List<? super Goat> mammalList = new ArrayList<Mammal>();
 			List<? super Goat> objList = new ArrayList<Object>();
-//				List<? super Goat> goatBabby = new ArrayList<GoatBabby>(); //does not compile GoatBabby breaks lower bound
+//			List<? super Goat> goatBabby = new ArrayList<GoatBabby>(); //does not compile GoatBabby breaks lower bound
 				
 				
 			List<String> colors = List.of("red","green","blue");
@@ -45,7 +46,7 @@ public class BoundingWithWildcard<T> {
 			bww.printGeneric(nums);
 			System.out.println("<T>printGeneric()");
 			bww.<String>printGeneric(colors);
-//				b.<String>printGeneric(nums); // does not compile
+//			bww.<String>printGeneric(nums); // does not compile
 			
 			System.out.println();
 			System.out.println("printWildcard:");
@@ -55,6 +56,7 @@ public class BoundingWithWildcard<T> {
 			bww.print("Hello");
 			bww.<String>print("World"); // not sure why Java would allow this but it compiles
 			bww.<Integer>print("World");
+//			bww.<Integer>print(1);
 				
 	}
 	
@@ -64,6 +66,7 @@ public class BoundingWithWildcard<T> {
 			System.out.println(o);
 		}
 	}
+	
 	
 	public void printWildcard(List<?> list) { // wildcard does NOT require declaration of formal type <?>
 		for (Object o : list) { 

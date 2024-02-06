@@ -1,13 +1,31 @@
 package chapter9.collectionsGenerics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class SortingData {
 
 	public static void main(String[] args) {
+		
+		Set<String> tree = new TreeSet<>();
+//		tree.add(null); // compiles but throws runtime exception; Sorted data structures (Trees) NOT allowed null value
+		
+		List<DuckNotComparable> badDucks = new ArrayList<>();
+		badDucks.add(new DuckNotComparable("a", 1, 1.0, "x", 1));
+		badDucks.add(new DuckNotComparable("b", 2, 2.0, "y", 2));
+//		Collections.sort(badDucks); does not compile on trying to sort
+		
+//		Set<DuckNotComparable> moreBadDucks = new TreeSet<>();
+		Set<DuckNotComparable> moreBadDucks = new TreeSet<>(Comparator.comparing(DuckNotComparable::getName));
+		moreBadDucks.add(new DuckNotComparable("c", 3, 3.0, "r", 3)); // compiles but throws exception if adding to an ordered list 
+		moreBadDucks.add(new DuckNotComparable("d", 4, 4.0, "s", 4));
+		
 		
 		List<Duck> ducks = new ArrayList<>();
 		Duck donald = new Duck("Donald", 16, 14.5, "oreo", 50);
@@ -27,6 +45,7 @@ public class SortingData {
 		System.out.println();
 		
 		Collections.sort(ducks);
+//		ducks.sort(); // takes a comparator
 		System.out.println("natrual comparable sort");
 		ducks.forEach(System.out::println); // prints sorted by natural ordering of Comparable
 		System.out.println();
@@ -37,6 +56,7 @@ public class SortingData {
 		System.out.println();
 		
 		Collections.sort(ducks, Comparator.comparingInt(Duck::getAge).reversed());
+//		ducks.sort(Comparator.comparingInt(Duck::getAge).reversed()); // works same as previous line
 		System.out.println("oldest to youngest");
 		ducks.forEach(System.out::println); 
 		System.out.println();
@@ -47,6 +67,8 @@ public class SortingData {
 				return d2.getMoney() - d1.getMoney() ;
 			}
 		};
+//		Comparator<Duck> wealthiestLambda = (d1,d2) -> d1.getMoney() - d2.getMoney();
+//		Comparator<Duck> wealthiestOther = Comparator.comparingInt(Duck::getMoney);
 		Collections.sort(ducks, wealthiest);
 		System.out.println("wealthiest Comparator");
 		ducks.forEach(System.out::println);
@@ -63,16 +85,33 @@ public class SortingData {
 		
 		Comparator<Duck> foodThenHeaviest = new Comparator<Duck>() {
 			public int compare(Duck d1, Duck d2) { // not explicitly using the compare() method
-				if (d1.getFavFood().compareTo(d2.getFavFood()) == 0) 
+				if (d1.getFavFood().compareTo(d2.getFavFood()) == 0) // if the food String is null we have an exception
 					return (int) (d2.getWeight() - d1.getWeight());
 				else return d1.getFavFood().compareTo(d2.getFavFood());
 			}
 		};
-		Comparator<Duck> foodThenLighter = Comparator.comparing(Duck::getFavFood).thenComparingDouble(Duck::getWeight);
-		Collections.sort(ducks, foodThenLighter);
+		Collections.sort(ducks, foodThenHeaviest);
 		System.out.println("foodThenHeaviest Comparator");
 		ducks.forEach(System.out::println);
 		System.out.println();
+		
+		Comparator<Duck> foodThenLighter = Comparator.comparing(Duck::getFavFood).thenComparingDouble(Duck::getWeight);
+		Collections.sort(ducks, foodThenLighter);
+		System.out.println("foodThenLighter: ");
+		ducks.forEach(System.out::println);
+		System.out.println();
+		
+		List<Duck> noFavFood =  new ArrayList<>();
+		Duck a = new Duck();
+		a.setName("A");
+		Duck b = new Duck();
+		b.setName("B");
+		noFavFood.add(a);
+		noFavFood.add(b);
+		
+//		Collections.sort(noFavFood, Comparator.comparing(Duck::getFavFood)); // exception will be thrown comparing null
+		System.out.println(noFavFood);
+		
 	}
 }
 

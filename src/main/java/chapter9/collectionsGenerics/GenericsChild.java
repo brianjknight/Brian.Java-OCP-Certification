@@ -22,7 +22,12 @@ public class GenericsChild extends Generics {
 	
 //	public ArrayList<CharSequence> getter() {return null;} // compiles
 
-	public List<String> getter() {return new ArrayList<>();}
+	// according to the book generic param must match exactly to compile
+	// why does this work? 
+	public List<String> play() {return new ArrayList<>();}
+	
+	// Double is a subtype of object not an interface
+//	public void doNothing(List<Double> in) {} // same type erasure as parent method
 	
 }
 

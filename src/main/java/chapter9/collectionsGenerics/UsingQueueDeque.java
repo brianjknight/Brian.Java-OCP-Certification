@@ -8,6 +8,8 @@ import java.util.Queue;
 public class UsingQueueDeque {
 	public static void main(String[] args) {
 		
+//		Queue<String> bad = new Deque<>();
+		
 		Queue<String> names = new LinkedList<>();
 //		System.out.println(names.remove()); // throws exception
 //		System.out.print(names.element()); // throws exception
@@ -28,15 +30,28 @@ public class UsingQueueDeque {
 		System.out.println(animals.element());
 		System.out.println(animals.peek());
 		System.out.println(animals.getFirst());
+		System.out.println(animals);
+		System.out.println(animals.poll());
+		System.out.println(animals);
+		System.out.println();
 		
 		
-		Deque<String> other = new ArrayDeque<>(); // using as Stack/LIFO?
-		other.add("eagle");
-		other.offer("bear");
-		other.addLast("snake");
-		other.offerLast("rhino");
-		other.push("penguin");
-		System.out.println(other);
+		Deque<String> stack = new ArrayDeque<>(); // using as Stack/LIFO?
+//		stack.add("eagle"); // these methods are available since Deque inherits from Queue but is not treating it as a Stack
+//		stack.offer("bear");
+//		stack.addLast("snake");
+//		stack.offerLast("rhino");
+		
+		stack.push("penguin");
+		stack.push("eagle");
+		stack.push("bear");
+		stack.push("snake");
+		stack.push("rhino");
+		
+		System.out.println(stack);
+		System.out.println("peek(): " + stack.peek());
+		System.out.println("pop(): " + stack.pop());
+		System.out.println(stack);
 	}
 }
 

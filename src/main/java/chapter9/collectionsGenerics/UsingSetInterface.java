@@ -21,7 +21,9 @@ public class UsingSetInterface {
 			treeSet.add(i); // preserves order; inserts on natural ordering
 		System.out.println("treeSet: " + treeSet);
 		
-		
+		System.out.println();
+		System.out.println("add existing return: " + intSet.add(0));
+		System.out.println("add new return: " + intSet.add(1000));
 		
 		Set<Integer> intCopy = Set.copyOf(intSet);
 //		intCopy.add(50); // immutable copy cannot add elements

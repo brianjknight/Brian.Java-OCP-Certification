@@ -1,11 +1,13 @@
 package chapter9.collectionsGenerics;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Generics<T, U, HAMBURGER, _H0td$9> { // follows naming convention of variables
+public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention of variables
 	private T name;
 	private U age;
+	private hamburger bigMac;
 	
 	public Generics() {};
 	
@@ -17,11 +19,41 @@ public class Generics<T, U, HAMBURGER, _H0td$9> { // follows naming convention o
 	public T getName() {return name;}
 	public U getAge() {return age;}
 	
+	public <T> T yellName() {
+		return (T)(name.toString() + "!");
+	}
+	
 	public void doNothing(List<Object> in) {}
 //	public void doNothing(List<String> in) {} // parameterized types are not considered different for overloading/overriding
 	public void doNothing(List<String> in, String s) {}
 	
-	public List<CharSequence> getter() {return new ArrayList<>();}
+	public List<CharSequence> play() {return new ArrayList<>();}
+	
+	//	public D badGenericMethod(D d) {
+	//	return d;
+	//}
+	public <E> E goodGenericMethod(E e) {
+		return e;
+	}
+	
+//	public <F extends G> void first() {}
+	public <F extends T> void firstFirst() {}
+	public <F extends Number> void otherFirst() {} 
+//	public <H> void second(List<I> list) {}
+	public <J> void third(List<J> list) {}
+//	public <K> void fourth(List<K extends L> list) {}
+//	public <K> void otherFourth(List<K extends Object> list) {}
+//	public <K> void fifth(List<K extends T> list) {}
+	public <K> void sixth(List<? extends K> list) {} 
+	
+//	List<Exception> exceptions = new ArrayList<IOException>();
+	
+	// generic type requires formal param <T> declaration
+	public <T> void printGeneric(List<T> list) { // example of generic method type <T> independent of class generic type
+		for (Object o : list) { 
+			System.out.println(o);
+		}
+	}	
 	
 	public static void main(String[] args) {
 		Generics omitDiamond = new Generics<String, Integer, Object, Object>("Brian", 39);  // DECLARATION OMITS <> AND PARAM TYPES java infers both as Object
