@@ -3,6 +3,7 @@ package chapter10.streams;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
@@ -26,10 +27,10 @@ public class UsingPrimitiveStreams {
 		var doubling = LongStream.iterate(1, n -> n*2);
 //		doubling.limit(50).forEach(System.out::println);
 		
-		List<Double> randomInts = new ArrayList<>();
+		List<Double> randomDoubles = new ArrayList<>();
 		DoubleStream ds = DoubleStream.generate(Math::random);
-		ds.limit(4).forEach(randomInts::add);
-		System.out.println(randomInts);
+		ds.limit(4).forEach(randomDoubles::add);
+		System.out.println(randomDoubles);
 		
 		System.out.println();
 //		IntStream fiveRandInts = new Random().ints().limit(5); // not on exam
@@ -42,19 +43,36 @@ public class UsingPrimitiveStreams {
 		System.out.println();
 		IntStream.rangeClosed(1,5).forEach(System.out::print);
 		System.out.println();
+		System.out.println();
 		
 		DoubleStream doubleStream = DoubleStream.of(1.0, 2.0, 3.0);
-		List<String> doubleList = doubleStream.mapToObj(String::valueOf).toList();
-		System.out.println("doubleList: " + doubleList);
+		List<String> doubleStringList = doubleStream.mapToObj(String::valueOf).toList();
+		System.out.println("doubleStringList: " + doubleStringList);
 		
 		// primitive to Ojb stream
 		Stream<Integer> intStr1 = IntStream.of(1,2,3).mapToObj(x -> x);
 		Stream<Integer> intStr2 = IntStream.of(1,2,3).boxed();
-		Stream<Integer> intStr3 = LongStream.of(1,2,3).mapToObj(x -> (int) (x / 2.0) );
+		Stream<Integer> intStr3 = LongStream.of(1,2,3).mapToObj(x -> (int) x);
 		
 		OptionalDouble optD = IntStream.rangeClosed(0,10).average();
 		System.out.println("optD average: " + optD.orElse(0.0));
+		System.out.println();
 		
+		List<List<Integer>> integerList = new ArrayList<>();
+		integerList.add(List.of(1, 2, 3));
+        integerList.add(List.of(4, 5, 6));
+        integerList.add(List.of(7, 8, 9));
+        // mapToDouble for each nested list then flatMapToDouble to flatten the 3 lists
+		DoubleStream doublesFromInts = integerList.stream().flatMapToDouble(list -> list.stream().mapToDouble(i -> i)); // casting (double) is not required since there is no loss of data
+		List<Double> doubleStreamList = doublesFromInts.boxed().toList(); // boxed returns Stream<Double>
+//		List<Double> otherDoublesList = doubles.mapToObj(d -> d).toList(); //also works
+		System.out.println("doubleStreamList: " + doubleStreamList);
+		
+		
+//		OptionalDouble optDouble = Optional.empty(); // does not compile Optional.empty() returns Optional<T> not OptionalDboule
+		OptionalDouble optDouble = OptionalDouble.empty();
+//		Double d = optDouble.get(); // does not compile
+		Double d = optDouble.getAsDouble();
 		
 		
 	}

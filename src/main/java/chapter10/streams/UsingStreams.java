@@ -101,6 +101,15 @@ public class UsingStreams {
 		Stream<String> xyz = Stream.of("w", "o", "l", "f");
 		Optional<String> optStr = xyz.reduce(String::concat);
 		System.out.println(optStr.orElse("stream was empty"));
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 }

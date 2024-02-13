@@ -23,6 +23,25 @@ public class AdvancedStreams {
 		System.out.println("map: " + map);
 		System.out.println();
 		
+		Stream<String> countingStream = Stream.of("b", "b", "a", "a", "a", "c");
+		Map<String, Integer> counts = countingStream.collect(
+				Collectors.toMap(
+						Function.identity(), // same as x -> x
+						c -> 1, // Function that just returns 1 to initiate count
+						(v1, v2) -> v1 + v2, // BinaryOperator for duplicate keys to combine existing '1' value with current '1' value
+						TreeMap::new)); // supplier returns as an ordered TreeMap instead of default HashMap
+		System.out.println("counts: " + counts);
+		System.out.println();
+		
+		Stream<String> anotherCountingStream = Stream.of("b", "b", "a", "a", "a", "c");
+		Map<String, List<String>> anotherCount = anotherCountingStream.collect(Collectors.groupingBy(x -> x));
+//		Map<String, Set<String>> toset = anotherCountingStream.collect(Collectors.groupingBy(x -> x, Collectors.toSet()));
+		System.out.println("anotherCount: " + anotherCount);
+		List<String> abc = List.of("b", "b", "a", "a", "a", "c");
+		Map<String, Long> abcCount = abc.stream().collect(Collectors.groupingBy(x -> x, Collectors.counting()));
+		System.out.println("abc: " + abcCount);
+		System.out.println();
+		
 		var ohMyIntKey = Stream.of("lions", "tigers", "bears");
 		Map<Integer, String> mapIntString = ohMyIntKey.collect(Collectors.toMap(
 				String::length,
@@ -47,8 +66,7 @@ public class AdvancedStreams {
 		System.out.println("firstLetter type: " + firstLetter.getClass().getSimpleName());
 		System.out.println("firstLetter: " + firstLetter);
 		System.out.println();
-		
-		
+				
 		
 		Stream<String> wordsVerbose = Stream.of("jack", "jack","jack", "jack", "jill","ant", "and", "amy", "bike", "bin", "balloon", "coolers");
 		Map<Character, List<String>> firstLetterVerbose = wordsVerbose.collect(
@@ -77,13 +95,14 @@ public class AdvancedStreams {
 		System.out.println();
 		
 		Stream<String> teeing = Stream.of("jack", "jack", "jill", "jill","ant", "and", "amy", "bike", "bin", "balloon", "coolers");
-		String teeingExample = teeing.filter(s -> s.startsWith("a"))
+		String teeingExample = teeing.filter(s -> s.startsWith("a")).sorted()
 				.collect(Collectors.teeing(
 						Collectors.joining(":"), 
 						Collectors.joining("|"), 
 						(colonSep, pipeSep) -> new String(colonSep + pipeSep)));
 		System.out.println("teeingExample: " + teeingExample);
+		
+		
+		
 	}
 }
-
-
