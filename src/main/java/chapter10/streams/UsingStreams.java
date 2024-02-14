@@ -9,6 +9,9 @@ import java.util.stream.Stream;
 
 public class UsingStreams {
 	public static void main(String[] args) {
+		
+		Stream<String> empty = Stream.of();
+		
 		Stream<String> wolf = Stream.of("w","o","l","f!");
 		// (a, b) -> a+b is a combiner which combines results of threads IF accumulator runs concurrently
 		int length = wolf.reduce(0, (i, s) ->	i+s.length(), (a, b) -> a+b);
