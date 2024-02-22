@@ -10,13 +10,14 @@ public class TryWithResources {
 		
 		MyFileClass readerTwo = new MyFileClass(2);
 		
-		try (MyFileClass readerOne = new MyFileClass(1);
-			 readerTwo;) {  // must be effectively final if using variable
+		try (var readerOne = new MyFileClass(1); readerTwo) {  // must be effectively final if using variable
 			System.out.println("Try block");
 			throw new RuntimeException();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			System.out.println("Catch block");
-		} finally {
+		} 
+		finally {
 			System.out.println("Finally block");
 		}
 		
@@ -34,7 +35,8 @@ public class TryWithResources {
 	public void readOtherFile(String file) throws FileNotFoundException, IOException {
 		try (FileInputStream is = new FileInputStream("myfile.txt")) {
 			// Read file data
-		} // try-with-resources does not require catch block
+//			throw new Exception(); 
+		} // try-with-resources does not require catch block UNLESS try block can throw a CHECKED exception
 	}
 	
 //	public void notAutoCloseable(String input) {

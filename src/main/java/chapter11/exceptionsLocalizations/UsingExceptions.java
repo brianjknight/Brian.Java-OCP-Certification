@@ -7,8 +7,13 @@ import java.sql.SQLException;
 public class UsingExceptions {
 	
 	public static void main(String[] args) throws FileNotFoundException  {
+//		System.out.println(1/0); runtime ArithmeticException
+		
 		UsingExceptions ue = new UsingExceptions();
 		
+//		ue.methodE("input", null);
+		
+//		ue.methodB(-1); system.exit() terminates before finally
 		ue.methodB(1);
 		
 		int result = ue.methodC(1);
@@ -62,6 +67,9 @@ public class UsingExceptions {
 //		catch (FileNotFoundException | SQLException e) {  // does not handle IOException
 //			System.out.println(e);
 //		}
+//		catch (FileNotFoundException  | SQLException e) { // good multi-catch
+//			System.out.println(e);
+//		}
 		catch (IOException | SQLException e) { // Super IOException includes FileNotFoundException
 			System.out.println(e);
 		}
@@ -81,12 +89,22 @@ public class UsingExceptions {
 			methodB(i);
 			return 10;
 		} finally {
-			System.out.println("finally method c");
+			System.out.println("finally method c: catch block not required with finally block");
 			return -10;
 		}
 	}
 	
+//	void methodD() {
+//		try {
+//			System.out.println("method d"); // cannot throw an IOException
+//		} catch (IOException e) {
+//			System.out.println("method d catch");
+//		}
+//	}
 	
+	void methodE(String a, String b) {
+		System.out.println(a.toUpperCase() + " " + b.toUpperCase());
+	}
 }
 
 

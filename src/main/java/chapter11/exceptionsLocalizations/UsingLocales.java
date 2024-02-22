@@ -62,6 +62,9 @@ public class UsingLocales {
 		System.out.println(NumberFormat.getCompactNumberInstance(Locale.getDefault(), Style.SHORT).format(x-314_000_000));
 		System.out.println();
 		
+		////////////////////////////////////////////////
+		// Formatting date/time
+		
 		LocalDateTime ltd = LocalDateTime.now();
 		DateTimeFormatter dtfMedium = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
 		System.out.println(dtfMedium.format(ltd));
@@ -69,8 +72,8 @@ public class UsingLocales {
 		System.out.println();
 		
 		DateTimeFormatter dtfSplit = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.SHORT); // separate date & time styles
-		System.out.println(dtfSplit.withLocale(Locale.CANADA_FRENCH).format(ltd));
 		System.out.println(dtfSplit.format(ltd));
+		System.out.println(dtfSplit.withLocale(Locale.CANADA_FRENCH).format(ltd));
 		System.out.println();
 		
 		Locale spanish = new Locale("es","ES");  //default locale is currently en_us
