@@ -13,6 +13,10 @@ public class VariableInitializer {
 				'4';
 		
 	}
+	
+//	void noGood(var a) { 
+//		// code
+//	}
 
     public void setTwo() {
         two = 2;

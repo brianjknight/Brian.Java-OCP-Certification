@@ -7,15 +7,18 @@ public class PatternMatching {
 
         //****************************
         // Note this section is NOT pattern matching. It is traditional binary instance of operator.
-        Number one = 1.0;
-        if (one instanceof Integer)
+        Number one = 1.0; 
+        // *update note that Number is the reference type; 
+        // the actual literal 1.0 double is autoboxed to Double which is the actual object type of the instance
+        // below asks if one Double, is an instance of an integer; Both are related as Numbers which is why this compiles but does not print
+        if (one instanceof Integer) 
             System.out.println("it's an Integer");
         // I think this is allowed to compile because one reference type is an abstract class and List is an interface. make more sense after you read Chapter 7
 //        if (one instanceof List<?>) // also compiles
-        if (one instanceof List)
+        if (one instanceof List) // *update omitting the generic type is equivalent of List<Object>
             System.out.println("It is a list");
-
-        Integer two = (Integer) 2;
+        
+        Integer two = 2;
         if (two instanceof Number)
             System.out.println("it's a Number");
 //        if (two instanceof List<?>) // does not compile make more sense after you read Chapter 7

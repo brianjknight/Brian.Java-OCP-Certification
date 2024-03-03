@@ -14,12 +14,16 @@ public class InstanceInitializer {
 	
 	{hello = "hi";}
 	
+	static {System.out.println("static initializer");}
 	
     {
         // instance initializer block i.e. code block outside of a method
         System.out.println(hello + " object iniitialization");
     }
 
+    /*
+     * Constructor
+     */
     InstanceInitializer() {
         System.out.println("Constructor runs.");
     }

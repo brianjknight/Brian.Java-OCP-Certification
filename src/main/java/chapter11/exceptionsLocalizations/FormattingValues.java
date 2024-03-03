@@ -21,7 +21,7 @@ public class FormattingValues {
 		
 		var dt = LocalDateTime.of(2022, Month.OCTOBER, 2, 16, 15, 30);
 		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("MM/dd/yyyyyy 'Brian''s time' ! HH:mm:ss a"); // 'a'for AM/PM based on provided hour
-		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MMM/d 'year:'yyyyyy 'Brian''s time' | hh:mm:ss a"); // hh (clock hour) vs HH
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MMM/d 'year:'y 'Brian''s time' | hh:mm:ss a"); // hh (clock hour) vs HH
 		// if the 'a' is dropped, why is the hour is still 04 instead of 16?
 		
 		System.out.println(dt.format(formatter1)); // .format() called on LocalDateTime with a formatter

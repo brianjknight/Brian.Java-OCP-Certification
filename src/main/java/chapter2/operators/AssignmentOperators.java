@@ -15,7 +15,5 @@ public class AssignmentOperators {
 		System.out.println("twotwo:"+twotwo);
 		System.out.println("other:"+other);
 		
-		
-		
 	}
 }

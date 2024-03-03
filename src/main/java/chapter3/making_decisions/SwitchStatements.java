@@ -35,13 +35,14 @@ public class SwitchStatements {
                 break;
             case 12:
                 System.out.println("twelve");
+//            case 13 -> System.out.println(""); // cannot mix switch statements with switch expressions
         }
 
-        System.out.println("$".repeat(20));
+        System.out.println();
 
         int y = 6;
         int six = 6;
-        final int SIX = 6;
+        final var SIX = 6;
         boolean isSwitch = true;
         int num = 101;
         String result = switch (y) {
@@ -59,6 +60,7 @@ public class SwitchStatements {
             }
 //            case 8 -> 8;
             case 8 -> {
+            	// will not compile if all branching within the case is not covered
                 if (num < 0) {
                     yield "eight and negative num";
                 } else if (num > 0) {
@@ -74,8 +76,16 @@ public class SwitchStatements {
         };
         System.out.println("switch expression result: " + result);
 
+        // notice without assignment, you do not need to cover all cases or use yield for code block
         switch (2+3) {
             case SIX -> System.out.println("switch expression with no return does not need to cover all cases");
+            case 8 -> {
+            	// code block
+            }
+            
+            // cannot return/yield for switch expression value not assigned
+//            case 9 -> "nine";
+//            case 10 -> {yield "ten"}
         }
 
         // parameter/expression required for switch statement
@@ -84,7 +94,7 @@ public class SwitchStatements {
 //                System.out.println("1");
 //        }
 
-        System.out.println("###############");
+        System.out.println();
         System.out.println("grades");
         final char a = 'A', e = 'E';
         char grade = 'F';
@@ -96,8 +106,8 @@ public class SwitchStatements {
             case e:
             case 'F': System.out.print("not good ");
         }
-        System.out.println("");
-        System.out.println("###############");
+        System.out.println();
+        System.out.println();
        
 
         String empty = "";
@@ -124,7 +134,7 @@ public class SwitchStatements {
         System.out.println("queue = " + queue);
         
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println();
         
         
         // not execution first happens for a case match then continues, including default, until a break
@@ -144,7 +154,7 @@ public class SwitchStatements {
 				
 		}
         
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println();
         switch (number) {
         	case 1 -> System.out.println(1);
         	case 2 -> {
