@@ -71,7 +71,6 @@ public class SwitchStatements {
                 }
             }
 
-
             default -> "invalid input";
         };
         System.out.println("switch expression result: " + result);
@@ -81,6 +80,7 @@ public class SwitchStatements {
             case SIX -> System.out.println("switch expression with no return does not need to cover all cases");
             case 8 -> {
             	// code block
+            	break; // allowed when not assigning the switch expression result
             }
             
             // cannot return/yield for switch expression value not assigned
