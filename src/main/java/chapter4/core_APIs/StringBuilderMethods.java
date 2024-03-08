@@ -18,5 +18,10 @@ public class StringBuilderMethods {
         StringBuilder b = new StringBuilder("Brian");
         System.out.println(a==b);
         System.out.println(a.equals(b));
+        
+        String name = "Brian";
+        System.out.println(name.equals("Brian"));
+        System.out.println(name=="Brian"); // because of String pool
+        System.out.println(name==new String("Brian"));
     }
 }

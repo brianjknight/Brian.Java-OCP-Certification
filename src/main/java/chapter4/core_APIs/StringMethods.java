@@ -41,9 +41,11 @@ public class StringMethods {
         var world = " World";
         var b3 = "Hello" + world;
         var c = new String("Hello World");
-        var d = "Hello World".strip();
-        var e = " Hello World\n".strip();
+        var d = "Hello World".strip();  // first creates string which is already in pool, then calls strip
+        var e = " Hello World\n".strip(); // with space and return is NOT in String pool yet
         var f = new String("Hello World").intern();
+        var g = "Hello".concat(" World");
+        var h = "Hello World".concat("");
         
         System.out.println("");
         System.out.println("###String pool###");
@@ -57,6 +59,25 @@ public class StringMethods {
         System.out.println("a==d: " + (a==d));
         System.out.println("a==e: " + (a==e));
         System.out.println("a==f: " + (a==f));
+        System.out.println("a==g: " + (a==g));
+        System.out.println("a==h: " + (a==h));
+        System.out.println();
+        
+        // 3 spaces after 'a' but text block drops the spaces and adds return '\n'
+        var block = """
+        		a   
+        		 b
+        		c""";
+        
+        System.out.println("block.length(): " + block.length());
+        System.out.println(block);
+        
+        // 3 spaces after a
+        var concat = "a   \n" + "  b\n" + "c";
+        System.out.println("concat.length(): " + concat.length());
+        System.out.println(concat);
+        System.out.println("stripIndent length: " + concat.stripIndent().length());
+        System.out.println(concat.stripIndent());
     }
 
 

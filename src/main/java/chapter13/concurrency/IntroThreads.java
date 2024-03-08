@@ -34,7 +34,7 @@ public class IntroThreads {
 				// the main() thread with while loop sleeps, but myCounter keeps executing incrementing count
 				// "Not yet reached" only called after sleep time until counter hits limit
 			// 3. uncomment interrupt
-				// when myCounter thread is finished, mainThreas is interruped
+				// when myCounter thread is finished, mainThread is interrupted
 				// program is interrupted and terminates before the last full 1_000 millisecond sleep time is finished 
 		
 		long limit = 1_000_000_000L;
@@ -53,7 +53,7 @@ public class IntroThreads {
 		while(count < limit) { // you don't always know when or if a thread will finish resulting in potentially endless loop
 			System.out.println("Not reached yet");         
 			try {            
-				mainThread.sleep(1_000);  // sleep on main() thread
+				mainThread.sleep(1_000);  // sleep on main() thread. when myCounter thread finishes, then the sleeping main thread is interrupted
 //				myCounter.sleep(1_000);
 			} catch (InterruptedException e) {
 				System.out.println("Interrupted!");         

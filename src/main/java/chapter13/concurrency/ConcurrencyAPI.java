@@ -6,7 +6,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public class CheckResults {
+public class ConcurrencyAPI {
 	private static int counter = 0;
 	
 	public static void main(String[] unused) throws Exception {
