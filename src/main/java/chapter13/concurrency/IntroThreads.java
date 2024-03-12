@@ -5,18 +5,37 @@ public class IntroThreads {
 	private static long count = 0;
 	
 	public static void main(String[] args) {
-		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
-		Runnable printRecords = () -> {
-			for (int i = 0; i < 3; i++)
-				System.out.println("Printing record: " + i);
-		};
+//**********************************************************************************************
 		
-		// multi-threading results are unknown until runtime 
+//		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
+//		Runnable printRecords = () -> {
+//			for (int i = 0; i < 3; i++)
+//				System.out.println("Printing record: " + i);
+//		};
+//		
+//		// multi-threading results are unknown until runtime 
 //		System.out.println("begin");
-//		new Thread(printInventory).start();
+//		Thread printThread = new Thread(printInventory);
+//		System.out.println(printThread.getState());
+//		printThread.start();
+//		try {
+//			printThread.sleep(1000);
+//			System.out.println(printThread.getState());
+//		} catch (InterruptedException e) {
+//		}
+//		System.out.println(printThread.getState());
+//		
 //		new Thread(printRecords).start();
 //		new Thread(printInventory).start();
 //		System.out.println("end");
+//		
+//		
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //		System.out.println();
 		
 		// calling run() does NOT start new threads therefore results are predictable
@@ -26,6 +45,7 @@ public class IntroThreads {
 //		new Thread(printInventory).run();
 //		System.out.println("end");
 		
+//**********************************************************************************************		
 		
 		// example of polling:
 			// 1. comment out interrupt and try/catch in while loop
@@ -51,10 +71,10 @@ public class IntroThreads {
 		myCounter.start();
 		
 		while(count < limit) { // you don't always know when or if a thread will finish resulting in potentially endless loop
-			System.out.println("Not reached yet");         
-			try {            
+			System.out.println("Not reached yet");   
+			
+			try {
 				mainThread.sleep(1_000);  // sleep on main() thread. when myCounter thread finishes, then the sleeping main thread is interrupted
-//				myCounter.sleep(1_000);
 			} catch (InterruptedException e) {
 				System.out.println("Interrupted!");         
 			}      
