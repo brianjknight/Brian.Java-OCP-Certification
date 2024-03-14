@@ -52,7 +52,6 @@ public class StringMethods {
         System.out.println("-----");
         System.out.println("a==b: " + a == b); //order of operations binary before equality "a==b: Hello World" == b
         System.out.println("a==b: " + (a==b));
-        System.out.println("-----");
         System.out.println("a==b2: " + (a==b2));
         System.out.println("a==b3: " + (a==b3));
         System.out.println("a==c: " + (a==c));

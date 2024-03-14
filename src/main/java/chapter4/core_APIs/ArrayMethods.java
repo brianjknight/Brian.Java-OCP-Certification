@@ -6,9 +6,9 @@ public class ArrayMethods {
     public static void main(String[] args) {
         int[] a, b;
         a = new int[2];
+//        a = {1,2}; //does not compile
         b = new int[]{1,2,3};
 
-//        a = {1,2}; //does not compile
         int c  []= {1,2};
 
         int nums[], num;
@@ -24,18 +24,18 @@ public class ArrayMethods {
         System.out.println(Arrays.binarySearch(moreNums, 3));
 
         // comparing arrays
-        int[] one = {2,4,6};
+        int  []   one = {2,4,6};
         int[] two = {3};
         System.out.println(Arrays.compare(one,two));
         System.out.println(Arrays.compare(two,one));
 
         int[] oneDifferentOrder = {4,6,2};
-        System.out.println(Arrays.mismatch(one, oneDifferentOrder));
+        System.out.println("Arrays.mismatch: " + Arrays.mismatch(one, oneDifferentOrder));
         
         System.out.println(Arrays.equals(one, oneDifferentOrder));
         Arrays.sort(oneDifferentOrder);
-        System.out.println(Arrays.equals(one, oneDifferentOrder));
-        
+        System.out.println("Arrays.equals(): " + Arrays.equals(one, oneDifferentOrder));
+        System.out.println("one.equals(oneDifferentOrder: )" + one.equals(oneDifferentOrder));
         
         int[][] abc = new int[4][4];
         int def[][] = new int[4][];
