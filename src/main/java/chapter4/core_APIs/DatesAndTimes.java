@@ -20,7 +20,8 @@ public class DatesAndTimes {
         LocalDate d = LocalDate.of(2022, Month.FEBRUARY, 1);
 
         LocalDateTime now = LocalDateTime.now();
-
+        System.out.println(now);
+        
         LocalDate start = LocalDate.of(2023, Month.JANUARY, 1);
         Period p = Period.ofMonths(3);
 
