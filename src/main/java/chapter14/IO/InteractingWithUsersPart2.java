@@ -4,15 +4,12 @@ import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 
-public class InteractingWithUsers {
+public class InteractingWithUsersPart2 {
 
 	public static void main(String[] args) throws IOException {
-//		var reader = new BufferedReader(new InputStreamReader(System.in));
-//		System.out.println("What is your name?");
-//		String userInput = reader.readLine();
-//		System.out.println("Hello " + userInput);
-		
+
 		// NOTE using Console within an IDE might be unavailable
 		
 		Console c = System.console();
@@ -31,9 +28,11 @@ public class InteractingWithUsers {
 			throw new RuntimeException("Console not available");
 		} else {
 			console.writer().println("Welcome to Our Zoo!");
-			console.format("It has %d animals and employs %d people", 391, 25);
+			console.format("It has %d animals and employs %d people", 391, 25); // Console format() DOES print to console
 			console.writer().println();
 			console.printf("The zoo spans %5.1f acres", 128.91);
+			console.writer().println();
+			console.writer().format("writer().format() %d", 12345); // PrintWriter format() does NOT print to console
 		}
 		
 	}

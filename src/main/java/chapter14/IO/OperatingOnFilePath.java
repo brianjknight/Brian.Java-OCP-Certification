@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -16,23 +17,35 @@ public class OperatingOnFilePath {
 			// this is why the relative path is not from IO
 			// e.g. "../../../resources/chapter14/zoo.txt"
 			// "./" and "../main" are redundant 
-			Path zooTxtFile = Path.of("./src/main/../main/resources/chapter14/zoo.txt");
+			
+			// notice how getRoot() and toAbsolutePath() change if this is a root or relative path
+			Path zooTxtFile = Path.of("src/./main/../main/resources/chapter14/zoo.txt"); 
 			System.out.println("print Path object: " + zooTxtFile);
-			System.out.println("getParent(): " + zooTxtFile.getParent() );
+			System.out.println("toString(): " + zooTxtFile.toString());
+			System.out.println("normalize(): " + zooTxtFile.normalize());
 			System.out.println("absolute path: " + zooTxtFile.toAbsolutePath());
+			System.out.println("toRealPath(): " + zooTxtFile.toRealPath());
+			System.out.println("getParent(): " + zooTxtFile.getParent() );
 			System.out.println("getFileName(): " + zooTxtFile.getFileName());
-			System.out.println("getRoot(): " + zooTxtFile.getRoot());
+			System.out.println("getRoot(): " + zooTxtFile.getRoot()); 
+			// null if the path is relative i.e. not starting with / or C:  >  can still retrieve absolute path from current directory
+			// if does indicate root returns that HOWEVER that will also be the absolute path
 			System.out.println("getRoot() of absolute path: " + zooTxtFile.toAbsolutePath().getRoot());
 			System.out.println("file exists: " + Files.exists(zooTxtFile));
-			
-			System.out.println("normalize(): " + zooTxtFile.normalize());
 			System.out.println();
 			
 			System.out.println("view path: ");
 			for (int i=0; i<zooTxtFile.getNameCount(); i++) {
-				System.out.println("\t index: " + i + " index name:" + zooTxtFile.getName(i)); // notice last element is zoo.txt 
+				System.out.println("\t index: " + i + " index name:" + zooTxtFile.getName(i)); 
+				// notice last element is zoo.txt
+				// path.getName(index i) is different than file.getName()
 			}
 			System.out.println("subpath(2,5): " + zooTxtFile.subpath(2, 5));
+			System.out.println();
+			
+			Path varargPath = Paths.get("src/main", "resources","///chapter14/"); // resolves path correctly with,without, or multiple /
+			System.out.println("Paths.get(varargs): " + varargPath);
+			System.out.println("getRoot()" + varargPath.getRoot());
 			System.out.println();
 			
 			System.out.println("io():");

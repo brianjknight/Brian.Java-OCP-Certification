@@ -1,5 +1,7 @@
 package chapter4.core_APIs;
 
+import java.util.Random;
+
 public class MathAPIs {
 	
 	public static void main(String[] args) {
@@ -34,5 +36,12 @@ public class MathAPIs {
 		
 		Double two = 2.0;
 		System.out.println(Math.pow(4, two));
+		
+		System.out.println();
+		Random r = new Random();
+		System.out.println(r.nextInt());
+		System.out.println(r.nextInt());
+		System.out.println(r.nextDouble());
+		System.out.println(r.nextLong());
 	}
 }

@@ -1,10 +1,10 @@
 package chapter14.IO;
 
-import java.io.Serializable;;
+import java.io.Serializable;
 
-public class UsingSerialization implements Serializable{
+public class UsingSerialization implements Serializable {
 	
-	// JVM uses to determine the version of the class if its structure changes
+	// JVM uses to UID determine the version of the class if its structure changes
 	// e.g. adding/removing fields
 	// not required
 	private static final long serialVersionUID = 30854598878809393L; 
