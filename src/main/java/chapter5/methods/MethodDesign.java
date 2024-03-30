@@ -1,5 +1,8 @@
 package chapter5.methods;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MethodDesign {
     int a;
     final int b = 4;
@@ -19,15 +22,21 @@ public class MethodDesign {
 
 //	package void notValid() {
 //	}
-    public static void method1() {
-        int x;
+    public static void $method1() {
+        final int x;
     }
 
-    static public void method2() {
+    static public final void _method2() {
+    	System.out.println();
     }
+    
     void method4() {
         return;
     }
+    
+//    void _() { 
+//    	
+//    }
 
     // does not compile
 //	void method5() {
@@ -42,9 +51,10 @@ public class MethodDesign {
         }
         return "greater"; // unreachable warning since method must return String for all branches
     }
-
+    
+    
 
     public static void main(String[] args) {
-
+    	System.out.println("run");
     }
 }	

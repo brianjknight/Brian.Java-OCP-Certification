@@ -1,5 +1,8 @@
 package chapter5.methods;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Overloading {
     public static void main(String[] args) {
     	Overloading over = new Overloading();
@@ -17,7 +20,16 @@ public class Overloading {
     void fly(int i) {}
     void fly(Integer i) {}
     
- // not overloading
+ // not overloading since method names are case sensitive
     void FLY(int i) {} 
     void fLy(int i ) {}
+    
+    // different parameterized types are considered the same signature List<T> 
+    // sub types are different signatures
+    void methodOverload(List<String> list) {}
+    void methodOverload(ArrayList<String> list) {}
+//    void methodOverload(List<Integer> list) {}  // does not compile
+//    void methodOverload(List<CharSequence> list) {} // does not compile
+    
+    
 }

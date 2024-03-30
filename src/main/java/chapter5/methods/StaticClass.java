@@ -1,10 +1,11 @@
 package chapter5.methods;
 
-//import java.util.Arrays;
+import java.util.Arrays;
 import java.util.List;
 
 // static import example
-import static java.util.Arrays.asList;
+import static java.util.Arrays.*; // wild card allowed for static imports
+import static java.util.Arrays.asList; // redundant but shows single static import
 //static import java.util.Arrays.asList;
 
 public class StaticClass {
@@ -30,7 +31,7 @@ public class StaticClass {
 		age = 39;
 	}
 	{
-		title = "Mr";
+		title = "Mr"; // instance initializer on class variable is allowed. note title is not final
 	}
 	
 	StaticClass() {
@@ -38,6 +39,7 @@ public class StaticClass {
 		middle = "James";
 //		last = "knight";
 		final String nothing; // final local variable only needs initialized before it is used
+//		nothing = " ";
 	}
 	
 	static String getFullName() {
@@ -62,15 +64,25 @@ public class StaticClass {
 		
 		// Not you can import a class and a static method and call it both ways.
 		List<Integer> ints = asList(nums);
-//		List<Integer> list = Arrays.asList(nums); // trickery but be sure BOTH are imported
-
+		List<Integer> list = Arrays.asList(nums); // trickery but be sure BOTH are imported
+		Integer[] copy = copyOf(nums,3);
+		
 		System.out.println(StaticClass.title);
 		System.out.println(StaticClass.first);
 		System.out.println(StaticClass.last);
+		System.out.println();
 		
 		StaticClass sc = new StaticClass();
+		System.out.println(sc.title);
 		System.out.println(sc.first);
 		System.out.println(sc.middle);
 		System.out.println(sc.last);
+		System.out.println();
+		
+		System.out.println(StaticClass.getFullName());
+		System.out.println();
+		
+		StaticClass scNull = null;
+		System.out.println("scNull.first: " + scNull.first);
 	}
 }
