@@ -2,7 +2,7 @@ package chapter7.beyondClasses;
 
 public class A {
 	private int x = 10;
-	
+	private int xxx = 0;
 	class B {
 		private int x = 10 + A.this.x;
 		
@@ -11,11 +11,13 @@ public class A {
 			
 			public void printX() {
 				int xOfC = x;
-				class F {
-										
+//				public class F { access modifiers not allowed
+				class F { // local class within a method
 					int getXofC() {
+//						System.out.println("xxx: " + xxx); // allowed
 						return xOfC;
 					}
+					
 				}
 				
 //				xOfC += 1; // local classes like F can only access effectively final local variables like xOfC
@@ -24,9 +26,12 @@ public class A {
 				System.out.println(f.getXofC());
 				
 				B b = new B();
-				System.out.println(b.x);
-				System.out.println(B.this.x);
-				System.out.println(A.this.x);
+				System.out.println("b.x = " + b.x);
+				System.out.println("x = " + x);
+				System.out.println("this.x = " + this.x);
+				System.out.println("C.this.x = " + C.this.x);
+				System.out.println("B.this.x = " + B.this.x);
+				System.out.println("A.this.x = " + A.this.x);
 			}
 		}
 		
@@ -35,7 +40,8 @@ public class A {
 		}
 		
 		// look in JetSki class
-		static class D {
+		// static nested member class of B
+		static class D { 
 			public static int y = 25;
 			private static int z = 50;
 		}
@@ -62,6 +68,7 @@ public class A {
 		System.out.println("******************");
 		
 		// or try this
+		System.out.println("new A().new B().new C().printX();");
 		new A().new B().new C().printX();
 		System.out.println("******************");
 

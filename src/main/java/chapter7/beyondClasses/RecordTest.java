@@ -15,6 +15,7 @@ public class RecordTest {
 		
 		allison.changeSpecies("woman");
 		System.out.println(allison.weight());
-		System.out.println("species: " + PersonRecord.species);
+		System.out.println("Allison species: " + allison.species);
+		System.out.println("Brian species: " + brian.species);
 	}
 }

@@ -1,18 +1,17 @@
 package chapter7.beyondClasses;
 
-/****************************************************************************
- * <b>Title:</b> Snake.java <br>
- * <b>Project:</b> Brian.Java-OCP-Certification <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b> Copyright (c) 2022 <br>
- * <b>Company:</b> Silicon Mountain Technologies
- * 
- * @author Brian Knight
- * @version 1.x
- * @since Jan 4, 2024 <b>updates:</b>
- * 
- ****************************************************************************/
+//public sealed class Snake {}
+//final class Cobra extends Snake{} // declared in same file so complies
 
-public sealed class Snake {}
-final class Cobra extends Snake {}
+//public sealed class Snake permits Snake.Cobra { // permits optional for only a nested class extending
+//public sealed class Snake permits Python { // if permits IS used, must list nested subclass
+public sealed class Snake {
+	
+//	class Cobra extends Snake {} // BAD must declare final, sealed, or non-sealed
+//	non-sealed class Cobra extends Snake {} // good
+	final class Cobra extends Snake {} // declared nested subclass complies
+	
+}
+
+//final class Python extends Snake {}
 
