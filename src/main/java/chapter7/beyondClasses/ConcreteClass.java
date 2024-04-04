@@ -7,7 +7,6 @@ public class ConcreteClass implements TwoInterface {
 		System.out.println("doing division");
 	}
 
-	@Override
 	public void methodA() {
 		
 	}
@@ -21,6 +20,10 @@ public class ConcreteClass implements TwoInterface {
 		ConcreteClass cc = new ConcreteClass();
 		
 		System.out.println(cc.doMath());
+		
+		System.out.println(one); // constants are inherited
+		
+//		one = 2; // fields in interfaces are implicitly constants
 		
 		System.out.println("***********");
 		

@@ -5,7 +5,11 @@ import java.util.Arrays;
 public enum Season {
 //	WINTER_SEASON, summer, sPrIng, Fall // valid; notice no semi-colon for simple enum
 	
-	WINTER("Low") {
+//	WINTER(){}, SUMMER{}, SPRING{}, FALL; // also valid
+	
+//	static {System.out.println("Class/Enum initialization");} // enum values MUST be first statement
+	
+	WINTER("Low") { // calls Season(String expectedVisitors) constructor
 		public String getTemp() {
 			return "-10 to 40";
 		}
@@ -46,8 +50,13 @@ public enum Season {
 		return "9 to 5";
 	}
 	
+	static {
+		System.out.println("Class/Enum initialization");
+	}
+	
 	private final String expectedVisitors; 
-
+	static String staticField = "static field";
+	private static final String constant = "c";
 	
 	// constructors can only be private
 //	public Season() {
@@ -56,8 +65,8 @@ public enum Season {
 	
 	// implicitly private
 	Season(String expectedVisitors) {
-		System.out.println("Initializing Season Enum: " + expectedVisitors);
 		this.expectedVisitors = expectedVisitors;
+		System.out.println("Initializing Season Enum: " + expectedVisitors);
 	}
 	
 	 public void printExpectedVisitors() {
@@ -77,9 +86,6 @@ public enum Season {
 		Season s = Season.valueOf("SPRING");
 //		Seasons s = Seasons.valueOf("spring"); // runtime IllegalArgumentException due to case
 		
-		System.out.println(FALL);
-		System.out.println(Season.FALL);
-		
 		switch(s) {
 //			case Seasons.SUMMER : // does not compile
 			case SUMMER: 
@@ -91,6 +97,13 @@ public enum Season {
 					
 		}
 		
+		System.out.println(FALL);
+		System.out.println(Season.FALL);
+		System.out.println(Season.FALL.getHours());
+		System.out.println(FALL.getTemp());
+		System.out.println(FALL.expectedVisitors);
+		System.out.println(FALL.constant);
+		System.out.println(FALL.staticField);
 				
 		System.out.println("summer expected visitors: " + Season.SUMMER.expectedVisitors); // access to private within Enum
 		System.out.println("Winter print visitors:");

@@ -16,6 +16,11 @@ public interface TwoInterface extends OneInterface {
 		System.out.println("methodF");
 	}
 	
+	private void methodX() {
+		OneInterface.caller();
+//		caller() // static members are not inherited
+	}
+	
 	public static void main(String[] args) {
 		methodF();
 	}

@@ -13,6 +13,7 @@ public class TopLevel {
 }
 
 
+//public class NextLevel {} only one public top level class allowed in a file
 class NextLevel {}
 
 class LowerLevel {}

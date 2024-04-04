@@ -1,7 +1,5 @@
 package chapter6.classDesign;
 
-import javax.management.remote.SubjectDelegationPermission;
-
 public class GrandChild extends Child {
 	
 	public void doMoreWork() {
