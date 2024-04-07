@@ -19,9 +19,9 @@ public class SortingData {
 		List<DuckNotComparable> badDucks = new ArrayList<>();
 		badDucks.add(new DuckNotComparable("a", 1, 1.0, "x", 1));
 		badDucks.add(new DuckNotComparable("b", 2, 2.0, "y", 2));
-//		Collections.sort(badDucks); does not compile on trying to sort
+//		Collections.sort(badDucks); // does not compile on trying to sort
 		
-//		Set<DuckNotComparable> moreBadDucks = new TreeSet<>();
+//		Set<DuckNotComparable> moreBadDucksCompiles = new TreeSet<>(); // throws runtime when adding object
 		Set<DuckNotComparable> moreBadDucks = new TreeSet<>(Comparator.comparing(DuckNotComparable::getName));
 		moreBadDucks.add(new DuckNotComparable("c", 3, 3.0, "r", 3)); // compiles but throws exception if adding to an ordered list 
 		moreBadDucks.add(new DuckNotComparable("d", 4, 4.0, "s", 4));
@@ -51,6 +51,7 @@ public class SortingData {
 		System.out.println();
 		
 		ducks.sort(Comparator.reverseOrder()); // using List sort() method
+//		Collections.reverse(ducks);
 		System.out.println("reverse order");
 		ducks.forEach(System.out::println); 
 		System.out.println();
@@ -67,9 +68,12 @@ public class SortingData {
 				return d2.getMoney() - d1.getMoney() ;
 			}
 		};
-//		Comparator<Duck> wealthiestLambda = (d1,d2) -> d1.getMoney() - d2.getMoney();
-//		Comparator<Duck> wealthiestOther = Comparator.comparingInt(Duck::getMoney);
+		Comparator<Duck> wealthiestLambda = (d1,d2) -> d2.getMoney() - d1.getMoney();
+		Comparator<Duck> wealthiestOther = Comparator.comparingInt(Duck::getMoney).reversed();
 		Collections.sort(ducks, wealthiest);
+//		Collections.sort(ducks, wealthiestLambda);
+//		Collections.sort(ducks, wealthiestOther);
+//		Collections.sort(ducks, Comparator.comparingInt(Duck::getMoney).reversed());
 		System.out.println("wealthiest Comparator");
 		ducks.forEach(System.out::println);
 		System.out.println();
@@ -90,7 +94,9 @@ public class SortingData {
 				else return d1.getFavFood().compareTo(d2.getFavFood());
 			}
 		};
-		Collections.sort(ducks, foodThenHeaviest);
+		Comparator<Duck> foodThenHeaviestConv = 
+				Comparator.comparing(Duck::getFavFood).thenComparing(Comparator.comparingDouble(Duck::getWeight).reversed());
+		Collections.sort(ducks, foodThenHeaviestConv);
 		System.out.println("foodThenHeaviest Comparator");
 		ducks.forEach(System.out::println);
 		System.out.println();

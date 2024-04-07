@@ -37,6 +37,7 @@ public class Duck implements Comparable<Duck>{
 		if (this == d) return 0;
 		
 		if (this.name == null && d.name == null) return this.age - d.age;
+//		if (this.name == null && d.name == null) return Integer.compare(this.age, d.age); // equivalent to above line
 		if (this.name == null) return -1;
 		if (d.name == null) return 1;
 		

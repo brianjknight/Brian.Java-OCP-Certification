@@ -19,7 +19,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	public T getName() {return name;}
 	public U getAge() {return age;}
 	
-	public <T> T yellName() {
+	public <T> T yellName() { // <T> generic declaration here is independent of T in class generic
 		return (T)(name.toString() + "!");
 	}
 	
@@ -35,6 +35,11 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	public <E> E goodGenericMethod(E e) {
 		return e;
 	}
+	public <Y,Z> T alsoGood(Z xyz) {
+		System.out.println((Y) xyz);
+		return (T) xyz;
+	}
+	
 	
 //	public <F extends G> void first() {}
 	public <F extends T> void firstFirst() {}

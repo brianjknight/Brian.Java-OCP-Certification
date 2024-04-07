@@ -10,7 +10,8 @@ public class CollectionsBasics {
 		Collection<String> coll = new ArrayList<>();
 //		Collection<> bad = new ArrayList<String>();
 		
-		System.out.println("s.add(\"a\"): " + coll.add("a")); 
+		boolean addedA = coll.add("a");
+		System.out.println("s.add(\"a\"): " + addedA); 
 		coll.add("b");
 		coll.add("a");
 		coll.add("c");
@@ -23,12 +24,15 @@ public class CollectionsBasics {
 		System.out.println();
 		System.out.println(coll.remove("a")); // removes SINGLE first element
 		System.out.println(coll);
-		System.out.println("******");
+		System.out.println();
 		System.out.println(coll.removeAll(List.of("a")));
 		System.out.println(coll);
+		System.out.println();
 		System.out.println(coll.remove("a"));
+		System.out.println();
 		System.out.println(coll.removeIf(x -> x.equals("b")));
 		System.out.println(coll);
+		System.out.println();
 		coll.clear();
 		System.out.println(coll);
 		

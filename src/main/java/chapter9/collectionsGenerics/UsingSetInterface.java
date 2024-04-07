@@ -22,8 +22,8 @@ public class UsingSetInterface {
 		System.out.println("treeSet: " + treeSet);
 		
 		System.out.println();
-		System.out.println("add existing return: " + intSet.add(0));
-		System.out.println("add new return: " + intSet.add(1000));
+		System.out.println("add existing returns: " + intSet.add(0));
+		System.out.println("add new returns: " + intSet.add(1000));
 		
 		Set<Integer> intCopy = Set.copyOf(intSet);
 //		intCopy.add(50); // immutable copy cannot add elements

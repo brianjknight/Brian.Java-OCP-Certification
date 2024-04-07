@@ -56,7 +56,7 @@ public class FunctInterConvMethods {
 		System.out.println("\"green brown chicken\" on isBrownOrGreenEgg: " + isBrownOrGreenEgg.test("green brown chicken"));
 		System.out.println();
 		
-		Consumer<String> hi = name -> System.out.println("Hi " + name);;
+		Consumer<String> hi = name -> System.out.println("Hi " + name);
 		Consumer<String> bye = name -> System.out.println("Bye " + name);
 		Consumer<String> helloGoodbye = hi.andThen(bye);
 		helloGoodbye.accept("Brian");

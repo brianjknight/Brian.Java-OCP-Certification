@@ -1,15 +1,12 @@
 package chapter9.collectionsGenerics;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class UsingQueueDeque {
 	public static void main(String[] args) {
 		
 //		Queue<String> bad = new Deque<>();
-		
+//		Queue<String> other = new ArrayList<>(); // does not compile; ArrayList does not implement Queue interface
 		Queue<String> names = new LinkedList<>();
 //		System.out.println(names.remove()); // throws exception
 //		System.out.print(names.element()); // throws exception

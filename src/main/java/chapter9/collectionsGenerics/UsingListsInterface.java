@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UsingListsInterace {
+public class UsingListsInterface {
 	public static void main(String[] args) {
+		
+		List<String> empty = new ArrayList<String>(3);
+		System.out.println(empty);
+		System.out.println(empty.size());
+		System.out.println("*********************");
+		System.out.println();
 		
 		List<Integer> nums = Arrays.asList(1,2,3);
 
@@ -16,15 +22,24 @@ public class UsingListsInterace {
 		nums.set(2, 4);
 		System.out.println(nums);
 		
+		System.out.println("*********************");
+		System.out.println();
+		
 		String[] words = {"one","two","three"};
 		List<String> asList = Arrays.asList(words);
 		List<String> of = List.of("one","two","three");
+		List<String> ofA = List.of(words); // compiles
+		System.out.println("asList: " + asList);
+		System.out.println("ofA: " + ofA);
+//		List<List<String>> ofB = List.of(of, ofA); // complies .of with collection
 		List<String> copyOf = List.copyOf(asList);
 		// List.of() return immutable list
 		asList.set(0, "ten");
 //		of.set(0, "four"); // runtime exception
 //		copyOf.set(0, "ten"); // runtime exception
 		System.out.println(asList);
+		System.out.println("*********************");
+		System.out.println();
 		
 //		var long = new ArrayList<Long>(); // List of Long
 		var longs = new ArrayList<>(); // omit type and default is <Object>
@@ -43,6 +58,8 @@ public class UsingListsInterace {
 		
 		longs.replaceAll(o -> o + "!");
 		System.out.println(longs);
+		System.out.println("*********************");
+		System.out.println();
 		
 		List<Integer> z = new ArrayList<>();
 		z.add(2);
@@ -53,7 +70,6 @@ public class UsingListsInterace {
 		z.add(8);
 		z.add(10);
 
-		System.out.println();
 		System.out.println(z);
 		z.remove(2); // Collections inherited remove(int index)
 		System.out.println(z);
@@ -61,7 +77,8 @@ public class UsingListsInterace {
 		System.out.println(z);
 		z.remove(Integer.valueOf(4)); // overloaded List method remove(Obj o)
 		System.out.println(z);
-		
+		System.out.println("*********************");
+		System.out.println();
 		
 		// List to Array
 		List<Character> chars = new ArrayList<>();
@@ -70,12 +87,12 @@ public class UsingListsInterace {
 		chars.add('c');
 		
 		Object[] objsArray = chars.toArray(); // default is a new Object array
-//		Character[] bad = chars.toArray(new Character[]);
+//		Character[] bad = chars.toArray(new Character[]); // requires size
+//		Character[] bad = chars.toArray(); // BAD toArray() no params returns Object[]
 		Character[] charArray = chars.toArray(new Character[0]);
 		Character[] big = chars.toArray(new Character[10]);
 		Character[] small = chars.toArray(new Character[1]);
 		
-		System.out.println();
 		System.out.println("objArray: " + Arrays.toString(objsArray));
 		System.out.println("charArray: " + Arrays.toString(charArray));
 		System.out.println("big: " + Arrays.toString(big));
@@ -86,6 +103,10 @@ public class UsingListsInterace {
 //		moreInts.add(15, 2); // index out of bounds
 		System.out.println();
 		System.out.println(moreInts);
+		
+		
+//		Integer[] cast = {1};
+//		int[] casted = (int[]) cast; // does not compile
 	}
 }
 

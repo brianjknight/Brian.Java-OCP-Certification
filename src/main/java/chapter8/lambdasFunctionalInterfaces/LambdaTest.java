@@ -44,12 +44,14 @@ public class LambdaTest {
 			TraitCheckerChild tcChild = new CheckIsDangerous();
 			CheckIsDangerous chIsDang = new CheckIsDangerous();
 			String dangA = testTrait(a, tc);
+//			String dangA = testTrait(a, tcChild); // valid
+//			String dangA = testTrait(chIsDang); // valid
 			String dangB = testTrait(a, x -> x.isDangerous() ? "dangerous" : "not dangerous" );
 			String dangC = testTrait(a, x -> Boolean.toString(x.isDangerous()) );
 			System.out.println("\t dangA: " + dangA + " || dangB: " + dangB + " || dangC: " + dangC);
 			
 			// method reference
-			String species = testTrait(a, Animal::species); // .species() returns String compitable with TraitChecker interface param
+			String species = testTrait(a, Animal::species); // .species() returns String compatible with TraitChecker interface param
 			System.out.println("\t Species: " + species);
 		}
 	}
