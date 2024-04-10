@@ -8,6 +8,7 @@ public class Mammal {
 	String name;
 	
 	public List<CharSequence> play() { return new ArrayList<>(); }
+//	public List<String> play() {return new ArrayList<>();};
 	public CharSequence sleep() { return ""; }
 }
 

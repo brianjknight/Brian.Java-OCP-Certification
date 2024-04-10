@@ -14,21 +14,28 @@ public class TryWithResources {
 		try (var readerOne = new MyFileClass(1); readerTwo) {  // must be effectively final if using variable
 			System.out.println("Try block");
 			throw new RuntimeException();
+//			throw new Exception(); // must be caught or use throws
 		} 
-		catch (Exception e) {
-			System.out.println("Catch block");
-		} 
-		finally {
-			System.out.println("Finally block");
-		}
+		// implicit finally block runs closing resources prior to explicit catch/finally
+//		catch (Exception e) {
+//			System.out.println("Catch block");
+//		} 
+//		finally {
+//			System.out.println("Finally block");
+//		}
 		
 //		readerTwo = new MyFileClass(3);
+		
+//		try(String a = "a") { // not autocloseable
+//			// code
+//		} 
 	}
 	
 	public void readFile(String file) {
 		try (FileInputStream is = new FileInputStream("myfile.txt")) {
 		 // Read file data
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -45,19 +52,7 @@ public class TryWithResources {
 //			
 //		}
 //	}
-	
-	public void other() {
-		try {
-			System.out.println("any UNCHECKED exceptions can be added in catch blocks");
-		} catch(ArithmeticException e) {
-			System.out.println();
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println();
-		} 
-//		catch (SQLException e) { // try block MUST be able to throw the CHECKED exception
-//			System.out.println();
-//		}
-	}
+
 }
 
 

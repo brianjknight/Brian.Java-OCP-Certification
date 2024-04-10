@@ -13,7 +13,7 @@ public class UsingExceptions {
 		
 //		ue.methodE("input", null);
 		
-//		ue.methodB(-1); system.exit() terminates before finally
+//		ue.methodB(-1); // system.exit() terminates before finally
 		ue.methodB(1);
 		
 		int result = ue.methodC(1);
@@ -23,7 +23,7 @@ public class UsingExceptions {
 	}
 	
 	
-	void methodA(int i) throws FileNotFoundException {
+	void methodA(int i) throws FileNotFoundException { // catch clause throws the exception
 		try {
 			if (i < 0) {
 				throw new FileNotFoundException();
@@ -31,12 +31,9 @@ public class UsingExceptions {
 				throw new IOException();
 			} 
 		} 
-//		catch (IOException  e) {
+//		catch (IOException  e) { // creates unreachable code subtype exception
 //			System.out.println(e);
 //		} 
-//		catch (FileNotFoundException e) { // unreachable code subtype
-//			System.out.println(e);
-//		}
 		catch (FileNotFoundException e) {
 			throw new FileNotFoundException();
 		} 
@@ -49,7 +46,7 @@ public class UsingExceptions {
 		System.out.println("end of method A");
 	}
 	
-	void methodB(int i) {
+	void methodB(int i) { // exception is handled throws not required
 		try {
 			if (i < 0) {
 				System.out.println("excecute System.exit(0)");
@@ -65,9 +62,6 @@ public class UsingExceptions {
 //			System.out.println(e); 
 //		}
 //		catch (FileNotFoundException | SQLException e) {  // does not handle IOException
-//			System.out.println(e);
-//		}
-//		catch (FileNotFoundException  | SQLException e) { // good multi-catch
 //			System.out.println(e);
 //		}
 		catch (IOException | SQLException e) { // Super IOException includes FileNotFoundException
@@ -88,22 +82,41 @@ public class UsingExceptions {
 		try {
 			methodB(i);
 			return 10;
-		} finally {
+		} 
+		finally {
 			System.out.println("finally method c: catch block not required with finally block");
 			return -10;
 		}
 	}
 	
-//	void methodD() {
+	void methodD() {
 //		try {
-//			System.out.println("method d"); // cannot throw an IOException
+//			System.out.println("method d"); // cannot throw a checked IOException
 //		} catch (IOException e) {
 //			System.out.println("method d catch");
 //		}
-//	}
+		try {
+			System.out.println("try methodD()");
+		} catch(NullPointerException | ArithmeticException e) { // allows catching runtime exceptions that can't be thrown
+			System.out.println("catch methodD()");
+		}
+	}
 	
 	void methodE(String a, String b) {
 		System.out.println(a.toUpperCase() + " " + b.toUpperCase());
+	}
+	
+	public void other() {
+		try {
+			System.out.println("any UNCHECKED exceptions can be added in catch blocks");
+		} catch(ArithmeticException e) {
+			System.out.println();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println();
+		} 
+//		catch (SQLException e) { // try block MUST be able to throw the CHECKED exception
+//			System.out.println();
+//		}
 	}
 }
 

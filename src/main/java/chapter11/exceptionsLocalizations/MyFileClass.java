@@ -10,7 +10,8 @@ public class MyFileClass implements AutoCloseable{
 		this.num = num; 
 	}
 	
-	@Override public void close() {
+	@Override 
+	public void close() {
 		System.out.println("Closing: " + num);
 	} 
 	

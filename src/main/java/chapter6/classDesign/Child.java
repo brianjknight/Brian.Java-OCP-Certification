@@ -1,6 +1,8 @@
 package chapter6.classDesign;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Child extends Parent{
 	// variables are never overridden only hidden
@@ -50,6 +52,14 @@ public class Child extends Parent{
 	
 	public void sayGoodBye() {
 		System.out.println("good bye from child");
+	}
+	
+	public List<String> hairy(List<String> list){ // triangle in gutter indicates override
+		return null;
+	}
+//	@Override // this is NOT an override but overloading the inherited method
+	public List<String> hairy(ArrayList<String> list) {
+		return null;
 	}
 
 	public static void main(String[] args) {

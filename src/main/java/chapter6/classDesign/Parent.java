@@ -1,6 +1,7 @@
 package chapter6.classDesign;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public class Parent {
 	private Number age = 40;
@@ -30,5 +31,9 @@ public class Parent {
 	
 	public void sayGoodBye() {
 		System.out.println("good bye from parent");
+	}
+	
+	public List<String> hairy(List<String> list){
+		return null;
 	}
 }

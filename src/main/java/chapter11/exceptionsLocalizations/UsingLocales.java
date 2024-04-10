@@ -17,8 +17,9 @@ public class UsingLocales {
 		
 		System.out.println(Locale.GERMAN);
 		System.out.println(Locale.GERMANY);
+		System.out.println(new Locale("DE")); // single param is still language and will be normalized to lowercase
 		System.out.println(new Locale("de","AT")); // german and Austria
-		System.out.println(new Locale("de12!@","ATXX")); // allowed
+		System.out.println(new Locale("de12!@","ATXX")); // allowed but may have unexpected behavior
 		
 		Locale custom = new Locale.Builder()
 									.setLanguage("xxxx")
@@ -67,13 +68,13 @@ public class UsingLocales {
 		
 		LocalDateTime ltd = LocalDateTime.now();
 		DateTimeFormatter dtfMedium = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
-		System.out.println(dtfMedium.format(ltd));
-		System.out.println(dtfMedium.withLocale(Locale.CANADA_FRENCH).format(ltd));
+		System.out.println("dtfMedium: " + dtfMedium.format(ltd));
+		System.out.println("dtfMedium fr_CA: " + dtfMedium.withLocale(Locale.CANADA_FRENCH).format(ltd)); // .format returns string > withLocale() must come before
 		System.out.println();
 		
 		DateTimeFormatter dtfSplit = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.SHORT); // separate date & time styles
-		System.out.println(dtfSplit.format(ltd));
-		System.out.println(dtfSplit.withLocale(Locale.CANADA_FRENCH).format(ltd));
+		System.out.println("dtfSplit: " + dtfSplit.format(ltd));
+		System.out.println("dtfSplit fr_CA: " + dtfSplit.withLocale(Locale.CANADA_FRENCH).format(ltd));
 		System.out.println();
 		
 		Locale spanish = new Locale("es","ES");  //default locale is currently en_us
@@ -89,7 +90,7 @@ public class UsingLocales {
 		
 		// note that a NEW NumberFormat instance is needed after changing the Category
 		Locale.setDefault(Category.FORMAT, spanish); // no MY locale is set to spanish
-		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + nfCur.format(money)); 
+		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + nfCur.format(money)); // nfCur was created while the default FORMAT was still english
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + NumberFormat.getCurrencyInstance().format(money));
 		System.out.println();
 		

@@ -11,52 +11,53 @@ public class BoundingWithWildcard<T> {
 		
 		// bounding with wildcard
 		
-			List<?> a = new ArrayList<String>(); // unbounded list
-			
-			List<Object> objectList = new ArrayList<>();
+		List<?> a = new ArrayList<String>(); // unbounded list
+		
+		List<Object> objectList = new ArrayList<>();
 //			List<Object> oList = new ArrayList<String>();
-			List<String> stringList = new ArrayList<>();
+		List<String> stringList = new ArrayList<>();
 //			bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
-			bww.addToLowerBoundList(objectList);
-			bww.addToLowerBoundList(stringList);
+		bww.addToLowerBoundList(objectList);
+		bww.addToLowerBoundList(stringList);
+		
+		ArrayList<Mammal> mams = new ArrayList<>();
+		mams.add(new Mammal());
+		mams.add(new Mammal());
+		
+		List<? extends Mammal> mammals = mams;
+		List<? extends Mammal> goats = new ArrayList<Goat>();
+		List<? extends Mammal> goatBabby = new ArrayList<GoatBabby>();
+//		List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
+		
+//		mammals.add(new Goat()); // upper bound & unbound list become immutable
+		
+		List<? super Goat> goatList = new ArrayList<Goat>();
+		List<? super Goat> mammalList = new ArrayList<Mammal>();
+		List<? super Goat> objList = new ArrayList<Object>();
+//		List<? super Goat> goatBabby = new ArrayList<GoatBabby>(); //does not compile GoatBabby breaks lower bound
+//		goatList.add(new Mammal()); // does not compile
+		goatList.add(new Goat());
+		goatList.add(new GoatBabby());
 			
-			ArrayList<Mammal> mams = new ArrayList<>();
-			mams.add(new Mammal());
-			mams.add(new Mammal());
-			
-			List<? extends Mammal> mammals = mams;
-			List<? extends Mammal> goats = new ArrayList<Goat>();
-			List<? extends Mammal> goatBabby = new ArrayList<GoatBabby>();
-//			List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
-			
-//			mammals.add(new Goat()); // upper bound & unbound list become immutable
-//			mammals.add(new Mammal()); // even if it is the upper bound; the list could be of Mamaml or any sub type
-			
-			List<? super Goat> goatList = new ArrayList<Goat>();
-			List<? super Goat> mammalList = new ArrayList<Mammal>();
-			List<? super Goat> objList = new ArrayList<Object>();
-//			List<? super Goat> goatBabby = new ArrayList<GoatBabby>(); //does not compile GoatBabby breaks lower bound
-				
-				
-			List<String> colors = List.of("red","green","blue");
-			List<Integer> nums = List.of(1,2,3); 
-			
-			System.out.println("printGeneric():");
-			bww.printGeneric(colors);
-			bww.printGeneric(nums);
-			System.out.println("<T>printGeneric()");
-			bww.<String>printGeneric(colors);
-//			bww.<String>printGeneric(nums); // does not compile
-			
-			System.out.println();
-			System.out.println("printWildcard:");
-			bww.<String>printWildcard(colors);  
-			bww.printWildcard(nums);
-			
-			bww.print("Hello");
-			bww.<String>print("World"); // not sure why Java would allow this but it compiles
-			bww.<Integer>print("World");
-//			bww.<Integer>print(1);
+		List<String> colors = List.of("red","green","blue");
+		List<Integer> nums = List.of(1,2,3); 
+		
+		System.out.println("printGeneric():");
+		bww.printGeneric(colors);
+		bww.printGeneric(nums);
+		System.out.println("<T>printGeneric()");
+		bww.<String>printGeneric(colors);
+//		bww.<String>printGeneric(nums); // does not compile
+		
+		System.out.println();
+		System.out.println("printWildcard:");
+		bww.<String>printWildcard(colors);  
+		bww.printWildcard(nums);
+		
+		bww.print("Hello");
+		bww.<String>print("World"); // not sure why Java would allow this but it compiles
+		bww.<Integer>print("World");
+//		bww.<Integer>print(1);
 				
 	}
 	
