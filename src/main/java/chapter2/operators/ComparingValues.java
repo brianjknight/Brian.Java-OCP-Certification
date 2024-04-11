@@ -11,24 +11,29 @@ public class ComparingValues {
         boolean byteELong = b==l;
         boolean longEfloat = l==f;
         boolean charELong = c==l;
-//        boolean bad = b == bEL;
+//        boolean bad = b == intChar;
 //        boolean badNull = b==null; // primitives cannot be null
         
-        Number five = 5L;
-        Number num = five;
-        Object obj = five;
+        long fivePrimitive = 5L;
+        Number five = 5L; // autoboxed to Long object because of Number reference
+        Number num = 5L;
+        Object obj = 5L;
 
-        System.out.println(five instanceof Long); // true
-        System.out.println(five instanceof Number); // true
-        System.out.println(five instanceof Object); // true
+//        System.out.println(fivePrimitive instanceof Object);
+        System.out.println(five instanceof Long); 
+        System.out.println(five instanceof Number); 
+        System.out.println(five instanceof Object); 
+        System.out.println();
 
-        System.out.println(num instanceof Integer); // false; object on heap is a Long
-        System.out.println(num instanceof Number); // true
-        System.out.println(num instanceof Object); // true
+        System.out.println(num instanceof Integer); 
+        System.out.println(num instanceof Number); 
+        System.out.println(num instanceof Object); 
+        System.out.println();
 
         System.out.println(obj instanceof Integer);
         System.out.println(obj instanceof Number);
         System.out.println(obj instanceof Object);
+        System.out.println();
 
 //        boolean isString = five instanceof String;
 
@@ -37,7 +42,7 @@ public class ComparingValues {
         boolean isString = abc instanceof String;
         System.out.println(isString);
         System.out.println(null instanceof Integer);
-//        System.out.println(null instanceof null); 
-//        System.out.println(abc instanceof null); 
+//        System.out.println(null instanceof null); // bad
+//        System.out.println(abc instanceof null); // bad
     }
 }

@@ -27,11 +27,11 @@ public class StringMethods {
 //        System.out.println("float %d".formatted(10.123456));
 
         double n = 1.123456;
-        System.out.println(String.format("format number 2 decimals %f", n));
-        System.out.println(String.format("format number 2 decimals %.2f", n));
-        System.out.println(String.format("format number 2 decimals %1.2f", n));
-        System.out.println(String.format("format number 2 decimals %12.4f", n));
-        System.out.println(String.format("format number 2 decimals %08.4f", n));
+        System.out.println(String.format("format number to decimals %f", n));
+        System.out.println(String.format("format number to decimals %.2f", n));
+        System.out.println(String.format("format number to decimals %1.2f", n));
+        System.out.println(String.format("format number to decimals %12.4f", n));
+        System.out.println(String.format("format number to decimals %08.4f", n));
         
         
         // String pool
@@ -77,6 +77,18 @@ public class StringMethods {
         System.out.println(concat);
         System.out.println("stripIndent length: " + concat.stripIndent().length());
         System.out.println(concat.stripIndent());
+        System.out.println();
+        
+        String s2 = "";
+        s2 += 2;
+        s2 += 'c';
+        s2 += false;
+        if ( s2 == "2cfalse") System.out.println("==");
+        if ( s2.equals("2cfalse")) System.out.println("equals");
+        
+        String s1 = """
+        		purr""";
+        System.out.println(s1.length());
     }
 
 

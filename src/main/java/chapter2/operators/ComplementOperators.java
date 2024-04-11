@@ -5,7 +5,7 @@ public class ComplementOperators {
         // ~ bitwise complement only works on integral primitive types
 
         int five = 5;
-        int fiveComplement = ~five;
+        int fiveComplement = ~five; // variables cannot be known at compile time but works because default is int
         int fiveComplementComplement =     ~      fiveComplement;
         System.out.println(five);
         System.out.println(fiveComplement);
@@ -16,9 +16,13 @@ public class ComplementOperators {
 
         char a = 'a';
 //        char aComplementDoesNotCompile = ~a; // does not compile > returns an int not char
-//        int aComplementDoesCompile = ~a;
+        int aComplementDoesCompile = ~a;
         char aCharComplement = (char) ~a;
-        System.out.println("a:" + a);
+        System.out.println("print a: " + a);
+        System.out.println(a);
+        System.out.println(0 + a);
+        System.out.println(1 + 'a');
+        System.out.println(1 + a);
         System.out.println("print ~a: " + ~a);
         System.out.println("aCharComplement: " + aCharComplement);
         System.out.println("ascii test (char) 10_000: " + (char) 10_000);

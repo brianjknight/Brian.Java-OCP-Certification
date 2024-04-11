@@ -2,17 +2,22 @@ package chapter3.making_decisions;
 
 public class SwitchStatements {
 
+	static final int eight = 8; 
+	
     public static void main(String[] args) {
 //        long x = 1; type not allowed for switch parameter
         int x = 9;
         switch (x) {
             case 1,2:
-                System.out.println("one or two");
+                System.out.println("one");
+            	String or = "o" + "r";
+	            System.out.println(or + " two");
                 break;
             case 9/3:
                 System.out.println("three");
                 break;
-            case 4: case 5: // equivalent to case 4,5:
+            case 4: 
+        	case 5: // equivalent to case 4,5:
                 System.out.print("four ");
                 System.out.println("or five");
                 break;
@@ -30,6 +35,8 @@ public class SwitchStatements {
                 System.out.println("nine");
             case 10:
                 System.out.println("ten");
+//            default: // only one default allowed
+//                System.out.println("no match");
             case 11:
                 System.out.println("eleven");
                 break;
@@ -53,13 +60,13 @@ public class SwitchStatements {
             }
             case 4, 5 -> "four or five";
 //            case six -> "six";
-            case SIX -> "six";
+            case SIX -> "six"; // compile time known literal and final
             case 7 -> {
                 // yield not needed for this case
                 throw new IllegalArgumentException("we don't like sevens");
             }
 //            case 8 -> 8;
-            case 8 -> {
+            case SwitchStatements.eight -> { // constant
             	// will not compile if all branching within the case is not covered
                 if (num < 0) {
                     yield "eight and negative num";
@@ -93,7 +100,7 @@ public class SwitchStatements {
 //            case 1 :
 //                System.out.println("1");
 //        }
-
+        
         System.out.println();
         System.out.println("grades");
         final char a = 'A', e = 'E';
@@ -105,6 +112,7 @@ public class SwitchStatements {
             case 'D': System.out.print("good "); break;
             case e:
             case 'F': System.out.print("not good ");
+//            default: System.out.print(" default ");
         }
         System.out.println();
         System.out.println();
@@ -141,7 +149,7 @@ public class SwitchStatements {
         // no case match, starts executing at default branch then continues until a break
         byte number = 1;
         byte NUMBER = 5;
-        switch (number) {
+        switch (NUMBER) {
 			case 1:
 				System.out.println(1);
 			case 2: 

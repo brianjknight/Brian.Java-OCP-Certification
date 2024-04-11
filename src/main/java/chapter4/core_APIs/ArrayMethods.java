@@ -35,7 +35,7 @@ public class ArrayMethods {
         System.out.println(Arrays.equals(one, oneDifferentOrder));
         Arrays.sort(oneDifferentOrder);
         System.out.println("Arrays.equals(): " + Arrays.equals(one, oneDifferentOrder));
-        System.out.println("one.equals(oneDifferentOrder: )" + one.equals(oneDifferentOrder));
+        System.out.println("one.equals(oneDifferentOrder): " + one.equals(oneDifferentOrder));
         
         int[][] abc = new int[4][4];
         int def[][] = new int[4][];
@@ -51,13 +51,22 @@ public class ArrayMethods {
         String[] y = new String[2];
         Integer[] z = new Integer[] {1,2};
         // must be of same type
-//        Arrays.equals(x, y);
+//        Arrays.equals(x, y); // primitive and Obj
+        Arrays.equals(y, z); // both Obj
 //        Arrays.mismatch(x, y);
 //        Arrays.compare(x, y);
 //        Arrays.equals(x, z);
         
         // compiles but throws runtime outofbounds exception
-        String[][][] threeD = new String[3][0][5];
-        threeD[0][0][1] = "hello";
+//        String[][][] threeD = new String[3][0][5];
+//        threeD[0][0][1] = "hello";
+        
+        
+       Object[] objs = new String[2];
+       objs[0] = "";
+//       objs[1] = Integer.valueOf(1); // compiles but throws runtime exception
+       String[] strings = new String[2];
+       
+//       String[] strs = Integer.valueOf(1); // does not compile
     }
 }

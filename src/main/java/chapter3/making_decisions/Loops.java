@@ -7,6 +7,7 @@ public class Loops {
             System.out.println("honest");
         else {
             System.out.println("liar");
+            break HONESTY; // allowed but useless
         }
         
         int hungryHippopotamus = 8;
@@ -18,18 +19,19 @@ public class Loops {
             hungryHippopotamus--;
             System.out.println(hungryHippopotamus);
         }
-
         System.out.println();
-
+        
+        
         // labels and break
+        System.out.println("myComplexArray loop:");
         int[][] myComplexArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
         OUTER_LOOP: for(int[] mySimpleArray : myComplexArray) {
             inner_loop: for(int i=0; i<mySimpleArray.length; i++) {
             	if (mySimpleArray[i] == 2) break inner_loop;
-                if (mySimpleArray[i] == 8) {
+                if (mySimpleArray[i] == 12) {
                     break OUTER_LOOP;
                 }
-                System.out.print(mySimpleArray[i]+"\t");
+                System.out.print(mySimpleArray[i] + " ");
             }
             System.out.println();
         }
@@ -46,7 +48,7 @@ public class Loops {
         // iterative for loop only requires 2 semicolons for valid syntax
         for(;;) {
             System.out.println(j++);
-            if (j==120) break;
+            if (j==105) break;
         }
         
 //        for (int j=0; ;) { // redeclaring local variable does not compile

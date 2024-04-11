@@ -7,8 +7,8 @@ public class NumericPromotion {
         int x = 1000;
         System.out.println(A + x);
 
-//        long a = 1000;
-//        long b = 3_000_000_000_000_000L;
+        long a = 1000;
+        long b = 3_000_000_000_000_000L;
 
         int y = 5;
         System.out.println("y=" + y);
@@ -24,7 +24,7 @@ public class NumericPromotion {
 
         byte one = 1;
         byte negOne = -1;
-//        byte badOne = -one; // one is promoted to int because of operator
+//        byte badOne = -one; // java cannot know one type at compile time so assumes MUST be an int
         
         byte num = 1 + 2; // literals are considered int by default BUT can fit into byte 
 //        byte four = num + 1; // when variable is present, operands are ALWAYS promoted to int

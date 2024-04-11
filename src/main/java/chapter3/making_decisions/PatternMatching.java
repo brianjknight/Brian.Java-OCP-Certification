@@ -54,6 +54,6 @@ public class PatternMatching {
     void printIntegerTwice(Number number) {
         if (number instanceof Integer data)
             System.out.print(data.intValue());
-//        System.out.print(data.intValue()); // DOES NOT COMPILE not in code block
+//        	System.out.print(data.intValue()); // DOES NOT COMPILE not in code block AND not in scope with flow scoping
     }
 }
