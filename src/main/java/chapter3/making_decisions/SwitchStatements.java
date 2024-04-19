@@ -83,12 +83,15 @@ public class SwitchStatements {
         System.out.println("switch expression result: " + result);
 
         // notice without assignment, you do not need to cover all cases or use yield for code block
-        switch (2+3) {
+        switch (2+4) {
             case SIX -> System.out.println("switch expression with no return does not need to cover all cases");
             case 8 -> {
             	// code block
+            	System.out.println("eight");
             	break; // allowed when not assigning the switch expression result
+            			// however switch expression only yields one case regardless of break;
             }
+            case 9 -> System.out.println("nine");
             
             // cannot return/yield for switch expression value not assigned
 //            case 9 -> "nine";
@@ -104,14 +107,14 @@ public class SwitchStatements {
         System.out.println();
         System.out.println("grades");
         final char a = 'A', e = 'E';
-        char grade = 'F';
+        char grade = 'x';
         switch (grade) {
-            default: System.out.print(" default ");
+            default: System.out.println("\tdefault ");
             case a:
-            case 'B': System.out.print("great ");
-            case 'D': System.out.print("good "); break;
+            case 'B': System.out.println("\tgreat ");
+            case 'D': System.out.println("\tgood "); break;
             case e:
-            case 'F': System.out.print("not good ");
+            case 'F': System.out.println("not good ");
 //            default: System.out.print(" default ");
         }
         System.out.println();
@@ -147,6 +150,8 @@ public class SwitchStatements {
         
         // not execution first happens for a case match then continues, including default, until a break
         // no case match, starts executing at default branch then continues until a break
+        System.out.println();
+        System.out.println("number");
         byte number = 1;
         byte NUMBER = 5;
         switch (NUMBER) {
@@ -170,5 +175,61 @@ public class SwitchStatements {
         		break;
         	}
         }
+        
+        int dddd = 10;
+        final byte bb = 1;
+        final short ss = 2;
+        final char cc = 'a';
+        final var vv = 20;
+
+        switch(dddd) { 
+	        case (byte) 5: 
+	        case (short) 22:
+	        case bb:  // Java will cast primitive values 
+	        case ss:  // however remember it CANNOT autobox AND cast at the same time if switch param is a Wrapper
+	        case cc:
+	        case vv:
+        }
+        
+        System.out.println();
+        System.out.println("enthuware test question test 2 #31: ");
+        int k = 10, s = 5;
+        switch(k)
+        {
+           default :
+        	   System.out.println("default case");
+	           if( k == 10) {
+	        	   System.out.println("if k==10");
+	        	   s = s*2; 
+        	   } else {
+        		  System.out.println("else k!=10");
+	              s = s+4;
+	              break;
+	           }
+           case 7 : 
+        	   System.out.println("case 7: ");
+        	   s = s+3;
+        }
+        System.out.println("s = " + s);
+    }
+    
+    String switchMethod(int i) {
+    	
+    	switch(i) {
+    		case 1: return "one";
+    	}
+    	
+    	String result = switch (i) {
+    		case 2 -> "two";
+    		default -> "NaN";
+    	};
+    	
+    	switch(i) {
+//    		case 3 -> "three";
+    		case 3 -> System.out.println("three");
+    		
+    	}
+    	
+    	return "";
     }
 }

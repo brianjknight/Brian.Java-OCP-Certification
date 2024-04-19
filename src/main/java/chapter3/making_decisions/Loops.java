@@ -1,6 +1,9 @@
 package chapter3.making_decisions;
 
 public class Loops {
+	
+//	InitLabel : {System.out.println("initializer block");} // labels not allowed on initializers
+	
     public static void main(String[] args) {
         boolean truthy = true;
         HONESTY: if (truthy)
@@ -23,6 +26,12 @@ public class Loops {
         
         
         // labels and break
+//        LABEL_A : int num = 1; // bad label, only allowed on control and block statements
+        LABEL_B : {
+        		// block statement
+        	}
+        LABEL_C : for (;;) break;
+        
         System.out.println("myComplexArray loop:");
         int[][] myComplexArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
         OUTER_LOOP: for(int[] mySimpleArray : myComplexArray) {
@@ -61,5 +70,29 @@ public class Loops {
         	// update multiple variables with comma ','
         }
 
+        int g = 5;
+        for (g+=5; g<10; g++) 
+        	System.out.println("g for loop: " + g);
+        
+//        while(false) { // will not compile; literal is known at compile time
+//        	System.out.println("unreachable?");
+//        };
+        
+        boolean f = false;
+        while(f) { // variable values are unknown at compile time
+        	System.out.println("unreachable?");
+        }
+        if(false) { // does compile
+        	System.out.println("unreachable?");
+        }
+        
+        System.out.println();
+        
+        while (true) 
+        	break;
+        
+        do
+        	System.out.println("do while loop");
+        while (false);
     }
 }

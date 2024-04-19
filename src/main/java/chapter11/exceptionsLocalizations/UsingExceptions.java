@@ -7,7 +7,16 @@ import java.sql.SQLException;
 public class UsingExceptions {
 	
 	public static void main(String[] args) throws FileNotFoundException  {
-//		System.out.println(1/0); runtime ArithmeticException
+		int j = 1;
+	    try {
+	    	int i = doIt() / (j = 2); // prints 1
+//	    	int i = (j = 2) / doIt(); // prints 2
+	    } catch (Exception e) {
+	    	System.out.println(" j = " + j);
+	    }
+		
+		
+		//		System.out.println(1/0); runtime ArithmeticException
 		
 		UsingExceptions ue = new UsingExceptions();
 		
@@ -118,6 +127,18 @@ public class UsingExceptions {
 //			System.out.println();
 //		}
 	}
+	
+	void another() {
+		try {
+			// catch is only unreachable for more specific checked exceptions
+		} catch (Exception e) {
+//		} catch (IOException e) {
+			System.out.println("exception");
+		}
+		
+	}
+	
+	public static int doIt() throws Exception {  throw new Exception("FORGET IT");  }
 }
 
 

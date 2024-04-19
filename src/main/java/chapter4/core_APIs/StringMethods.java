@@ -80,9 +80,9 @@ public class StringMethods {
         System.out.println();
         
         String s2 = "";
-        s2 += 2;
-        s2 += 'c';
-        s2 += false;
+        s2 += 2; // s2 = s2 + 2;
+        s2 += 'c'; // s2 = s2 + 'c';
+        s2 += false; // s2 = s2 + false;
         if ( s2 == "2cfalse") System.out.println("==");
         if ( s2.equals("2cfalse")) System.out.println("equals");
         

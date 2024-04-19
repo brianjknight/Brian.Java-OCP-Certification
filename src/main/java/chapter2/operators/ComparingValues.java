@@ -2,7 +2,7 @@ package chapter2.operators;
 
 public class ComparingValues {
     public static void main(String[] args) {
-        boolean intChar = 3 < 'a';
+        boolean bool = 3 < 'a';
 
         byte b = 1;
         long l = 2L;
@@ -11,12 +11,18 @@ public class ComparingValues {
         boolean byteELong = b==l;
         boolean longEfloat = l==f;
         boolean charELong = c==l;
-//        boolean bad = b == intChar;
+//        boolean bad = b == bool;
 //        boolean badNull = b==null; // primitives cannot be null
+
+        String s = "";
+        Integer i = 1;
+//        boolean bbb = s == i; // incompatible types
+        
         
         long fivePrimitive = 5L;
+        
         Number five = 5L; // autoboxed to Long object because of Number reference
-        Number num = 5L;
+        Number num = 5L; // all 3 of these are Long objects on the heap
         Object obj = 5L;
 
 //        System.out.println(fivePrimitive instanceof Object);

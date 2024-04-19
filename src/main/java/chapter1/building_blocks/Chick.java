@@ -1,7 +1,9 @@
 package chapter1.building_blocks;
 
 public class Chick {
-    { System.out.println("setting field"); }
+    public static void main(){};
+	
+	{ System.out.println("setting field"); }
 
     /**
 	  Javadocs and multi-line comments do not require '*' on every line 

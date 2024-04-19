@@ -15,10 +15,19 @@ public class Primitives {
         System.out.println(p.n);
         System.out.println(Math.max((double) 2.0,2.0f));
 
+        
+        Double d = 1357999.2468;
+        System.out.println(d.byteValue());
     }
 
-    String n;
-
+    String n; // variables can use letters, numbers, currency symbol, and underscore
+    String _n;
+    String $n;
+    String €n;
+    String ¥n;
+//    String 2n; // bad
+//    String _; // bad
+//    String n$%; // bad
 
     byte b = 127;
     short s = 32767;

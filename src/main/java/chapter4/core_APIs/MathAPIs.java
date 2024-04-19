@@ -1,6 +1,9 @@
 package chapter4.core_APIs;
 
 import java.util.Random;
+import java.util.*;
+import java.lang.*;
+
 
 public class MathAPIs {
 	
@@ -11,7 +14,6 @@ public class MathAPIs {
 		float d = 4.6F;
 		byte e = 5;
 		byte f = 6;
-		
 		
 		double AA = Math.min(a, b);
 		Double BB = Math.min(a, b);
@@ -24,8 +26,8 @@ public class MathAPIs {
 		System.out.println(Math.max(a, 4.0F));
 		System.out.println(Math.max((byte) 5, d));
 		
-	
 //		int rounded = Math.round(b); //rounding a double returns a long
+//		int roundPrimitive = Math.round(1.0);
 		long roundDouble = Math.round(b);
 		long roundFloat = Math.round(d); // rounding float returns an int
 		int roundD = Math.round(d);
@@ -37,11 +39,15 @@ public class MathAPIs {
 		Double two = 2.0;
 		System.out.println(Math.pow(4, two));
 		
+		System.out.println(Math.random());
+		System.out.println();
+		
 		System.out.println();
 		Random r = new Random();
 		System.out.println(r.nextInt());
 		System.out.println(r.nextInt());
 		System.out.println(r.nextDouble());
 		System.out.println(r.nextLong());
+		
 	}
 }

@@ -15,7 +15,22 @@ public class MethodDesign {
         d = 2;
     }
 
+    { int a = 11; } // initialer block in class is new scope to declare variable
+//    int a = 20; // duplicate variable
+    
     void doNothing() {
+    	int a = 10; // create new local variable within a method i.e. SHADOWING
+    	int z = 0;
+    	System.out.println(a);
+    	System.out.println(this.a);
+//    	{ int a = 11; } // considered duplicate local variable code block in method
+    	
+//    	if (true) {
+//    		int a = 11; // considered duplicate local variable
+//    	}
+//    	if (true) {
+//    		int z = 5; // not SHADOWING 
+//    	}
     }
 //	default void nothing() {
 //	}
@@ -52,7 +67,10 @@ public class MethodDesign {
         return "greater"; // unreachable warning since method must return String for all branches
     }
     
-    
+    String hike(int a) {
+    	if (1<2) return "hike";
+    	return "can't hike";
+    }
 
     public static void main(String[] args) {
     	System.out.println("run");

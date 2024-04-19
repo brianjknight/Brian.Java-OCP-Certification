@@ -4,6 +4,9 @@ package chapter1.building_blocks;
 //import java.lang.*;  // redundant
 //import java.lang.Math.PI; // cannot import methods unless static method and static import
 import static java.lang.Math.PI;
+import static java.lang.Math.*; 
+import java.lang.Math.*; // tries to import all classes under Math (even though there are none) not static fields/methods
+import java.nio.file.Paths.*;
 //import java.util.*;  // redundant
 //import java.util.Random;
 

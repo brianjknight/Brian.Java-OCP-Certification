@@ -6,10 +6,14 @@ public class AutoboxingUnboxing {
 //        Long a = 8; 
         Long b = 8L;
         long c = 8; // int literal 8 needs to be implicitly cast to a long widening type
-
+        Long xx = -c;
+        int yy = 8;
+//        Long yyyy = yy;
+        
         Short five = 5; // Java knows the larger int literal 5 can fit in the narrowing type short and does not need to implicitly cast.
         // so only autoboxing occurs above for Short five = 5;
         short FIVE = 5;
+//        Short anotherFive = -five; // variable with operator is promoted to int
         
 //        Byte tooBig = 500; // cannot convert int to Byte cast and autobox required since 500 literal cannot fit into byte
         

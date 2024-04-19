@@ -41,11 +41,13 @@ public class PatternMatching {
         if (number instanceof Integer data)
             System.out.println(data.intValue());
         else
+//        	System.out.println(data); // 'data' not declared if not an Integer
             return;
     }
 
     void printOnlyIntegersFlowScopingCompiles(Number number) {
         if (!(number instanceof Integer data)) {
+//        	System.out.println(data); // 'data' not declared
             return;
         }
         System.out.println(data.intValue());

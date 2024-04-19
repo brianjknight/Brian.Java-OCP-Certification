@@ -8,17 +8,21 @@ public class Overloading {
     	Overloading over = new Overloading();
     	long a = 100;
     	short b = 1;
+    	Integer c = 2;
     	
 //    	over.fly(a); // cannot call method with smaller primitive type. requires explicit casting
     	over.fly((int)a);
+    	over.fly(a);
     	over.fly(b);
+    	over.fly(c);
     }
 
     void go(int[] list) {}
     void go(Integer[] list) {}
 
-    void fly(int i) {}
-    void fly(Integer i) {}
+    void fly(int i) {System.out.println("int i");}
+    void fly(long i) {System.out.println("long i");}
+    void fly(Integer i) {System.out.println("Integer i");}
     
  // not overloading since method names are case sensitive
     void FLY(int i) {} 

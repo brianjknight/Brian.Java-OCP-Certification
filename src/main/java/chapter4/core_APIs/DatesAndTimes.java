@@ -21,6 +21,9 @@ public class DatesAndTimes {
 
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
+        System.out.println(ZonedDateTime.now());
+        System.out.println(ZonedDateTime.now().toInstant());
+        System.out.println(Instant.now());
         
         LocalDate start = LocalDate.of(2023, Month.JANUARY, 1);
         Period p = Period.ofMonths(3);
@@ -50,9 +53,14 @@ public class DatesAndTimes {
         Duration min = Duration.ofMinutes(90);
         System.out.println("min = " + min);
 
-        Duration sec = Duration.ofSeconds(172800);
+        Duration secDays = Duration.ofSeconds(172800);
+        System.out.println("sec many = " + secDays);
+        Duration secMin = Duration.ofSeconds(125);
+        System.out.println("sec many = " + secMin);
+        Duration sec = Duration.ofSeconds(5);
         System.out.println("sec = " + sec);
 
+        
         Duration seconds = Duration.ofSeconds(90);
         System.out.println("seconds = " + seconds);
 

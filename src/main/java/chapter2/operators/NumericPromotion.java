@@ -24,11 +24,13 @@ public class NumericPromotion {
 
         byte one = 1;
         byte negOne = -1;
-//        byte badOne = -one; // java cannot know one type at compile time so assumes MUST be an int
+//        byte badOne = -one; // variable used Java assumes int type 
         
         byte num = 1 + 2; // literals are considered int by default BUT can fit into byte 
 //        byte four = num + 1; // when variable is present, operands are ALWAYS promoted to int
         					// Java doesn't know at compile type if 'num' value fits into byte primitive
+//        byte four = (byte) num + 1; // even when casting, a binary operator and variable are used 
+        								// so after cast numeric promotion happens
         byte five = 2 + (int) 3; // int but literal fits in byte
         int ten = five + 5; // variable so byte five is promoted to int
         
@@ -39,8 +41,11 @@ public class NumericPromotion {
      // numeric promotion due to VALUES of different primitive
 //        int k = 1 + 1L;  
         long l = 1 + 1L;
-        int m = 'a' + 1; // char promoted to int
-        
-        
+        int m = 'a' + 1; // char literal value promoted to int
+        byte n = 'a' + 1; // promotion but result fits in a byte
+        char o = 97;
+//        int oo = 97;
+//        char oooo = oo;  // bad variable oo is now and assumed to be default int type
+        System.out.println("char o = 97; is " + o);
     }
 }
