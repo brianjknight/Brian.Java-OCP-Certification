@@ -31,7 +31,7 @@ public class UsingListsInterface {
 		List<String> ofA = List.of(words); // compiles
 		System.out.println("asList: " + asList);
 		System.out.println("ofA: " + ofA);
-//		List<List<String>> ofB = List.of(of, ofA); // complies .of with collection
+		List<List<String>> ofB = List.of(of, ofA); // complies .of with collection
 		List<String> copyOf = List.copyOf(asList);
 		// List.of() return immutable list
 		asList.set(0, "ten");
@@ -41,8 +41,8 @@ public class UsingListsInterface {
 		System.out.println("*********************");
 		System.out.println();
 		
-//		var long = new ArrayList<Long>(); // List of Long
-		var longs = new ArrayList<>(); // omit type and default is <Object>
+//		var long = new ArrayList<Long>(); // ref type ArrayList of Long
+		var longs = new ArrayList<>(); // omit type and default is ArrayList<Object>
 		longs.add("one");
 		System.out.println(longs);
 		longs.add(1L);
@@ -53,11 +53,14 @@ public class UsingListsInterface {
 //		for (Object s : longs) {
 //			System.out.println((String) s); // compiles but throws class exception on the Long
 //		}
+		System.out.println("print string instances:");
 		for (Object s : longs) if (s instanceof String str) System.out.println(str); 
+		System.out.println("print objects:");
 		for (Object o : longs) System.out.println(o); 
 		
 		longs.replaceAll(o -> o + "!");
-		System.out.println(longs);
+		System.out.println("print string instances:");
+		for (Object s : longs) if (s instanceof String str) System.out.println(str); 
 		System.out.println("*********************");
 		System.out.println();
 		
@@ -71,7 +74,7 @@ public class UsingListsInterface {
 		z.add(10);
 
 		System.out.println(z);
-		z.remove(2); // Collections inherited remove(int index)
+		z.remove(2); // Collections inherited remove(int index); remember Java uses the exact signature first (int) vs (Object)
 		System.out.println(z);
 		z.add(2, 33);
 		System.out.println(z);
@@ -87,6 +90,8 @@ public class UsingListsInterface {
 		chars.add('c');
 		
 		Object[] objsArray = chars.toArray(); // default is a new Object array
+//		Character[] castWrapperArray = (Character[]) objsArray ; // runtime exception > it is an Obj[] on the heap
+//		char [] castPrimArray = (char[]) castWrapperArray; // no allowed
 //		Character[] bad = chars.toArray(new Character[]); // requires size
 //		Character[] bad = chars.toArray(); // BAD toArray() no params returns Object[]
 		Character[] charArray = chars.toArray(new Character[0]);

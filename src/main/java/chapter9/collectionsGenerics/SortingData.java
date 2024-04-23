@@ -13,19 +13,23 @@ public class SortingData {
 
 	public static void main(String[] args) {
 		
-		Set<String> tree = new TreeSet<>();
+		Set<DuckNotComparable> tree = new TreeSet<>();
 //		tree.add(null); // compiles but throws runtime exception; Sorted data structures (Trees) NOT allowed null value
+//		tree.add(new DuckNotComparable("a", 1, 1.0, "x", 1)); // compiles but throws runtime exception
 		
 		List<DuckNotComparable> badDucks = new ArrayList<>();
 		badDucks.add(new DuckNotComparable("a", 1, 1.0, "x", 1));
 		badDucks.add(new DuckNotComparable("b", 2, 2.0, "y", 2));
 //		Collections.sort(badDucks); // does not compile on trying to sort
+		Collections.sort(badDucks, Comparator.comparing(DuckNotComparable::getName));
 		
 //		Set<DuckNotComparable> moreBadDucksCompiles = new TreeSet<>(); // throws runtime when adding object
 		Set<DuckNotComparable> moreBadDucks = new TreeSet<>(Comparator.comparing(DuckNotComparable::getName));
 		moreBadDucks.add(new DuckNotComparable("c", 3, 3.0, "r", 3)); // compiles but throws exception if adding to an ordered list 
 		moreBadDucks.add(new DuckNotComparable("d", 4, 4.0, "s", 4));
-		
+		System.out.println("moreBadDucks: ");
+		moreBadDucks.forEach(System.out::println);
+		System.out.println();
 		
 		List<Duck> ducks = new ArrayList<>();
 		Duck donald = new Duck("Donald", 16, 14.5, "oreo", 50);
@@ -79,7 +83,7 @@ public class SortingData {
 		System.out.println();
 		
 		Comparator<Duck> food = (d1,d2) -> d1.getFavFood().compareTo(d2.getFavFood());
-		// convenience method indeed:
+		// convenience method:
 		Comparator<Duck> foodConvMet = Comparator.comparing(Duck::getFavFood);
 		Collections.sort(ducks, foodConvMet);
 		System.out.println("food Comparator");
@@ -88,13 +92,13 @@ public class SortingData {
 
 		
 		Comparator<Duck> foodThenHeaviest = new Comparator<Duck>() {
-			public int compare(Duck d1, Duck d2) { // not explicitly using the compare() method
+			public int compare(Duck d1, Duck d2) { // explicitly using the compare() method
 				if (d1.getFavFood().compareTo(d2.getFavFood()) == 0) // if the food String is null we have an exception
 					return (int) (d2.getWeight() - d1.getWeight());
 				else return d1.getFavFood().compareTo(d2.getFavFood());
 			}
 		};
-		Comparator<Duck> foodThenHeaviestConv = 
+		Comparator<Duck> foodThenHeaviestConv = // careful with placement of chaining methods
 				Comparator.comparing(Duck::getFavFood).thenComparing(Comparator.comparingDouble(Duck::getWeight).reversed());
 		Collections.sort(ducks, foodThenHeaviestConv);
 		System.out.println("foodThenHeaviest Comparator");

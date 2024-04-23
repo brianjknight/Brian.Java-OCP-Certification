@@ -1,17 +1,17 @@
 package chapter6.classDesign;
 
 public class TopLevel {
+//	public static class TopLevel { // only public, abstract, and final modifiers permitted on TOP level classes
 
-	// Nested classes can have access modifiers
+	// Nested classes can have modifiers
 	public class InnerLevel {}
-	
-	class PakcageLevel {}
 	
 	protected class ProtectedLevel {}
 	
+	static class PakcageLevel {}
+	
 	private class PrivateLevel {}
 }
-
 
 //public class NextLevel {} only one public top level class allowed in a file
 class NextLevel {}

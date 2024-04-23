@@ -34,6 +34,7 @@ public class MathAPIs {
 		
 		System.out.println(Math.round(a));
 		System.out.println(Math.ceil(a));
+		System.out.println("Math.ceil(5.0): " + Math.ceil(5.0));
 		System.out.println(Math.floor(a));
 		
 		Double two = 2.0;

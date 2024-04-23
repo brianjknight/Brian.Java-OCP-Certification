@@ -6,6 +6,7 @@ import java.util.List;
 public class Parent {
 	private Number age = 40;
 	final String name = "Brian";
+	static int staticNum = 99;
 	
 	protected Number getAge() throws FileNotFoundException, IndexOutOfBoundsException {
 		return age;
@@ -28,6 +29,8 @@ public class Parent {
 	public void doWork() {
 		System.out.println("get to work");
 	}
+	
+	static void doStaticWork() {}
 	
 	public void sayGoodBye() {
 		System.out.println("good bye from parent");

@@ -8,11 +8,15 @@ public class Child extends Parent{
 	// variables are never overridden only hidden
 	private Number age = 15;
 	final String name = "James";
+	// staticNum is inherited from Parent
 	
-	public Child() {}
+	public Child() {
+		staticNum = 88;
+	}
 	
 	public Child(int x) {
 		this();
+//		this("");
 	}
 	
 	public Child(String x) {
@@ -32,7 +36,9 @@ public class Child extends Parent{
 //	public Integer getAge() throws FileSystemException { // cannot throw new exception
 //	public Object getAge() throws FileNotFoundException, RuntimeException { // return type must be same or subtype 
 	public Integer getAge() throws FileNotFoundException, RuntimeException { // CAN throw broadening RUNTIME exception 
-		return super.getAge().intValue() - 20;
+		// cannot subtract Objects Number
+		// object on heap is an Autoboxed Integer
+		return super.getAge().intValue() - (short) age; 
 	}
 	
 	// redeclared method, not an override
@@ -41,6 +47,7 @@ public class Child extends Parent{
 	}
 	
 	// hidden method NOT overridden because static makes it a class member not instance member
+//	@Override // produces compiler error
 	public static String greeting() {
 		return "hi";
 	}
@@ -54,15 +61,18 @@ public class Child extends Parent{
 		System.out.println("good bye from child");
 	}
 	
+//	void doStaticWork() {} // cannot override static methods; only hide
+	
 	public List<String> hairy(List<String> list){ // triangle in gutter indicates override
 		return null;
 	}
-//	@Override // this is NOT an override but overloading the inherited method
+//	@Override // this is NOT an override; it is overloading the inherited method
 	public List<String> hairy(ArrayList<String> list) {
 		return null;
 	}
 
 	public static void main(String[] args) {
 		System.out.println("run main");
+		System.out.println(staticNum);
 	}
 }

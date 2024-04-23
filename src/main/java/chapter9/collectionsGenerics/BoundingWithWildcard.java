@@ -6,7 +6,7 @@ import java.util.List;
 public class BoundingWithWildcard<T> {
 
 	public static void main(String[] args) {
-				
+		
 		BoundingWithWildcard<String> bww = new BoundingWithWildcard<>();
 		
 		// bounding with wildcard
@@ -14,8 +14,9 @@ public class BoundingWithWildcard<T> {
 		List<?> a = new ArrayList<String>(); // unbounded list
 		
 		List<Object> objectList = new ArrayList<>();
-//			List<Object> oList = new ArrayList<String>();
+//			List<Object> oList = new ArrayList<String>(); // not allowed but you can add Strings to the an Object List
 		List<String> stringList = new ArrayList<>();
+		bww.addToList(objectList);
 //			bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
 		bww.addToLowerBoundList(objectList);
 		bww.addToLowerBoundList(stringList);
@@ -38,6 +39,8 @@ public class BoundingWithWildcard<T> {
 //		goatList.add(new Mammal()); // does not compile
 		goatList.add(new Goat());
 		goatList.add(new GoatBabby());
+		
+//		mammalList.add(new Mammal()); // has to do with not having a upper bound on parent; however class of goat or subtype will always fit in the list 
 			
 		List<String> colors = List.of("red","green","blue");
 		List<Integer> nums = List.of(1,2,3); 
@@ -56,8 +59,8 @@ public class BoundingWithWildcard<T> {
 		
 		bww.print("Hello");
 		bww.<String>print("World"); // not sure why Java would allow this but it compiles
-		bww.<Integer>print("World");
-//		bww.<Integer>print(1);
+//		bww.<Integer>print("World");
+		bww.<Integer>print(1);
 				
 	}
 	
@@ -75,7 +78,7 @@ public class BoundingWithWildcard<T> {
 		}
 	}
 	
-	public void print(String s) {
+	public <S> void print(S s) {
 		System.out.println(s);
 	}
 	

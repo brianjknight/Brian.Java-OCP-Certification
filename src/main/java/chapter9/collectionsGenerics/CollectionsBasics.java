@@ -2,13 +2,17 @@ package chapter9.collectionsGenerics;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CollectionsBasics {
 	public static void main(String[] args) {
 		
 		Collection<String> coll = new ArrayList<>();
 //		Collection<> bad = new ArrayList<String>();
+		Set<String> strSet = new HashSet<>();
+		List<String> strList = new ArrayList<>(strSet);
 		
 		boolean addedA = coll.add("a");
 		System.out.println("s.add(\"a\"): " + addedA); 

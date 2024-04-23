@@ -10,17 +10,17 @@ public class InitializingClasses {
 		System.out.println("static initializer A");
 //		System.out.println("three = " + three); // does not compile
 	}
-	static int three;
+	static int three; // not a final field
 	
 	static {
 		System.out.println("three = " + three);
-		three = 3;
 	}
 	static {
+		three = 3;
 		System.out.println("three = " + three);
 	}
 	
 	public static void main(String[] args) {
-		System.err.println("main method");
+		System.out.println("main method");
 	}
 }

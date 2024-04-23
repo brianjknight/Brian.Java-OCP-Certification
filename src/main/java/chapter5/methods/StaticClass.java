@@ -10,7 +10,7 @@ import static java.util.Arrays.asList; // redundant but shows single static impo
 
 public class StaticClass {
 	
-	//final String greeting; // final variable must be initialized because it cannot be reassigned
+	//final String greeting; // final variable must be initialized
 	static String title;
 	static String first;
 	final String middle;
@@ -25,7 +25,8 @@ public class StaticClass {
 //	{greeting = "Good morning";}
 	static {
 		first = "BRIAN";
-//		middle = "james"; non-static variable
+//		this.first = "BRIAN"; // "this" keyword CANNOT be used in a static context
+//		middle = "james"; // non-static variable
 	}
 	static {
 		age = 39;
@@ -35,12 +36,16 @@ public class StaticClass {
 	}
 	
 	StaticClass() {
-		first = "Brian";
+		first = "Brian"; // ALL instances now have first name of Brian
 		middle = "James";
 //		last = "knight";
 		final String nothing; // final local variable only needs initialized before it is used
 //		nothing = " ";
 	}
+	
+//	StaticClass(String middle) { with multiple constructors need to account for initializing final fields
+//		// final String middle is initialized in no args constructor but not here
+//	}
 	
 	static String getFullName() {
 		// static String midInitial = "J"; only final modifier is allowed inside a method
@@ -62,7 +67,7 @@ public class StaticClass {
 		Integer[] nums = {1,2,3};
 
 		
-		// Not you can import a class and a static method and call it both ways.
+		// Note if you import a class AND a static method, you can call it both ways.
 		List<Integer> ints = asList(nums);
 		List<Integer> list = Arrays.asList(nums); // trickery but be sure BOTH are imported
 		Integer[] copy = copyOf(nums,3);

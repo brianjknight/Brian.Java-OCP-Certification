@@ -3,7 +3,8 @@ package chapter5.methods;
 public class AutoboxingUnboxing {
     public static void main(String[] args) {
         // Java will not autobox and implicit cast smaller primitive to larger at the same time.
-//        Long a = 8; 
+//      Long a = 8; 
+//    	Double aa = 8;
         Long b = 8L;
         long c = 8; // int literal 8 needs to be implicitly cast to a long widening type
         Long xx = -c;
@@ -13,7 +14,7 @@ public class AutoboxingUnboxing {
         Short five = 5; // Java knows the larger int literal 5 can fit in the narrowing type short and does not need to implicitly cast.
         // so only autoboxing occurs above for Short five = 5;
         short FIVE = 5;
-//        Short anotherFive = -five; // variable with operator is promoted to int
+//        Short anotherFive = -five; // variable value is not known at compile time and considered default int
         
 //        Byte tooBig = 500; // cannot convert int to Byte cast and autobox required since 500 literal cannot fit into byte
         
@@ -32,13 +33,17 @@ public class AutoboxingUnboxing {
         
         // be careful with null values when autoboxing/unboxing is happening
         Character f = null;
-        char g = f; // throws NullPointerException. Behind the scenes Java is trying to call method f.charValue() on a null object
-
+        char g = f; // throws NullPointerException. f is not known at compile time
+        			// Behind the scenes Java is trying to call method f.charValue() on a null object
+//        char gg = null;
+        
         AutoboxingUnboxing auto = new AutoboxingUnboxing();
         // Java will not autobox arrays
         // auto.makeArray(new int[] {1,2,3}); // does not compile
-
-
+//         auto.makeArray( (Integer[]) new int[] {1,2,3}); // cannot cast from primitive to Object array
+        Object[] oArr = new Integer[] {1,2,3};
+//        auto.makeArray(oArr); // wrong type
+        auto.makeArray( (Integer[]) oArr ); // CAN cast Object array types
     }
 
     public void makeArray(Integer[] nums) {}

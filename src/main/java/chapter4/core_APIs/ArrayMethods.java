@@ -57,9 +57,12 @@ public class ArrayMethods {
 //        Arrays.compare(x, y);
 //        Arrays.equals(x, z);
         
-        // compiles but throws runtime outofbounds exception
-//        String[][][] threeD = new String[3][0][5];
-//        threeD[0][0][1] = "hello";
+        
+        String[][][] threeD = new String[3][0][5];
+//        threeD[0][0][1] = "hello"; // compiles but throws runtime outofbounds exception
+        String[][] twoD = new String[][] {{"a","b","c","d","e"}};
+        threeD[0] = twoD;
+        System.out.println(Arrays.toString(threeD[0][0]));
         
         
        Object[] objs = new String[2];

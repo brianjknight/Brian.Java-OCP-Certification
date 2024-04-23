@@ -78,7 +78,7 @@ public class UsingMaps {
 		treeMap.put("F", "value");
 		treeMap.put("D","value");
 		treeMap.put("B", null);
-//		treeMap.put(null, "value"); // sorted data structure does not allow null key, runtime exception
+//		treeMap.put(null, "value"); // sorted data structures does not allow null key, runtime exception
 		System.out.println(treeMap);
 		
 		

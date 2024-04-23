@@ -2,6 +2,7 @@ package chapter11.exceptionsLocalizations;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.NotSerializableException;
 import java.sql.SQLException;
 
 public class UsingExceptions {
@@ -9,12 +10,17 @@ public class UsingExceptions {
 	public static void main(String[] args) throws FileNotFoundException  {
 		int j = 1;
 	    try {
-	    	int i = doIt() / (j = 2); // prints 1
-//	    	int i = (j = 2) / doIt(); // prints 2
+	    	int i = doIt() / j++; // prints 1
+//	    	int i = j++ / doIt(); // prints 2
 	    } catch (Exception e) {
 	    	System.out.println(" j = " + j);
 	    }
 		
+	    try {
+	    	String error = "error";
+	    } catch (Error e) {
+	    	System.out.println("compiles but don't catch errors");
+	    }
 		
 		//		System.out.println(1/0); runtime ArithmeticException
 		
@@ -31,6 +37,7 @@ public class UsingExceptions {
 		ue.methodA(-1);
 	}
 	
+	void useless() throws Exception, Exception, IOException, IOException, FileNotFoundException {}
 	
 	void methodA(int i) throws FileNotFoundException { // catch clause throws the exception
 		try {
@@ -61,18 +68,23 @@ public class UsingExceptions {
 				System.out.println("excecute System.exit(0)");
 				System.exit(0); // finally does NOT execute
 				throw new FileNotFoundException();
-			} else if (i > 0) {
+			} else if (i > 10) {
+				throw new NotSerializableException();
+			} else if (i > 20) { 
 				throw new IOException();
 			} else {
 				throw new SQLException("throwing SQL exception"); 
 			}
 		} 
-//		catch (FileNotFoundException | IOException e) { // multi-catch cannot use related Exceptions  
+//		catch (FileNotFoundException | IOException e) { // multi-catch cannot use subtype & parent  
 //			System.out.println(e); 
 //		}
 //		catch (FileNotFoundException | SQLException e) {  // does not handle IOException
 //			System.out.println(e);
 //		}
+		catch (FileNotFoundException | NotSerializableException e) {
+			System.out.println(e);
+		}
 		catch (IOException | SQLException e) { // Super IOException includes FileNotFoundException
 			System.out.println(e);
 		}

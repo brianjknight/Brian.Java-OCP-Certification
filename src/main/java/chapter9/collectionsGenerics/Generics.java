@@ -9,7 +9,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	private U age;
 	private hamburger bigMac;
 	
-	public Generics() {};
+	public Generics() {}
 	
 	public Generics (T t, U u) {
 		this.name = t;
@@ -19,8 +19,12 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	public T getName() {return name;}
 	public U getAge() {return age;}
 	
-	public <T> T yellName() { // <T> generic declaration here is independent of T in class generic
+	public <T> T yellName() { // <T> formal generic param here shadows T in class generic
 		return (T)(name.toString() + "!");
+	}
+	
+	public T whisperName() { // T here is generic of class
+		return (T) name.toString().toLowerCase();
 	}
 	
 	public void doNothing(List<Object> in) {}
@@ -35,7 +39,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	public <E> E goodGenericMethod(E e) {
 		return e;
 	}
-	public <Y,Z> T alsoGood(Z xyz) {
+	public <Y,Z> T alsoGood(Z xyz) {  // T here is of class generic T
 		System.out.println((Y) xyz);
 		return (T) xyz;
 	}
@@ -71,7 +75,10 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 		// now  getName() is cast as a String and getAge() cast as Integer, so operator works with operator using Integer.toString()
 		System.out.println(includeParamTypes.getName() + includeParamTypes.getAge()); 
 		
-		List list = new ArrayList(); // Java infers Object for parameterized type when omitted
+		// Java infers Object for parameterized type when omitted
+		List list = new ArrayList(); 
+		List anotherList = new ArrayList<>(); 
+		List yetAnotherList = new ArrayList<String>();
 		
 		list.add("cat");
 		list.add(9);

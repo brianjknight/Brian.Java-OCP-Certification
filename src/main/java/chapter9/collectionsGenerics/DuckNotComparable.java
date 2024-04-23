@@ -57,6 +57,11 @@ public class DuckNotComparable {
 	public void setMoney(int money) {
 		this.money = money;
 	}
+	@Override
+	public String toString() {
+		return "DuckNotComparable [name=" + name + ", age=" + age + ", weight=" + weight + ", favFood=" + favFood
+				+ ", money=" + money + "]";
+	}
 	
 	
 }

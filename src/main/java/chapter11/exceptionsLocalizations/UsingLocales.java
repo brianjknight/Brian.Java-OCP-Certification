@@ -41,7 +41,7 @@ public class UsingLocales {
 			double backToDouble = (Double) localFormat.parse(localPrice);  // parse() method in various types declares a checked ParseException
 			System.out.println("backToDouble: " + backToDouble);
 		} catch (ParseException e) {
-			System.out.println("could not conver tot double");
+			System.out.println("could not convert to double");
 		}
 		
 		BigDecimal bigPrice = BigDecimal.valueOf(price);

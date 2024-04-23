@@ -9,7 +9,7 @@ public class StringBuilderMethods {
         System.out.println(sb.capacity());
         System.out.println();
         
-        StringBuilder sb1 = new StringBuilder(10);
+        StringBuilder sb1 = new StringBuilder(1000);
         System.out.println(sb1.length());
         System.out.println(sb1.capacity());
         System.out.println(new StringBuilder().capacity());

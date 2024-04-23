@@ -6,7 +6,7 @@ public class StringMethods {
         String animal = "elephants";
 
         int pChar = animal.indexOf('p');
-        int pInt= animal.indexOf(112);
+        int pInt= animal.indexOf(112); // 112 is the ascii int value for p
         System.out.println("pChar index: " + pChar);
         System.out.println("pInt index: " + pInt);
 
@@ -27,7 +27,7 @@ public class StringMethods {
 //        System.out.println("float %d".formatted(10.123456));
 
         double n = 1.123456;
-        System.out.println(String.format("format number to decimals %f", n));
+        System.out.println(String.format("format number to decimals %f", n).toString());
         System.out.println(String.format("format number to decimals %.2f", n));
         System.out.println(String.format("format number to decimals %1.2f", n));
         System.out.println(String.format("format number to decimals %12.4f", n));
@@ -46,8 +46,9 @@ public class StringMethods {
         var f = new String("Hello World").intern();
         var g = "Hello".concat(" World");
         var h = "Hello World".concat("");
+        var i = "Hello World".concat("!!!");
         
-        System.out.println("");
+        System.out.println();
         System.out.println("###String pool###");
         System.out.println("-----");
         System.out.println("a==b: " + a == b); //order of operations binary before equality "a==b: Hello World" == b
@@ -60,6 +61,7 @@ public class StringMethods {
         System.out.println("a==f: " + (a==f));
         System.out.println("a==g: " + (a==g));
         System.out.println("a==h: " + (a==h));
+        System.out.println("a==i: " + (a==i));
         System.out.println();
         
         // 3 spaces after 'a' but text block drops the spaces and adds return '\n'
@@ -89,6 +91,8 @@ public class StringMethods {
         String s1 = """
         		purr""";
         System.out.println(s1.length());
+        
+//        String s1B = s1.replaceAll('p', "P");
     }
 
 
