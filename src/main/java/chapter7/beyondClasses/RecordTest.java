@@ -2,6 +2,7 @@ package chapter7.beyondClasses;
 
 public class RecordTest {
 	public static void main(String[] args) {
+//		PersonRecord empty = new PersonRecord(); // does not create default no args constructor
 		PersonRecord brian = new PersonRecord("Brian", "Knight", 39, 160, 6.0, "oreos");
 		
 		System.out.println(brian);
@@ -13,7 +14,7 @@ public class RecordTest {
 		PersonRecord allison = new PersonRecord("Allison","Fedorowicz");
 		System.out.println(allison);
 		
-		allison.changeSpecies("woman");
+		allison.changeSpecies("fish");
 		System.out.println(allison.weight());
 		System.out.println("Allison species: " + allison.species);
 		System.out.println("Brian species: " + brian.species);

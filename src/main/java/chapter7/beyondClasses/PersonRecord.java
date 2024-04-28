@@ -1,5 +1,8 @@
 package chapter7.beyondClasses;
 
+// implicitly and ONLY allowed to be public & final
+// can implement interfaces
+// cannot use extend
 public record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) {
 	
 	static String species;
@@ -21,7 +24,7 @@ public record PersonRecord(String first, String last, int age, int weight, doubl
 //	}
 	
 	// special compact constructor; no params or ()
-	// acts as an all args constructor
+	// acts as the all args constructor when called new PersonRecord(, , , , , )
 	public PersonRecord {
 		if (last == null) {
 			// this.last = "last"; // cannot modify the fields directly in compact constructor 
@@ -41,7 +44,7 @@ public record PersonRecord(String first, String last, int age, int weight, doubl
 	// Overloaded constructor
 	public PersonRecord(String first, String last) {
 //		first = first.toUpperCase();
-		this(first, last, 0, 0, 0, "pickles"); // constructed with this therefore next line has no affect
+		this(first, last, 0, 0, 0, "pickles"); // constructed with this therefore next line has no affect on the object
 		first = "" + first.substring(0,2).toLowerCase() + first.substring(2).toUpperCase(); // validation check
 		System.out.println(first); // param was changed however the instance was already created with this() call
 	}

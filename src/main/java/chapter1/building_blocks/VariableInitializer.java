@@ -4,12 +4,17 @@ public class VariableInitializer {
 	
 //	var zzz = "z"; // not a local variable cannot use var
 	String $ = "dollar sign";
+	String String = "string"; // String is not a reserved keyword
+	Boolean Boolean = false;
+//	int int = 0;
 	
 	void declareVars() {
 //		var a = 1, b = 2;  multiple declaration not allowed with var
 //		var a = null; // Java must know var reference type at compile time
 		var a = "AAA";
 		a = null;
+		
+		var String = 1;
 		
 		var four = 
 					

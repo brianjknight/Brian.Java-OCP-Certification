@@ -18,13 +18,28 @@ public class A {
 						return xOfC;
 					}
 					
+					abstract class G {}
+					
+					G gAnonymousClass = new G() {
+						
+					};
+					
+					void methA() {
+						var BBB = new B();
+					}
+					static void methB() {
+//						var bbb = new B();
+					}
 				}
 				
 //				xOfC += 1; // local classes like F can only access effectively final local variables like xOfC
 				
-				F f = new F();
-				System.out.println(f.getXofC());
+				F.G gAnonFromF = new F().new G() {};
 				
+				F f = new F();
+				System.out.println("f.getXofC(): " + f.getXofC());
+				
+				var varB = new B();
 				B b = new B();
 				System.out.println("b.x = " + b.x);
 				System.out.println("x = " + x);
@@ -41,7 +56,7 @@ public class A {
 		
 		// look in JetSki class
 		// static nested member class of B
-		static class D { 
+		public static class D { 
 			public static int y = 25;
 			private static int z = 50;
 		}
@@ -61,24 +76,26 @@ public class A {
 		B b = a.new B(); // works because One is a member of Outer and Java know where to find it within THIS class
 		A.B b1 = new A().new B();
 		
-		A.B.C c = b.new C();
+		A.B.C c = b  .  new C  ();
 		A.B.C c1 = new A().new B().new C();
 		
 		c1.printX();
-		System.out.println("******************");
+		System.out.println();
 		
 		// or try this
 		System.out.println("new A().new B().new C().printX();");
 		new A().new B().new C().printX();
-		System.out.println("******************");
+		System.out.println();
 
 		System.out.println("c1.x = " + c1.x); // private variable of nested class is accessible within the file declaration
-		
+		System.out.println();
 //		System.out.println("for js j=" + new JetSki().j); // private field not visible outside of class declaration
 		
-		// instance of A is not required for nested static class D
+//		D d = new D();
 		System.out.println(A.B.D.y);
 		System.out.println(A.B.D.z); // private member is accessible within the enclosing class/file
+		
+		A.B.D d = new A.B.D();
 	}
 	
 }

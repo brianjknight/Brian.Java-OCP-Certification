@@ -89,7 +89,7 @@ public class UsingExceptions {
 			System.out.println(e);
 		}
 		finally {
-			System.out.println("finally method B part one");
+			System.out.println("finally method B part ONE");
 			
 //			int[] arr = new int[0]; // finally ALWAYS executes but all of its code may not
 //			System.out.println(arr[1]);

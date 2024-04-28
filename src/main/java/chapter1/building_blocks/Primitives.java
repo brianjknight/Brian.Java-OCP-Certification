@@ -29,6 +29,11 @@ public class Primitives {
 //    String _; // bad
 //    String n$%; // bad
 
+    int hex = 0xa3f;
+    int octal = 015;
+//    int notOctal = 0185;
+    int binary = 0b0101;
+    
     byte b = 127;
     short s = 32767;
     int i =       2_147_483_647;

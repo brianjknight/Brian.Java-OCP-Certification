@@ -26,7 +26,7 @@ public class LambdaTest {
 			// single statement does not require return and code block
 			String legsB = testTrait(a, x -> x.numLegs()  == 2 ? "biped" : "not biped" );
 			
-			// more than one statement requires code block with return
+			// more than ONE statement requires code block with return
 			String legsBreturn = testTrait(a, x -> {
 					int numLegs = x.numLegs();
 					if (numLegs == 2) {return "biped";}

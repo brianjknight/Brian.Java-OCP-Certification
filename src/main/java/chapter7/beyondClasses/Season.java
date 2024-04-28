@@ -5,7 +5,10 @@ import java.util.Arrays;
 public enum Season {
 //	WINTER_SEASON, summer, sPrIng, Fall // valid; notice no semi-colon for simple enum
 	
-//	WINTER(){}, SUMMER{}, SPRING{}, FALL; // also valid
+//	WINTER(){ void winterMethod() {} }, SUMMER{}, SPRING{}, FALL // also valid
+
+//	WINTER(){}, SUMMER{}, SPRING{}, FALL // requires semi-colon because of methodA 
+//	void methodA() {};
 	
 //	static {System.out.println("Class/Enum initialization");} // enum values MUST be first statement
 	
@@ -40,7 +43,7 @@ public enum Season {
 		public String getTemp() {
 			return "unknown";
 		}
-	};
+	}; // semi-colon required to mark end of ENUM declarations
 	
 	// requires all enums values to implement the abstract method
 	public abstract String getTemp();
@@ -56,14 +59,14 @@ public enum Season {
 	
 	private final String expectedVisitors; 
 	static String staticField = "static field";
-	private static final String constant = "c";
+	private static final String CONSTANT = "c";
 	
 	// constructors can only be private
 //	public Season() {
 //		this.expectedVisitors = "Medium";
 //	}
 	
-	// implicitly private
+	// implicitly private AND only private
 	Season(String expectedVisitors) {
 		this.expectedVisitors = expectedVisitors;
 		System.out.println("Initializing Season Enum: " + expectedVisitors);
@@ -74,6 +77,10 @@ public enum Season {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println(WINTER == WINTER);
+		System.out.println(WINTER.equals(WINTER));
+		System.out.println();
+		
 		System.out.println("winter toString: " + Season.WINTER);
 		System.out.println("winter name: " + Season.WINTER.name());
 		System.out.println("winter ordinal: " + Season.WINTER.ordinal());
@@ -102,7 +109,7 @@ public enum Season {
 		System.out.println(Season.FALL.getHours());
 		System.out.println(FALL.getTemp());
 		System.out.println(FALL.expectedVisitors);
-		System.out.println(FALL.constant);
+		System.out.println(FALL.CONSTANT);
 		System.out.println(FALL.staticField);
 				
 		System.out.println("summer expected visitors: " + Season.SUMMER.expectedVisitors); // access to private within Enum

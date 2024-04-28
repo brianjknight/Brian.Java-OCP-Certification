@@ -10,11 +10,11 @@ public class PatternMatching {
         Number one = 1.0; 
         // *update note that Number is the reference type; 
         // the actual literal 1.0 double is autoboxed to Double which is the actual object type of the instance
-        // below asks if one Double, is an instance of an integer; Both are related as Numbers which is why this compiles but does not print
+        // below asks if ONE Double, is an instance of an integer; Both are related as Numbers which is why this compiles but does not print
         if (one instanceof Integer) 
             System.out.println("it's an Integer");
-        // I think this is allowed to compile because one reference type is an abstract class and List is an interface. make more sense after you read Chapter 7
-//        if (one instanceof List<?>) // also compiles
+        // I think this is allowed to compile because ONE reference type is an abstract class and List is an interface. make more sense after you read Chapter 7
+//        if (ONE instanceof List<?>) // also compiles
         if (one instanceof List) // *update omitting the generic type is equivalent of List<Object>
             System.out.println("It is a list");
         

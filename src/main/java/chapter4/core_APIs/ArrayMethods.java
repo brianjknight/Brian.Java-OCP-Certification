@@ -8,7 +8,11 @@ public class ArrayMethods {
         a = new int[2];
 //        a = {1,2}; //does not compile
         b = new int[]{1,2,3};
-
+        int[] bAgain = {1,2,3};
+        System.out.println(b.equals(bAgain)); // no overridden Object.equals() method for arrays.
+        System.out.println(b == bAgain);
+        
+        
         int c  []= {1,2};
 
         int nums[], num;
@@ -35,7 +39,7 @@ public class ArrayMethods {
         System.out.println(Arrays.equals(one, oneDifferentOrder));
         Arrays.sort(oneDifferentOrder);
         System.out.println("Arrays.equals(): " + Arrays.equals(one, oneDifferentOrder));
-        System.out.println("one.equals(oneDifferentOrder): " + one.equals(oneDifferentOrder));
+        System.out.println("ONE.equals(oneDifferentOrder): " + one.equals(oneDifferentOrder));
         
         int[][] abc = new int[4][4];
         int def[][] = new int[4][];

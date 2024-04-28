@@ -10,7 +10,7 @@ import java.nio.file.Paths.*;
 //import java.util.*;  // redundant
 //import java.util.Random;
 
-//import java.lang.*.*; // only one wildcard allowed
+//import java.lang.*.*; // only ONE wildcard allowed
 
 
 // naming conflicts

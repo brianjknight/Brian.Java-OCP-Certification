@@ -24,7 +24,7 @@ public class NumericPromotion {
 
         byte one = 1;
         byte negOne = -1;
-//        byte badOne = -one; // variable used Java assumes int type 
+//        byte badOne = -ONE; // variable used Java assumes int type 
         
         byte num = 1 + 2; // literals are considered int by default BUT can fit into byte 
 //        byte four = num + 1; // when variable is present, operands are ALWAYS promoted to int

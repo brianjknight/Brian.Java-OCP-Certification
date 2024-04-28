@@ -3,15 +3,21 @@ package chapter7.beyondClasses;
 //public sealed class Snake {}
 //final class Cobra extends Snake{} // declared in same file so complies
 
-//public sealed class Snake permits Snake.Cobra { // permits optional for only a nested class extending
-//public sealed class Snake permits Python { // if permits IS used, must list nested subclass
-public sealed class Snake {
-	
+//permits optional if subclasses are nested or in same file
+//if permits IS used, MUST list ALL subclass
+
+//public sealed class Snake { // compiles
+public sealed class Snake permits Python, Snake.Cobra { // if nested AND using permits syntax is different
 //	class Cobra extends Snake {} // BAD must declare final, sealed, or non-sealed
 //	non-sealed class Cobra extends Snake {} // good
 	final class Cobra extends Snake {} // declared nested subclass complies
 	
 }
 
-//final class Python extends Snake {}
+//public sealed class Snake permits Python {} 
+////public sealed class Snake {}
+//
+//
+final class Python extends Snake {}
 
+//non-sealed class RattleSnake {} // sealed & non-sealed must have super sealed class/interface 

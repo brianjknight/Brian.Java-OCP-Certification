@@ -3,6 +3,7 @@ package chapter9.collectionsGenerics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class UsingListsInterface {
 	public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class UsingListsInterface {
 		System.out.println();
 		
 		List<Integer> nums = Arrays.asList(1,2,3);
-
+		System.out.println(nums.indexOf("three")); // compiles and NO exception param of different type
 		System.out.println(nums);
 		// Arrays.asList() returns a fixed size list from which you cannot add or delete elements
 //		nums.add(4); // compiles but throws runtime exception. 
@@ -25,9 +26,9 @@ public class UsingListsInterface {
 		System.out.println("*********************");
 		System.out.println();
 		
-		String[] words = {"one","two","three"};
+		String[] words = {"ONE","two","three"};
 		List<String> asList = Arrays.asList(words);
-		List<String> of = List.of("one","two","three");
+		List<String> of = List.of("ONE","two","three");
 		List<String> ofA = List.of(words); // compiles
 		System.out.println("asList: " + asList);
 		System.out.println("ofA: " + ofA);
@@ -43,7 +44,7 @@ public class UsingListsInterface {
 		
 //		var long = new ArrayList<Long>(); // ref type ArrayList of Long
 		var longs = new ArrayList<>(); // omit type and default is ArrayList<Object>
-		longs.add("one");
+		longs.add("ONE");
 		System.out.println(longs);
 		longs.add(1L);
 		System.out.println(longs);

@@ -45,10 +45,11 @@ public class MathAPIs {
 		
 		System.out.println();
 		Random r = new Random();
-		System.out.println(r.nextInt());
-		System.out.println(r.nextInt());
-		System.out.println(r.nextDouble());
-		System.out.println(r.nextLong());
+		System.out.println("nextInt(bound): " + r.nextInt(10));
+		System.out.println("nextInt: " + r.nextInt());
+		System.out.println("nextDouble: " + r.nextDouble());
+		System.out.println("nextLong: " + r.nextLong());
+		System.out.println("nextGaussian: " + r.nextGaussian());
 		
 	}
 }

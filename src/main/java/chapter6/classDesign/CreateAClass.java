@@ -13,7 +13,7 @@ public class CreateAClass {
         color = color;
         System.out.println("color = " + color);
         
-        System.out.println("this.color = " + this.color);
+        System.out.println("this.color = " + this  .  color);
 
         // "this" is allowed because an instance is being created
         this.color = color;
@@ -38,6 +38,8 @@ public class CreateAClass {
 
 
     public static void main(String[] args) {
-        CreateAClass red = new CreateAClass("red");
+        CreateAClass orange = new CreateAClass("orange");
+        CreateAClass red = new   CreateAClass    ("red")    ;
+        System.out.println(Math .   random (  )   );
     }
 }

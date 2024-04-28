@@ -2,7 +2,8 @@ package chapter7.beyondClasses;
 
 public non-sealed interface OneInterface extends MyFirstInterface {
 	
-	void divide();
+	void divide(); // implicitly public abstract
+//	public abstract void divide();
 	
 	public default int multiply() {
 		return 2*3;
@@ -17,6 +18,8 @@ public non-sealed interface OneInterface extends MyFirstInterface {
 //		nonStaticHelper();
 //		divide();
 	}
+	
+	public static void otherCaller() {};
 	
 	private void nonStaticHelper() { // no implicit modifiers for private methods
 		staticHelper();

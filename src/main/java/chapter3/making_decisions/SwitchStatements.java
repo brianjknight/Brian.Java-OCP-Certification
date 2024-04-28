@@ -9,7 +9,7 @@ public class SwitchStatements {
         int x = 9;
         switch (x) {
             case 1,2:
-                System.out.println("one");
+                System.out.println("ONE");
             	String or = "o" + "r";
 	            System.out.println(or + " two");
                 break;
@@ -35,7 +35,7 @@ public class SwitchStatements {
                 System.out.println("nine");
             case 10:
                 System.out.println("ten");
-//            default: // only one default allowed
+//            default: // only ONE default allowed
 //                System.out.println("no match");
             case 11:
                 System.out.println("eleven");
@@ -53,7 +53,7 @@ public class SwitchStatements {
         boolean isSwitch = true;
         int num = 101;
         String result = switch (y) {
-            case 1,2 -> result = "one or two";
+            case 1,2 -> result = "ONE or two";
             case 3 -> {
                 System.out.println("case 3 reached");
                 yield "three";
@@ -89,7 +89,7 @@ public class SwitchStatements {
             	// code block
             	System.out.println("eight");
             	break; // allowed when not assigning the switch expression result
-            			// however switch expression only yields one case regardless of break;
+            			// however switch expression only yields ONE case regardless of break;
             }
             case 9 -> System.out.println("nine");
             
@@ -216,7 +216,7 @@ public class SwitchStatements {
     String switchMethod(int i) {
     	
     	switch(i) {
-    		case 1: return "one";
+    		case 1: return "ONE";
     	}
     	
     	String result = switch (i) {
