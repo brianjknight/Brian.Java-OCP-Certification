@@ -18,6 +18,11 @@ public class Primitives {
         
         Double d = 1357999.2468;
         System.out.println(d.byteValue());
+        
+        
+        System.out.println(10 / 2 * 4);
+        System.out.println(10 * 2 / 4);
+        
     }
 
     String n; // variables can use letters, numbers, currency symbol, and underscore
@@ -67,11 +72,12 @@ public class Primitives {
 //    int nullValue = null;
 
     int zero = Integer.parseInt("0");
-    int one = Integer.valueOf("1");
+    int one = Integer.valueOf("1");  // return wrapper then unboxes to primitive
     Integer two = Integer.valueOf("2");
     // 3 becomes int primitive but is then autoboxed to Integer
     Integer three = Integer.parseInt("3");
 
+    
     byte bTwo = two.byteValue();
     short sTwo = two. shortValue();
     int iTwo = two.intValue();
@@ -79,6 +85,11 @@ public class Primitives {
     int iiiTwo = two;
     long lTwo = two.longValue();
 
+    double dTwo = two; // unboxed and cast to double primitive
+//    Double Dtwo = two; // requires unboxing two Integer to int; but cannot cast & autobox double > Double
+    byte bbbTwo = (byte) (int) two;
+    
+    
     int maxA = Math.max(one, two);
     int maxB = Math.max(i, (int) d);
 

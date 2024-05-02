@@ -12,9 +12,11 @@ public class BoundingWithWildcard<T> {
 		// bounding with wildcard
 		
 		List<?> a = new ArrayList<String>(); // unbounded list
+//		List<?> b = new ArrayList<?>(); // unbounded list
 		
 		List<Object> objectList = new ArrayList<>();
 //			List<Object> oList = new ArrayList<String>(); // not allowed but you can add Strings to the an Object List
+//			List<?> oooList = new ArrayList<?>(); // not allowed but you can add Strings to the an Object List
 		List<String> stringList = new ArrayList<>();
 		bww.addToList(objectList);
 //			bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
@@ -30,13 +32,15 @@ public class BoundingWithWildcard<T> {
 		List<? extends Mammal> goatBabby = new ArrayList<GoatBabby>();
 //		List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
 		
-//		mammals.add(new Goat()); // upper bound & unbound list become immutable
+//		mammals.add(new Mammal()); // upper bound & unbound list become immutable
 		
 		List<? super Goat> goatList = new ArrayList<Goat>();
 		List<? super Goat> mammalList = new ArrayList<Mammal>();
 		List<? super Goat> objList = new ArrayList<Object>();
 //		List<? super Goat> goatBabby = new ArrayList<GoatBabby>(); //does not compile GoatBabby breaks lower bound
 //		goatList.add(new Mammal()); // does not compile
+//		mammalList.add(new Mammal());
+		mammalList.add(new Goat());
 		goatList.add(new Goat());
 		goatList.add(new GoatBabby());
 		
@@ -61,7 +65,7 @@ public class BoundingWithWildcard<T> {
 		bww.<String>print("World"); // not sure why Java would allow this but it compiles
 //		bww.<Integer>print("World");
 		bww.<Integer>print(1);
-				
+		
 	}
 	
 	// generic type requires formal param <T> declaration
@@ -81,6 +85,9 @@ public class BoundingWithWildcard<T> {
 	public <S> void print(S s) {
 		System.out.println(s);
 	}
+//	public <Q> void print(Q extends Number) { // cannot mix generic with bounding
+//		System.out.println(s);
+//	}
 	
 	public void addToList(List<Object> list) {
 		list.add("a string");

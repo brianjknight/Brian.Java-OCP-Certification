@@ -17,9 +17,9 @@ public class UsingExceptions {
 	    }
 		
 	    try {
-	    	String error = "error";
+	    	// code
 	    } catch (Error e) {
-	    	System.out.println("compiles but don't catch errors");
+	    	System.out.println("compiles but don't do this");
 	    }
 		
 		//		System.out.println(1/0); runtime ArithmeticException
@@ -142,12 +142,11 @@ public class UsingExceptions {
 	
 	void another() {
 		try {
-			// catch is only unreachable for more specific checked exceptions
+			// catch is only unreachable for more specific CHECKED exceptions
 		} catch (Exception e) {
-//		} catch (IOException e) {
+//		} catch (IOException e) { // unreachable code
 			System.out.println("exception");
 		}
-		
 	}
 	
 	public static int doIt() throws Exception {  throw new Exception("FORGET IT");  }

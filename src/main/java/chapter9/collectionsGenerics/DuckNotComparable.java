@@ -1,18 +1,5 @@
 package chapter9.collectionsGenerics;
 
-/****************************************************************************
- * <b>Title:</b> DuckNotComparable.java <br>
- * <b>Project:</b> Brian.Java-OCP-Certification <br>
- * <b>Description:</b> CHANGE ME! <br>
- * <b>Copyright:</b> Copyright (c) 2022 <br>
- * <b>Company:</b> Silicon Mountain Technologies
- * 
- * @author Brian Knight
- * @version 1.x
- * @since Feb 4, 2024 <b>updates:</b>
- * 
- ****************************************************************************/
-
 public class DuckNotComparable {
 	private String name;
 	private int age;

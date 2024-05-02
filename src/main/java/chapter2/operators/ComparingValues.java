@@ -17,7 +17,7 @@ public class ComparingValues {
         String s = "";
         Integer i = 1;
 //        boolean bbb = s == i; // incompatible types
-        
+        boolean BBB = s.equals(i);
         
         long fivePrimitive = 5L;
         
@@ -25,6 +25,9 @@ public class ComparingValues {
         Number num = 5L; // all 3 of these are Long objects on the heap
         Object obj = 5L;
 
+//        boolean yyy = 1 == num; // literal and Number object are not related
+        boolean zzz = i == num; // comparing wrapper objects which are related
+        
 //        System.out.println(fivePrimitive instanceof Object);
         System.out.println(five instanceof Long); 
         System.out.println(five instanceof Number); 

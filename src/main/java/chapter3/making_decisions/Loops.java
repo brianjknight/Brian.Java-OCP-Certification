@@ -82,7 +82,8 @@ public class Loops {
         while(f) { // variable values are unknown at compile time
         	System.out.println("unreachable?");
         }
-        if(false) { // does compile
+        if(false) { // does compile since if statements are used for condtional execution logic 
+        			// where as with 'while' you normally intend for code to execute until condition becomes false
         	System.out.println("unreachable?");
         }
         

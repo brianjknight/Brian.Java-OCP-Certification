@@ -45,7 +45,7 @@ public class ArrayMethods {
         int def[][] = new int[4][];
         def[0] = new int[4];
         
-        int[] f[], g[][], h[][][][];
+        int intF, f[], g[][], h[][][][];
 
         int i[], j;
         j = 2;
@@ -63,7 +63,7 @@ public class ArrayMethods {
         
         
         String[][][] threeD = new String[3][0][5];
-//        threeD[0][0][1] = "hello"; // compiles but throws runtime outofbounds exception
+//        threeD[0][0][0] = "hello"; // compiles but throws runtime outofbounds exception
         String[][] twoD = new String[][] {{"a","b","c","d","e"}};
         threeD[0] = twoD;
         System.out.println(Arrays.toString(threeD[0][0]));

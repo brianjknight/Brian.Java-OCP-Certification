@@ -49,6 +49,7 @@ public class Duck implements Comparable<Duck>{
 		}
 	}
 	
+	// overload not override of equals(Object o)
 	public boolean equals(Duck d) {
 		if (d == null) return false;
 		if (this == d) return true;

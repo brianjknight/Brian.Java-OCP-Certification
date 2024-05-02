@@ -55,6 +55,7 @@ public class StringMethods {
         System.out.println("a==b: " + (a==b));
         System.out.println("a==b2: " + (a==b2));
         System.out.println("a==b3: " + (a==b3));
+        System.out.println("a.equals(b3): " + a.equals(b3)); // overridden method compares characters in the object
         System.out.println("a==c: " + (a==c));
         System.out.println("a==d: " + (a==d));
         System.out.println("a==e: " + (a==e));

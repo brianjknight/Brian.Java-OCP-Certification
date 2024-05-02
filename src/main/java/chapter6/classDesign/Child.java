@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Child extends Parent{
+public class Child extends Parent {
 	// variables are never overridden only hidden
 	private Number age = 15;
 	final String name = "James";
@@ -16,7 +16,7 @@ public class Child extends Parent{
 	
 	public Child(int x) {
 		this();
-//		this("");
+//		this(""); // only one other constructor call allowed
 	}
 	
 	public Child(String x) {
@@ -33,7 +33,7 @@ public class Child extends Parent{
 	@Override // annotation not required but can be useful in avoiding errors
 //	private Integer getAge() { // cannot reduce accessibility for override
 //	public Integer getAge() throws IOException { // cannot throw broadening CHECKED exception
-//	public Integer getAge() throws FileSystemException { // cannot throw new exception
+//	public Integer getAge() throws FileSystemException { // cannot throw new CHECKED exception
 //	public Object getAge() throws FileNotFoundException, RuntimeException { // return type must be same or subtype 
 	public Integer getAge() throws FileNotFoundException, RuntimeException { // CAN throw broadening RUNTIME exception 
 		// cannot subtract Objects Number
@@ -51,6 +51,7 @@ public class Child extends Parent{
 	public static String greeting() {
 		return "hi";
 	}
+//	public String greeting() {} // instance method cannot override a static parent method
 	
 	// cannot override final methods. Will not compile
 //	public boolean isCitizen() {
@@ -66,7 +67,7 @@ public class Child extends Parent{
 	public List<String> hairy(List<String> list){ // triangle in gutter indicates override
 		return null;
 	}
-//	@Override // this is NOT an override; it is overloading the inherited method
+//	@Override // this is NOT an override; it is overloading the inherited/overridden method above method
 	public List<String> hairy(ArrayList<String> list) {
 		return null;
 	}

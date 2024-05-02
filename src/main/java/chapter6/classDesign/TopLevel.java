@@ -4,7 +4,7 @@ public class TopLevel {
 //	public static class TopLevel { // only public, abstract, and final modifiers permitted on TOP level classes
 
 	// Nested classes can have modifiers
-	public class InnerLevel {}
+	public static class InnerLevel {}
 	
 	protected class ProtectedLevel {}
 	
@@ -13,10 +13,10 @@ public class TopLevel {
 	private class PrivateLevel {}
 }
 
-//public class NextLevel {} only ONE public top level class allowed in a file
-class NextLevel {}
+//public class other {} only ONE public top level class allowed in a file
+//static class otherTopLevel {} // only nested classes can be static
 
-class LowerLevel {}
+class otherTpLvl {}
 
 class NotLevel {}
 

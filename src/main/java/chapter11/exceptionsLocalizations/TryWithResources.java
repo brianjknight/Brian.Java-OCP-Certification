@@ -13,18 +13,20 @@ public class TryWithResources {
 		
 		try (var readerOne = new MyFileClass(1); readerTwo) {  // must be effectively final if using variable
 			System.out.println("Try block");
+//			readerTwo = new MyFileClass(3);
 			throw new RuntimeException();
 //			throw new Exception(); // must be caught or use throws
 		} 
 		// implicit finally block runs closing resources prior to explicit catch/finally
-//		catch (Exception e) {
-//			System.out.println("Catch block");
-//		} 
-//		finally {
-//			System.out.println("Finally block");
-//		}
+		catch (Exception e) {
+			System.out.println("Catch block");
+		} 
+		finally {
+			System.out.println("Finally block");
+		}
 		
-//		readerTwo = new MyFileClass(3);
+		// readerTwo is still in scope, however reassigning is not allowed. must be effectively final if used int try with resources
+//		readerTwo = new MyFileClass(3); 
 		
 //		try(String a = "a") { // not autocloseable
 //			// code

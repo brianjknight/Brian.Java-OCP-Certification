@@ -7,6 +7,8 @@ public class Egg {
     public static void main(String[] eggcellent) {
         System.out.println("main method");
         Egg egg = new Egg();
+//        egg.main("a","b");
+        egg.main(new String[] {}); // compiles but creates infinite loop
         System.out.println(egg.number);
     }
     private int number = 3;

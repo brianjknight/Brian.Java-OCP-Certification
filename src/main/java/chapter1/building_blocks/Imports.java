@@ -23,8 +23,8 @@ import java.nio.file.Paths.*;
 //import java.sql.*;
 
 // better imports to compile code
-//import java.util.Date;
-//import java.sql.*;
+import java.util.Date;
+import java.sql.*;
 
 public class Imports {
 
@@ -36,11 +36,11 @@ public class Imports {
 		
 		// compiles with 
 //		Date utilDate = new Date();
-//		java.sql.Date sqlDateA = new Date(); // does not compile since Date is assumed to be util.Date
+////		java.sql.Date sqlDateA = new Date(); // does not compile since Date is assumed to be util.Date
 //		java.sql.Date sqlDateB = new java.sql.Date(0);
 	
 		// without imports:
-//		java.util.Date utilDateBad = new Date(); // does snot compile if import is missing
+//		java.util.Date utilDateBad = new Date(); // does not compile if import is missing
 		java.util.Date utilDate1 = new java.util.Date();
 		java.sql.Date sqlDate1 = new java.sql.Date(0);
 	}

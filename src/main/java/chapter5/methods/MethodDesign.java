@@ -49,6 +49,8 @@ public class MethodDesign {
         return;
     }
     
+    final protected void _$(){}
+    
 //    void _() { 
 //    	
 //    }
@@ -64,7 +66,10 @@ public class MethodDesign {
         	return "less";
 //        	System.out.println("unreachable compile error");
         }
-        return "greater"; // unreachable warning since method must return String for all branches
+        if (false) return ""; // unreachable warning since method must return String for all branches
+        if (true) return "  ";
+        
+        return "greater"; 
     }
     
     String hike(int a) {

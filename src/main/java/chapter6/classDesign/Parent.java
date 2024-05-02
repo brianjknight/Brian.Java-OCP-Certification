@@ -8,6 +8,8 @@ public class Parent {
 	final String name = "Brian";
 	static int staticNum = 99;
 	
+	// default no args constructor inserted by compiler
+	
 	protected Number getAge() throws FileNotFoundException, IndexOutOfBoundsException {
 		return age;
 	}

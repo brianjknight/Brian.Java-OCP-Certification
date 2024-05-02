@@ -24,7 +24,7 @@ public class NumericPromotion {
 
         byte one = 1;
         byte negOne = -1;
-//        byte badOne = -ONE; // variable used Java assumes int type 
+//        byte badOne = -one; // variable used Java assumes int type 
         
         byte num = 1 + 2; // literals are considered int by default BUT can fit into byte 
 //        byte four = num + 1; // when variable is present, operands are ALWAYS promoted to int
@@ -47,5 +47,11 @@ public class NumericPromotion {
 //        int oo = 97;
 //        char oooo = oo;  // bad variable oo is now and assumed to be default int type
         System.out.println("char o = 97; is " + o);
+        
+        
+        float abc = 2.0F;
+        float def = 1 + abc;
+        
+        
     }
 }

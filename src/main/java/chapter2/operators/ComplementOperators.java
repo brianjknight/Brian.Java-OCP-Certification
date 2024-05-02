@@ -12,7 +12,7 @@ public class ComplementOperators {
         System.out.println(fiveComplementComplement);
 
         double ten = 10.0;
-//        double doubleCompDoesNotCompile = ~ten;
+//        double doubleCompDoesNotCompile = ~ten; // bitwsie operator only allowed on integer types
 
         char a = 'a';
 //        char aComplementDoesNotCompile = ~a; // does not compile > returns an int not char
@@ -34,8 +34,9 @@ public class ComplementOperators {
         // bitwise operator works on an int but remains an int
         // then needs to be cast to a byte type
 //        byte bad = ~two; // two variable is a byte, however Java uses promotion for variables 
+//        byte bad = -two;
 //        byte badAgain = ~( (byte) two ); // TWO IS A VARIABLE
-        byte twoComplement = (byte) ~two; // therefore need to cast ~two
+        byte twoComplement = (byte) two; // therefore need to cast ~two
         byte again = ~2; // 2 IS A LITERAL, for literals Java will use assignment type
         byte xxx = ~(byte)2; // unnecessary
         byte twoComplementComplement = (byte) ~twoComplement;

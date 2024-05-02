@@ -11,8 +11,8 @@ public class PatternMatching {
         // *update note that Number is the reference type; 
         // the actual literal 1.0 double is autoboxed to Double which is the actual object type of the instance
         // below asks if ONE Double, is an instance of an integer; Both are related as Numbers which is why this compiles but does not print
-        if (one instanceof Integer) 
-            System.out.println("it's an Integer");
+        if (one instanceof Double) 
+            System.out.println("it's a Double");
         // I think this is allowed to compile because ONE reference type is an abstract class and List is an interface. make more sense after you read Chapter 7
 //        if (ONE instanceof List<?>) // also compiles
         if (one instanceof List) // *update omitting the generic type is equivalent of List<Object>
@@ -34,12 +34,15 @@ public class PatternMatching {
 
         pm.printOnlyIntegersFlowScopingCompiles(six);
         pm.printOnlyIntegersFlowScopingCompiles(seven);
+        
+        System.out.println();
+        pm.subtypeTest();
     }
 
     void printOnlyIntegers(Number number) {
-//        if (!(number instanceof Number data)) Does not compile because it is not a strict subtype
+//        if (!(number instanceof Number data)) // Does not compile because data is not assigned
         if (number instanceof Integer data)
-            System.out.println(data.intValue());
+            System.out.println("printOnlyIntegers: " + data.intValue());
         else
 //        	System.out.println(data); // 'data' not declared if not an Integer
             return;
@@ -48,14 +51,25 @@ public class PatternMatching {
     void printOnlyIntegersFlowScopingCompiles(Number number) {
         if (!(number instanceof Integer data)) {
 //        	System.out.println(data); // 'data' not declared
-            return;
+        	System.out.println("flow scoping not instance of Integer: " + number);
+            return; // causes the if statement to exit the method so next line is not executed
         }
-        System.out.println(data.intValue());
+        System.out.println("flow scoping IS integer: " + data.intValue());
     }
 
     void printIntegerTwice(Number number) {
         if (number instanceof Integer data)
             System.out.print(data.intValue());
 //        	System.out.print(data.intValue()); // DOES NOT COMPILE not in code block AND not in scope with flow scoping
+    }
+    
+    void subtypeTest() {
+    	Integer i = Integer.valueOf(1);
+    	if (i instanceof Integer) {
+    		System.out.println(i);
+    	}
+    	if (i instanceof Integer num) { 
+    		System.out.println(num);
+    	}
     }
 }

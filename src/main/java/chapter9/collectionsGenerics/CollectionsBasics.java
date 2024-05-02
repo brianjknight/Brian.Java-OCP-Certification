@@ -13,6 +13,9 @@ public class CollectionsBasics {
 //		Collection<> bad = new ArrayList<String>();
 		Set<String> strSet = new HashSet<>();
 		List<String> strList = new ArrayList<>(strSet);
+		List objsList = new ArrayList();
+		List otherList = new ArrayList<>();
+		List myList = new ArrayList<String>();
 		
 		boolean addedA = coll.add("a");
 		System.out.println("s.add(\"a\"): " + addedA); 

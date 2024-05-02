@@ -2,6 +2,7 @@ package chapter9.collectionsGenerics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -15,8 +16,12 @@ public class UsingListsInterface {
 		System.out.println();
 		
 		List<Integer> nums = Arrays.asList(1,2,3);
-		System.out.println(nums.indexOf("three")); // compiles and NO exception param of different type
+		List<Integer> numsAgain = Arrays.asList(1,2,3);
+		System.out.println(nums.indexOf("three")); // compiles and NO exception param of different type; signature -> indexOf(Object o)
+		System.out.println(nums.contains("three"));
 		System.out.println(nums);
+		System.out.println("nums.equals(numsAgain): " + nums.equals(numsAgain)); // overridden equals for Collections compartes type, contents, & order
+		System.out.println("nums == numsAgain: " + (nums == numsAgain));
 		// Arrays.asList() returns a fixed size list from which you cannot add or delete elements
 //		nums.add(4); // compiles but throws runtime exception. 
 		
@@ -75,11 +80,11 @@ public class UsingListsInterface {
 		z.add(10);
 
 		System.out.println(z);
-		z.remove(2); // Collections inherited remove(int index); remember Java uses the exact signature first (int) vs (Object)
+		z.remove(2); // overloaded List remove(int index); remember Java uses the exact signature first (int) vs (Object)
 		System.out.println(z);
 		z.add(2, 33);
 		System.out.println(z);
-		z.remove(Integer.valueOf(4)); // overloaded List method remove(Obj o)
+		z.remove(Integer.valueOf(4)); //  Collections inherited method remove(Obj o)
 		System.out.println(z);
 		System.out.println("*********************");
 		System.out.println();
@@ -95,7 +100,7 @@ public class UsingListsInterface {
 //		char [] castPrimArray = (char[]) castWrapperArray; // no allowed
 //		Character[] bad = chars.toArray(new Character[]); // requires size
 //		Character[] bad = chars.toArray(); // BAD toArray() no params returns Object[]
-		Character[] charArray = chars.toArray(new Character[0]);
+		Character[] charArray = chars.toArray(new Character[-1]);
 		Character[] big = chars.toArray(new Character[10]);
 		Character[] small = chars.toArray(new Character[1]);
 		

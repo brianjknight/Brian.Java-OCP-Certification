@@ -67,7 +67,7 @@ public class VariableInitializer {
         System.out.println(v.two());
         v.setTwo();
         System.out.println(v.two());
-        System.gc();
+        System.gc(); // you can call garbage collection but no guarantee it does anything since Java handles this automatically
         System.out.println(v.three());
         System.out.println(v.valid());
     }

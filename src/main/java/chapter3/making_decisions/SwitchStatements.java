@@ -39,7 +39,7 @@ public class SwitchStatements {
 //                System.out.println("no match");
             case 11:
                 System.out.println("eleven");
-                break;
+                return;
             case 12:
                 System.out.println("twelve");
 //            case 13 -> System.out.println(""); // cannot mix switch statements with switch expressions
@@ -96,6 +96,11 @@ public class SwitchStatements {
             // cannot return/yield for switch expression value not assigned
 //            case 9 -> "nine";
 //            case 10 -> {yield "ten"}
+            case 11 -> {
+            	if (num > 0) {
+            		System.out.println("postive number");
+            	}
+            }
         }
 
         // parameter/expression required for switch statement
@@ -107,7 +112,8 @@ public class SwitchStatements {
         System.out.println();
         System.out.println("grades");
         final char a = 'A', e = 'E';
-        char grade = 'x';
+        final byte b = 120;
+        Character grade = 'x';
         switch (grade) {
             default: System.out.println("\tdefault ");
             case a:
@@ -115,6 +121,10 @@ public class SwitchStatements {
             case 'D': System.out.println("\tgood "); break;
             case e:
             case 'F': System.out.println("not good ");
+            case 10: // grade == 10 unboxes and casts grade to unicode value then compares primitive integral values
+//            case 70_000: // out of range for 16 bit char unicode value
+            case (short) 22:
+            case b:
 //            default: System.out.print(" default ");
         }
         System.out.println();

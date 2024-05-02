@@ -73,7 +73,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 		Generics<String, Integer, Object, Object> includeParamTypes = new Generics<>("Brian", 39);
 		// TYPE ERASURE after Java compiles all generics are Objects, however the compilier adds relevant casting behind the scenes for declared type
 		// now  getName() is cast as a String and getAge() cast as Integer, so operator works with operator using Integer.toString()
-		System.out.println(includeParamTypes.getName() + includeParamTypes.getAge()); 
+		System.out.println(includeParamTypes.getName().toUpperCase() + includeParamTypes.getAge().doubleValue()); 
 		
 		// Java infers Object for parameterized type when omitted
 		List list = new ArrayList(); 
