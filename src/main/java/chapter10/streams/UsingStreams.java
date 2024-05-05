@@ -17,10 +17,11 @@ public class UsingStreams {
 		int length = wolf.reduce(0, (i, s) ->	i+s.length(), (a, b) -> a+b);
 		System.out.println("length: " + length);
 	
-		List.of(1,2).stream(); // compiles but not useful
+		List.of(1,2).stream(); // compiles but not useful; returns a Stream but does nothing with it.
 		
 		Stream<String> bear1 = Stream.of("brown bear-", "grizzly-");
-//		bear1.sorted(Comparator.reverseOrder()) // compiles but does nothing since a terminal operation is not called
+//		bear1.sorted(Comparator.reverseOrder()); // compiles but does nothing since a terminal operation is not called
+//		bear1.forEach(System.out::print); // bear1 already operated on or closed
 		bear1.sorted(Comparator.reverseOrder()).forEach(System.out::print);
 		
 //		Stream<String> bear2 = Stream.of("brown bear-", "grizzly-");
@@ -36,13 +37,16 @@ public class UsingStreams {
 		letters.add("b");
 		chars.add('$');
 		chars.add('#');
-//		Stream<List<?>> bad = Stream.of(numbers, letters, chars);
+//		Stream<List<?>> bbb = Stream.of(numbers, letters, chars);
 //		// peek is not intended to modify elements but does run
-//		bad.peek(x -> x.remove(0)).map(List::size).forEach(System.out::print); // careful removing affects below streams
+//		bbb.peek(x -> x.remove(0)).map(List::size).forEach(System.out::print); // careful removing affects below streams
 		
 		System.out.println();
 		Stream<List<?>> showIntermediate = Stream.of(numbers, letters, chars);
-		showIntermediate.peek(e -> e.forEach(System.out::print)).peek(e -> System.out.print(e + "!")).map(List::size).forEach(System.out::println);
+		showIntermediate.peek(e -> e.forEach(System.out::print))
+						.peek(e -> System.out.print(e + "!"))
+						.map(List::size)
+						.forEach(System.out::println);
 		// performs each pipeline to termination in turn
 			// first peek prints each element of each element/list, second peek prints the element/list, converts and prints list size
 		
@@ -104,15 +108,14 @@ public class UsingStreams {
 		Stream<String> xyz = Stream.of("w", "o", "l", "f");
 		Optional<String> optStr = xyz.reduce(String::concat);
 		System.out.println(optStr.orElse("stream was empty"));
+		System.out.println();
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		Stream<String> s = Stream.of("monkey", "ape", "bonobo");
+		Comparator<String> sc = Comparator.comparing(String::length);
+//		Optional<String> min = s.min((s1, s2) -> s1.length()- s2.length());
+//		Optional<String> min = s.min(sc);
+		Optional<String> min = s.min(Comparator.comparing(String::length));
+		System.out.println(min.orElse("empty"));
 	}
 	
 }

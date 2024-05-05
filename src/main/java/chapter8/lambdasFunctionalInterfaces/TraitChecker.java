@@ -10,6 +10,10 @@ public interface TraitChecker {
 		System.out.println("helper");
 	}
 	
+	default String defMet() {
+		return "still a single abstract method";
+	}
+	
 	// Functional interface has a single abstract method
 //	int num();
 	

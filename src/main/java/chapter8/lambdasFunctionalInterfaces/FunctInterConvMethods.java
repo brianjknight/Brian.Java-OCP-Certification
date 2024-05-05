@@ -47,7 +47,9 @@ public class FunctInterConvMethods {
 		
 		Predicate<String> isBrownEgg = isEgg.and(isBrown);
 		Predicate<String> notBrownEgg = isEgg.and(isBrown.negate());
-		Predicate<String> isBrownOrGreenEgg = isEgg.and(isBrownEgg).or(isEgg.and(isGreen));
+//		Predicate<String> isBrownOrGreenEgg = isEgg.and(isBrownEgg).or(isEgg.and(isGreen));
+		Predicate<String> isBrownOrGreenEgg = isBrownEgg.or(isEgg.and(isGreen));		
+//		Predicate<String> isBrownOrGreenEgg = isEgg.and(isBrown.or(isGreen));
 		
 		System.out.println("is brown eggyBrown: " + isBrownEgg.test(eggyBrown));
 		System.out.println("not brown eggyBrown: " + notBrownEgg.test(eggyBrown));

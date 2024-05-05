@@ -15,7 +15,8 @@ public class FunctInterPrimitives {
 		System.out.println("dsRand: " + dsRandom); // be careful on output shown that the interface method is called
 		System.out.println("dsRand: " + dsRandom.getAsDouble());
 		System.out.println("rand: " + Math.random());
-//		System.out.println(Math::random); using a method reference must be accepted as a functional interface
+//		System.out.println(Math::random); // using a method reference must be accepted as a functional interface
+//		System.out.println((Math::random).getAsDouble()); // using a method reference must be accepted as a functional interface
 		
 		LongPredicate lpIsEven = d -> d % 2 == 0;
 		System.out.println("lpIseven: " + lpIsEven.test(9L));

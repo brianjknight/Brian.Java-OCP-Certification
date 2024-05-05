@@ -10,6 +10,7 @@ public class UsingOptionals {
 		if (dubOpt.isPresent()) {
 			System.out.println(dubOpt.get());
 		}
+		
 		dubOpt.ifPresent(System.out::println);
 		System.out.println(dubOpt.orElseGet(() -> Math.random()));
 		System.out.println(dubOpt.orElseThrow());
@@ -17,8 +18,8 @@ public class UsingOptionals {
 //		System.out.println(dubOptEmpty.orElse("double")); // must return parameterized type
 //		System.out.println(dubOpt.orElseGet(() -> new Exception())); // must return parameterized type
 		System.out.println(dubOptEmpty.orElseGet(Math::random));
-		System.out.println(dubOptEmpty.orElseThrow());
+//		System.out.println(dubOptEmpty.orElseThrow()); // valid
+		System.out.println(dubOptEmpty.orElseThrow(IllegalArgumentException::new));
 		
-
 	}
 }

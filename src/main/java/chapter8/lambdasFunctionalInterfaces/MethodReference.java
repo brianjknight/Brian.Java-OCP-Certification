@@ -28,11 +28,11 @@ public class MethodReference {
 		StringTwoParamChecker paramTwoChecker = String::startsWith;  // technically not a static method
 		System.out.println("paramTwoChecker: " + paramTwoChecker.check(name, "B"));
 		
-		StringCreator strCreator = String::new;
+		StringCreator strCreator = String::new; // String here is a static
 		System.out.println("create string: " + strCreator.create());
 		System.out.println("create string isEmpty: " + strCreator.create().isEmpty());
 		
-		StringCopier strCopier = String::new;
+		StringCopier strCopier = String::new; // String here is type of object in the param
 		System.out.println("copy string: " + strCopier.copy("hello"));
 		
 		AnimalCreator animalCreator = Animal::new;

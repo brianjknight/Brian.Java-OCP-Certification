@@ -15,7 +15,10 @@ public class VariablesInLambdas {
 		BiPredicate<String, Integer> bp4 = (String x, Integer y) -> true;
 //		BiPredicate<String, Integer> bp5 = (String x, var y) -> true; // cannot mix var with other types
 		
-		
+		BinaryOperator<Integer> bo = (a,b) -> {
+//			int a = 1; // a already declared
+			int c = 0; 
+			return 5;};
 		
 	}
 	

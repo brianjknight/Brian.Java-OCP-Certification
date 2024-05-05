@@ -9,7 +9,7 @@ public class UsingResourceBundles {
 	public static void main(String[] args) {
 		System.out.println("Locale.US: " + Locale.US); // US country creates Locale of en_US
 		ResourceBundle rbEN = ResourceBundle.getBundle("Zoo", Locale.US);
-		// 
+		System.out.println("rbEN.keySet(): " + rbEN.keySet());
 		System.out.println("rbEN: " + rbEN.getString("hello") + ", " + rbEN.getString("open"));
 
 		ResourceBundle rbFR = ResourceBundle.getBundle("Zoo", new Locale("fr","FR")); // exact bundle fr_FR not found so looks for Zoo_fr.props
@@ -18,14 +18,13 @@ public class UsingResourceBundles {
 		ResourceBundle rb_fr = ResourceBundle.getBundle("Zoo", new Locale("fr")); 
 		System.out.println("rb_fr: " + rb_fr.getString("hello") + ", " + rb_fr.getString("open"));
 			
-		
 		ResourceBundle rbCA = ResourceBundle.getBundle("Zoo", new Locale("ca"));
 		// most specific ca is not found > cannot drop country CA > use default locale en_US > drop country US > finds en as the selected bundle
 		System.out.println("rcCA: " + rbCA.getString("hello") + ", " + rbCA.getString("open")); 
 		
 		System.out.println();
 		
-		Locale xx_XX = new Locale("xx", "XX");
+		Locale xx_XX = new Locale("XX", "XX");
 		System.out.println("xx_XX: " + xx_XX);
 		Locale xx = new Locale("xx");
 		System.out.println("xx: " + xx);

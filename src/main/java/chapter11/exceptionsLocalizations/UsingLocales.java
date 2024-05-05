@@ -89,7 +89,7 @@ public class UsingLocales {
 		System.out.println();
 		
 		// note that a NEW NumberFormat instance is needed after changing the Category
-		Locale.setDefault(Category.FORMAT, spanish); // no MY locale is set to spanish
+		Locale.setDefault(Category.FORMAT, spanish); // now MY locale is set to spanish
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + nfCur.format(money)); // nfCur was created while the default FORMAT was still english
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + NumberFormat.getCurrencyInstance().format(money));
 		System.out.println();
