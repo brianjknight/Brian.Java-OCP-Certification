@@ -3,6 +3,7 @@ package chapter14.IO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Map;
 
 public class InteractingWithUsersPart1 {
@@ -18,9 +19,10 @@ public class InteractingWithUsersPart1 {
 //		System.out.close();
 		System.out.println("world"); // PrintStream OutputSreams do not throw checked exceptions
 		
-//		System.in.close(); 
+		System.in.close(); 
 //		String bad = reader.readLine(); // System.in InputStream DOES throw checked IOException
 		// note if the above line is NOT commented out, the system waits for user input before proceeding
+		// There is not prompt to enter anything so appears nothing is happening.
 		
 		
 		Map<String,String> env = System.getenv();

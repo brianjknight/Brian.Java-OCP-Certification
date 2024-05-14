@@ -31,7 +31,7 @@ public class ConcurrentClasses {
 
 		
 		ScheduledExecutorService scheduledService = Executors.newSingleThreadScheduledExecutor();
-		scheduledService.scheduleWithFixedDelay(() -> { // lose access to scheduled methods
+		scheduledService.scheduleWithFixedDelay(() -> { 
 			System.out.println("Open Zoo");
 //			return null; // takes a Runnable void not Callable with return
 		}, 1, 2, TimeUnit.SECONDS);

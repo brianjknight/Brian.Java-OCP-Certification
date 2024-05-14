@@ -10,6 +10,10 @@ import java.util.stream.Stream;
 public class UsingStreams {
 	public static void main(String[] args) {
 		
+		var streamQR = Stream.iterate("", (q) -> q + "1");
+		System.out.println(streamQR.limit(2).map(r -> r + "2").toList()); // seed "" is first element > map "" + 2 > "1" > "1" + 2 
+		System.out.println();
+		
 		Stream<String> empty = Stream.of();
 		
 		Stream<String> wolf = Stream.of("w","o","l","f!");
@@ -116,6 +120,9 @@ public class UsingStreams {
 //		Optional<String> min = s.min(sc);
 		Optional<String> min = s.min(Comparator.comparing(String::length));
 		System.out.println(min.orElse("empty"));
+		System.out.println();
+		
+		
 	}
 	
 }

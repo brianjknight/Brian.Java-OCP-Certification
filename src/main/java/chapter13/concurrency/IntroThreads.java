@@ -2,49 +2,58 @@ package chapter13.concurrency;
 
 public class IntroThreads {
 
-	private static long count = 0;
+//	private static long count = 0;
+	private static volatile long count = 0;
 	
 	public static void main(String[] args) {
 //**********************************************************************************************
 		
-//		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
-//		Runnable printRecords = () -> {
-//			for (int i = 0; i < 3; i++)
-//				System.out.println("Printing record: " + i);
-//		};
-//		
-//		// multi-threading results are unknown until runtime 
-//		System.out.println("begin");
-//		Thread printThread = new Thread(printInventory);
-//		System.out.println(printThread.getState());
-//		printThread.start();
-//		try {
-//			printThread.sleep(1000);
-//			System.out.println(printThread.getState());
-//		} catch (InterruptedException e) {
-//		}
-//		System.out.println(printThread.getState());
-//		
-//		new Thread(printRecords).start();
-//		new Thread(printInventory).start();
-//		System.out.println("end");
-//		
-//		
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println();
+		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
+		Runnable printRecords = () -> {
+			for (int i = 0; i < 5; i++)
+				System.out.println("Printing record: " + i);
+		};
+		
+		// multi-threading results are unknown until runtime 
+		System.out.println("begin");
+		Thread printThread = new Thread(printInventory);
+		System.out.println("printThread state prior to .start()" + printThread.getState());
+		printThread.start();
+		System.out.println("printThread state after .start()" + printThread.getState());
+		try {
+			printThread.sleep(1000);
+			System.out.println("printThread state after .sleep(1000)" + printThread.getState());
+		} catch (InterruptedException e) {
+		}
+		System.out.println("printThread state after try/catch" + printThread.getState());
+		
+		new Thread(printRecords).start();
+		new Thread(printInventory).start();
+		System.out.println("end");
+		
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println();
 		
 		// calling run() does NOT start new threads therefore results are predictable
-//		System.out.println("begin");
-//		new Thread(printInventory).run();
-//		new Thread(printRecords).run();
-//		new Thread(printInventory).run();
-//		System.out.println("end");
+		System.out.println("begin");
+		new Thread(printInventory).run();
+		new Thread(printRecords).run();
+		new Thread(printInventory).run();
+		System.out.println("end");
 		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println();
 //**********************************************************************************************		
 		
 		// example of polling:
@@ -57,7 +66,8 @@ public class IntroThreads {
 				// when myCounter thread is finished, mainThread is interrupted
 				// program is interrupted and terminates before the last full 1_000 millisecond sleep time is finished 
 		
-		long limit = 1_000_000_000L;
+		long limit = 1_000_000_000L; // note with higher limit race condition can creates multiple increments resulting in 'count' higher than the limit
+		// try using AtomicLong, volatile, synchronized
 		
 		Thread mainThread = Thread.currentThread();
 		

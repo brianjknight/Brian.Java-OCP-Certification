@@ -20,6 +20,9 @@ public class OperatingOnFilePath {
 			
 			// notice how getRoot() and toAbsolutePath() change if this is a root or relative path
 			Path zooTxtFile = Path.of("src/./main/../main/resources/chapter14/zoo.txt"); 
+			Path zooSameFile = Path.of("src/main//resources/chapter14/zoo.txt");
+			System.out.println("zooTxtFile.equals(zooSameFile): " + zooTxtFile.equals(zooSameFile));
+			System.out.println("normalized > zooTxtFile.equals(zooSameFile): " + zooTxtFile.normalize().equals(zooSameFile.normalize()));
 			System.out.println("print Path object: " + zooTxtFile);
 			System.out.println("toString(): " + zooTxtFile.toString());
 			System.out.println("normalize(): " + zooTxtFile.normalize());
@@ -60,6 +63,7 @@ public class OperatingOnFilePath {
 			// consecutive slashes in string expression are interpreted as a single slash
 			var file = new File("src//////main/resources/chapter14/zoo.txt");
 			if (file.exists()) {
+				System.out.println("file: " + file);
 				System.out.println("Absolute Path: " + file.getAbsolutePath());
 				System.out.println("Is Directory: " + file.isDirectory());
 				System.out.println("Parent Path: " + file.getParent());

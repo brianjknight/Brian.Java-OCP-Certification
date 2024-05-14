@@ -21,6 +21,7 @@ public class AdvancedStreams {
 		var ohMy2 = Stream.of("lions", "tigers", "bears");
 		Map<String, Integer> mapWithIdentity = ohMy2.collect(toMap(Function.identity(), String::length));
 		System.out.println("map: " + map);
+		System.out.println("mapWithIdentity: " + mapWithIdentity);
 		System.out.println();
 		
 		Stream<String> countingStream = Stream.of("b", "b", "a", "a", "a", "c");
