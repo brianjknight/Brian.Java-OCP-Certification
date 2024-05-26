@@ -26,6 +26,7 @@ public class VariablesInLambdas {
 	private String color;
 	public void caw(String name) {
 		String volume = "loudly";
+//		String s;
 //		name = "crow";
 		color = "black";
 		
@@ -38,6 +39,7 @@ public class VariablesInLambdas {
 						+ color);					// instance/member variable always accessible
 				
 //		volume = "softly";
+		color = "red"; // instance variable does NOT need to be effectively final
 				
 		consumer.accept("xxx");
 	}

@@ -64,9 +64,10 @@ public class Child extends Parent {
 	
 //	void doStaticWork() {} // cannot override static methods; only hide
 	
-	public List<String> hairy(List<String> list){ // triangle in gutter indicates override
+	public ArrayList<String> hairy(List<String> list){ // triangle in gutter indicates override
 		return null;
 	}
+	
 //	@Override // this is NOT an override; it is overloading the inherited/overridden method above method
 	public List<String> hairy(ArrayList<String> list) {
 		return null;

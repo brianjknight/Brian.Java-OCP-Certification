@@ -70,9 +70,12 @@ public class LambdaTest {
 			
 			
 		}
+		
 	}
 	
 	private static String testTrait(Animal a, TraitChecker checker) {
 		return checker.test(a);
 	}
 }
+
+

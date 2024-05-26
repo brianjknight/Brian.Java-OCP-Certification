@@ -6,6 +6,8 @@ public class UsingOptionals {
 	public static void main(String[] args) {
 		Optional<Double> dubOptEmpty = Optional.empty();
 		Optional<Double> dubOpt = Optional.of(2.0);
+		System.out.println(dubOptEmpty);
+		System.out.println(dubOpt);
 		
 		if (dubOpt.isPresent()) {
 			System.out.println(dubOpt.get());

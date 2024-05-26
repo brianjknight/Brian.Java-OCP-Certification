@@ -100,7 +100,7 @@ public class AdvancedStreams {
 				.collect(Collectors.teeing(
 						Collectors.joining(":"), 
 						Collectors.joining("|"), 
-						(colonSep, pipeSep) -> new String(colonSep + pipeSep)));
+						(colonSep, pipeSep) -> new String(colonSep + " " + pipeSep)));
 		System.out.println("teeingExample: " + teeingExample);
 		
 		

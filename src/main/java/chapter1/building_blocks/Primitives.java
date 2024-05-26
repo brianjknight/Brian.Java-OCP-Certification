@@ -22,7 +22,11 @@ public class Primitives {
         
         System.out.println(10 / 2 * 4);
         System.out.println(10 * 2 / 4);
+        System.out.println();
         
+        Double zero = 0.0;
+        System.out.println(-1.0/zero); // divide by zero with wrapper does not throw exception
+        System.out.println(1.0/zero);
     }
 
     String n; // variables can use letters, numbers, currency symbol, and underscore

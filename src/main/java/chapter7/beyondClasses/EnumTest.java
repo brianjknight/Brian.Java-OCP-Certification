@@ -1,6 +1,5 @@
 package chapter7.beyondClasses;
 
-
 public class EnumTest {
 	
 	public static void main(String[] args) {

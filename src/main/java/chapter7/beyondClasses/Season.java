@@ -2,7 +2,7 @@ package chapter7.beyondClasses;
 
 import java.util.Arrays;
 
-public enum Season {
+public enum Season implements EnumInterface { // allowed to implement interfaces
 //	WINTER_SEASON, summer, sPrIng, Fall // valid; notice no semi-colon for simple enum
 	
 //	WINTER(){ void winterMethod() {} }, SUMMER{}, SPRING{}, FALL // also valid
@@ -20,6 +20,7 @@ public enum Season {
 		public String getHours() {
 			return "10 to 4";
 		}
+		public void sayHello() {} // abstract interface methods must be implemented by every enum value
 	}, 
 	SPRING("Medium") {
 		public String getTemp() {
@@ -28,21 +29,25 @@ public enum Season {
 		public String getHours() {
 			return "8 to 7";
 		}
+		public void sayHello() {}
 	}, 
 	SUMMER("High") {
 		public String getTemp() {
 			return "45 to 100+";
 		}
+		public void sayHello() {}
 	}, 
 	FALL("Medium") {
 		public String getTemp() {
 			return "20 to 70";
 		}
+		public void sayHello() {}
 	}, 
 	NON_SEASON("not a season") {
 		public String getTemp() {
 			return "unknown";
 		}
+		public void sayHello() {}
 	}; // semi-colon required to mark end of ENUM declarations
 	
 	// requires all enums values to implement the abstract method
@@ -58,7 +63,7 @@ public enum Season {
 	}
 	
 	private final String expectedVisitors; 
-	static String staticField = "static field";
+	public static String staticField = "static field";
 	private static final String CONSTANT = "c";
 	
 	// constructors can only be private
@@ -67,6 +72,7 @@ public enum Season {
 //	}
 	
 	// implicitly private AND only private
+//	public Season(String expectedVisitors) {
 	Season(String expectedVisitors) {
 		this.expectedVisitors = expectedVisitors;
 		System.out.println("Initializing Season Enum: " + expectedVisitors);
@@ -85,7 +91,8 @@ public enum Season {
 		System.out.println("winter name: " + Season.WINTER.name());
 		System.out.println("winter ordinal: " + Season.WINTER.ordinal());
 		
-		System.out.println("Seasons values: " + Arrays.toString(Season.values()));
+		Season[] seasonValues = Season.values(); 
+		System.out.println("Seasons values: " + Arrays.toString(seasonValues));
 		
 		Season summer = Season.valueOf("SUMMER");
 		System.out.println("summer: " + summer);

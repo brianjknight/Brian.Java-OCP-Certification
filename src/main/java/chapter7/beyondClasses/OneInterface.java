@@ -2,6 +2,8 @@ package chapter7.beyondClasses;
 
 public non-sealed interface OneInterface extends MyFirstInterface {
 	
+	int ONE = 2;
+	
 	void divide(); // implicitly public abstract
 //	public abstract void divide();
 	

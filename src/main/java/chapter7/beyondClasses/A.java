@@ -11,7 +11,7 @@ public class A {
 			
 			public void printX() {
 				int xOfC = x;
-//				public class F { access modifiers not allowed
+//				public class F { access modifiers not allowed for local classes or variables
 				class F { // local class within a method
 					int getXofC() {
 //						System.out.println("xxx: " + xxx); // allowed
@@ -28,7 +28,8 @@ public class A {
 						var BBB = new B();
 					}
 					static void methB() {
-//						var bbb = new B();
+//						var bbb = new B(); // static method needs an instance of A
+						var bbbb = new A().new B();
 					}
 				}
 				
@@ -96,6 +97,7 @@ public class A {
 		System.out.println(A.B.D.z); // private member is accessible within the enclosing class/file
 		
 		A.B.D d = new A.B.D();
+//		A.B.D dddd = A.B.D();
 	}
 	
 }

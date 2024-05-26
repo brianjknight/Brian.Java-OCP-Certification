@@ -66,8 +66,14 @@ public class FunctionalInterfacePractice {
 		BinaryOperator<String> b03 = String::concat;
 		System.out.println("greeting: " + b02.apply(uo1.apply("hello"), uo1.apply(" world")));
 		
+		DifParamTypes dpt = (String a, Integer b) -> System.out.println(a + " " + b);
+		dpt.print("i am", 39);
 	}
 	
 }
 
+@FunctionalInterface
+interface DifParamTypes {
+	void print(String s, Integer i);
+}
 

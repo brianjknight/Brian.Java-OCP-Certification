@@ -16,9 +16,9 @@ public class TopLevel {
 //public class other {} only ONE public top level class allowed in a file
 //static class otherTopLevel {} // only nested classes can be static
 
-class otherTpLvl {}
+abstract class otherTpLvl {}
 
-class NotLevel {}
+final class NotLevel {}
 
 //private class SecretLevel {} // not allowed
 

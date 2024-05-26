@@ -1,6 +1,7 @@
 package chapter10.streams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -123,6 +124,11 @@ public class UsingStreams {
 		System.out.println();
 		
 		
+		List<Integer> ls = Arrays.asList(3,4,6,9,2,5,7);
+		System.out.println(ls.stream().reduce(Integer.MIN_VALUE, (a, b)->a>b?a:b)); //1
+		System.out.println(ls.stream().max(Integer::max).get()); //2 max takes a comparator using -,0,+ to determine order so this always returns positive value for comparison
+		System.out.println(ls.stream().max(Integer::compare).get()); //3
+		System.out.println(ls.stream().max((a, b)->a>b?a:b)); //4
 	}
 	
 }

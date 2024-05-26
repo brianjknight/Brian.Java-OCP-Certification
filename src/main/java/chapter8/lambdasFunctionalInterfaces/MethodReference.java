@@ -4,7 +4,7 @@ public class MethodReference {
 	public static void main(String[] args) {
 		String name = "Brian";
 		
-		StringChecker lambda = () -> name.startsWith("B");
+		StringChecker<Boolean> lambda = () -> name.startsWith("B");
 		System.out.println("lambda: " + lambda.check());
 		
 		// StringChecker interface has check() method with no params
@@ -25,7 +25,7 @@ public class MethodReference {
 		System.out.println("lambdaTwoParamChecker: " + lambdaTwoParamChecker.check(name, "B"));
 		// first param is always the object
 		// following params are method params
-		StringTwoParamChecker paramTwoChecker = String::startsWith;  // technically not a static method
+		StringTwoParamChecker paramTwoChecker = String::startsWith;  // not a static method reference
 		System.out.println("paramTwoChecker: " + paramTwoChecker.check(name, "B"));
 		
 		StringCreator strCreator = String::new; // String here is a static
@@ -42,8 +42,8 @@ public class MethodReference {
 }
 
 @FunctionalInterface
-interface StringChecker {
-	boolean check();
+interface StringChecker<T> {
+	T check();
 }
 
 interface StringParamChecker {

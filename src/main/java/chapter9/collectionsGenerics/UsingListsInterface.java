@@ -9,6 +9,15 @@ import java.util.Random;
 public class UsingListsInterface {
 	public static void main(String[] args) {
 		
+		// enthuware OCP 17 test 1 question 9
+		String[] sa = { "charlie", "bob", "andy", "dave" };
+//	    var ls = new ArrayList<String>(Arrays.asList(sa));
+	    var ls = Arrays.asList(sa); // returns a list BACKED BY the array. Changes to the array affect the list.
+	    sa[2] = "alex";
+	    ls.sort((var a, var b) -> a.compareTo(b));
+	    System.out.println(sa[0]+" "+ls.get(0));
+	    System.out.println();
+		
 		List<String> empty = new ArrayList<String>(3);
 		System.out.println(empty);
 		System.out.println(empty.size());

@@ -4,8 +4,6 @@ public class InitializingClasses {
 	static int one = 1;
 	static int two = 2;
 	
-	// rule is static variables initialized before static initializers
-	// however you still cannot reference static variable before it is declared
 	static {
 		System.out.println("static initializer A");
 //		System.out.println("three = " + three); // does not compile

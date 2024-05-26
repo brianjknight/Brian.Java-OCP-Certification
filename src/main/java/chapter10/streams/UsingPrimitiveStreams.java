@@ -62,6 +62,8 @@ public class UsingPrimitiveStreams {
 		
 		OptionalDouble optD = IntStream.rangeClosed(0,10).average();
 		System.out.println("optD average: " + optD.orElse(0.0));
+//		System.out.println(optD.get()); // get() not available for primitive Optionals
+		System.out.println("optD average again: " + optD.getAsDouble());
 		System.out.println();
 		
 		List<List<Integer>> integerList = new ArrayList<>();
@@ -71,7 +73,7 @@ public class UsingPrimitiveStreams {
         // mapToDouble for each nested list then flatMapToDouble to flatten the 3 lists
 		DoubleStream doublesFromInts = integerList.stream().flatMapToDouble(list -> list.stream().mapToDouble(i -> i)); // implicit cast from int to double
 		List<Double> doubleStreamList = doublesFromInts.boxed().toList(); // boxed returns Stream<Double>
-//		List<Double> otherDoublesList = doubles.mapToObj(d -> d).toList(); //also works
+//		List<Double> otherDoublesList = doublesFromInts.mapToObj(d -> d).toList(); //also works
 		System.out.println("doubleStreamList: " + doubleStreamList);
 		
 		

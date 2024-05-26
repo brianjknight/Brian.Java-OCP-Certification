@@ -20,6 +20,10 @@ public class VariableInitializer {
 					
 				'4';
 		
+		var twoD = new int[][]{ {1, 2}, null };
+//		var[][] twoD = new int[][]{ {1, 2}, null }; // implies arrays are of type var vs int or other type. Similar to var List<var> ?
+//		var other2D[][] = {{a},{a}};
+		int[][] goodTwo = { {1, 2}, null };
 	}
 	
 //	void noGood(var a) { 
