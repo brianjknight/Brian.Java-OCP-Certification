@@ -33,7 +33,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	
 	public List<CharSequence> play() {return new ArrayList<>();}
 	
-	//	public D badGenericMethod(D d) {
+	//	public D badGenericMethod(D d) { // generic type D is not declared
 	//	return d;
 	//}
 	public <E> E goodGenericMethod(E e) {

@@ -1,7 +1,5 @@
 package chapter7.beyondClasses;
 
-import javax.management.remote.SubjectDelegationPermission;
-
 public class ConcreteClass implements OneInterface,TwoInterface {
 
 	@Override

@@ -55,7 +55,7 @@ public class UsingLocales {
 		
 		long x = 314_900_000L;
 		NumberFormat compactDefault = NumberFormat.getCompactNumberInstance();
-		NumberFormat compactShort = NumberFormat.getCompactNumberInstance(Locale.getDefault(),Style.SHORT);
+		NumberFormat compactShort = NumberFormat.getCompactNumberInstance(Locale.getDefault(),NumberFormat.Style.SHORT);
 		NumberFormat compactLong = NumberFormat.getCompactNumberInstance(Locale.getDefault(),Style.LONG);
 		System.out.println(compactDefault.format(x));
 		System.out.println(compactShort.format(x));
@@ -89,9 +89,10 @@ public class UsingLocales {
 		System.out.println();
 		
 		// note that a NEW NumberFormat instance is needed after changing the Category
-		Locale.setDefault(Category.FORMAT, spanish); // now MY locale is set to spanish
+		Locale.setDefault(Locale.Category.FORMAT, spanish); // now MY locale is set to spanish
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + nfCur.format(money)); // nfCur was created while the default FORMAT was still english
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + NumberFormat.getCurrencyInstance().format(money));
+		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + NumberFormat.getCurrencyInstance(Locale.KOREA).format(money));
 		System.out.println();
 		
 	}

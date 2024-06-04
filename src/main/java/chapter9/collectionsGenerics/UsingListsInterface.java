@@ -2,9 +2,9 @@ package chapter9.collectionsGenerics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
+import java.util.Set;
 
 public class UsingListsInterface {
 	public static void main(String[] args) {
@@ -26,14 +26,17 @@ public class UsingListsInterface {
 		
 		List<Integer> nums = Arrays.asList(1,2,3);
 		List<Integer> numsAgain = Arrays.asList(1,2,3);
-		System.out.println(nums.indexOf("three")); // compiles and NO exception param of different type; signature -> indexOf(Object o)
+		ArrayList<Integer> arrList = new ArrayList<>(nums);
+		Set<Integer> numsSet = new HashSet<>(nums);
+		System.out.println(nums.indexOf(new Exception())); // compiles and NO exception param of different type; signature isS indexOf(Object o)
 		System.out.println(nums.contains("three"));
 		System.out.println(nums);
 		System.out.println("nums.equals(numsAgain): " + nums.equals(numsAgain)); // overridden equals for Collections compartes type, contents, & order
 		System.out.println("nums == numsAgain: " + (nums == numsAgain));
+		System.out.println("arrList.equals(nums): " + arrList.equals(nums));
+		System.out.println("numsSet.equlas(nums): " + numsSet.equals(nums));
 		// Arrays.asList() returns a fixed size list from which you cannot add or delete elements
 //		nums.add(4); // compiles but throws runtime exception. 
-		
 		nums.set(2, 4);
 		System.out.println(nums);
 		
@@ -109,7 +112,8 @@ public class UsingListsInterface {
 //		char [] castPrimArray = (char[]) castWrapperArray; // no allowed
 //		Character[] bad = chars.toArray(new Character[]); // requires size
 //		Character[] bad = chars.toArray(); // BAD toArray() no params returns Object[]
-		Character[] charArray = chars.toArray(new Character[-1]);
+//		Character[] negativeArray = chars.toArray(new Character[-1]); // runtime Exception
+		Character[] charArray = chars.toArray(new Character[0]);
 		Character[] big = chars.toArray(new Character[10]);
 		Character[] small = chars.toArray(new Character[1]);
 		

@@ -9,8 +9,11 @@ public class UsingResourceBundles {
 	public static void main(String[] args) {
 		System.out.println("Locale.US: " + Locale.US); // US country creates Locale of en_US
 		ResourceBundle rbEN = ResourceBundle.getBundle("Zoo", Locale.US);
+		System.out.println("rbEN: " + rbEN);
+		System.out.println("rbEN.getLocale(): " + rbEN.getLocale());
 		System.out.println("rbEN.keySet(): " + rbEN.keySet());
 		System.out.println("rbEN: " + rbEN.getString("hello") + ", " + rbEN.getString("open"));
+		System.out.println();
 
 		ResourceBundle rbFR = ResourceBundle.getBundle("Zoo", new Locale("fr","FR")); // exact bundle fr_FR not found so looks for Zoo_fr.props
 		System.out.println("rbFR: " + rbFR.getString("hello") + ", " + rbFR.getString("open"));

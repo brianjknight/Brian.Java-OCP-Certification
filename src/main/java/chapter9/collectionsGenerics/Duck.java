@@ -54,7 +54,7 @@ public class Duck implements Comparable<Duck>{
 		if (d == null) return false;
 		if (this == d) return true;
 		return this.name == d.name && this.age == d.age;
-//		return Objects.equals(this.name, d.name) && Objects.equals(this.age,  d.age); 
+//		return Objects.equals(this.name, d.name) && Objects.equals(this.age, d.age); 
 	}
 	
 	public int hashCode() {

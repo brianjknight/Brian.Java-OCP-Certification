@@ -1,5 +1,6 @@
 package chapter9.collectionsGenerics;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class UsingMaps {
 		ages.put("Allison", null);
 		System.out.println(ages);
 
-		Integer brianAge = ages.putIfAbsent("Brian", 100);
+		Integer brianAge = ages.putIfAbsent("Brian", 100); // returns existing value or null
 		Integer allisonAge = ages.putIfAbsent("Allison", 42); // existing key with null value is considered absent
 		Integer chaseAge = ages.put("Chase", 1);
 		System.out.println("brianAge: " + brianAge);
@@ -60,7 +61,6 @@ public class UsingMaps {
 		System.out.println();
 		
 		System.out.println("merge with null function return:");
-		System.out.println(favs);
 		BiFunction<String,String,String> nullRemovesKey = (a,b) -> a.length() > b.length() ? a : null;
 		// merge first looks up the key, it's value becomes first param 'a'; 'b' is merge value param
 		favs.merge("Sally", "airp", nullRemovesKey); // is airplane length > airp length?
@@ -68,8 +68,9 @@ public class UsingMaps {
 		System.out.println(favs);
 		System.out.println();
 		
-		favs.put("Ann", null);
-		favs.put("TIM", "tricycle");
+		System.out.println(favs.put("Ann", null));
+		System.out.println(favs.put("TIM", "tricycle")); // different key than "Tim"
+		favs.put(null, null);
 		System.out.println(favs);
 		System.out.println();
 		
@@ -82,7 +83,7 @@ public class UsingMaps {
 		System.out.println(treeMap);
 		
 		
-		Set<Integer> treeSet = new TreeSet<>();
+		Set<Integer> treeSet = new TreeSet<>(Comparator.reverseOrder());
 		treeSet.add(10);
 		treeSet.add(3);
 		treeSet.add(7);

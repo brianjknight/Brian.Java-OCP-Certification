@@ -35,8 +35,8 @@ public class FormattingValues {
 		NumberFormat nfZeroFillOther = new DecimalFormat("00000000,0,0,0,0000.0000");
 		System.out.println(nfZeroFillOther.format(d));
 		
-		DecimalFormat nfOmitZero = new DecimalFormat("###,###.#");
-		System.out.println(nfOmitZero.format(d));
+		DecimalFormat df = new DecimalFormat("###,###.#");
+		System.out.println(df.format(d));
 		
 		NumberFormat nfBalance = new DecimalFormat("Current balance: $###!X,###.000");
 		System.out.println(nfBalance.format(d));

@@ -22,8 +22,10 @@ public class SortingData {
 		badDucks.add(new DuckNotComparable("b", 2, 2.0, "y", 2));
 //		Collections.sort(badDucks); // does not compile on trying to sort
 		Collections.sort(badDucks, Comparator.comparing(DuckNotComparable::getName));
+		System.out.println("badDucks: ");
+		badDucks.forEach(System.out::println);
 		
-//		Set<DuckNotComparable> moreBadDucksCompiles = new TreeSet<>(); // throws runtime when adding object
+		Set<DuckNotComparable> moreBadDucksCompiles = new TreeSet<>(); // throws runtime when adding object
 		Set<DuckNotComparable> moreBadDucks = new TreeSet<>(Comparator.comparing(DuckNotComparable::getName));
 		moreBadDucks.add(new DuckNotComparable("c", 3, 3.0, "r", 3)); // compiles but throws exception if adding to an ordered list 
 		moreBadDucks.add(new DuckNotComparable("d", 4, 4.0, "s", 4));

@@ -10,6 +10,10 @@ public class Mammal {
 	public List<CharSequence> play() { return new ArrayList<>(); }
 //	public List<String> play() {return new ArrayList<>();};
 	public CharSequence sleep() { return ""; }
+	
+	public List<CharSequence> run(List<Number> nums) {
+		return new ArrayList<>();
+	}
 }
 
 

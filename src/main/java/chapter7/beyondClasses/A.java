@@ -14,13 +14,18 @@ public class A {
 //				public class F { access modifiers not allowed for local classes or variables
 				class F { // local class within a method
 					int getXofC() {
-//						System.out.println("xxx: " + xxx); // allowed
-						return xOfC;
+						System.out.println("xxx: " + xxx); // allowed to access instance and class members
+						
+						System.out.println(B.D.y);
+						System.err.println(D.y);
+//						System.err.println(y);
+						
+						return xOfC; // allowed to access local variables only if effectively final
 					}
 					
 					abstract class G {}
 					
-					G gAnonymousClass = new G() {
+					G gAnonymousClass = new G() { // anonymous class must be of an interface or abstract class
 						
 					};
 					
@@ -60,6 +65,7 @@ public class A {
 		public static class D { 
 			public static int y = 25;
 			private static int z = 50;
+			private static int add() {return y + z;}
 		}
 	}
 	
@@ -95,6 +101,7 @@ public class A {
 //		D d = new D();
 		System.out.println(A.B.D.y);
 		System.out.println(A.B.D.z); // private member is accessible within the enclosing class/file
+		System.out.println("D.add(): " + A.B.D.add());
 		
 		A.B.D d = new A.B.D();
 //		A.B.D dddd = A.B.D();

@@ -25,7 +25,7 @@ public class TryWithResources {
 			System.out.println("Finally block");
 		}
 		
-		// readerTwo is still in scope, however reassigning is not allowed. must be effectively final if used int try with resources
+		// readerTwo is still in scope, however reassigning is not allowed. must be effectively final if used in try with resources
 //		readerTwo = new MyFileClass(3); 
 		
 //		try(String a = "a") { // not autocloseable

@@ -10,24 +10,25 @@ public class IntroThreads {
 		
 		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
 		Runnable printRecords = () -> {
-			for (int i = 0; i < 5; i++)
-				System.out.println("Printing record: " + i);
+			for (int i = 0; i < 50_000; i++)
+				if (i % 10000 == 0) System.out.println("Printing record: " + i);
 		};
 		
 		// multi-threading results are unknown until runtime 
 		System.out.println("begin");
 		Thread printThread = new Thread(printInventory);
-		System.out.println("printThread state prior to .start()" + printThread.getState());
-		printThread.start();
-		System.out.println("printThread state after .start()" + printThread.getState());
+		Thread printRecordsThread = new Thread(printRecords);
+		System.out.println("printThread state prior to .start()" + printRecordsThread.getState());
+		printRecordsThread.start();
+		printRecordsThread.interrupt(); // has no affect since this thread is not currently blocked
+		System.out.println("printThread state after .start()" + printRecordsThread.getState());
 		try {
-			printThread.sleep(1000);
-			System.out.println("printThread state after .sleep(1000)" + printThread.getState());
+			printRecordsThread.sleep(1000);
+			System.out.println("printThread state after .sleep(1000)" + printRecordsThread.getState());
 		} catch (InterruptedException e) {
 		}
-		System.out.println("printThread state after try/catch" + printThread.getState());
+		System.out.println("printThread state after try/catch" + printRecordsThread.getState());
 		
-		new Thread(printRecords).start();
 		new Thread(printInventory).start();
 		System.out.println("end");
 		

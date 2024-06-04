@@ -14,7 +14,7 @@ public class Goat extends Mammal {
 	List<Number> play(List<Integer> in) {
 		return new ArrayList<>();
 	}
-//	List<Character> play(List<Double> in) { // invalid overload
+//	List<Character> play(List<Double> in) { // invalid overload; considered same signature
 //		return new ArrayList<>();
 //	}
 	

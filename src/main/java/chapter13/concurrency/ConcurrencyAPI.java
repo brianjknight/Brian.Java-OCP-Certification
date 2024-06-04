@@ -13,12 +13,12 @@ public class ConcurrencyAPI {
 		ExecutorService service = Executors.newSingleThreadExecutor();
 		try {
 			Future<?> result = service.submit(() -> {  // Runnable functional interface void/no return
-				for(int i = 0; i < 1_000_000; i++) counter++;
+					for(int i = 0; i < 1_000_000; i++) counter++;
 				});
 			
 				System.out.println(result);
-				result.get(3, TimeUnit.SECONDS); // Returns null for Runnable
-//				result.get(10, TimeUnit.NANOSECONDS); // timeout on the Future result but does NOT timeout the thread in service
+//				result.get(3, TimeUnit.SECONDS); // Returns null for Runnable; can throw checked exception
+				result.get(10, TimeUnit.NANOSECONDS); // timeout on the Future result but does NOT timeout the thread in service
 				System.out.println(result);
 				System.out.println("result.get(): " + result.get()); // now waits for future result; get on a Future of a Runnable is always null
 				System.out.println("result.isCancelled(): " + result.isCancelled());
@@ -32,11 +32,12 @@ public class ConcurrencyAPI {
 		finally {
 			service.shutdown();
 		}
-		System.out.println("counter after try: " + counter);
+		System.out.println("counter after try: " + counter); // thread is still running if future throws error
 		System.out.println("service.isShutdown(): " + service.isShutdown()); // service stops accepting new tasks
 		System.out.println("service.isTerminated(): " + service.isTerminated()); // existing tasks may still be executing i.e. not terminated
-		service.awaitTermination(2, TimeUnit.SECONDS);
-		System.out.println("counter after await: " + counter);		
+		service.awaitTermination(2, TimeUnit.SECONDS); // can throw checked exception
+		System.out.println("counter after await: " + counter);	
+		System.out.println("service.isTerminated() after awaitTermination(): " + service.isTerminated());
 		System.out.println();
 		
 		var otherService = Executors.newSingleThreadExecutor();
@@ -47,6 +48,7 @@ public class ConcurrencyAPI {
 			otherService.shutdown();
 		}
 		
-		
+		Thread.sleep(1000);
+		System.out.println("otherService.isTerminated(): " + otherService.isTerminated());
 	} 
 }

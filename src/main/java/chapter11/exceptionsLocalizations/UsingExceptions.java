@@ -10,8 +10,8 @@ public class UsingExceptions {
 	public static void main(String[] args) throws FileNotFoundException  {
 		int j = 1;
 	    try {
-	    	int i = doIt() / j++; // prints 1
-//	    	int i = j++ / doIt(); // prints 2
+	    	int i = doIt() / j++; // prints 1; exception is thrown prior to j++ executing
+//	    	int i = j++ / doIt(); // prints 2; j++ executes before doIt() throws exception
 	    } catch (Exception e) {
 	    	System.out.println(" j = " + j);
 	    }
@@ -22,7 +22,7 @@ public class UsingExceptions {
 	    	System.out.println("compiles but don't do this");
 	    }
 		
-		//		System.out.println(1/0); runtime ArithmeticException
+//		System.out.println(1/0); // runtime ArithmeticException
 		
 		UsingExceptions ue = new UsingExceptions();
 		
