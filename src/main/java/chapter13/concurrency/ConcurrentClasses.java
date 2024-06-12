@@ -1,11 +1,6 @@
 package chapter13.concurrency;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 public class ConcurrentClasses {
 
@@ -16,26 +11,22 @@ public class ConcurrentClasses {
 		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
 				.parallelStream()
 				.reduce("", (s1,c) -> s1 + c, (s2,s3) -> s2 + s3));
-//				.reduce("", (s1,c) -> s1 + c));
-//				.reduce("x", (s1,c) -> s1 + c, (s2,s3) -> s2 + s3));
-	
-		
-		IntStream.range(1,10).forEach(i -> total += i);
-		System.out.println(total);
-		
-		ExecutorService service = Executors.newSingleThreadScheduledExecutor();
-//		service.scheduleWithFixedDelay(() -> { // lose access to scheduled methods
-//			System.out.println("Open Zoo");
-////			return null; // w2
-//			}, 0, 1, TimeUnit.MINUTES);
 
+		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
+				.parallelStream()
+				.reduce("", (s1,c) -> s1 + c)); // in theory lack of combiner can produces inconsistent results
+				
+		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
+				.parallelStream()
+				.reduce("X", (s1,c) -> s1 + c));
 		
-		ScheduledExecutorService scheduledService = Executors.newSingleThreadScheduledExecutor();
-		scheduledService.scheduleWithFixedDelay(() -> { 
-			System.out.println("Open Zoo");
-//			return null; // takes a Runnable void not Callable with return
-		}, 1, 2, TimeUnit.SECONDS);
-		
+		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
+				.parallelStream()
+				.reduce("X", (s1,c) -> s1 + c, (s2,s3) -> s2 + s3));
+				
+		System.out.println(List.of(1,2,3,4,5,6) // in theory lack of combiner can produces inconsistent results
+				.parallelStream()
+				.reduce(0, (a,b) -> (a-b))); // probably need a much larger list for this to happen
 	}
 	
 }

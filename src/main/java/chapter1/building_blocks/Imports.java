@@ -41,8 +41,10 @@ public class Imports {
 	
 		// without imports:
 //		java.util.Date utilDateBad = new Date(); // does not compile if import is missing
-		java.util.Date utilDate1 = new java.util.Date();
+		Date utilDate1 = new Date();
+		java.util.Date utilDate2 = new java.util.Date();
 		java.sql.Date sqlDate1 = new java.sql.Date(0);
+		
 	}
 	
 }

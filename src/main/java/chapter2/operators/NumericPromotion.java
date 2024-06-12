@@ -31,6 +31,7 @@ public class NumericPromotion {
         					// Java doesn't know at compile type if 'num' value fits into byte primitive
 //        byte four = (byte) num + 1; // even when casting, a binary operator and variable are used 
         								// so after cast numeric promotion happens
+//        byte four = (byte) num + (byte) 1; // still bad
         byte five = 2 + (int) 3; // int but literal fits in byte
         int ten = five + 5; // variable so byte five is promoted to int
         

@@ -36,11 +36,11 @@ public class Primitives {
     String ¥n;
 //    String 2n; // bad
 //    String _; // bad
-//    String n$%; // bad
+//    String n%; // bad
 
     int hex = 0xa3f;
-    int octal = 015;
-//    int notOctal = 0185;
+    int octal = 0105;
+//    int notOctal = 0108; // octals have 0 prefix with valus 0-7
     int binary = 0b0101;
     
     byte b = 127;
@@ -50,7 +50,6 @@ public class Primitives {
     // Because Java defaults integer literals to int type, there is no loss of data when storing little Long as a long.
     // However, bigLong requires postfix L to designate it as a long.
 //    long doesNotCompile = 2_147_483_648;
-    // Note casting to long does not compile. This is due to type promotion.
     // The value is first interpreted as an int by the compiler and is out of range
 //    long doesNotCompileAgain = (long) 2_147_483_648;
     long big = 2_147_483_648L;
@@ -80,7 +79,7 @@ public class Primitives {
     Integer two = Integer.valueOf("2");
     // 3 becomes int primitive but is then autoboxed to Integer
     Integer three = Integer.parseInt("3");
-
+//    Double badDouble = Integer.parseInt("1"); // autobox & implicit cast
     
     byte bTwo = two.byteValue();
     short sTwo = two. shortValue();

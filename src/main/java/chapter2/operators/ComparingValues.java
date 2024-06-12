@@ -9,10 +9,11 @@ public class ComparingValues {
         float f = 3.0F;
         char c = 'a';
         boolean byteELong = b==l;
-        boolean longEfloat = l==f;
-        boolean charELong = c==l;
+        boolean longEfloat = l<=f;
+        boolean charELong = c>=l;
 //        boolean bad = b == bool;
 //        boolean badNull = b==null; // primitives cannot be null
+        boolean nullBool = null == null;
 
         String s = "";
         Integer i = 1;
@@ -29,6 +30,7 @@ public class ComparingValues {
         boolean zzz = i == num; // comparing wrapper objects which are related
         
 //        System.out.println(fivePrimitive instanceof Object);
+//        System.out.println(five instanceof String); 
         System.out.println(five instanceof Long); 
         System.out.println(five instanceof Number); 
         System.out.println(five instanceof Object); 

@@ -1,12 +1,14 @@
 package chapter1.building_blocks;
 
+import java.util.List;
+
 public class VariableInitializer {
 	
 //	var zzz = "z"; // not a local variable cannot use var
 	String $ = "dollar sign";
-	String String = "string"; // String is not a reserved keyword
+	String String = "string"; // String is NOT a reserved keyword
 	Boolean Boolean = false;
-//	int int = 0;
+//	Boolean boolean = false; // primitives ARE reserved keywords
 	
 	void declareVars() {
 //		var a = 1, b = 2;  multiple declaration not allowed with var
@@ -20,10 +22,11 @@ public class VariableInitializer {
 					
 				'4';
 		
-		var twoD = new int[][]{ {1, 2}, null };
+		var twoD = new int[][]{ {1, 2}, null }; // here "var" represents int[][]
 //		var[][] twoD = new int[][]{ {1, 2}, null }; // implies arrays are of type var vs int or other type. Similar to var List<var> ?
-//		var other2D[][] = {{a},{a}};
+//		var other2D[][] = {{a},{a}}; // mixing local variable type inference with declaration
 		int[][] goodTwo = { {1, 2}, null };
+//		List<var> varList; // not allowed
 	}
 	
 //	void noGood(var a) { 

@@ -12,10 +12,11 @@ public class OperatingOnFilePath {
 	
 		public static void main(String[] args) throws IOException {
 			// When you compile and run the Java program, 
-			// it executes from the project's root directory unless you specify a different directory explicitly.
+			// it executes from the PROJECT's root directory unless you specify a different directory explicitly.
 			// SO this main method is executing from Brian.Java-OCP-Certification NOT chapter14.IO.OperatingOnFilePath
 			// this is why the relative path is not from IO
-			// e.g. "../../../resources/chapter14/zoo.txt"
+			// e.g. "../../../resources/chapter14/zoo.txt" is wrong
+			// relative path from execution is src/main.....
 			// "./" and "../main" are redundant 
 			
 			// notice how getRoot() and toAbsolutePath() change if this is a root or relative path
@@ -23,12 +24,13 @@ public class OperatingOnFilePath {
 			Path zooSameFile = Path.of("src/main//resources/chapter14/zoo.txt");
 			System.out.println("zooTxtFile.equals(zooSameFile): " + zooTxtFile.equals(zooSameFile));
 			System.out.println("normalized > zooTxtFile.equals(zooSameFile): " + zooTxtFile.normalize().equals(zooSameFile.normalize()));
+			System.out.println("toRealPaht equals: " + zooTxtFile.toRealPath().equals(zooSameFile.toRealPath()));
 			System.out.println("print Path object: " + zooTxtFile);
 			System.out.println("toString(): " + zooTxtFile.toString());
 			System.out.println("normalize(): " + zooTxtFile.normalize());
 			System.out.println("absolute path: " + zooTxtFile.toAbsolutePath());
 			System.out.println("toRealPath(): " + zooTxtFile.toRealPath());
-			System.out.println("getParent(): " + zooTxtFile.getParent() );
+			System.out.println("getParent(): " + zooTxtFile.getParent());
 			System.out.println("getFileName(): " + zooTxtFile.getFileName());
 			System.out.println("getRoot(): " + zooTxtFile.getRoot()); 
 			// null if the path is relative i.e. not starting with / or C:  >  can still retrieve absolute path from current directory

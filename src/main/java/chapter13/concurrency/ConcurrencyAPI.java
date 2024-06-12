@@ -3,6 +3,7 @@ package chapter13.concurrency;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -39,6 +40,7 @@ public class ConcurrencyAPI {
 		System.out.println("counter after await: " + counter);	
 		System.out.println("service.isTerminated() after awaitTermination(): " + service.isTerminated());
 		System.out.println();
+//		service.submit(() -> System.out.println("Hello")); // submitting to shutdown service throws exception
 		
 		var otherService = Executors.newSingleThreadExecutor();
 		try {
@@ -50,5 +52,19 @@ public class ConcurrencyAPI {
 		
 		Thread.sleep(1000);
 		System.out.println("otherService.isTerminated(): " + otherService.isTerminated());
+		System.out.println();
+		
+		ExecutorService excutorService = Executors.newSingleThreadScheduledExecutor();
+//		excutorService.scheduleWithFixedDelay(() -> { // lose access to scheduled methods
+//			System.out.println("Open Zoo");
+////			return null; // w2
+//			}, 0, 1, TimeUnit.MINUTES);
+
+		
+		ScheduledExecutorService scheduledService = Executors.newSingleThreadScheduledExecutor();
+		scheduledService.scheduleWithFixedDelay(() -> { 
+			System.out.println("Open Zoo");
+//			return null; // takes a Runnable void not Callable with return
+		}, 1, 2, TimeUnit.SECONDS);
 	} 
 }

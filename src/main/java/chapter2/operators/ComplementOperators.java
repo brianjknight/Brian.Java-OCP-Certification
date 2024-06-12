@@ -36,7 +36,7 @@ public class ComplementOperators {
 //        byte bad = ~two; // two variable is a byte, however Java uses promotion for variables 
 //        byte bad = -two;
 //        byte badAgain = ~( (byte) two ); // TWO IS A VARIABLE
-        byte twoComplement = (byte) two; // therefore need to cast ~two
+        byte twoComplement = (byte) ~two; // therefore need to cast ~two
         byte again = ~2; // 2 IS A LITERAL, for literals Java will use assignment type
         byte xxx = ~(byte)2; // unnecessary
         byte twoComplementComplement = (byte) ~twoComplement;

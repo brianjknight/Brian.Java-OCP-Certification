@@ -20,6 +20,9 @@ public class OverflowUnderflow {
         System.out.println("smallestByte  " + smallestByte);
         smallestByte--;
         System.out.println("smallestByte-- underflow  " + smallestByte);
+        
+        smallestByte -= 10000; // underflow WITH automatic casting by compound assignment operator
+        System.out.println(smallestByte);
     }
 
 }
