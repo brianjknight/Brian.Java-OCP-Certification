@@ -41,6 +41,7 @@ public class PatternMatching {
 
     void printOnlyIntegers(Number number) {
 //        if (!(number instanceof Number data)) // Does not compile because data is not assigned
+//        	System.out.println("printOnlyIntegers: " + data.intValue());
         if (number instanceof Integer data)
             System.out.println("printOnlyIntegers: " + data.intValue());
         else
@@ -52,7 +53,8 @@ public class PatternMatching {
         if (!(number instanceof Integer data)) {
 //        	System.out.println(data); // 'data' not declared
         	System.out.println("flow scoping not instance of Integer: " + number);
-            return; // causes the if statement to exit the method so next line is not executed
+            return; // REQUIRED for flow scoping because 'data' variable might not be assigned
+            		// ensures the next line of code is not reached
         }
         System.out.println("flow scoping IS integer: " + data.intValue());
     }
@@ -64,6 +66,7 @@ public class PatternMatching {
     }
     
     void subtypeTest() {
+    	System.out.println("strictly subtype test for pattern matching:");
     	Integer i = Integer.valueOf(1);
     	if (i instanceof Integer) {
     		System.out.println(i);
@@ -71,5 +74,22 @@ public class PatternMatching {
     	if (i instanceof Integer num) { 
     		System.out.println(num);
     	}
+
+    	Parent p = new Parent();
+    	Child c = new Child();
+    	if (c instanceof Parent XX) {
+    		System.out.println("c instanceof Parent XX");
+    	}
+    	if (p instanceof Parent YY) {
+    		System.out.println("p instanceof Parent YY");
+    	}
+    	
+    	// from book
+    	Integer value = 123;
+    	if(value instanceof Integer) {}
+    	if(value instanceof Integer data) {} // book says "DOES NOT COMPILE"
     }
 }
+
+class Parent {}
+class Child extends Parent {}

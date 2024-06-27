@@ -11,8 +11,8 @@ public class StatementAndBlocks {
 //                System.out.println("unreachable");
             }
             if (x == 4)
-            	System.out.println("if x == 4");
-//            	System.out.println("decision making ended for single statement");
+            	System.out.println("x == 4");
+//            	System.out.println("indented but NOT part of if statement"); // code block {} is NOT used 
             else if (x == 3)
             	System.out.println("if x == 3");
             	System.out.println("not part of else if always prints ");
@@ -20,6 +20,15 @@ public class StatementAndBlocks {
         }
 
 
-
+//        while(false) {
+//        	System.out.println("unreachable");
+//        }
+        
+        System.out.println();
+        if (false) {
+        	System.out.println("dead code different from unreachable");
+        }
+        else
+        	System.out.println("else statment");
     }
 }

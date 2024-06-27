@@ -22,7 +22,7 @@ public class UsingStreams {
 		int length = wolf.reduce(0, (i, s) ->	i+s.length(), (a, b) -> a+b);
 		System.out.println("length: " + length);
 	
-		List.of(1,2).stream(); // compiles but not useful; returns a Stream but does nothing with it.
+		List.of(1,2).stream(); // compiles but returns a Stream but does nothing with it.
 		
 		Stream<String> bear1 = Stream.of("brown bear-", "grizzly-");
 //		bear1.sorted(Comparator.reverseOrder()); // compiles but does nothing since a terminal operation is not called
@@ -30,7 +30,8 @@ public class UsingStreams {
 		bear1.sorted(Comparator.reverseOrder()).forEach(System.out::print);
 		
 //		Stream<String> bear2 = Stream.of("brown bear-", "grizzly-");
-//		bear2.sorted(Comparator::reverseOrder).forEach(System.out::print); // does not compile method reference returns a consumer?
+//		bear2.sorted(Comparator::reverseOrder).forEach(System.out::print); // does not compile; 
+		// equivalent to () -> Comparator.reverseOrder() which is Supplier<Comparator> NOT a Comparator 
 		
 		System.out.println("\n");
 		System.out.println("peeking: ");
@@ -42,14 +43,13 @@ public class UsingStreams {
 		letters.add("b");
 		chars.add('$');
 		chars.add('#');
-//		Stream<List<?>> bbb = Stream.of(numbers, letters, chars);
+		Stream<List<?>> bbb = Stream.of(numbers, letters, chars);
 //		// peek is not intended to modify elements but does run
-//		bbb.peek(x -> x.remove(0)).map(List::size).forEach(System.out::print); // careful removing affects below streams
+//		bbb.peek(x -> x.remove(0)).map(List::size).forEach(System.out::print); // careful removing affects below streams	
 		
-		System.out.println();
 		Stream<List<?>> showIntermediate = Stream.of(numbers, letters, chars);
 		showIntermediate.peek(e -> e.forEach(System.out::print))
-						.peek(e -> System.out.print(e + "!"))
+						.peek(e -> System.out.print(e + "!")) // e is a List
 						.map(List::size)
 						.forEach(System.out::println);
 		// performs each pipeline to termination in turn
@@ -125,10 +125,10 @@ public class UsingStreams {
 		
 		
 		List<Integer> ls = Arrays.asList(3,4,6,9,2,5,7);
-		System.out.println(ls.stream().reduce(Integer.MIN_VALUE, (a, b)->a>b?a:b)); //1
+		System.out.println(ls.stream().reduce(Integer.MIN_VALUE, (a, b)-> a>b ? a : b)); //1
 		System.out.println(ls.stream().max(Integer::max).get()); //2 max takes a comparator using -,0,+ to determine order so this always returns positive value for comparison
 		System.out.println(ls.stream().max(Integer::compare).get()); //3
-		System.out.println(ls.stream().max((a, b)->a>b?a:b)); //4
+		System.out.println(ls.stream().max((a, b)-> a>b ? a : b)); //4
 	}
 	
 }

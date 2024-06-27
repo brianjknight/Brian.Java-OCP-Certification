@@ -10,7 +10,7 @@ public class UsingExceptions {
 	public static void main(String[] args) throws FileNotFoundException  {
 		int j = 1;
 	    try {
-	    	int i = doIt() / j++; // prints 1; exception is thrown prior to j++ executing
+	    	int i = throwException() / j++; // prints 1; exception is thrown prior to j++ executing
 //	    	int i = j++ / doIt(); // prints 2; j++ executes before doIt() throws exception
 	    } catch (Exception e) {
 	    	System.out.println(" j = " + j);
@@ -19,7 +19,7 @@ public class UsingExceptions {
 	    try {
 	    	// code
 	    } catch (Error e) {
-	    	System.out.println("compiles but don't do this");
+	    	System.out.println("compiles but don't catch Errors");
 	    }
 		
 //		System.out.println(1/0); // runtime ArithmeticException
@@ -42,7 +42,9 @@ public class UsingExceptions {
 	void methodA(int i) throws FileNotFoundException { // catch clause throws the exception
 		try {
 			if (i < 0) {
-				throw new FileNotFoundException();
+//				throw new FileNotFoundException();
+				FileNotFoundException e = new FileNotFoundException();
+				throw e;
 			} else if (i > 0) {
 				throw new IOException();
 			} 
@@ -92,7 +94,7 @@ public class UsingExceptions {
 			System.out.println("finally method B part ONE");
 			
 //			int[] arr = new int[0]; // finally ALWAYS executes but all of its code may not
-//			System.out.println(arr[1]);
+//			System.out.println(arr[5]);
 			
 			System.out.println("finally method B part two");
 		}
@@ -106,10 +108,10 @@ public class UsingExceptions {
 		} 
 		finally {
 			System.out.println("finally method c: catch block not required with finally block");
-			return -10;
+			return -10;  // prevents try from returning positive 10
 		}
 	}
-	
+
 	void methodD() {
 //		try {
 //			System.out.println("method d"); // cannot throw a checked IOException
@@ -149,7 +151,9 @@ public class UsingExceptions {
 		}
 	}
 	
-	public static int doIt() throws Exception {  throw new Exception("FORGET IT");  }
+	public static int throwException() throws Exception {  
+		throw new Exception("FORGET IT");  
+	}
 }
 
 

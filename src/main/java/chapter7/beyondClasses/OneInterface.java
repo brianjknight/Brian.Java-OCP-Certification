@@ -21,7 +21,7 @@ public non-sealed interface OneInterface extends MyFirstInterface {
 //		divide();
 	}
 	
-	public static void otherCaller() {};
+	public static void otherCaller() {}
 	
 	private void nonStaticHelper() { // no implicit modifiers for private methods
 		staticHelper();

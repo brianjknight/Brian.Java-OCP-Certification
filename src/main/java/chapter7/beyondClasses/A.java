@@ -17,8 +17,8 @@ public class A {
 						System.out.println("xxx: " + xxx); // allowed to access instance and class members
 						
 						System.out.println(B.D.y);
-						System.err.println(D.y);
-//						System.err.println(y);
+						System.out.println(D.y);
+//						System.out.println(y);
 						
 						return xOfC; // allowed to access local variables only if effectively final
 					}
@@ -99,6 +99,7 @@ public class A {
 //		System.out.println("for js j=" + new JetSki().j); // private field not visible outside of class declaration
 		
 //		D d = new D();
+		System.out.println("testing static nested class D:");
 		System.out.println(A.B.D.y);
 		System.out.println(A.B.D.z); // private member is accessible within the enclosing class/file
 		System.out.println("D.add(): " + A.B.D.add());

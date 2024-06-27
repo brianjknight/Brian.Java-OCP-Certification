@@ -10,7 +10,7 @@ package chapter7.beyondClasses;
 public sealed class Snake permits Python, Snake.Cobra { // if nested AND using permits, the syntax is different
 //	class Cobra extends Snake {} // BAD must declare final, sealed, or non-sealed
 //	non-sealed class Cobra extends Snake {} // good
-	final class Cobra extends Snake {} // declared nested subclass complies
+	final class Cobra extends Snake {} // declared nested subclass compiles
 	
 }
 

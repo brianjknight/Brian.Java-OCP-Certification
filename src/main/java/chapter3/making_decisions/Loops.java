@@ -32,6 +32,9 @@ public class Loops {
         	}
         LABEL_C : for (;;) break;
         
+        LABEL_D : switch(" ") {default: System.out.println(" ");}
+        
+        
         System.out.println("myComplexArray loop:");
         int[][] myComplexArray = {{5,2,1,3},{3,9,8,9},{5,7,12,7}};
         OUTER_LOOP: for(int[] mySimpleArray : myComplexArray) {

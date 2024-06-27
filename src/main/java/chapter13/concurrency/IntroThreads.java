@@ -18,14 +18,16 @@ public class IntroThreads {
 		System.out.println("begin");
 		Thread printThread = new Thread(printInventory);
 		Thread printRecordsThread = new Thread(printRecords);
-		System.out.println("printThread state prior to .start()" + printRecordsThread.getState());
+		System.out.println("printRecordsThread state prior to .start()" + printRecordsThread.getState());
 		printRecordsThread.start();
 		printRecordsThread.interrupt(); // has no affect since this thread is not currently blocked
-		System.out.println("printThread state after .start()" + printRecordsThread.getState());
+		System.out.println("printRecordsThread state after .start()" + printRecordsThread.getState());
 		try {
+			System.out.println("try block");
 			printRecordsThread.sleep(1000);
 			System.out.println("printThread state after .sleep(1000)" + printRecordsThread.getState());
 		} catch (InterruptedException e) {
+			System.out.println("caught InterruptedException");
 		}
 		System.out.println("printThread state after try/catch" + printRecordsThread.getState());
 		

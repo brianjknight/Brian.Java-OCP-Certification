@@ -2,7 +2,7 @@ package chapter13.concurrency;
 
 import java.util.List;
 
-public class ConcurrentClasses {
+public class ParallelStreams {
 
 	static int total = 0;
 	
@@ -10,20 +10,24 @@ public class ConcurrentClasses {
 		
 		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
 				.parallelStream()
-				.reduce("", (s1,c) -> s1 + c, (s2,s3) -> s2 + s3));
+				.reduce("", (id,c) -> id + c, (s1,s2) -> s1 + s2));
 
 		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
 				.parallelStream()
-				.reduce("", (s1,c) -> s1 + c)); // in theory lack of combiner can produces inconsistent results
+				.reduce("", (id,c) -> id + c)); // in theory lack of combiner can produces inconsistent results
 				
 		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
 				.parallelStream()
-				.reduce("X", (s1,c) -> s1 + c));
+				.reduce("X", (id,c) -> id + c));
 		
 		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
-				.parallelStream()
-				.reduce("X", (s1,c) -> s1 + c, (s2,s3) -> s2 + s3));
+				.parallelStream() // in this instance a new stream is created for each element SO each one gets the identity X
+				.reduce("X", (id,c) -> id + c, (s1,s2) -> s1 + s2));
 				
+		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
+				.stream()
+				.reduce("X", (id,c) -> id + c, (s1,s2) -> s1 + s2));
+		
 		System.out.println(List.of(1,2,3,4,5,6) // in theory lack of combiner can produces inconsistent results
 				.parallelStream()
 				.reduce(0, (a,b) -> (a-b))); // probably need a much larger list for this to happen

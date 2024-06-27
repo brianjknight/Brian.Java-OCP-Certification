@@ -47,7 +47,7 @@ public class MathAPIs {
 		Random r = new Random();
 		System.out.println("nextInt(bound): " + r.nextInt(10));
 		System.out.println("nextInt: " + r.nextInt());
-		System.out.println("nextDouble: " + r.nextDouble());
+		System.out.println("nextDouble: " + r.nextDouble(100.0));
 		System.out.println("nextLong: " + r.nextLong());
 		
 	}

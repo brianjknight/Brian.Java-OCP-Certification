@@ -33,8 +33,8 @@ public class ThreadSafety {
 		// so here calling sleep for 2/10 second allows "Hello" to print first before attempting to acquire next lock
 		Thread.sleep(200);  // polling to force main thread to wait so lock is created in printHello() method.
 		
-//		if(lock.tryLock(100, TimeUnit.MILLISECONDS)) { // if first thread takes too long e.g.sleep(1000), this times out 
-		if(lock.tryLock(2000, TimeUnit.MILLISECONDS)) { // first thread sleeps 1 second but timeout here is 2 seconds; lock is able to acquire and return true
+		if(lock.tryLock(100, TimeUnit.MILLISECONDS)) { // if first thread takes too long e.g.sleep(1000), this times out 
+//		if(lock.tryLock(2000, TimeUnit.MILLISECONDS)) { // first thread sleeps 1 second but timeout here is 2 seconds; lock is able to acquire and return true
 			try {
 				System.out.println("Lock obtained, entering protected code");
 			} 

@@ -10,7 +10,6 @@ public class Overloading {
     	short b = 1;
     	Integer c = 2;
     	
-//    	over.fly(a); // cannot call method with smaller primitive type. requires explicit casting
     	over.fly((int)a);
     	over.fly(a);
     	over.fly(b);

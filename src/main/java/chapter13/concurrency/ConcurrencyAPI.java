@@ -18,8 +18,8 @@ public class ConcurrencyAPI {
 				});
 			
 				System.out.println(result);
-//				result.get(3, TimeUnit.SECONDS); // Returns null for Runnable; can throw checked exception
-				result.get(10, TimeUnit.NANOSECONDS); // timeout on the Future result but does NOT timeout the thread in service
+				result.get(3, TimeUnit.SECONDS); // Returns null for Runnable; can throw checked exception
+//				result.get(10, TimeUnit.NANOSECONDS); // timeout on the Future result but does NOT timeout the thread in service
 				System.out.println(result);
 				System.out.println("result.get(): " + result.get()); // now waits for future result; get on a Future of a Runnable is always null
 				System.out.println("result.isCancelled(): " + result.isCancelled());
@@ -50,6 +50,8 @@ public class ConcurrencyAPI {
 			otherService.shutdown();
 		}
 		
+		System.out.println("otherService.isTerminated(): " + otherService.isTerminated());
+		System.out.println("thread sleep...");
 		Thread.sleep(1000);
 		System.out.println("otherService.isTerminated(): " + otherService.isTerminated());
 		System.out.println();

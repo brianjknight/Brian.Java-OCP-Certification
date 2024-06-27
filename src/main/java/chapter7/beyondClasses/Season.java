@@ -117,6 +117,7 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		System.out.println(FALL.getTemp());
 		System.out.println(FALL.expectedVisitors);
 		System.out.println(FALL.CONSTANT);
+		System.out.println(Season.CONSTANT);
 		System.out.println(FALL.staticField);
 				
 		System.out.println("summer expected visitors: " + Season.SUMMER.expectedVisitors); // access to private within Enum

@@ -66,7 +66,7 @@ public class MethodDesign {
         	return "less";
 //        	System.out.println("unreachable compile error");
         }
-        if (false) return ""; // unreachable warning since method must return String for all branches
+        if (false) return ""; // dead code warning since method must return String for all branches
         if (true) return "  ";
         
         return "greater"; 

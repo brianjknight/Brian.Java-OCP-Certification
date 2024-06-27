@@ -10,7 +10,7 @@ import static java.util.Arrays.asList; // redundant but shows single static impo
 
 public class StaticClass {
 	
-	//final String greeting; // final variable must be initialized
+//	final String greeting; // final variable must be initialized
 	static String title;
 	static String first;
 	final String middle;
@@ -20,7 +20,7 @@ public class StaticClass {
 	static int age;
 	int addTen= 10;
 //	static int ageAddTen = age + addTen; // static reference to instance variable
-	
+	int ageAddTen = age + addTen;
 	
 //	{greeting = "Good morning";}
 	static {
@@ -43,7 +43,7 @@ public class StaticClass {
 //		nothing = " ";
 	}
 	
-//	StaticClass(String middle) { with multiple constructors need to account for initializing final fields
+//	StaticClass(String middle) { // with multiple constructors need to account for initializing final fields
 //		// final String middle is initialized in no args constructor but not here
 //	}
 	
@@ -69,7 +69,7 @@ public class StaticClass {
 		
 		// Note if you import a class AND a static method, you can call it both ways.
 		List<Integer> ints = asList(nums);
-		List<Integer> list = Arrays.asList(nums); // trickery but be sure BOTH are imported
+		List<Integer> list = Arrays.asList(nums); // trickery > be sure BOTH are imported
 		Integer[] copy = copyOf(nums,3);
 		
 		System.out.println(StaticClass.title);

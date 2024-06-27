@@ -4,6 +4,7 @@ package chapter8.lambdasFunctionalInterfaces;
 public interface TraitChecker {
 	int num = 0;
 
+	// Functional interface has a single abstract method
 	String test(Animal a);
 	
 	private void helper() {
@@ -14,10 +15,7 @@ public interface TraitChecker {
 		return "still a single abstract method";
 	}
 	
-	// Functional interface has a single abstract method
-//	int num();
-	
-	// exception for single abstract method rule for overridden Object methods
+	// exception for single abstract method rule is for overridden Object methods
 	@Override
 	public abstract String toString();
 //	public int toString(); // incompatible return type to override Object method

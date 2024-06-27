@@ -18,7 +18,9 @@ public class SwitchStatements {
                 break;
             case 4: 
         	case 5: // equivalent to case 4,5:
-                System.out.print("four ");
+                {
+                	System.out.print("four ");
+                }
                 System.out.println("or five");
                 break;
 
@@ -39,7 +41,7 @@ public class SwitchStatements {
 //                System.out.println("no match");
             case 11:
                 System.out.println("eleven");
-                return;
+//                return; // allowed but ends method; don't do this
             case 12:
                 System.out.println("twelve");
 //            case 13 -> System.out.println(""); // cannot mix switch statements with switch expressions
@@ -158,7 +160,7 @@ public class SwitchStatements {
         System.out.println();
         
         
-        // not execution first happens for a case match then continues, including default, until a break
+        // note execution first happens for a case match then continues, including default, until a break
         // no case match, starts executing at default branch then continues until a break
         System.out.println();
         System.out.println("number");
@@ -186,6 +188,7 @@ public class SwitchStatements {
         	}
         }
         
+//        Integer dddd = 10;
         int dddd = 10;
         final byte bb = 1;
         final short ss = 2;
@@ -195,6 +198,7 @@ public class SwitchStatements {
         switch(dddd) { 
 	        case (byte) 5: 
 	        case (short) 22:
+	        case 33:
 	        case bb:  // Java will cast primitive values 
 	        case ss:  // however remember it CANNOT autobox AND cast at the same time if switch param is a Wrapper
 	        case cc:

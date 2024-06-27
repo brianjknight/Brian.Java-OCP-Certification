@@ -46,7 +46,7 @@ public class UsingListsInterface {
 		String[] words = {"ONE","two","three"};
 		List<String> asList = Arrays.asList(words);
 		List<String> of = List.of("ONE","two","three");
-		List<String> ofA = List.of(words); // compiles
+		List<String> ofA = List.of(words); // compiles signature of(E... elements) also accepts a single Array
 		System.out.println("asList: " + asList);
 		System.out.println("ofA: " + ofA);
 		List<List<String>> ofB = List.of(of, ofA); // complies .of with collection

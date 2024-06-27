@@ -13,10 +13,11 @@ public class JetSki {
 		System.out.println(A.B.D.y);
 //		System.out.println(A.B.D.z); // z is private and not accessible outside of the enclosing class/file
 		
-//		A.B b = new A().new B();
-//		A.B.D d = b.new D();
-//		A.B.D d = new A().new B().D;
-		A.B.D d = new A.B.D();
+		A.B b = new A().new B();
+//		A.B.D d = b.new D(); // using an instance to create a static not allowed
+//		A.B.D dd = new A().new B().new D();
+//		A.B.D ddd = new b.D();
+		A.B.D dddd = new A.B.D(); // creating static without instantiating specific instance
 		
 	}
 }

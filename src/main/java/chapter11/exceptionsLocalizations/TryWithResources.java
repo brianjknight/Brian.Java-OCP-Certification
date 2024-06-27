@@ -14,7 +14,9 @@ public class TryWithResources {
 		try (var readerOne = new MyFileClass(1); readerTwo) {  // must be effectively final if using variable
 			System.out.println("Try block");
 //			readerTwo = new MyFileClass(3);
-			throw new RuntimeException();
+//			throw new RuntimeException();
+			RuntimeException e = new RuntimeException();
+			throw e;
 //			throw new Exception(); // must be caught or use throws
 		} 
 		// implicit finally block runs closing resources prior to explicit catch/finally
@@ -26,18 +28,21 @@ public class TryWithResources {
 		}
 		
 		// readerTwo is still in scope, however reassigning is not allowed. must be effectively final if used in try with resources
-//		readerTwo = new MyFileClass(3); 
+//		readerTwo = null; 
 		
 //		try(String a = "a") { // not autocloseable
 //			// code
 //		} 
+		
+//		try() {} // resource required to compile
+		try {} finally {}
 	}
 	
 	public void readFile(String file) {
 		try (FileInputStream is = new FileInputStream("myfile.txt")) {
 		 // Read file data
 		} 
-		catch (IOException e) {
+		catch (IOException e) { // required as most IO classes throw IOExceptions
 			e.printStackTrace();
 		}
 	}
@@ -46,7 +51,8 @@ public class TryWithResources {
 		try (FileInputStream is = new FileInputStream("myfile.txt")) {
 			// Read file data
 //			throw new Exception(); 
-		} // try-with-resources does not require catch block UNLESS try block can throw a CHECKED exception
+		} // try-with-resources does not require catch block or exception declaration
+		  // UNLESS try block can throw a CHECKED exception
 	}
 	
 //	public void notAutoCloseable(String input) {

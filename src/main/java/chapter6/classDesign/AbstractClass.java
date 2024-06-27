@@ -6,6 +6,7 @@ public abstract class AbstractClass {
 //	abstract String name = "Brian"; // only instance methods can be abstract
 	String name = "Brian";
 	static int age = 39;
+	int num = 10;
 	
 //	abstract AbstractClass() {} // only instance methods can be abstract
 	

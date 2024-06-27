@@ -25,7 +25,7 @@ public class Child extends Parent {
 	
 	public Child(short x) {
 		this();
-//		super(); // not allowed
+//		super(); // not allowed with this()
 	}
 	
 //	public Child (var v) {} // var not allowed for parameter method or contructor
@@ -49,6 +49,7 @@ public class Child extends Parent {
 	// hidden method NOT overridden because static makes it a class member not instance member
 //	@Override // produces compiler error
 	public static String greeting() {
+		doStaticWork(); // inherited static method
 		return "hi";
 	}
 //	public String greeting() {} // instance method cannot override a static parent method

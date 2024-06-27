@@ -1,9 +1,13 @@
 package chapter7.beyondClasses;
 
-// implicitly and ONLY allowed to be public & final
+
+record EmptyRecord() {} // allowed to compile
+
+
 // can implement interfaces
 // cannot use extend
-public record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) {
+// implicitly and ONLY allowed to be public & final
+public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) {
 	
 	static String species;
 	static {
@@ -27,7 +31,7 @@ public record PersonRecord(String first, String last, int age, int weight, doubl
 	// acts as the all args constructor when called new PersonRecord(, , , , , )
 	public PersonRecord {
 		if (last == null) {
-			// this.last = "last"; // cannot modify the fields directly in compact constructor 
+//			 this.last = "last"; // cannot modify the fields directly in compact constructor 
 			// it calls long implicit long constructor 
 		}
 		

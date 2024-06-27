@@ -48,6 +48,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 //	public <F extends G> void first() {}
 	public <F extends T> void firstFirst() {}
 	public <F extends Number> void otherFirst() {} 
+//	public <? extends Number> void otherFirstXXX() {} 
 //	public <H> void second(List<I> list) {}
 	public <J> void third(List<J> list) {}
 //	public <K> void fourth(List<K extends L> list) {}
@@ -66,7 +67,7 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	
 	public static void main(String[] args) {
 		Generics omitDiamond = new Generics<String, Integer, Object, Object>("Brian", 39);  // DECLARATION OMITS <> AND PARAM TYPES java infers both as Object
-//		System.out.println(g.getName() + g.getAge()); // does not compile '+' operator undefined for Object
+//		System.out.println(omitDiamond.getName() + omitDiamond.getAge()); // does not compile '+' operator undefined for Object
 		System.out.println(omitDiamond.getName()); // works because Object is the reference type but implementation is String toString() method 
 		System.out.println(omitDiamond.getName().toString() + omitDiamond.getAge().toString()); 
 		
@@ -99,7 +100,9 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 		
 		
 //		List<Object> objList = new ArrayList<Integer>(); // not allowed to mix types even if a sub type
-		
+//		List<Object> oList = new ArrayList<>();
+//		List<Integer> sList = new ArrayList<Integer>();
+//		oList = sList;  								// same compile error
 		
 	}
 }

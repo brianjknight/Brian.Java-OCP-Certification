@@ -10,7 +10,8 @@ public class Parent {
 	
 	// default no args constructor inserted by compiler
 	
-	protected Number getAge() throws FileNotFoundException, IndexOutOfBoundsException {
+	protected Number getAge() throws FileNotFoundException, 
+									 IndexOutOfBoundsException {
 		return age;
 	}
 	

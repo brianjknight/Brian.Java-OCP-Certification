@@ -44,12 +44,12 @@ public class UsingPrimitiveStreams {
 		
 		System.out.println();
 		IntStream.rangeClosed(1,5).forEach(System.out::print);
-		System.out.println();
-		System.out.println();
+		System.out.println("\n");
+		
 		
 		DoubleStream doubleStream = DoubleStream.of(1.0, 2.0, 3.0);
 		List<String> doubleStringList = doubleStream.mapToObj(String::valueOf).toList();
-//		IntStream intStream = doubleStream.mapToInt(d -> (int) d); // valid 
+//		IntStream intStream = doubleStream.mapToInt(d -> (int) d); // valid; careful this stream was already closed
 //		LongStream longStream = doubleStream.mapToLong(d -> (long) d); // valid
 //		DoubleStream backToDoubleStream = intStream.mapToDouble(i -> i); // valid
 		

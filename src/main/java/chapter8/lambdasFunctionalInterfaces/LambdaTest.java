@@ -15,10 +15,10 @@ public class LambdaTest {
 		for (Animal a : animals) {
 			System.out.println("Animal: " + a);
 			
-//			var testLambda = a -> a.numLegs();
-//			var testLambda = (Animal a) -> a.numLegs();
-//			var testLambda = a -> (Object) a.numLegs();
-//			var varLambda = (Integer a, Integer b) -> a + b;
+//			var testLambdaA = a -> a.numLegs();
+//			var testLambdaB = (Animal a) -> a.numLegs();
+//			var testLambdaC = a -> (Object) a.numLegs();
+//			var varLambdaD = (Integer a, Integer b) -> a + b;
 			var varLambda = (BiFunction<Integer, Integer, Integer>) (x,y) -> x + y;
 			var testLambda = (TraitChecker) z -> z.numLegs() + "";
 			
@@ -36,7 +36,7 @@ public class LambdaTest {
 			
 			// more than ONE statement requires code block with return
 			String legsBreturn = testTrait(a, x -> {  // Java infers type for required TraitChecker param with a method that takes an Animal
-					int numLegs = x.numLegs(); // inferred param knows numLegs() method is available
+					int numLegs = x.numLegs(); // inferred param "a" knows numLegs() method is available
 					if (numLegs == 2) {return "biped";}
 					return "not biped";
 				}
@@ -52,8 +52,8 @@ public class LambdaTest {
 			TraitCheckerChild tcChild = new CheckIsDangerous();
 			CheckIsDangerous chIsDang = new CheckIsDangerous();
 			String dangA = testTrait(a, tc);
-//			String dangA = testTrait(a, tcChild); // valid
-//			String dangA = testTrait(a, chIsDang); // valid
+//			String dangAAA = testTrait(a, tcChild); // valid
+//			String dangAAAAAA = testTrait(a, chIsDang); // valid
 			String dangB = testTrait(a, x -> x.isDangerous() ? "dangerous" : "not dangerous" );
 			String dangC = testTrait(a, x -> Boolean.toString(x.isDangerous()) );
 			System.out.println("\t dangA: " + dangA + " || dangB: " + dangB + " || dangC: " + dangC);

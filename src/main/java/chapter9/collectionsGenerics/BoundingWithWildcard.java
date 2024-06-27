@@ -12,14 +12,15 @@ public class BoundingWithWildcard<T> {
 		// bounding with wildcard
 		
 		List<?> a = new ArrayList<String>(); // unbounded list
+//		a.add("abc"); // wildcard bound types become immutable
 //		List<?> b = new ArrayList<?>(); // unbounded list
 		
 		List<Object> objectList = new ArrayList<>();
 //			List<Object> oList = new ArrayList<String>(); // not allowed but you can add Strings to the an Object List
-//			List<?> oooList = new ArrayList<?>(); // not allowed but you can add Strings to the an Object List
+//			List<?> oooList = new ArrayList<?>(); // not allowed instantiate actual object with wildcard ?
 		List<String> stringList = new ArrayList<>();
 		bww.addToList(objectList);
-//			bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
+//		bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
 		bww.addToLowerBoundList(objectList);
 		bww.addToLowerBoundList(stringList);
 		
@@ -41,10 +42,9 @@ public class BoundingWithWildcard<T> {
 //		goatList.add(new Mammal()); // does not compile
 //		mammalList.add(new Mammal());
 		mammalList.add(new Goat());
+//		mammalList.add(new Mammal()); // has to do with not having a upper bound on parent; however class of goat or subtype will always fit in the list 
 		goatList.add(new Goat());
 		goatList.add(new GoatBabby());
-		
-//		mammalList.add(new Mammal()); // has to do with not having a upper bound on parent; however class of goat or subtype will always fit in the list 
 			
 		List<String> colors = List.of("red","green","blue");
 		List<Integer> nums = List.of(1,2,3); 

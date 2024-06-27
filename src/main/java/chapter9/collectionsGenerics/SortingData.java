@@ -17,8 +17,8 @@ public class SortingData {
 //		tree.add(null); // compiles but throws runtime exception; Sorted data structures (Trees) NOT allowed null value
 //		tree.add(new DuckNotComparable("a", 1, 1.0, "x", 1)); // compiles but throws runtime exception
 		
-		List<DuckNotComparable> badDucks = new ArrayList<>();
-		badDucks.add(new DuckNotComparable("a", 1, 1.0, "x", 1));
+		List<DuckNotComparable> badDucks = new ArrayList<>(); 
+		badDucks.add(new DuckNotComparable("a", 1, 1.0, "x", 1)); // not a sorted structure
 		badDucks.add(new DuckNotComparable("b", 2, 2.0, "y", 2));
 //		Collections.sort(badDucks); // does not compile on trying to sort
 		Collections.sort(badDucks, Comparator.comparing(DuckNotComparable::getName));
@@ -68,19 +68,20 @@ public class SortingData {
 		ducks.forEach(System.out::println); 
 		System.out.println();
 		
-		Comparator<Duck> wealthiest = new Comparator<Duck>() {
+		Comparator<Duck> wealthiest = new Comparator<Duck>() { // Comparator anonymous class
 			@Override
 			public int compare(Duck d1, Duck d2) {
 				return d2.getMoney() - d1.getMoney() ;
 			}
 		};
-		Comparator<Duck> wealthiestLambda = (d1,d2) -> d2.getMoney() - d1.getMoney();
-		Comparator<Duck> wealthiestOther = Comparator.comparingInt(Duck::getMoney).reversed();
+		Comparator<Duck> wealthiestLambda = (d1,d2) -> d2.getMoney() - d1.getMoney();  // Comparator Lambda
+		Comparator<Duck> wealthiestOther = Comparator.comparingInt(Duck::getMoney).reversed();  // Comparator with convenience method & method reference
 		Collections.sort(ducks, wealthiest);
 //		Collections.sort(ducks, wealthiestLambda);
 //		Collections.sort(ducks, wealthiestOther);
 //		Collections.sort(ducks, Comparator.comparingInt(Duck::getMoney).reversed());
 		System.out.println("wealthiest Comparator");
+		System.out.println("wealthiest.compare(scrooge, daisy): " + wealthiest.compare(scrooge, daisy));
 		ducks.forEach(System.out::println);
 		System.out.println();
 		

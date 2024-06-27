@@ -16,7 +16,7 @@ public class AutoboxingUnboxing {
         Short five = 5; // Java knows the larger int literal 5 can fit in the narrowing type short and does not need to implicitly cast.
         // so only autoboxing occurs above for Short five = 5;
         short FIVE = 5;
-//        Short anotherFive = -five; // operator is used so short is promoted(implicitly cast) to int
+//        Short anotherFive = -five; // operator is used so short variable is promoted to int
         Short anotherFIVE = five; // five autoboxed to Short
         
 //        Byte tooBig = 500; // cannot convert int to Byte cast and autobox required since 500 literal cannot fit into byte

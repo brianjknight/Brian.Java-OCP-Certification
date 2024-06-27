@@ -10,7 +10,7 @@ public class StringMethods {
         System.out.println("pChar index: " + pChar);
         System.out.println("pInt index: " + pInt);
 
-//        System.out.println(animal.startsWith('a'));
+//        System.out.println(animal.startsWith('a')); // invalid parameter
         System.out.println(animal.startsWith("e"));
         System.out.println(animal.contains("ant"));
         
@@ -19,14 +19,14 @@ public class StringMethods {
         System.out.println(animal.substring(0,3));
         // IndexOutOfBoundsException -> RuntimeException
 //        System.out.println(animal.substring(10));
-        System.out.println(animal.substring(animal.indexOf('a')));
+        System.out.println(animal.substring(animal.indexOf("a")));
         System.out.println(animal.substring(animal.indexOf('a'),9));
 
 
         // formatting runtime error when mixing data types float with integer %d
 //        System.out.println("float %d".formatted(10.123456));
 
-        double n = 1.123456;
+        double n = 1.12345678; // default is 6 decimal places
         System.out.println(String.format("format number to decimals %f", n).toString());
         System.out.println(String.format("format number to decimals %.2f", n));
         System.out.println(String.format("format number to decimals %1.2f", n));
@@ -94,6 +94,10 @@ public class StringMethods {
         System.out.println(s1.length());
         
 //        String s1B = s1.replaceAll('p', "P");
+        
+        System.out.println("1\\t2.length() = " + "1\\t2".length());
+        System.out.println("1\\\\t2.translateEscapes() = " + "1\\t2".translateEscapes());
+        
     }
 
 

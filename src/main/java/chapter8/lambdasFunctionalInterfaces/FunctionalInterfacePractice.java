@@ -20,6 +20,7 @@ public class FunctionalInterfacePractice {
 	public static void main(String[] args) {
 		
 		Supplier<LocalDate> s1 = LocalDate::now;
+		System.out.println("Supplier s1: " + s1);
 		LocalDate d1 = s1.get();
 //		LocalDate d2 = LocalDate::now;
 		System.out.println("date: " + d1);
