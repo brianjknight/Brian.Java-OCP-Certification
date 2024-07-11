@@ -50,5 +50,12 @@ public class MathAPIs {
 		System.out.println("nextDouble: " + r.nextDouble(100.0));
 		System.out.println("nextLong: " + r.nextLong());
 		
+		System.out.println();
+		System.out.println("divide by float");
+		Float f1 = 10.0F;
+		Float f2 = 0.0F;
+		System.out.println(f1/f2);
+		System.out.println(-10.0F/0.0F);
+		
 	}
 }

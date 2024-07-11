@@ -28,8 +28,10 @@ public class ArrayMethods {
         System.out.println(Arrays.binarySearch(moreNums, 3));
 
         // comparing arrays
+        System.out.println();
+        System.out.println("comparing arrays:");
         int  []   one = {2,4,6};
-        int[] two = {3};
+        int[] two = {5};
         System.out.println(Arrays.compare(one,two));
         System.out.println(Arrays.compare(two,one));
 
@@ -75,5 +77,15 @@ public class ArrayMethods {
        String[] strings = new String[2];
        
 //       String[] strs = Integer.valueOf(1); // does not compile
+       
+       System.out.println();
+       System.out.println("arrays aaa & bbb:");
+       char[] aaa = { 'h', 'e', 'l', 'l'};
+       char[] bbb = { 'a'};
+       
+       int xxx = Arrays.compare(aaa, bbb);
+       int yyy = Arrays.mismatch(aaa, bbb);
+       System.out.println(xxx+" "+yyy);
+       System.out.println("Character.compare('h', 'a'): " + Character.compare('h', 'a'));
     }
 }

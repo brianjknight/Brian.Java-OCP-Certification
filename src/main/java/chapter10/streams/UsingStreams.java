@@ -129,8 +129,20 @@ public class UsingStreams {
 		System.out.println(ls.stream().max(Integer::max).get()); //2 max takes a comparator using -,0,+ to determine order so this always returns positive value for comparison
 		System.out.println(ls.stream().max(Integer::compare).get()); //3
 		System.out.println(ls.stream().max((a, b)-> a>b ? a : b)); //4
+		
+		System.out.println();
+		System.out.println("enthuware test 5 question 11");
+		var books = new ArrayList<Book>(List.of(new Book("The Outsider", "Stephen King"),
+		        new Book("Becoming", "Michelle Obama" ), new Book("Uri", "India")));
+		Stream bkStrm = books.stream(); //1
+//		int count = bkStrm.peek(x->x.title()).count();//2
+//		int count = bkStrm.peek(x->((Book)x).title()).count();
+		// signature does not include return type so even though it calls a method that returns the value is ignored
+		long count = bkStrm.peek(x->((Book)x).title()).count(); 
+		System.out.println("count = " + count);
 	}
 	
+	public record Book(String title, String Author) {}
 }
 
 

@@ -98,5 +98,13 @@ public class Loops {
         do
         	System.out.println("do while loop");
         while (false);
+        
+        
+        // NOT an infinite loop due to underflow of byte
+        byte bbb = 10;
+        do {
+        	bbb--;
+        	System.out.println(bbb);
+        } while(bbb<10);
     }
 }

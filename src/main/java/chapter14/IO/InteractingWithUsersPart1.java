@@ -1,9 +1,10 @@
 package chapter14.IO;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
+import java.nio.file.Path;
 import java.util.Map;
 
 public class InteractingWithUsersPart1 {
@@ -28,6 +29,10 @@ public class InteractingWithUsersPart1 {
 		Map<String,String> env = System.getenv();
 		System.out.println("env size:" + env.size());
 		env.forEach((k,v) -> System.out.println(k + ":" + v));
+		
+		// Input/OutputStreams and Reader/Writers are part of java.io NOT java.nio
+		Path p = Path.of("/fake/path");
+//		var pathReader = new BufferedReader(new FileReader(p)); // does not compile
 	}
 }
 

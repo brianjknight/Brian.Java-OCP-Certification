@@ -32,5 +32,8 @@ public class TextBlock {
         System.out.println(t.block);
         System.out.println(t.quotes);
         System.out.println(t.quotesBlock);
+        
+        System.out.println("Brian".substring(1,1));
+        System.out.println("Brian".substring(0,1));
     }
 }

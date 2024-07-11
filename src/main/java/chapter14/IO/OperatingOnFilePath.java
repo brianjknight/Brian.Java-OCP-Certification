@@ -24,7 +24,7 @@ public class OperatingOnFilePath {
 			Path zooSameFile = Path.of("src/main//resources/chapter14/zoo.txt");
 			System.out.println("zooTxtFile.equals(zooSameFile): " + zooTxtFile.equals(zooSameFile));
 			System.out.println("normalized > zooTxtFile.equals(zooSameFile): " + zooTxtFile.normalize().equals(zooSameFile.normalize()));
-			System.out.println("toRealPaht equals: " + zooTxtFile.toRealPath().equals(zooSameFile.toRealPath()));
+			System.out.println("toRealPath equals: " + zooTxtFile.toRealPath().equals(zooSameFile.toRealPath()));
 			System.out.println("print Path object: " + zooTxtFile);
 			System.out.println("toString(): " + zooTxtFile.toString());
 			System.out.println("normalize(): " + zooTxtFile.normalize());
@@ -70,7 +70,7 @@ public class OperatingOnFilePath {
 				System.out.println("Is Directory: " + file.isDirectory());
 				System.out.println("Parent Path: " + file.getParent());
 				if (file.isFile()) {
-					System.out.println("Size: " + file.length());
+					System.out.println("Length: " + file.length());
 					System.out.println("Last Modified: " + file.lastModified());
 					System.out.println("File name: " + file.getName());
 				} else {
