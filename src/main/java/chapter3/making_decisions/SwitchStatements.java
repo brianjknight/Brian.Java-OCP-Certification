@@ -14,6 +14,7 @@ public class SwitchStatements {
 	            System.out.println(or + " two");
                 break;
             case 9/3:
+        	MONDAY: // exam trickery what may look like an enum case is actually a label here
                 System.out.println("three");
                 break;
             case 4: 
@@ -45,6 +46,23 @@ public class SwitchStatements {
             case 12:
                 System.out.println("twelve");
 //            case 13 -> System.out.println(""); // cannot mix switch statements with switch expressions
+//            case 13:
+//            	14:
+//            	15:
+        }
+        
+        switch (x) { // variables are within the same block of code and in scope but need to follow initialization rule
+        	case 1:
+        		int blockA = 1;
+        		break;
+        	case 2:
+        		blockA=2;
+        		break;
+        	case 3:
+        		break;
+    		default:
+//    			System.out.println(blockA); // might be uninitialized
+    			break;
         }
 
         System.out.println();

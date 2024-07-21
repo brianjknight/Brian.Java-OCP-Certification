@@ -18,6 +18,10 @@ public class DatesAndTimes {
 //         LocalDate d = LocalDate.of(2022, Month.FEBRUARY, 31);
         // System.out.println(d);
         LocalDate d = LocalDate.of(2022, Month.FEBRUARY, 1);
+        System.out.println(Month.FEBRUARY);
+        System.out.println(Month.FEBRUARY.getValue());
+        System.out.println(d.getMonthValue());
+        System.out.println("length of month: " + d.lengthOfMonth());
 
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
@@ -55,7 +59,7 @@ public class DatesAndTimes {
 
         Duration secDays = Duration.ofSeconds(172800);
         System.out.println("sec many = " + secDays);
-        Duration secMin = Duration.ofSeconds(125);
+        Duration secMin = Duration.ofSeconds(172890);
         System.out.println("sec many = " + secMin);
         Duration sec = Duration.ofSeconds(5);
         System.out.println("sec = " + sec);
@@ -77,6 +81,34 @@ public class DatesAndTimes {
         Instant instant = zdt.toInstant();
         System.out.println("zdt: " + zdt);
         System.out.println("instant: " + instant);
+        
+        System.out.println();
+        System.out.println("daylight savings test: ");
+
+        // enthuware test 4 question 30 
+        LocalDateTime ld = LocalDateTime.of(2022, Month.NOVEMBER, 5, 10, 0);
+
+        ZonedDateTime date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern"));
+        date = date.plus(Duration.ofDays(1));
+        System.out.println(date);
+
+        date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern"));
+        date = date.plus(Period.ofDays(1));
+        System.out.println(date);
+        
+        // OCP book page 206; difference is method plus(Duration) vs plusHours(long)
+        System.out.println("OCP example:");
+        var dateX = LocalDate.of(2022, Month.MARCH, 13);
+        var timeX = LocalTime.of(1, 30);
+        var zone = ZoneId.of("US/Eastern");
+        var dateTime = ZonedDateTime.of(dateX, timeX, zone);
+        System.out.println(dateTime); // 2022–03-­13T01:30-­05:00[US/Eastern]
+        System.out.println(dateTime.getHour());   // 1
+        System.out.println(dateTime.getOffset()); // -05:00
+        dateTime = dateTime.plusHours(1);
+        System.out.println(dateTime); // 2022–03-­13T03:30-­04:00[US/Eastern]
+        System.out.println(dateTime.getHour());   // 3
+        System.out.println(dateTime.getOffset()); // -04:00
     }
 
 }

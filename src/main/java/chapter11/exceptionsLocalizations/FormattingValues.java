@@ -38,8 +38,13 @@ public class FormattingValues {
 		DecimalFormat df = new DecimalFormat("###,#00.0#");
 		System.out.println(df.format(d));
 		
-		NumberFormat nfBalance = new DecimalFormat("Current balance: $###!X,###.000");
+		NumberFormat nfBalance = new DecimalFormat("'Current balance: $'###!X,###.000");
 		System.out.println(nfBalance.format(d));
+		
+		NumberFormat longFormat = new DecimalFormat("000.00");
+		System.out.println("longFormat: " + longFormat.format(1L));
+		Float f = 5.5F;
+		System.out.println("try Float: " + longFormat.format(f));
 	}
 }
 

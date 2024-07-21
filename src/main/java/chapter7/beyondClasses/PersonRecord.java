@@ -1,15 +1,15 @@
 package chapter7.beyondClasses;
 
+import java.io.Serializable;
 
 record EmptyRecord() {} // allowed to compile
-
 
 // can implement interfaces
 // cannot use extend
 // implicitly and ONLY allowed to be public & final
-public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) {
+public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) implements Serializable{
 	
-	static String species;
+	public static String species;
 	static {
 		species = "human";
 	}
@@ -19,16 +19,17 @@ public final record PersonRecord(String first, String last, int age, int weight,
 	// implicit all arg constructor but can implement 
 	// allows you to set instance fields
 //	public PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) {
-//		this.first = first;
-//		this.last = last;
+//		this.first = first.toUpperCase();
+//		this.last = last == null ? "n/a" : last;
 //		this.age = age;
+//		if (weight < 0) throw new IllegalArgumentException("Weigth cannot be negative!"); // RuntimeException allowed
 //		this.weight = weight;
 //		this.height = height;
 //		this.favortieFood = favortieFood;
 //	}
 	
 	// special compact constructor; no params or ()
-	// acts as the all args constructor when called new PersonRecord(, , , , , )
+	// acts as the all args constructor when called new PersonRecord(, , , , , ); CANNOT have both all args and compact
 	public PersonRecord {
 		if (last == null) {
 //			 this.last = "last"; // cannot modify the fields directly in compact constructor 
@@ -41,7 +42,7 @@ public final record PersonRecord(String first, String last, int age, int weight,
 		first = first.toUpperCase();
 //		this.first = first.toUpperCase(); // not allowed
 		
-		// the long constructor is implicitly called at the end of compact constructor with the modified parameters
+		// compiler automatically inserts the assignment statements of the form this.<fieldname> = <fieldname>
 	}
 	
 	

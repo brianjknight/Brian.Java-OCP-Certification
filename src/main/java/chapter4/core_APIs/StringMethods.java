@@ -98,7 +98,20 @@ public class StringMethods {
         System.out.println("1\\t2.length() = " + "1\\t2".length());
         System.out.println("1\\\\t2.translateEscapes() = " + "1\\t2".translateEscapes());
         
-    }
+        System.out.println();
+        testMethod();
+        }
+  
 
+    static void testMethod() {
+    	System.out.println("OCP 17/21 page 255 ex #3");
+    	String s = "a";
+    	String[] sa = { "a", s, s.substring(0, 1), new String("a"), ""+'a' };
+    	for(int i=0; i<sa.length; i++){
+    	System.out.println(i);
+    	System.out.println(s == sa[i]);
+    	System.out.println(s.equals(sa[i]));
+    	}
+    }
 
 }

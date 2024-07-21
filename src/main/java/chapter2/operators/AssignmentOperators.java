@@ -14,7 +14,7 @@ public class AssignmentOperators {
 		System.out.println("two:"+two);
 		System.out.println("twotwo:"+twotwo);
 		System.out.println("other:"+other);
-		
+		System.out.println();
 		
 		int k = 1;
 		k += 3 + ++k;
@@ -22,10 +22,18 @@ public class AssignmentOperators {
 //		k = k + 3 * ++k;
 //		k = k + 3 + (++k); // k on left is not updated even though ++k is in parenthesis; different than explicitly reassigning?
 //		k = ++k + 3 + k; // ++k is considered to happen first here
-		System.out.println(k);
+		System.out.println("k = " + k);
+		
+		Integer v = 1;
+		Integer x = v;
+		x += 3 + ++x; // kk = 1 + 3 + 2 
+		System.out.println("x = " + x);
+		System.out.println("v = " + v); // unary operator on a wrapper returns a new wrapper object
 		
 		int m = 1;
 		m += 3 * ++m; // m = m + 3 * ++m;
 		System.out.println(m);
+		
+	
 	}
 }

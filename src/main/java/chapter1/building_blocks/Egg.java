@@ -19,4 +19,13 @@ public class Egg {
     {
         System.out.println(number);
     }
+    
+    void methodA() {
+    	int number = 0;
+    	this.number = 1;
+    	while(true) {
+//    		char number = 'a';
+    		break;
+    	}
+    }
 }

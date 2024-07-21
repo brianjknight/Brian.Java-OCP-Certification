@@ -27,6 +27,8 @@ public class Primitives {
         Double zero = 0.0;
         System.out.println(-1.0/zero); // divide by zero with wrapper does not throw exception
         System.out.println(1.0/zero);
+        
+        
     }
 
     String n; // variables can use letters, numbers, currency symbol, and underscore
@@ -96,5 +98,5 @@ public class Primitives {
     int maxA = Math.max(one, two);
     int maxB = Math.max(i, (int) d);
 
-
+    
 }

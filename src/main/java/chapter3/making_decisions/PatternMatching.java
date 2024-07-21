@@ -3,6 +3,9 @@ package chapter3.making_decisions;
 import java.util.List;
 
 public class PatternMatching {
+	
+	String data = "example for shadowing with flow scoping";
+	
     public static void main(String[] args) {
 
         //****************************
@@ -21,7 +24,7 @@ public class PatternMatching {
         Integer two = 2;
         if (two instanceof Number)
             System.out.println("it's a Number");
-//        if (two instanceof List<?>) // does not compile make more sense after you read Chapter 7
+//        if (two instanceof List<?>) // does not compile because Integer wrapper is final; i.e. there can be no subclasses that extend it or implement list
 //            System.out.println("it's a List");
         //****************************
 
@@ -53,10 +56,23 @@ public class PatternMatching {
         if (!(number instanceof Integer data)) {
 //        	System.out.println(data); // 'data' not declared
         	System.out.println("flow scoping not instance of Integer: " + number);
-            return; // REQUIRED for flow scoping because 'data' variable might not be assigned
-            		// ensures the next line of code is not reached
+            return; // ensures the next line of code is NOT reached if data is not assigned
         }
         System.out.println("flow scoping IS integer: " + data.intValue());
+        
+        while (true) {
+        	System.out.println(data.intValue());
+        }
+    }
+    
+    void moreFlowScoping(Number number) {
+    	if (!(number instanceof Integer data)) {
+        	System.out.println("flow scoping not instance of Integer: " + number);
+        }
+    	else { // ensure else is NOT reached if data is not assigned
+    		System.out.println(data.intValue());
+    	}
+//    	System.out.println(data.intValue()); // out of scope
     }
 
     void printIntegerTwice(Number number) {
@@ -88,6 +104,13 @@ public class PatternMatching {
     	Integer value = 123;
     	if(value instanceof Integer) {}
     	if(value instanceof Integer data) {} // book says "DOES NOT COMPILE"
+    	
+    	// from OCP Java 17/21 book page 252
+    	Number n = null;
+    	if(n instanceof Number num){ //compilation error in Java 17 but not in Java 21
+    	}
+    	if(n instanceof Object num){ //compilation error in Java 17 but not in Java 21
+    	}
     }
 }
 

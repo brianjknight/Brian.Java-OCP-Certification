@@ -1,5 +1,10 @@
 package chapter3.making_decisions;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Loops {
 	
 //	InitLabel : {System.out.println("initializer block");} // labels not allowed on initializers
@@ -106,5 +111,44 @@ public class Loops {
         	bbb--;
         	System.out.println(bbb);
         } while(bbb<10);
+        
+        
+        System.out.println();
+        System.out.println("multidemnsional arrays:" );
+        int[] _1D1 = new int[]{1, 2, 3};
+//        _2D1[1] = new int[] {4,5,6}; // out of bounds
+        int[][] _2D1 = new int[][]{ _1D1 };
+        int[][] _2D2 = new int[][]{ _1D1, _1D1 };
+        int[][][] _3D = new int[][][]{ _2D1, _2D2 };
+        
+        System.out.println("_2D1:");
+        for(int[] ia : _2D1) System.out.println(Arrays.toString(ia));
+        System.out.println("_2D2");
+        for(int[] ia : _2D2) System.out.println(Arrays.toString(ia));
+        System.out.println("_3D");
+        for(int[][] _2d : _3D) {
+        	for(int[] _1d : _2d) System.out.print(Arrays.toString(_1d));
+        	System.out.println();
+        }
+        
+        System.out.println();
+        System.out.println("loop test using expressions for inialization: ");
+        for(System.out.println("starting the loop now"); i<5; i++); //method call
+        int z;
+        for(printHello(), z = 9; ai.get()<5; addOne()); //method call
+        System.out.println("z = " + z);
+        System.out.println();
+        List<Integer> myList = Arrays.asList(1,2,3);
+        for (Iterator it = myList.iterator(); it.hasNext(); ) {
+        	System.out.println(it.next());
+        }
+    }
+    
+    static AtomicInteger ai = new AtomicInteger(1);
+    static void printHello() {
+    	System.out.println("hello");
+    }
+    static void addOne() {
+    	ai.incrementAndGet();
     }
 }

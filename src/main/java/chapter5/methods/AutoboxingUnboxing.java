@@ -29,6 +29,14 @@ public class AutoboxingUnboxing {
         Integer ii = 1;
         Double dd = 2.0;
         System.out.println(ii + dd); // 
+
+        Integer z = new Integer(1);
+        
+        Integer ax = 100;
+        Integer bx = 100;
+        ax = ax + 1;
+        System.out.println("ax = " + ax);
+        System.out.println("bx = " + bx);
         
         // Example of explicitly casting instead of letting Java autobox & unbox
         Character h = Character.valueOf('Z');
@@ -50,7 +58,6 @@ public class AutoboxingUnboxing {
         Object[] oArr = new Integer[] {1,2,3};
 //        auto.makeArray(oArr); // wrong type
         auto.makeArray( (Integer[]) oArr ); // CAN cast Object array types
-        
         
     }
 

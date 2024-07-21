@@ -2,6 +2,8 @@ package chapter4.core_APIs;
 
 import java.util.Arrays;
 
+import javax.xml.stream.events.Characters;
+
 public class ArrayMethods {
     public static void main(String[] args) {
         int[] a, b;
@@ -40,7 +42,7 @@ public class ArrayMethods {
         
         System.out.println(Arrays.equals(one, oneDifferentOrder));
         Arrays.sort(oneDifferentOrder);
-        System.out.println("Arrays.equals(): " + Arrays.equals(one, oneDifferentOrder));
+        System.out.println("sorted then Arrays.equals(): " + Arrays.equals(one, oneDifferentOrder));
         System.out.println("ONE.equals(oneDifferentOrder): " + one.equals(oneDifferentOrder));
         
         int[][] abc = new int[4][4];
@@ -87,5 +89,25 @@ public class ArrayMethods {
        int yyy = Arrays.mismatch(aaa, bbb);
        System.out.println(xxx+" "+yyy);
        System.out.println("Character.compare('h', 'a'): " + Character.compare('h', 'a'));
+       
+       System.out.println(Arrays.compare(new char[] {'h','a'}, new char[] {'a'}));
+       System.out.println(Arrays.compare(new int[] {7,1}, new int[] {1}));
+       System.out.println(Character.compare('h', 'a'));
+       System.out.println(Integer.compare(7, 1));
+     
+       System.out.println();
+       System.out.println("3D array: ");
+       int sum = 0;
+       int[][][] NUMS = new int[1][4][2];
+       for(int I = 0; I<NUMS.length; I++){
+    	   for(int J = 0; J<NUMS[I].length; J++){
+    		   	for(int K = 0; K<NUMS[I][J].length; K++){
+    		   			NUMS[I][J][K] = I + J + K;
+    		   			System.out.println("NUMS["+I+"]["+J+"]["+K+"] = "+NUMS[I][J][K]);
+    		   			sum += I + J + K;
+    		   	}
+    	   }
+       }
+       System.out.println("sum = " + sum);
     }
 }
