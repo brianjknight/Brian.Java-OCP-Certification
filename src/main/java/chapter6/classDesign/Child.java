@@ -77,5 +77,9 @@ public class Child extends Parent {
 	public static void main(String[] args) {
 		System.out.println("run main");
 		System.out.println(staticNum);
+		
+		Child c = new Child();
+//		System.out.println(c.secret);
+		System.out.println("secret: " + c.getSecret());
 	}
 }

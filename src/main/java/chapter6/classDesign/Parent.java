@@ -7,13 +7,15 @@ public class Parent {
 	private Number age = 40;
 	final String name = "Brian";
 	static int staticNum = 99;
-	
+	private String secret = "parent's secret";
 	// default no args constructor inserted by compiler
 	
 	protected Number getAge() throws FileNotFoundException, 
 									 IndexOutOfBoundsException {
 		return age;
 	}
+	public String getSecret() {return secret;};
+	public void setSecret(String secret) {this.secret = secret;};
 	
 	// if made public, getSize() in Child no longer compiles
 	// return type of int is not a covariant of String

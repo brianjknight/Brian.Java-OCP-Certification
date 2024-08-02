@@ -75,19 +75,21 @@ public class UsingMaps {
 		System.out.println();
 		
 		Map<String, String> treeMap = new TreeMap<>();
-		treeMap.put("A", "value");
-		treeMap.put("F", "value");
-		treeMap.put("D","value");
+		treeMap.put("A", "valueA");
+		treeMap.put("F", "valueF");
+		treeMap.put("D","valueD");
 		treeMap.put("B", null);
 //		treeMap.put(null, "value"); // sorted data structures does not allow null key, runtime exception
+		System.out.println("treeMap");
 		System.out.println(treeMap);
 		
-		
+		System.out.println();
 		Set<Integer> treeSet = new TreeSet<>(Comparator.reverseOrder());
 		treeSet.add(10);
 		treeSet.add(3);
 		treeSet.add(7);
 //		treeSet.add(null); // compiles but throws runtime NullPointerException
+		System.out.println("treeSet");
 		System.out.println(treeSet);
 	}
 	

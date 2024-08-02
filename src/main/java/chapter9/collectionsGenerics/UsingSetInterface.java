@@ -20,6 +20,7 @@ public class UsingSetInterface {
 		for (Integer i : tens) 
 			treeSet.add(i); // preserves order; inserts on natural ordering
 		System.out.println("treeSet: " + treeSet);
+//		treeSet.add(null); // ordered "Tree" Collections do not allow null; runtime exception
 		
 		System.out.println();
 		System.out.println("add existing returns: " + intSet.add(0));

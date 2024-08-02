@@ -10,6 +10,8 @@ public class UsingQueueDeque {
 		Queue<String> names = new LinkedList<>();
 //		System.out.println(names.remove()); // throws exception
 //		System.out.print(names.element()); // throws exception
+//		names.offer(null); // LinkedList allows null
+//		System.out.println(names.size());
 		
 		System.out.println(names.poll()); // returns null if empty
 		System.out.println(names.peek());// returns null if empty
@@ -44,6 +46,7 @@ public class UsingQueueDeque {
 		stack.push("bear");
 		stack.push("snake");
 		stack.push("rhino");
+//		stack.push(null); // ArrayDeque does not allow null
 		
 		System.out.println(stack);
 		System.out.println("peek(): " + stack.peek());

@@ -34,6 +34,10 @@ public class AssignmentOperators {
 		m += 3 * ++m; // m = m + 3 * ++m;
 		System.out.println(m);
 		
-	
+		boolean bool = false;
+//		bool ? "true" : "false";
+		String result = bool ? "true" : "false";
+//		String bad = bool ? "true" : System.out.println("false");
+		
 	}
 }

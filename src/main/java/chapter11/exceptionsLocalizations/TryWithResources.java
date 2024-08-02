@@ -3,7 +3,7 @@ package chapter11.exceptionsLocalizations;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.ParseException;
+import java.sql.SQLException;
 
 public class TryWithResources {
 	
@@ -35,6 +35,7 @@ public class TryWithResources {
 //		} 
 		
 //		try() {} // resource required to compile
+//		try {} // normal try always requires catch or finally block
 		try {} finally {}
 	}
 	
@@ -42,7 +43,7 @@ public class TryWithResources {
 		try (FileInputStream is = new FileInputStream("myfile.txt")) {
 		 // Read file data
 		} 
-		catch (IOException e) { // required as most IO classes throw IOExceptions
+		catch (IOException e) { // required to catch or propagate as most IO classes throw IOExceptions
 			e.printStackTrace();
 		}
 	}
@@ -50,9 +51,16 @@ public class TryWithResources {
 	public void readOtherFile(String file) throws FileNotFoundException, IOException {
 		try (FileInputStream is = new FileInputStream("myfile.txt")) {
 			// Read file data
-//			throw new Exception(); 
+//			throw new SQLException(); 
 		} // try-with-resources does not require catch block or exception declaration
 		  // UNLESS try block can throw a CHECKED exception
+	}
+	
+	public void anotherRead() throws IOException {
+		try(FileInputStream is = new FileInputStream("myfile.txt"); is; is) { // odd but allowed to compile
+			// code
+		} // catch/finally not required if method declares throws
+		
 	}
 	
 //	public void notAutoCloseable(String input) {

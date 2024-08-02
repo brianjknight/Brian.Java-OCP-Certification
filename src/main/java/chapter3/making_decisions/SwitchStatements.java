@@ -1,10 +1,35 @@
 package chapter3.making_decisions;
 
+import java.time.DayOfWeek;
+
 public class SwitchStatements {
 
 	static final int eight = 8; 
 	
+	double computeTax2(double income, int taxBracket){
+		return income * 
+				switch(taxBracket){
+					case 0 : yield 0.1; //observe the new keyword yield
+					case 1 : { yield 0.2; } //enclosing the code within { } is optional
+					default : yield 0.3;
+				};
+		}
+	
     public static void main(String[] args) {
+    	
+    	// switch expressions means it returns value. CAN STILL use old syntax with ':' and yield
+    	DayOfWeek day = DayOfWeek.FRIDAY;
+    	String v = switch(day) {
+    		case MONDAY : yield "sucks";
+    		case WEDNESDAY : yield "humpday";
+    		case FRIDAY:
+    		case SATURDAY, SUNDAY : {yield "weekend";}
+//    		case null: yield "null"; // preview feature switch with pattern matching only available version 20 and up
+    		default: {yield "unkown";}
+    	};
+    	System.out.println(v);
+    	System.out.println();
+    	
 //        long x = 1; type not allowed for switch parameter
         int x = 9;
         switch (x) {
@@ -73,7 +98,8 @@ public class SwitchStatements {
         boolean isSwitch = true;
         int num = 101;
         String result = switch (y) {
-            case 1,2 -> result = "ONE or two";
+            case 1,2 -> result = "ONE or two"; 
+//            	System.out.println("not allowed");
             case 3 -> {
                 System.out.println("case 3 reached");
                 yield "three";
@@ -97,6 +123,7 @@ public class SwitchStatements {
                     yield "eight and zero";
                 }
             }
+//            case 8 -> break;
 
             default -> "invalid input";
         };
@@ -137,7 +164,8 @@ public class SwitchStatements {
         switch (grade) {
             default: System.out.println("\tdefault ");
             case a:
-            case 'B': System.out.println("\tgreat ");
+            case 'B': 
+            	LABEL_NOTaCASE: System.out.println("\tgreat ");
             case 'D': System.out.println("\tgood "); break;
             case e:
             case 'F': System.out.println("not good ");
@@ -173,8 +201,6 @@ public class SwitchStatements {
             default -> "default";
         };
         System.out.println("queue = " + queue);
-        
-        
         System.out.println();
         
         
@@ -189,6 +215,7 @@ public class SwitchStatements {
 				System.out.println(1);
 			case 2: 
 				System.out.println(2);
+//				return 2;
 	
 			default:
 				System.out.println("default");

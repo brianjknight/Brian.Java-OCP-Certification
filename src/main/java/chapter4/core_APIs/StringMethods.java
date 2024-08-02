@@ -47,6 +47,7 @@ public class StringMethods {
         var g = "Hello".concat(" World");
         var h = "Hello World".concat("");
         var i = "Hello World".concat("!!!");
+        var j = a.substring(0,11);
         
         System.out.println();
         System.out.println("###String pool###");
@@ -63,6 +64,7 @@ public class StringMethods {
         System.out.println("a==g: " + (a==g));
         System.out.println("a==h: " + (a==h));
         System.out.println("a==i: " + (a==i));
+        System.out.println("a==j: " + (a==j));
         System.out.println();
         
         // 3 spaces after 'a' but text block drops the spaces and adds return '\n'
@@ -100,7 +102,16 @@ public class StringMethods {
         
         System.out.println();
         testMethod();
-        }
+        
+        System.out.println();
+//        textBlock();
+        
+        System.out.println();
+        String newBlock = """
+        		\""" "\"" ""
+        		""";
+        System.out.println(newBlock);
+       }
   
 
     static void testMethod() {
@@ -112,6 +123,25 @@ public class StringMethods {
     	System.out.println(s == sa[i]);
     	System.out.println(s.equals(sa[i]));
     	}
+    }
+    
+    static void textBlock() {
+    	String commonHeader =
+    			"<head/>\n" +
+    			"<meta charset=\"utf-8\" />\n" +
+    			"<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+    			"</head>";
+    	
+    	String sameHeader =
+    			"""
+    			<head/>
+    			<meta charset="utf-8" />
+    			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    			</head>
+    			""";
+    			
+    	System.out.println(commonHeader);
+    	System.out.println(sameHeader);
     }
 
 }

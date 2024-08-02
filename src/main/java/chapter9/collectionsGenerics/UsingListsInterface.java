@@ -9,6 +9,11 @@ import java.util.Set;
 public class UsingListsInterface {
 	public static void main(String[] args) {
 		
+//		List<String> strList = List.of("a", null); // runtime NullPointer exception; factory methods .of() & .copyOf() do not allow null values
+		ArrayList<String> a1;
+//		ArrayList<> a2; // compiler has no way to infer the type
+//		Integer iValue1 = ListProcessor.processList(new ArrayList<>()); //Integer inferred (ListProcessor example class from book pg 442)
+		
 		// enthuware OCP 17 test 1 question 9
 		String[] sa = { "charlie", "bob", "andy", "dave" };
 //	    var ls = new ArrayList<String>(Arrays.asList(sa));
@@ -98,6 +103,8 @@ public class UsingListsInterface {
 		System.out.println(z);
 		z.remove(Integer.valueOf(4)); //  Collections inherited method remove(Obj o)
 		System.out.println(z);
+		z.add(null);
+		System.out.println(z);
 		System.out.println("*********************");
 		System.out.println();
 		
@@ -110,6 +117,7 @@ public class UsingListsInterface {
 		Object[] objsArray = chars.toArray(); // default is a new Object array
 //		Character[] castWrapperArray = (Character[]) objsArray ; // runtime exception > it is an Obj[] on the heap
 //		char [] castPrimArray = (char[]) castWrapperArray; // no allowed
+//		char[] toPrimiive = chars.toArray(new char[0]);
 //		Character[] bad = chars.toArray(new Character[]); // requires size
 //		Character[] bad = chars.toArray(); // BAD toArray() no params returns Object[]
 //		Character[] negativeArray = chars.toArray(new Character[-1]); // runtime Exception
@@ -131,6 +139,21 @@ public class UsingListsInterface {
 		
 //		Integer[] cast = {1};
 //		int[] casted = (int[]) cast; // does not compile
+		
+		System.out.println();
+		
+		// sublist is backed by the original list
+		System.out.println("OCP Java 17/21 book pg. 452");
+		List<String> al = new ArrayList<String>();
+		al.addAll(Arrays.asList( new String[]{"a", "b", "c", "d", "e" } ));
+		List<String> al2 = al.subList(2, 4);
+		System.out.println(al2); //prints [c, d]
+		al2.add("x");
+		System.out.println(al2); //prints [c, d, x]
+		System.out.println(al); //prints [a, b, c, d, x, e]
+		al.add("y"); //structural modification to the original list invalidates the existing sublist
+		System.out.println(al2); //throws java.util.ConcurrentModificationException trying to print invalidated sublist
+		
 	}
 }
 

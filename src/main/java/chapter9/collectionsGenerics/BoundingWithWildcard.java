@@ -13,16 +13,22 @@ public class BoundingWithWildcard<T> {
 		
 		List<?> a = new ArrayList<String>(); // unbounded list
 //		a.add("abc"); // wildcard bound types become immutable
-//		List<?> b = new ArrayList<?>(); // unbounded list
+//		List<?> b = new ArrayList<?>(); // instantiated object must set a type
+//		List<E extends Number> genericList; // does not compile
+//		List<T extends Number> genericFromClassList; // does not compile
+		List<? extends Number> wildList;
 		
 		List<Object> objectList = new ArrayList<>();
 //			List<Object> oList = new ArrayList<String>(); // not allowed but you can add Strings to the an Object List
-//			List<?> oooList = new ArrayList<?>(); // not allowed instantiate actual object with wildcard ?
+		List<?> oooList = new ArrayList<String>(); // not allowed instantiate actual object with wildcard ?
 		List<String> stringList = new ArrayList<>();
 		bww.addToList(objectList);
 //		bww.addToList(stringList); // cannot pass a List<String> when expecting a List<Object>
 		bww.addToLowerBoundList(objectList);
 		bww.addToLowerBoundList(stringList);
+		
+//		List<T extends Number & Comparable & Runnable> multiUpperBoundedList = null;
+//		List<? extends Number & Comparable & Runnable> multiUpperBoundedList = null;
 		
 		ArrayList<Mammal> mams = new ArrayList<>();
 		mams.add(new Mammal());

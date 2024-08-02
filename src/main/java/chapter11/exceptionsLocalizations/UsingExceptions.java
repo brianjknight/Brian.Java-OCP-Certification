@@ -6,8 +6,32 @@ import java.io.NotSerializableException;
 import java.sql.SQLException;
 
 public class UsingExceptions {
+	public static int one = 1;
 	
-	public static void main(String[] args) throws FileNotFoundException  {
+//	static {
+//		if (one > 0) {
+//			throw new IOException(); // static initializers not allowed to throw checked exceptions
+//		}
+//	}
+	
+	static {
+		if (one > 0) {
+			throw new RuntimeException();
+		}
+			
+	}
+	
+	{
+		if (one > 0) {
+			throw new IOException(); 
+			// instance initializers can throw checked BUT must be declared by ALL constructors
+			// since initialer is invoked with any new object
+		}
+	}
+	
+	public UsingExceptions() throws IOException {};
+	
+	public static void main(String[] args) throws IOException  {
 		int j = 1;
 	    try {
 	    	int i = throwException() / j++; // prints 1; exception is thrown prior to j++ executing
@@ -106,9 +130,12 @@ public class UsingExceptions {
 			methodB(i);
 			return 10;
 		} 
+		catch (Exception e) {
+			return 3;
+		}
 		finally {
 			System.out.println("finally method c: catch block not required with finally block");
-			return -10;  // prevents try from returning positive 10
+			return -10;  // return in finally prevents try from returning positive 10 or catch from returning 3 OR throwing a caught exception
 		}
 	}
 

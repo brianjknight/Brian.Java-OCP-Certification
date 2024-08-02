@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention of variables
+public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows naming convention of variables
 	private T name;
 	private U age;
 	private hamburger bigMac;
+//	private static _H0tdo9s oscarMeyer; // static reference to non-static type
 	
 	public Generics() {}
 	
@@ -46,15 +47,25 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	
 	
 //	public <F extends G> void first() {}
-	public <F extends T> void firstFirst() {}
+//	public <F super Number> void first() {} // super not allowed for bounding generics
+	public <F extends T> void firstFirst() {} // declaring type F used within this method must extend T declared in class
 	public <F extends Number> void otherFirst() {} 
-//	public <? extends Number> void otherFirstXXX() {} 
+	public <F extends Number> F notFirst(F in) {
+		return null;
+	} 
+	public <F extends Number & Comparable<T> & Runnable> void multiBounded() {}
+//	public <? extends Number> void otherFirstXXX() {} // cannot use wildcard for declaring parameterized types of method or class
 //	public <H> void second(List<I> list) {}
 	public <J> void third(List<J> list) {}
 //	public <K> void fourth(List<K extends L> list) {}
 //	public <K> void otherFourth(List<K extends Object> list) {}
 //	public <K> void fifth(List<K extends T> list) {}
 	public <K> void sixth(List<? extends K> list) {} 
+	public <K> void seventh(List<? extends K> list) {} 
+	
+//	List<E extends Number> genericList; // typed generics are NOT allowed for declaring VARIABLES (are allowed declaring class and methods)
+//	List<T extends Number> genericFromClassList; // does not compile
+	List<? extends Number> wildList;
 	
 //	List<Exception> exceptions = new ArrayList<IOException>();
 	
@@ -66,12 +77,12 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 	}	
 	
 	public static void main(String[] args) {
-		Generics omitDiamond = new Generics<String, Integer, Object, Object>("Brian", 39);  // DECLARATION OMITS <> AND PARAM TYPES java infers both as Object
+		Generics omitDiamond = new Generics<String, Integer, Object, Number>("Brian", 39);  // DECLARATION OMITS <> AND PARAM TYPES java infers both as Object
 //		System.out.println(omitDiamond.getName() + omitDiamond.getAge()); // does not compile '+' operator undefined for Object
 		System.out.println(omitDiamond.getName()); // works because Object is the reference type but implementation is String toString() method 
 		System.out.println(omitDiamond.getName().toString() + omitDiamond.getAge().toString()); 
 		
-		Generics<String, Integer, Object, Object> includeParamTypes = new Generics<>("Brian", 39);
+		Generics<String, Integer, Object, Number> includeParamTypes = new Generics<>("Brian", 39);
 		// TYPE ERASURE after Java compiles all generics are Objects, however the compilier adds relevant casting behind the scenes for declared type
 		// now  getName() is cast as a String and getAge() cast as Integer, so operator works with operator using Integer.toString()
 		System.out.println(includeParamTypes.getName().toUpperCase() + includeParamTypes.getAge().doubleValue()); 
@@ -104,7 +115,32 @@ public class Generics<T, U, hamburger, _H0tdo9s> { // follows naming convention 
 //		List<Integer> sList = new ArrayList<Integer>();
 //		oList = sList;  								// same compile error
 		
+		System.out.println();
+//		System.out.println(averageN(new ArrayList<Double>())); // generics are invariant i.e. NOT covariant
+		System.out.println(averageExN(new ArrayList<Double>()));
 	}
+	
+	static double averageN(List<Number> list){
+		double sum = 0.0;
+		for(Number n : list){ sum += n.doubleValue(); }
+		return sum/list.size();
+	}
+	static <E extends Number> double averageExN(List<E> list){
+		double sum = 0.0;
+//		list.add(10); // E could be List<Double> now which will not accept an Integer or int primitive
+//		List<Double> dList = new ArrayList<>();
+//		dList.add(Integer.valueOf(10));
+//		Double dWrap = 10;
+		double dPrim = 10;
+		for(Number n : list){ sum += n.doubleValue(); }
+		return sum/list.size();
+	}
+	static double averageWildcard(List<? extends Number> list){ // equivalent to averageExN()
+		double sum = 0.0;
+		for(Number n : list){ sum += n.doubleValue(); }
+		return sum/list.size();
+	}
+	
 }
 
 

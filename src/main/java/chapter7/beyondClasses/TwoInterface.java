@@ -2,6 +2,8 @@ package chapter7.beyondClasses;
 
 public abstract interface TwoInterface extends OneInterface {
 	
+	int ONE = 2; 
+	
 	public abstract void methodA();
 	
 	void methodB();

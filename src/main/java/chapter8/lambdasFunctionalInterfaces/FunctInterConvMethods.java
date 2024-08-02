@@ -29,6 +29,7 @@ public class FunctInterConvMethods {
 		
 		Predicate<String> isEgg = s -> s.contains("egg"); 
 		Predicate<String> notEgg = isEgg.negate();
+		Predicate<String> alsoNotEgg = Predicate.not(isEgg);
 		Predicate<String> isBrown = s -> s.contains("brown");
 		Predicate<String> isGreen = s -> s.contains("green");
 		BiPredicate<String, String> isColor = String::contains;

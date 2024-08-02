@@ -42,11 +42,19 @@ public class LambdaTest {
 				}
 			); // don't forget the semi-colon when assigning the return to a variable
 			
+			String anonClassQuadPed = testTrait(a, 
+					new TraitChecker() {
+						public String test(Animal a) {
+							return a.numLegs() == 4 ? "anon class is quadped" : "anon class not quadped";
+						}
+					}
+			);
+			
 			// returns String to match TraitChecker input/return type but different from CheckIsBiped class
 			String legsC = testTrait(a, x -> Integer.toString(x.numLegs())); 
 			
 			System.out.println("\t legsA: " + legsA + " || legsB: " + legsB + 
-					" || legsBreturn: " + legsBreturn + " || legsC: " + legsC);
+					" || legsBreturn: " + legsBreturn + " || legsC: " + legsC + " || anonClassQuadPed: " + anonClassQuadPed);
 			
 			TraitChecker tc = x -> x.isDangerous() ? "dangerous" : "not dangerous";
 			TraitCheckerChild tcChild = new CheckIsDangerous();

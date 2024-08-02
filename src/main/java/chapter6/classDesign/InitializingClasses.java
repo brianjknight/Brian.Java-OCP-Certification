@@ -1,24 +1,68 @@
 package chapter6.classDesign;
 
 public class InitializingClasses {
+	static {  // A
+		System.out.println("static initializer A");
+		printOneAndTwo();
+//		new InitializingClasses().print(); // does compile and run; call initialization first makes methods and default variables values available
+		System.out.println();
+	}
+
+	{
+		System.out.println("instance initializer");
+		this.print();
+		System.out.println();
+	}
+	
 	static int one = 1;
 	static int two = 2;
 	
-	static {
-		System.out.println("static initializer A");
-//		System.out.println("three = " + three); // does not compile
+	static { // B
+		System.out.println("static initializer B");
+		printOneAndTwo();
+		System.out.println();
+	}
+	
+	static { // C
+		System.out.println("static initializer C");
+		// although class initialization creates memory space and default value for members, 
+		// you cannot use them prior to declaration in the initializers
+//		System.out.println("three = " + three); // does not compile; 
+		printThree();
+		System.out.println();
 	}
 	static int three; // not a final field
 	
-	static {
-		System.out.println("three = " + three);
+	static { // D
+		System.out.println("static initializer D");
+		printThree();
+		System.out.println();
 	}
-	static {
+	static { // E
+		System.out.println("static initializer E");
 		three = 3;
-		System.out.println("three = " + three);
+		printThree();
+		System.out.println();
 	}
 	
 	public static void main(String[] args) {
 		System.out.println("main method");
+		new InitializingClasses();
+	}
+	
+	
+	// methods
+	
+	static void printOneAndTwo() {
+		System.out.println("one = " + one);
+		System.out.println("two = " + two);
+	}
+	
+	static void printThree() {
+		System.out.println("three = " + three);
+	}
+	
+	void print() {
+		System.out.println("instance method");
 	}
 }
