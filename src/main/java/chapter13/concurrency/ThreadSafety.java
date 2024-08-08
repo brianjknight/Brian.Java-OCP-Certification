@@ -20,18 +20,18 @@ public class ThreadSafety {
 		
 		Lock lock = new ReentrantLock();
 		
-		new Thread(() -> {
+		Thread helloThread = new Thread(() -> {
 			try {
 				printHello(lock);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}).start();
+		});
+		helloThread.start();
 		
-		// the new Thread starts executing and main thread continues 
-		// so here calling sleep for 2/10 second allows "Hello" to print first before attempting to acquire next lock
-		Thread.sleep(200);  // polling to force main thread to wait so lock is created in printHello() method.
+		// the new Thread starts executing and main thread continues
+		// however there is no guarantee of happens-first relationship between threads
+		Thread.sleep(200);  // by polling main thread, it give helloThread time to acquire the lock
 		
 		if(lock.tryLock(100, TimeUnit.MILLISECONDS)) { // if first thread takes too long e.g.sleep(1000), this times out 
 //		if(lock.tryLock(2000, TimeUnit.MILLISECONDS)) { // first thread sleeps 1 second but timeout here is 2 seconds; lock is able to acquire and return true

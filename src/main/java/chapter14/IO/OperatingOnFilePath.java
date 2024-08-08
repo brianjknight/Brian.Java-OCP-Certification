@@ -19,6 +19,8 @@ public class OperatingOnFilePath {
 			// relative path from execution is src/main.....
 			// "./" and "../main" are redundant 
 			
+			System.out.println("'./' path : " + Path.of("./")); // ignores trailing '/'
+			
 			// notice how getRoot() and toAbsolutePath() change if this is a root or relative path
 			Path zooTxtFile = Path.of("src/./main/../main/resources/chapter14/zoo.txt"); 
 			Path zooSameFile = Path.of("src/main//resources/chapter14/zoo.txt");

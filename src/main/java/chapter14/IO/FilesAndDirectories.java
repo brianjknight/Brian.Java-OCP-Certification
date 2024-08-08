@@ -1,5 +1,6 @@
 package chapter14.IO;
 
+import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +11,10 @@ public class FilesAndDirectories {
 	public static void main(String[] args) {
 		
 		System.out.println("my file system separator is: " + System.getProperty("file.separator"));
+		System.out.println("File.separator: " + File.separator);
+		System.out.println(File.separatorChar);
+		System.out.println("path separators: " + File.pathSeparator);
+		System.out.println(File.pathSeparatorChar);
 		
 		System.out.println();
 		
