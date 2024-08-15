@@ -74,6 +74,8 @@ public class UsingLocales {
 		System.out.println();
 		
 		DateTimeFormatter dtfSplit = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL, FormatStyle.SHORT); // separate date & time styles
+		DateTimeFormatter BADdtfSplit = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT, FormatStyle.FULL); // separate date & time styles
+//		String dateTimeExcep = BADdtfSplit.format(ltd);// style for time FULL & LONG expect a time zone to format
 		System.out.println("dtfSplit: " + dtfSplit.format(ltd));
 		System.out.println("dtfSplit fr_CA: " + dtfSplit.withLocale(Locale.CANADA_FRENCH).format(ltd));
 		System.out.println();

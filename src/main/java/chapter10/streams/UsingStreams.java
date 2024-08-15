@@ -140,6 +140,33 @@ public class UsingStreams {
 		// signature does not include return type so even though it calls a method that returns the value is ignored
 		long count = bkStrm.peek(x->((Book)x).title()).count(); 
 		System.out.println("count = " + count);
+		
+		// From enthuware 17/21 pg 644
+		// note count() and findAny() can short circuit previous intermediate operations
+		System.out.println();
+		System.out.println("marks");
+		Stream<Integer> marks = Stream.of(55, 65, 70, 80, 70);
+		System.out.println(marks.peek(System.out::println).sorted().peek(System.out::println).count()); // no change in count so short circuits peek even though sorted is stateful
+		
+		System.out.println("marksTwo");
+		Stream<Integer> marksTwo = Stream.of(55, 65, 70, 80, 70);
+		System.out.println(marksTwo.peek(System.out::println).map(i -> i.toString()).count());
+		
+		System.out.println("marksThree");
+		Stream<Integer> marksTree = Stream.of(55, 65, 70, 80, 70);
+		System.out.println(marksTree.peek(i -> System.out.print(i+" ")).toList());
+		
+		System.out.println("marksFour");
+		Stream<Integer> marksFour = Stream.of(55, 65, 70, 80, 70);
+		System.out.println(marksFour.peek(i -> System.out.print(i+" ")).max(Integer::compareTo));
+		
+		System.out.println("marksFive");
+		Stream<Integer> marksFive = Stream.of(55, 65, 70, 80, 70);
+		System.out.println(marksFive.peek(System.out::println).distinct().findAny()); // short circuits distinct even though distinct is stateful
+		
+		System.out.println("marksSix");
+		Stream<Integer> marksSix = Stream.of(55, 65, 70, 80, 70);
+		System.out.println(marksSix.peek(i -> System.out.print(i+" ")).sorted().findFirst());
 	}
 	
 	public record Book(String title, String Author) {}

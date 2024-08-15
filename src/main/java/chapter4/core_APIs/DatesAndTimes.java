@@ -24,7 +24,7 @@ public class DatesAndTimes {
         System.out.println("length of month: " + d.lengthOfMonth());
 
         LocalDateTime now = LocalDateTime.now();
-        System.out.println(now);
+        System.out.println("now: " + now);
         System.out.println(ZonedDateTime.now());
         System.out.println(ZonedDateTime.now().toInstant());
         System.out.println(Instant.now());
@@ -34,6 +34,15 @@ public class DatesAndTimes {
 
         var dec = LocalDate.of(2023, Month.DECEMBER, 31);
 
+        // comparing date/time
+//        int compare = now.compareTo(d); // compareTo must be same type
+        int compare = d.compareTo(start);
+        boolean d_Start = d.isBefore(start); // must be same type
+        boolean equals = d.equals(now); // input is Object type
+        boolean IS_equal = d.isEqual(start); // only for LocatDate and LocalDateTime
+        boolean IS_eql = now.isEqual(LocalDateTime.now());
+        System.out.println("LocalDateTime  isEqual(): " + IS_eql);
+        
         while (start.isBefore(dec)) {
             System.out.println(start);
             start = start.plus(p);
@@ -42,8 +51,10 @@ public class DatesAndTimes {
         LocalTime timeNow = LocalTime.now();
 //        timeNow = timeNow.plus(p); // throws runtime exception
         
-        Period x = Period.ofYears(1).ofMonths(6);
-        System.out.println("x = " + x);
+        Period periodChained = Period.ofYears(1).ofMonths(6);
+        System.out.println("periodChained = " + periodChained);
+        Duration durationChained = Duration.ofHours(8).ofMinutes(60);
+        System.out.println("durationChained: " + durationChained);
 
         Period ymd = Period.of(10,3, 20);
         System.out.println("ymd = " + ymd);

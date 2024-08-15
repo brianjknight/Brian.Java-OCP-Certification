@@ -1,5 +1,7 @@
 package chapter8.lambdasFunctionalInterfaces;
 
+import java.util.List;
+
 public class MethodReference {
 	public static void main(String[] args) {
 		String name = "Brian";
@@ -38,6 +40,7 @@ public class MethodReference {
 		AnimalCreator animalCreator = Animal::new;
 		System.out.println("Animal: " + animalCreator.create("milipede", 1000, false));
 		
+//		StringParamChecker p1 = List::isEmpty; // bad parameter
 	}
 }
 
