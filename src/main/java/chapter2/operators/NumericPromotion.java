@@ -26,6 +26,8 @@ public class NumericPromotion {
 
         byte one = 1;
         byte negOne = -1;
+        byte okOne = --one;
+        byte xOne = one;
 //        byte badOne = -one; // variable used Java assumes int type 
         
         byte num = 1 + 2; // literals are considered int by default BUT can fit into byte 
@@ -38,7 +40,7 @@ public class NumericPromotion {
         
         final int intFinal = 1;
         final long longFinal = 1;
-        byte weird = -intFinal; // oneFinal is a compile time constant; type promotion to ints but fits in byte
+        byte weird = -intFinal + 1; // oneFinal is a known compile time constant since it is FINAL; type promotion to ints but fits in byte
 //        byte noGood = longFinal + 1; // type promotion to long so not allowed
         final Byte b1 = 1;
 //        Byte b2 = -b1; //will not compile even though b1 is final and wrappers are immutable;

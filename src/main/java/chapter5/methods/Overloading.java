@@ -20,7 +20,7 @@ public class Overloading {
 
     	int[] intArr = {1,2,3};
     	Integer[] INTarr = {4,5,6};
-    	over.go(i); // following the overloading order, Java tries to Autobox then check for varargs so primitive is now Wrapper
+    	over.go(i); // no exact match, larger primitive, or wrapper method so uses varargs
     	over.go(c);
     	over.go(intArr);
     	over.go(INTarr);

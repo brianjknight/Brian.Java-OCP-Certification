@@ -9,7 +9,7 @@ public class Primitives {
         System.out.println(code);
         System.out.println(Primitives.code);
         System.out.println(0 + "_");
-        System.out.println(0 + '_');
+        System.out.println(0 + '_'); // promote char to int then adds
 
         Primitives p = new Primitives();
         System.out.println(p.n);
@@ -28,7 +28,8 @@ public class Primitives {
         System.out.println(-1.0/zero); // divide by zero with wrapper does not throw exception
         System.out.println(1.0/zero);
         
-        
+        System.out.println();
+        p.testMethod();
     }
 
     String n; // variables can use letters, numbers, currency symbol, and underscore
@@ -98,5 +99,10 @@ public class Primitives {
     int maxA = Math.max(one, two);
     int maxB = Math.max(i, (int) d);
 
-    
+    void testMethod() {
+    	Long l = 1L;
+    	l += 1;
+    	l++;
+    	System.out.println("testMethod l=" + l);
+    }
 }

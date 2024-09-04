@@ -15,11 +15,13 @@ public class UsingLocales {
 	public static void main(String[] args) {
 		System.out.println(Locale.getDefault());
 		
-		System.out.println(Locale.GERMAN);
+		Locale german = new Locale.Builder().setLanguage("GERMAN").build();
+		System.out.println(german); // must call .build() to return a Locale instead of the builder
+		System.out.println(german.getCountry()); // returns empty string, not null, since region was not set
 		System.out.println(Locale.GERMANY);
 		System.out.println(new Locale("DE")); // single param is still language and will be normalized to lowercase
 		System.out.println(new Locale("de","AT")); // german and Austria
-		System.out.println(new Locale("de12!@","ATXX")); // allowed but may have unexpected behavior
+		System.out.println(new Locale("de12!@abcdefghi","ATXX456789")); // allowed but may have unexpected behavior
 		
 		Locale custom = new Locale.Builder()
 									.setLanguage("xxxx")
@@ -81,6 +83,10 @@ public class UsingLocales {
 		System.out.println();
 		
 		Locale spanish = new Locale("es","ES");  //default locale is currently en_us
+		System.out.println("spanish Category.DISPLAY: " + spanish.getDefault(Category.DISPLAY));
+		System.out.println("spanish Category.FORMAT: " + spanish.getDefault(Category.FORMAT));
+		System.out.println();
+		
 		var money = 5.99;
 		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
 		
@@ -88,6 +94,9 @@ public class UsingLocales {
 		System.out.println();
 		
 		Locale.setDefault(Category.DISPLAY, spanish);
+		System.out.println("spanish Category.DISPLAY: " + spanish.getDefault(Category.DISPLAY));
+		System.out.println("spanish Category.FORMAT: " + spanish.getDefault(Category.FORMAT));
+		System.out.println();
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + nfCur.format(money));
 		System.out.println();
 		
@@ -98,6 +107,8 @@ public class UsingLocales {
 		System.out.println(spanish.getDisplayLanguage() + " " +  spanish.getDisplayCountry() + " " + NumberFormat.getCurrencyInstance(Locale.KOREA).format(money));
 		System.out.println();
 		
+		System.out.println("spanish Category.DISPLAY: " + spanish.getDefault(Category.DISPLAY));
+		System.out.println("spanish Category.FORMAT: " + spanish.getDefault(Category.FORMAT));
 	}
 	
 }

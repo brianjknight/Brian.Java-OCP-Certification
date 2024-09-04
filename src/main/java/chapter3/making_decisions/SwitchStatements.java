@@ -70,7 +70,7 @@ public class SwitchStatements {
 //                return; // allowed but ends method; don't do this
             case 12:
                 System.out.println("twelve");
-//            case 13 -> System.out.println(""); // cannot mix switch statements with switch expressions
+//            case 13 -> System.out.println(""); // cannot mix old and new syntax
 //            case 13:
 //            	14:
 //            	15:
@@ -215,7 +215,8 @@ public class SwitchStatements {
 				System.out.println(1);
 			case 2: 
 				System.out.println(2);
-//				return 2;
+//				return; // does compile
+//				return 2; // does not compile
 	
 			default:
 				System.out.println("default");
@@ -227,7 +228,7 @@ public class SwitchStatements {
         System.out.println();
         switch (number) {
         	case 1 -> System.out.println(1);
-        	case 2 -> {
+        	case 2 -> { // careful new syntax does not execute all cases 
         		System.out.println(2);
         		break;
         	}
@@ -275,7 +276,10 @@ public class SwitchStatements {
     String switchMethod(int i) {
     	
     	switch(i) {
-    		case 1: return "ONE";
+    		case 1: return "ONE"; // not a void method so allowed to return
+    		case 2: return "two";
+    		case 3: System.out.println("three");
+    		default: System.out.println("");
     	}
     	
     	String result = switch (i) {

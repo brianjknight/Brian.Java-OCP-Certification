@@ -87,30 +87,30 @@ public class PatternMatching {
     	if (i instanceof Integer) {
     		System.out.println(i);
     	}
-    	if (i instanceof Integer num) { 
-    		System.out.println(num);
-    	}
+//    	if (i instanceof Integer num) {
+//    		System.out.println(num);
+//    	}
 
     	Parent p = new Parent();
     	Child c = new Child();
-    	if (c instanceof Parent XX) {
-    		System.out.println("c instanceof Parent XX");
-    	}
-    	if (p instanceof Parent YY) {
-    		System.out.println("p instanceof Parent YY");
-    	}
+//    	if (c instanceof Parent XX) {
+//    		System.out.println("c instanceof Parent XX");
+//    	}
+//    	if (p instanceof Parent YY) {
+//    		System.out.println("p instanceof Parent YY");
+//    	}
     	
     	// from book
     	Integer value = 123;
     	if(value instanceof Integer) {}
-    	if(value instanceof Integer data) {} // book says "DOES NOT COMPILE"
+//    	if(value instanceof Integer data) {} // book says "DOES NOT COMPILE"
     	
     	// from OCP Java 17/21 book page 252
     	Number n = null;
-    	if(n instanceof Number num){ //compilation error in Java 17 but not in Java 21
-    	}
-    	if(n instanceof Object num){ //compilation error in Java 17 but not in Java 21
-    	}
+//    	if(n instanceof Number num){ //compilation error in Java 17 but not in Java 21
+//    	}
+//    	if(n instanceof Object num){ //compilation error in Java 17 but not in Java 21
+//    	}
     }
 }
 

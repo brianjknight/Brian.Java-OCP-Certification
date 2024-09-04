@@ -40,22 +40,26 @@ public class MathAPIs {
 		Double two = 2.0;
 		System.out.println(Math.pow(4, two));
 		
-		System.out.println(Math.random());
+		System.out.println("Math.random(): " + Math.random());
 		System.out.println();
 		
 		System.out.println();
-		Random r = new Random();
+		Random r = new Random(); // seed to determine algorithm
 		System.out.println("nextInt(bound): " + r.nextInt(10));
 		System.out.println("nextInt: " + r.nextInt());
-		System.out.println("nextDouble: " + r.nextDouble(100.0));
+		System.out.println("nextDouble: " + r.nextDouble());
 		System.out.println("nextLong: " + r.nextLong());
 		
 		System.out.println();
-		System.out.println("divide by float");
+		System.out.println("divide by float wrapper or primitive is not an exception");
 		Float f1 = 10.0F;
 		Float f2 = 0.0F;
 		System.out.println(f1/f2);
-		System.out.println(-10.0F/0.0F);
+		System.out.println(-10.0/0.0);
+		Integer i1 = 1;
+		Integer i0 = 0;
+		System.out.println(i1/i0);
+//		System.out.println(1/0);
 		
 	}
 }

@@ -1,7 +1,11 @@
 package chapter7.beyondClasses;
 
+import chapter6.classDesign.ConcreteChild;
+
 public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Binterface {
 
+	ConcreteChild concChild = null; // import package from project
+	
 	@Override
 	public void divide() {
 		System.out.println("doing division");

@@ -15,10 +15,11 @@ public class ComparingValues {
 //        boolean badNull = b==null; // primitives cannot be null
         boolean nullBool = null == null;
 
-        String s = "";
+        String s = "1";
         Integer i = 1;
 //        boolean bbb = s == i; // incompatible types
         boolean BBB = s.equals(i);
+        System.out.println("BBB: " + BBB);
         
         long fivePrimitive = 5L;
         

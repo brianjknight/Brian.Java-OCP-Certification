@@ -9,6 +9,8 @@ public class SetupDatabase {
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement()) {
  
+        	conn.setSavepoint();	
+        	
             dropExisting(conn);
             createTables(conn);
             createStoredProcedures(conn);

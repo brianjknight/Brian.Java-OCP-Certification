@@ -27,8 +27,8 @@ public class Loops {
             hungryHippopotamus--;
             System.out.println(hungryHippopotamus);
         }
-        System.out.println();
         
+        PRINT_LABEL: System.out.println();
         
         // labels and break
 //        LABEL_A : int num = 1; // bad label, only allowed on control and block statements
@@ -45,7 +45,7 @@ public class Loops {
         OUTER_LOOP: for(int[] mySimpleArray : myComplexArray) {
             inner_loop: for(int i=0; i<mySimpleArray.length; i++) {
             	if (mySimpleArray[i] == 2) break inner_loop;
-                if (mySimpleArray[i] == 12) {
+                IF_LABEL: if (mySimpleArray[i] == 12) {
                     break OUTER_LOOP;
                 }
                 System.out.print(mySimpleArray[i] + " ");

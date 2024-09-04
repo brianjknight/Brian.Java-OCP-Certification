@@ -28,13 +28,14 @@ public class AutoboxingUnboxing {
 
         Integer ii = 1;
         Double dd = 2.0;
-        System.out.println(ii + dd); // 
+        System.out.println(ii + dd); // wrappers are unboxed to use '+' operator
 
         Integer z = new Integer(1);
         
         Integer ax = 100;
         Integer bx = 100;
         ax = ax + 1;
+        ax++;
         System.out.println("ax = " + ax);
         System.out.println("bx = " + bx);
         
@@ -47,7 +48,7 @@ public class AutoboxingUnboxing {
         
         // be careful with null values when autoboxing/unboxing is happening
         Character f = null;
-        char g = f; // throws NullPointerException. f is not known at compile time
+//        char g = f; // throws NullPointerException. f is not known at compile time
         			// Behind the scenes Java is trying to call method f.charValue() on a null object
 //        char gg = null;
         

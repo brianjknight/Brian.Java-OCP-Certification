@@ -2,9 +2,16 @@ package chapter1.building_blocks;
 
 //import java.lang.System; // redundant java.lang is automatically imported
 //import java.lang.*;  // redundant
+
+import java.util.List;
+import static java.util.List.copyOf; // 
+//import static java.util.List.add;
+import java.util.ArrayList;
+
 //import java.lang.Math.PI; // cannot import methods unless static method and static import
 import static java.lang.Math.PI;
 import static java.lang.Math.*; 
+//import static java.lang.*;
 import java.lang.Math.*; // tries to import all classes under Math (even though there are none) not static fields/methods
 import java.nio.file.Paths.*;
 //import java.util.*;  // redundant
@@ -45,6 +52,10 @@ public class Imports {
 		java.util.Date utilDate2 = new java.util.Date();
 		java.sql.Date sqlDate1 = new java.sql.Date(0);
 		
+	}
+	
+	void testNonStaticStaticImport() {
+		List<String> list = new ArrayList<>();
 	}
 	
 }

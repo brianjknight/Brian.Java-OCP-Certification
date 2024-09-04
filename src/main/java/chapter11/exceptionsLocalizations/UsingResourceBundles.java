@@ -1,6 +1,7 @@
 package chapter11.exceptionsLocalizations;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -13,6 +14,8 @@ public class UsingResourceBundles {
 		System.out.println("rbEN.getLocale(): " + rbEN.getLocale());
 		System.out.println("rbEN.keySet(): " + rbEN.keySet());
 		System.out.println("rbEN: " + rbEN.getString("hello") + ", " + rbEN.getString("open"));
+//		String[] en_open = rbEN.getStringArray("open");
+//		System.out.println(Arrays.toString(en_open));
 		System.out.println();
 
 		ResourceBundle rbFR = ResourceBundle.getBundle("Zoo", new Locale("fr","FR")); // exact bundle fr_FR not found so looks for Zoo_fr.props
@@ -54,6 +57,7 @@ public class UsingResourceBundles {
 		// XXXX yy > XXXX default locale en_US > XXXX en > XXXX bundle default 
 		System.out.println(rbXXXXdefault.getString("hello") + " " + rbXXXXdefault.getString("open"));
 		System.out.println();
+		
 	}
 }
 

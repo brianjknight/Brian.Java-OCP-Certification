@@ -41,6 +41,7 @@ public class StaticClass {
 //		last = "knight";
 		final String nothing; // final local variable only needs initialized before it is used
 //		nothing = " ";
+//		nothing = "";
 	}
 	
 //	StaticClass(String middle) { // with multiple constructors need to account for initializing final fields
