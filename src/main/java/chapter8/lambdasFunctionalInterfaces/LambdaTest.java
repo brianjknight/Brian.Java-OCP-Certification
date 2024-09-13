@@ -15,7 +15,7 @@ public class LambdaTest {
 		for (Animal a : animals) {
 			System.out.println("Animal: " + a);
 			
-//			var testLambdaA = a -> a.numLegs();
+//			var testLambdaA = a -> a.numLegs()==2;
 //			var testLambdaB = (Animal a) -> a.numLegs();
 //			var testLambdaC = a -> (Object) a.numLegs();
 //			var varLambdaD = (Integer a, Integer b) -> a + b;

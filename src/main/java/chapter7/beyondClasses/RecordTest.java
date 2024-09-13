@@ -11,12 +11,19 @@ public class RecordTest {
 		System.out.println(brian.weight());
 		System.out.println(PersonRecord.species);
 		
-		PersonRecord allison = new PersonRecord("Allison","Fedorowicz");
-		System.out.println(allison);
-		
-		allison.changeSpecies("fish");
-		System.out.println(allison.weight());
-		System.out.println("Allison species: " + allison.species);
-		System.out.println("Brian species: " + brian.species);
+		PersonRecord allison;
+		try {
+			allison = new PersonRecord("Allison","Fedorowicz");
+			
+			System.out.println(allison);
+			
+			allison.changeSpecies("fish");
+			System.out.println(allison.weight());
+			System.out.println("Allison species: " + allison.species);
+			System.out.println("Brian species: " + brian.species);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

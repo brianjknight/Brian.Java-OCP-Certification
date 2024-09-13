@@ -5,7 +5,7 @@ import java.io.Serializable;
 record EmptyRecord() {} // allowed to compile
 
 // can implement interfaces
-// cannot use extend
+// cannot use extend but implicitly extends java.lang.Record
 // implicitly and ONLY allowed to be public & final
 public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) implements Serializable{
 	
@@ -30,10 +30,9 @@ public final record PersonRecord(String first, String last, int age, int weight,
 	
 	// special compact constructor; no params or ()
 	// acts as the all args constructor when called new PersonRecord(, , , , , ); CANNOT have both all args and compact
-	public PersonRecord {
+	public PersonRecord { // canonical constructor cannot use throws
 		if (last == null) {
-//			 this.last = "last"; // cannot modify the fields directly in compact constructor 
-			// it calls long implicit long constructor 
+//			 this.last = "n/a"; // cannot modify the fields directly in compact constructor 
 		}
 		
 		if (weight < 0) throw new IllegalArgumentException("Weigth cannot be negative!");
@@ -42,14 +41,14 @@ public final record PersonRecord(String first, String last, int age, int weight,
 		first = first.toUpperCase();
 //		this.first = first.toUpperCase(); // not allowed
 		
-		// compiler automatically inserts the assignment statements of the form this.<fieldname> = <fieldname>
+		// compiler implicitly assigns values to instance fields
 	}
 	
 	
 	// Overloaded constructor
-	public PersonRecord(String first, String last) {
+	public PersonRecord(String first, String last) throws Exception {
 //		first = first.toUpperCase();
-		this(first, last, 0, 0, 0, "pickles"); // constructed with this therefore next line has no affect on the object
+		this(first, last, 0, 0, 0, "pickles"); // MUST call this(...); constructed with this therefore next line has no affect on the object
 		first = "" + first.substring(0,2).toLowerCase() + first.substring(2).toUpperCase(); // validation check
 		System.out.println(first); // param was changed however the instance was already created with this() call
 	}
@@ -62,6 +61,12 @@ public final record PersonRecord(String first, String last, int age, int weight,
 	
 	public void setWeight() {
 //		this.weight -= 5; // weight is final		
+	}
+	
+	public int getWeight() {
+		int weight = this.weight; // allowed to access this fields
+		System.out.println("not default accessor");
+		return weight;
 	}
 	
 	// changes the class not the instance

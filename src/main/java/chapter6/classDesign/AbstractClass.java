@@ -19,11 +19,12 @@ public abstract class AbstractClass {
 	}
 	
 //	abstract static void sayHello(); // static methods cannot be abstract
-	
-	public abstract String getName() throws FileNotFoundException; // exceptions are allowed
-	
-	abstract void abstractVoid();
 //	final abstract void abstractVoid(); // cannot be final
 //	private abstract void abstractVoid();
+	
+	abstract void abstractVoid();
+
+	abstract public String getName() throws FileNotFoundException; // exceptions are allowed
+	
 	protected abstract void abstractProtectedVoid();
 }

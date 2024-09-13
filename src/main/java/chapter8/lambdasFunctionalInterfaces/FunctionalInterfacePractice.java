@@ -53,7 +53,7 @@ public class FunctionalInterfacePractice {
 		Function<Integer, Double> f1 = Integer::doubleValue;
 		System.out.println("double value: " + f1.apply(10));
 		
-		BiFunction<Double, Double, Integer> bf1 = Double::compareTo; // return -1,0,1
+		BiFunction<Double, Double, Integer> bf1 = Double::compareTo; // returns neg, 0, or pos int
 		System.out.println("1 compare 2: " + bf1.apply(1.0, 2.0));
 		
 		BiFunction<String,String,String> bf2 = String::concat;

@@ -19,7 +19,7 @@ public class UsingPrimitiveStreams {
 		System.out.println(iss);
 		System.out.println("count: " + iss.getCount());
 		System.out.println("avg: " + iss.getAverage());
-		System.out.println(IntStream.of(new int[] {}).summaryStatistics());
+		System.out.println(LongStream.of().summaryStatistics());
 		System.out.println();
 		
 		DoubleStream dStream = DoubleStream.of(1.5,2.5,3.5);
@@ -71,7 +71,7 @@ public class UsingPrimitiveStreams {
         integerList.add(List.of(4, 5, 6));
         integerList.add(List.of(7, 8, 9));
         // mapToDouble for each nested list then flatMapToDouble to flatten the 3 lists
-		DoubleStream doublesFromInts = integerList.stream().flatMapToDouble(list -> list.stream().mapToDouble(i -> i)); // implicit cast from int to double
+		DoubleStream doublesFromInts = integerList.stream().flatMapToDouble(list -> list.stream().mapToDouble(i -> i)); // mapToDouble(ToDoubleFunctin<T>) implicit cast Integer to Double
 		List<Double> doubleStreamList = doublesFromInts.boxed().toList(); // boxed returns Stream<Double>
 //		List<Double> otherDoublesList = doublesFromInts.mapToObj(d -> d).toList(); //also works
 		System.out.println("doubleStreamList: " + doubleStreamList);
@@ -84,6 +84,7 @@ public class UsingPrimitiveStreams {
 		
 		
 		var ls = LongStream.of(1,2,3); // remember these are primitives not Long wrapper so Java can implicitly cast and not need to autobox
+//		Stream<Long> longSream = Stream.of(1,2,3); // this does not compile
 	}
 	
 }

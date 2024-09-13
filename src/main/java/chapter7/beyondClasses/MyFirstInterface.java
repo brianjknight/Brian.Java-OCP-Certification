@@ -8,6 +8,8 @@ public sealed interface MyFirstInterface permits OneInterface {
 //	protected int four = 4;
 	
 	
+//	public MyFirstInterface(){} // constructors not allowed for interfaces
+	
 	interface nestedInterface {}
 	
 	public static void main(String[] args) {

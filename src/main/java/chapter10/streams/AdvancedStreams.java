@@ -49,6 +49,8 @@ public class AdvancedStreams {
 				k -> k,
 				(s1, s2) -> s1 + "," + s2)); // BinaryOperator to handle dupalicate keys
 		System.out.println("mapIntString: " + mapIntString);
+		var ohMyGrouping = Stream.of("lions", "tigers", "bears");
+		System.out.println("ohMyGrouping: " + ohMyGrouping.collect(Collectors.groupingBy(String::length)));
 		System.out.println();
 		
 		var ohMyTree = Stream.of("lions", "tigers", "bears");
@@ -62,8 +64,8 @@ public class AdvancedStreams {
 	
 		Stream<String> words = Stream.of("jack", "jack","jack", "jack", "jill","ant", "and", "amy", "bike", "bin", "balloon", "coolers");
 		Map<Character, List<String>> firstLetter = words.collect(
-				Collectors.groupingBy(
-						s -> s.charAt(0)));
+													Collectors.groupingBy(s -> s.charAt(0))
+												);
 		System.out.println("firstLetter type: " + firstLetter.getClass().getSimpleName());
 		System.out.println("firstLetter: " + firstLetter);
 		System.out.println();
@@ -97,13 +99,11 @@ public class AdvancedStreams {
 		
 		Stream<String> teeing = Stream.of("jack", "jack", "jill", "jill","ant", "and", "amy", "bike", "bin", "balloon", "coolers");
 		String teeingExample = teeing.filter(s -> s.startsWith("a")).sorted()
-				.collect(Collectors.teeing(
-						Collectors.joining(":"), 
-						Collectors.joining("|"), 
-						(colonSep, pipeSep) -> new String(colonSep + " " + pipeSep)));
+									.collect(Collectors.teeing(
+											Collectors.joining(":"), 
+											Collectors.joining("|"), 
+											(colonSep, pipeSep) -> new String(colonSep + " " + pipeSep)));
 		System.out.println("teeingExample: " + teeingExample);
-		
-		
 		
 	}
 }

@@ -1,5 +1,7 @@
 package chapter7.beyondClasses;
 
+//import static chapter7.beyondClasses.Season.*;
+
 public class EnumTest {
 	
 	public static void main(String[] args) {
@@ -7,7 +9,7 @@ public class EnumTest {
 		Season s = Season.FALL;
 		
 		System.out.println(s);
-//		System.out.println(FALL); // does not compile
+//		System.out.println(FALL); // does not compile without a static import
 		
 		switch (s) {
 			case FALL:
@@ -20,5 +22,6 @@ public class EnumTest {
 			}
 		
 //		Season a = new Season(); // cannot create instance of Enum objects. treat as a static class
+		
 	}
 }

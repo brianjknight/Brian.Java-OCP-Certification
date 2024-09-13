@@ -2,6 +2,7 @@ package chapter9.collectionsGenerics;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,8 @@ public class CollectionsBasics {
 		List<String> strList = new ArrayList<>(strSet);
 		List objsList = new ArrayList();
 		List otherList = new ArrayList<>();
-		List myList = new ArrayList<String>();
+		var objArrayList = new ArrayList<>();
+		List stillOBJECTList = new ArrayList<String>();
 		
 		boolean addedA = coll.add("a");
 		System.out.println("s.add(\"a\"): " + addedA); 
@@ -29,7 +31,7 @@ public class CollectionsBasics {
 		coll.forEach(System.out::print);
 		
 		System.out.println();
-		System.out.println(coll.remove("a")); // removes SINGLE first element
+		System.out.println(coll.remove("a")); // removes SINGLE first "a" element
 		System.out.println(coll);
 		System.out.println();
 		System.out.println(coll.removeAll(List.of("a")));
@@ -43,6 +45,11 @@ public class CollectionsBasics {
 		coll.clear();
 		System.out.println(coll);
 		
+		
+		List<Integer> intList = new ArrayList<>();
+		intList.add(2);
+		intList.add(null);
+//		Collections.sort(intList);
 	}
 }
 

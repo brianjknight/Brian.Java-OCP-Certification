@@ -20,24 +20,24 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		public String getHours() {
 			return "10 to 4";
 		}
-		public void sayHello() {} // abstract interface methods must be implemented by every enum value
+		// abstract interface methods must be implemented by every enum value
+		// can be inherited by declaring it in the ENUM itself
+		public void sayHello() {} 
 	}, 
-	SPRING("Medium") {
+	SPRING() {
 		public String getTemp() {
 			return "20 to 70";
 		}
 		public String getHours() {
 			return "8 to 7";
 		}
-		public void sayHello() {}
 	}, 
 	SUMMER("High") {
 		public String getTemp() {
 			return "45 to 100+";
 		}
-		public void sayHello() {}
 	}, 
-	FALL("Medium") {
+	FALL() {
 		public String getTemp() {
 			return "20 to 70";
 		}
@@ -47,7 +47,6 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		public String getTemp() {
 			return "unknown";
 		}
-		public void sayHello() {}
 	}; // semi-colon required to mark end of ENUM declarations
 	
 	// requires all enums values to implement the abstract method
@@ -57,6 +56,8 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 	public String getHours() {
 		return "9 to 5";
 	}
+	
+	public void sayHello() {}
 	
 	static {
 		System.out.println("Class/Enum initialization");
@@ -75,7 +76,11 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 //	public Season(String expectedVisitors) {
 	Season(String expectedVisitors) {
 		this.expectedVisitors = expectedVisitors;
-		System.out.println("Initializing Season Enum: " + expectedVisitors);
+		System.out.println("Initializing Season Enum %s visitors %s".formatted(this.name(), expectedVisitors));
+	}
+	
+	Season() {
+		this("Medium");
 	}
 	
 	 public void printExpectedVisitors() {
@@ -85,6 +90,7 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 	public static void main(String[] args) {
 		System.out.println(WINTER == WINTER);
 		System.out.println(WINTER.equals(WINTER));
+		System.out.println(WINTER.equals("WINTER"));
 		System.out.println();
 		
 		System.out.println("winter toString: " + Season.WINTER);
@@ -123,5 +129,9 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		System.out.println("summer expected visitors: " + Season.SUMMER.expectedVisitors); // access to private within Enum
 		System.out.println("Winter print visitors:");
 		Season.WINTER.printExpectedVisitors();
+		System.out.println();
+		
+		System.out.println("WINTER.compareTo(SUMMER): " + WINTER.compareTo(SUMMER));
+		System.out.println("NON_SEASON.compareTo(WINTER): " + NON_SEASON.compareTo(WINTER));
 	}
 }

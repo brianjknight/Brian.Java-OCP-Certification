@@ -48,7 +48,7 @@ public class UsingStreams {
 //		bbb.peek(x -> x.remove(0)).map(List::size).forEach(System.out::print); // careful removing affects below streams	
 		
 		Stream<List<?>> showIntermediate = Stream.of(numbers, letters, chars);
-		showIntermediate.peek(e -> e.forEach(System.out::print))
+		showIntermediate.peek(e -> e.forEach(System.out::print)) // e is list then calling forEach on the list
 						.peek(e -> System.out.print(e + "!")) // e is a List
 						.map(List::size)
 						.forEach(System.out::println);
@@ -167,6 +167,14 @@ public class UsingStreams {
 		System.out.println("marksSix");
 		Stream<Integer> marksSix = Stream.of(55, 65, 70, 80, 70);
 		System.out.println(marksSix.peek(i -> System.out.print(i+" ")).sorted().findFirst());
+		System.out.println();
+		
+		List<String> zero = List.of();
+		var one = List.of("Bonobo");
+		var two = List.of("Mama Gorilla", "Baby Gorilla");
+		Stream<List<String>> animals = Stream.of(zero, one, two);
+		animals.flatMap(m -> m.stream()).peek(System.out::println).forEach(System.out::println);
+		
 	}
 	
 	public record Book(String title, String Author) {}

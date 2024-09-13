@@ -7,7 +7,6 @@ public class TestPredicateClass implements Predicate<String>{
 
 	@Override
 	public boolean test(String t) {
-		// TODO Auto-generated method stub
 		return this.equals(t);
 	}
 

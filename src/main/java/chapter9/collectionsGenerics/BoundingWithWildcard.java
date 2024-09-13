@@ -27,9 +27,6 @@ public class BoundingWithWildcard<T> {
 		bww.addToLowerBoundList(objectList);
 		bww.addToLowerBoundList(stringList);
 		
-//		List<T extends Number & Comparable & Runnable> multiUpperBoundedList = null;
-//		List<? extends Number & Comparable & Runnable> multiUpperBoundedList = null;
-		
 		ArrayList<Mammal> mams = new ArrayList<>();
 		mams.add(new Mammal());
 		mams.add(new Mammal());
@@ -102,6 +99,12 @@ public class BoundingWithWildcard<T> {
 	public void addToLowerBoundList(List<? super String> list) {
 		list.add("a string");
 	}
+	
+	public <X extends Number & Comparable & Runnable> void multiBound() {
+//		List<? extends Number & Comparable & Runnable> multiUpperBoundedList = null;
+		
+	}
 }
+
 
 

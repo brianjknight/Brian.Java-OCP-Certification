@@ -15,6 +15,7 @@ public class A {
 				class F { // local class within a method
 					int getXofC() {
 						System.out.println("xxx: " + xxx); // allowed to access instance and class members
+						System.out.println("B.this.x from local Class F: " + B.this.x);
 						
 						System.out.println(B.D.y);
 						System.out.println(D.y);
@@ -25,10 +26,16 @@ public class A {
 					
 					abstract class G {}
 					
-					G gAnonymousClass = new G() { // anonymous class must be of an interface or abstract class
-						
-					};
+					// watch for curly braces; this is not instantiating the abstract class G directly
+					G gAnonymousClass = new G() {}; // anonymous class of an abstract class
 					
+//					F ExtendedAnonClass = new F() { // anonymous class extending concrete class
+//						@Override
+//						int getXofC() {
+//							return 0;
+//						}
+//					};
+										
 					void methA() {
 						var BBB = new B();
 					}
@@ -103,6 +110,7 @@ public class A {
 		System.out.println(A.B.D.y);
 		System.out.println(A.B.D.z); // private member is accessible within the enclosing class/file
 		System.out.println("D.add(): " + A.B.D.add());
+//		System.out.println(D.y);
 		
 		A.B.D d = new A.B.D();
 //		A.B.D dddd = A.B.D();

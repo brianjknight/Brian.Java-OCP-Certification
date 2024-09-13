@@ -21,3 +21,5 @@ public sealed class Snake permits Python, Snake.Cobra { // if nested AND using p
 final class Python extends Snake {}
 
 //non-sealed class RattleSnake {} // sealed & non-sealed must have super sealed class/interface 
+
+//sealed class Worm {} // must be inherited if sealed

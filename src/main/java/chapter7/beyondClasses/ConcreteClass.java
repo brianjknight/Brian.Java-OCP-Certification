@@ -20,7 +20,7 @@ public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Bin
 		
 	}
 
-	@Override
+	@Override // required override since Ainterface & Binterface both provide default
 	public String getLetter() {
 		return "C";
 	}
@@ -52,7 +52,7 @@ public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Bin
 		
 //		ONE = 2; // fields in interfaces are implicitly constants
 		
-		System.out.println("");
+		System.out.println();
 		
 		OneInterface.caller();
 		

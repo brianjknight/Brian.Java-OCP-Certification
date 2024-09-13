@@ -10,17 +10,25 @@ public class ConcreteParent extends AbstractClass {
 	
 	@Override
 	public String getName() throws FileNotFoundException {
-		
-		return null;
+		return "super.age from getName(): " + super.age;
 	}
 
 	public static void main(String[] args) {
 		sayHi();
 		System.out.println("age: " + age);
 		System.out.println("AbstractClass.age:" + AbstractClass.age);
+//		System.out.println("super.age: " + super.age); //static context
+		
 		
 		ConcreteParent cp = new ConcreteParent();
 		AbstractClass ac = cp;
+		
+		try {
+			System.out.println(cp.getName());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		};
+
 		System.out.println("cp.num: " + cp.num);
 		System.out.println("cp.sayHi(): ");
 		cp.sayHi();

@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.remote.SubjectDelegationPermission;
+
 public class Child extends Parent {
 	// variables are never overridden only hidden
 	private Number age = 15;
@@ -36,7 +38,7 @@ public class Child extends Parent {
 //	public Integer getAge() throws FileSystemException { // cannot throw new CHECKED exception
 //	public Object getAge() throws FileNotFoundException, RuntimeException { // return type must be same or subtype 
 	public Integer getAge() throws FileNotFoundException, RuntimeException { // CAN throw broadening RUNTIME exception 
-		// cannot subtract Objects Number
+		// cannot subtract Number objects
 		// object on heap is an Autoboxed Integer
 		return super.getAge().intValue() - (short) age; 
 	}
@@ -73,6 +75,11 @@ public class Child extends Parent {
 	public List<String> hairy(ArrayList<String> list) {
 		return null;
 	}
+	
+	void testMisc( ) {
+		String temp = misc;
+		String superTemp = super.misc;
+	}
 
 	public static void main(String[] args) {
 		System.out.println("run main");
@@ -81,5 +88,6 @@ public class Child extends Parent {
 		Child c = new Child();
 //		System.out.println(c.secret);
 		System.out.println("secret: " + c.getSecret());
+		
 	}
 }

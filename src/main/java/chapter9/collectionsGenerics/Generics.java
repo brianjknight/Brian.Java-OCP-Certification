@@ -47,7 +47,7 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 	
 	
 //	public <F extends G> void first() {}
-//	public <F super Number> void first() {} // super not allowed for bounding generics
+//	public <F super Number> void first() {} // super only used with wildcard ? not for bounding generics
 	public <F extends T> void firstFirst() {} // declaring type F used within this method must extend T declared in class
 	public <F extends Number> void otherFirst() {} 
 	public <F extends Number> F notFirst(F in) {
@@ -61,13 +61,15 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 //	public <K> void otherFourth(List<K extends Object> list) {}
 //	public <K> void fifth(List<K extends T> list) {}
 	public <K> void sixth(List<? extends K> list) {} 
-	public <K> void seventh(List<? extends K> list) {} 
+	public <K> void seventh(List<? super K> list) {} 
 	
 //	List<E extends Number> genericList; // typed generics are NOT allowed for declaring VARIABLES (are allowed declaring class and methods)
 //	List<T extends Number> genericFromClassList; // does not compile
 	List<? extends Number> wildList;
+//	wildList = new ArrayList<Integer>(); // wildList is immutable
 	
 //	List<Exception> exceptions = new ArrayList<IOException>();
+	List<Exception> exceptions = new ArrayList<Exception>();
 	
 	// generic type requires formal param <T> declaration
 	public <T> void printGeneric(List<T> list) { // example of generic method type <T> independent of class generic type
@@ -99,7 +101,7 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 		list.forEach(o -> System.out.println(o + " | " + o.getClass()));
 		
 //		System.out.println(list.get(0) + list.get(1)); // does not compile since '+' operator cannot be used for Object
-		System.out.println(" " + list.get(0) + list.get(1)); // java infers string from " " and uses Object toString()
+		System.out.println(" " + list.get(0) + list.get(1)); // java infers string from " " + and uses Object toString()
 		
 //		List<> badList = new ArrayList<Integer>(); // diamond operator requires a type for declaration
 		
@@ -111,13 +113,22 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 		
 		
 //		List<Object> objList = new ArrayList<Integer>(); // not allowed to mix types even if a sub type
-//		List<Object> oList = new ArrayList<>();
-//		List<Integer> sList = new ArrayList<Integer>();
+		List<? extends Object> objList = new ArrayList<Integer>();
+		List<Object> oList = new ArrayList<>();
+		List<Integer> sList = new ArrayList<Integer>();
 //		oList = sList;  								// same compile error
 		
 		System.out.println();
-//		System.out.println(averageN(new ArrayList<Double>())); // generics are invariant i.e. NOT covariant
+//		System.out.println(averageN(new ArrayList<Double>())); // generics are invariant i.e. NOT covariant (different than bounded generic)
 		System.out.println(averageExN(new ArrayList<Double>()));
+		System.out.println();
+		
+		ArrayList<Integer> al = new ArrayList<>();
+		ArrayList rawList = (ArrayList) al;  // equivalent to ArrayList<Object> rawList but pointing to same object on the heap ArrayList<String>
+		rawList.add("string"); // type safety is lost and allowed to add a string
+//		Integer i = al.get(0); // runtime exception
+//		String s = al.get(0); // does not compile
+		System.out.println(al.get(0)); 
 	}
 	
 	static double averageN(List<Number> list){
@@ -127,10 +138,13 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 	}
 	static <E extends Number> double averageExN(List<E> list){
 		double sum = 0.0;
-//		list.add(10); // E could be List<Double> now which will not accept an Integer or int primitive
+//		list.add(10.0); // E could be List<Double> now which will not accept an Integer or int primitive
 //		List<Double> dList = new ArrayList<>();
-//		dList.add(Integer.valueOf(10));
-//		Double dWrap = 10;
+//		list.add(Integer.valueOf(10));
+		
+		Double d = 10.0;
+		list.add((E)d); // must cast to generic type to add to list
+		
 		double dPrim = 10;
 		for(Number n : list){ sum += n.doubleValue(); }
 		return sum/list.size();

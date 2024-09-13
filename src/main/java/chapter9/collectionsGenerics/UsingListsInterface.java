@@ -116,7 +116,7 @@ public class UsingListsInterface {
 		
 		Object[] objsArray = chars.toArray(); // default is a new Object array
 //		Character[] castWrapperArray = (Character[]) objsArray ; // runtime exception > it is an Obj[] on the heap
-//		char [] castPrimArray = (char[]) castWrapperArray; // no allowed
+//		char [] castPrimArray = (char[]) castWrapperArray; // not allowed
 //		char[] toPrimiive = chars.toArray(new char[0]);
 //		Character[] bad = chars.toArray(new Character[]); // requires size
 //		Character[] bad = chars.toArray(); // BAD toArray() no params returns Object[]
@@ -137,7 +137,7 @@ public class UsingListsInterface {
 		System.out.println(moreInts);
 		
 		
-//		Integer[] cast = {1};
+		Integer[] cast = {1};
 //		int[] casted = (int[]) cast; // does not compile
 		
 		System.out.println();
