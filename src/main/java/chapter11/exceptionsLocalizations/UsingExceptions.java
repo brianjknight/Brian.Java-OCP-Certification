@@ -13,29 +13,36 @@ public class UsingExceptions {
 //			throw new IOException(); // static initializers not allowed to throw checked exceptions
 //		}
 //	}
+//	static {
+//		one = 1/0; InitializaterError caused by ArithmeticException
+//	}
+//	
+//	static {
+//		if (one > 0) {
+//			throw new RuntimeException(); // results in InitializaterError caused by a RuntimeException
+//		}
+//			
+//	}
 	
-	static {
-		if (one > 0) {
-			throw new RuntimeException();
-		}
-			
-	}
-	
-	{
-		if (one > 0) {
-			throw new IOException(); 
-			// instance initializers can throw checked BUT must be declared by ALL constructors
-			// since initialer is invoked with any new object
-		}
-	}
+//	{
+//		if (one > 0) {
+//			throw new IOException(); 
+//			// instance initializers can throw checked BUT must be declared by ALL constructors
+//			// since initialer is invoked with any new object
+//		}
+//	}
 	
 	public UsingExceptions() throws IOException {};
 	
 	public static void main(String[] args) throws IOException  {
+		
+		getValue();
+		System.out.println();
+		
 		int j = 1;
 	    try {
-	    	int i = throwException() / j++; // prints 1; exception is thrown prior to j++ executing
-//	    	int i = j++ / doIt(); // prints 2; j++ executes before doIt() throws exception
+//	    	int i = throwException() / j++; // prints 1; exception is thrown prior to j++ executing
+	    	int i = j++ / throwException(); // prints 2; j++ executes before doIt() throws exception
 	    } catch (Exception e) {
 	    	System.out.println(" j = " + j);
 	    }
@@ -141,7 +148,7 @@ public class UsingExceptions {
 
 	void methodD() {
 //		try {
-//			System.out.println("method d"); // cannot throw a checked IOException
+//			System.out.println("method d"); // try block cannot throw a checked IOException
 //		} catch (IOException e) {
 //			System.out.println("method d catch");
 //		}
@@ -180,6 +187,14 @@ public class UsingExceptions {
 	
 	public static int throwException() throws Exception {  
 		throw new Exception("FORGET IT");  
+	}
+	
+	public static int getValue(){ //throws clause is not needed
+		try{ throw new Exception(); }
+		finally{ 
+			System.out.println("In finally"); 
+			return 3; // Exception will NOT be thrown
+		}
 	}
 }
 

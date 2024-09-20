@@ -36,6 +36,8 @@ public class FilesAndDirectories {
         System.out.println("p2: " + p2 );
         Path p3 = p1.relativize(p2);
         Path p4 = p2.relativize(p1);
+        System.out.println("p3: " + p3);
+        System.out.println("p4: " + p4);
 
         System.out.println(
             p1.getNameCount()+" "+p2.getNameCount()+" "+

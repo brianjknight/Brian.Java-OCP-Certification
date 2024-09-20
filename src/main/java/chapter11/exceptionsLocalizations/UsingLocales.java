@@ -17,7 +17,7 @@ public class UsingLocales {
 		
 		Locale german = new Locale.Builder().setLanguage("GERMAN").build();
 		System.out.println(german); // must call .build() to return a Locale instead of the builder
-		System.out.println(german.getCountry()); // returns empty string, not null, since region was not set
+		System.out.println("german.getCountry(): " + german.getCountry()); // returns empty string, not null, since region was not set
 		System.out.println(Locale.GERMANY);
 		System.out.println(new Locale("DE")); // single param is still language and will be normalized to lowercase
 		System.out.println(new Locale("de","AT")); // german and Austria

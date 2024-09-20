@@ -104,6 +104,6 @@ public class AdvancedStreams {
 											Collectors.joining("|"), 
 											(colonSep, pipeSep) -> new String(colonSep + " " + pipeSep)));
 		System.out.println("teeingExample: " + teeingExample);
-		
+		System.out.println();
 	}
 }

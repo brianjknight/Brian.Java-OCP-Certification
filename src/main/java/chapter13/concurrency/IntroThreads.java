@@ -10,7 +10,7 @@ public class IntroThreads {
 		
 		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
 		Runnable printRecords = () -> {
-			for (int i = 0; i < 50_000; i++)
+			for (int i = 0; i <= 50_000; i++)
 				if (i % 10000 == 0) System.out.println("Printing record: " + i);
 		};
 		
@@ -26,7 +26,7 @@ public class IntroThreads {
 		System.out.println("printRecordsThread.interrupted(): " + printRecordsThread.interrupted());
 		try {
 			System.out.println("try block");
-			printRecordsThread.sleep(1000);
+			printRecordsThread.sleep(500);
 			System.out.println("printThread state after .sleep(1000)" + printRecordsThread.getState());
 		} catch (InterruptedException e) {
 			System.out.println("caught InterruptedException");
@@ -42,7 +42,6 @@ public class IntroThreads {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println();
@@ -57,7 +56,6 @@ public class IntroThreads {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println();
@@ -73,7 +71,7 @@ public class IntroThreads {
 				// when myCounter thread is finished, mainThread is interrupted
 				// program is interrupted and terminates before the last full 1_000 millisecond sleep time is finished 
 		
-		long limit = 1_000_000_000L; // note with higher limit race condition can creates multiple increments resulting in 'count' higher than the limit
+		long limit = 1_000_000_000L; // note with higher limit race condition can create multiple increments resulting in 'count' higher than the limit
 		// try using AtomicLong, volatile, synchronized
 		
 		Thread mainThread = Thread.currentThread();
@@ -119,7 +117,7 @@ public class IntroThreads {
 					"Current thread: " +Thread.currentThread() + " | threadId: " + Thread.currentThread().getId() + " | threadPriority: " + Thread.currentThread().getPriority())
 				).start();
 		
-		new Thread( ()-> System.out.println(Thread.currentThread().getName())
+		new Thread( ()-> System.out.println("Thread.currentThread().getName(): " + Thread.currentThread().getName())
 				).start();
 		
 		System.out.println(Thread.currentThread().getName());

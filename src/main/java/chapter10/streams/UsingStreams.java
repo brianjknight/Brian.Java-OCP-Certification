@@ -165,7 +165,7 @@ public class UsingStreams {
 		System.out.println(marksFive.peek(System.out::println).distinct().findAny()); // short circuits distinct even though distinct is stateful
 		
 		System.out.println("marksSix");
-		Stream<Integer> marksSix = Stream.of(55, 65, 70, 80, 70);
+		Stream<Integer> marksSix = Stream.of(85, 65, 70, 80, 70);
 		System.out.println(marksSix.peek(i -> System.out.print(i+" ")).sorted().findFirst());
 		System.out.println();
 		
