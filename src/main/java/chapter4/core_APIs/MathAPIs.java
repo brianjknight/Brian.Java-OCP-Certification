@@ -44,10 +44,11 @@ public class MathAPIs {
 		System.out.println();
 		
 		System.out.println();
-		Random r = new Random(); // seed to determine algorithm
-		System.out.println("nextInt(bound): " + r.nextInt(10));
+		Random r = new Random(99); // seed to determine algorithm
 		System.out.println("nextInt: " + r.nextInt());
+		System.out.println("nextInt(bound): " + r.nextInt(10));
 		System.out.println("nextDouble: " + r.nextDouble());
+		System.out.println("nextDouble: " + r.nextDouble(10));
 		System.out.println("nextLong: " + r.nextLong());
 		
 		System.out.println();

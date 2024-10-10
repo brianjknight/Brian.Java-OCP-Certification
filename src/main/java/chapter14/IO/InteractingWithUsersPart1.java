@@ -19,7 +19,7 @@ public class InteractingWithUsersPart1 {
 		
 		System.out.println("hello " + input);
 
-//		System.out.close();
+//		System.out.close(); // close OUT
 		System.out.println("world"); // PrintStream OutputSreams do not throw checked exceptions
 		
 		InputStream systemIn = System.in;
@@ -45,8 +45,7 @@ public class InteractingWithUsersPart1 {
 //		env.forEach((k,v) -> System.out.println(k + ":" + v));
 		
 		// Input/OutputStreams and Reader/Writers are part of java.io NOT java.nio
-		Path p = Path.of("/fake/path");
-//		var pathReader = new BufferedReader(new FileReader(p)); // does not compile
+//		var pathReader = new BufferedReader(new FileReader(Path.of("/fake/path"))); // does not compile
 		
 		
 	}

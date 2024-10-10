@@ -15,7 +15,7 @@ public class OperatingOnFilePath {
 			// it executes from the PROJECT's root directory unless you specify a different directory explicitly.
 			// SO this main method is executing from Brian.Java-OCP-Certification NOT chapter14.IO.OperatingOnFilePath
 			// this is why the relative path is not from IO
-			// e.g. "../../../resources/chapter14/zoo.txt" is wrong
+			// e.g. "../../../resources/chapter14/zoo.txt" to "main/java/chapter14" is wrong
 			// relative path from execution is src/main.....
 			// "./" and "../main" are redundant 
 			
@@ -25,6 +25,7 @@ public class OperatingOnFilePath {
 			Path zooTxtFile = Path.of("src/./main/../main/resources/chapter14/zoo.txt"); 
 			Path zooSameFile = Path.of("src/main//resources/chapter14/zoo.txt");
 			System.out.println("zooTxtFile.equals(zooSameFile): " + zooTxtFile.equals(zooSameFile));
+			System.out.println("Files.isSameFile(p1, p2): " + Files.isSameFile(zooTxtFile, zooSameFile));
 			System.out.println("normalized > zooTxtFile.equals(zooSameFile): " + zooTxtFile.normalize().equals(zooSameFile.normalize()));
 			System.out.println("toRealPath equals: " + zooTxtFile.toRealPath().equals(zooSameFile.toRealPath()));
 			System.out.println("print Path object: " + zooTxtFile);

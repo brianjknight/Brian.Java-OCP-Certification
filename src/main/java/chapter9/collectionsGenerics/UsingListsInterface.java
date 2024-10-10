@@ -2,6 +2,7 @@ package chapter9.collectionsGenerics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,11 +17,18 @@ public class UsingListsInterface {
 		
 		// enthuware OCP 17 test 1 question 9
 		String[] sa = { "charlie", "bob", "andy", "dave" };
+		List<String> saList = Arrays.asList(sa);
 //	    var ls = new ArrayList<String>(Arrays.asList(sa));
 	    var ls = Arrays.asList(sa); // returns a list BACKED BY the array. Changes to the array affect the list.
+	    List<String> strList = List.of(sa);
+	    var coll = Collections.unmodifiableList(ls); // unmodifiable VIEW backed by given collection
 	    sa[2] = "alex";
 	    ls.sort((var a, var b) -> a.compareTo(b));
 	    System.out.println(sa[0]+" "+ls.get(0));
+	    
+	    System.out.println("List.of(sa): " + strList); // List.of(), List.copyOf() are NOT backed by the array ie do not reflect changes
+	    saList.set(0, "Austin");
+	    System.out.println("Coll.unmodifiableList: " + coll);
 	    System.out.println();
 		
 		List<String> empty = new ArrayList<String>(3);
@@ -144,17 +152,18 @@ public class UsingListsInterface {
 		
 		// sublist is backed by the original list
 		System.out.println("OCP Java 17/21 book pg. 452");
-		List<String> al = new ArrayList<String>();
-		al.addAll(Arrays.asList( new String[]{"a", "b", "c", "d", "e" } ));
-		List<String> al2 = al.subList(2, 4);
-		System.out.println(al2); //prints [c, d]
-		al2.add("x");
-		System.out.println(al2); //prints [c, d, x]
-		System.out.println(al); //prints [a, b, c, d, x, e]
-		al.add("y"); //structural modification to the original list invalidates the existing sublist
-		System.out.println(al2); //throws java.util.ConcurrentModificationException trying to print invalidated sublist
+		List<String> list = new ArrayList<String>();
+		list.addAll(Arrays.asList( new String[]{"a", "b", "c", "d", "e" } ));
+		List<String> sublist = list.subList(2, 4);
+		System.out.println(sublist); //prints [c, d]
+		sublist.add("x");
+		System.out.println(sublist); //prints [c, d, x]
+		System.out.println(list); //prints [a, b, c, d, x, e]
+		list.add("y"); //structural modification to the original list invalidates the existing sublist
+		System.out.println(sublist); //throws java.util.ConcurrentModificationException trying to print invalidated sublist
 		
 	}
+
 }
 
 

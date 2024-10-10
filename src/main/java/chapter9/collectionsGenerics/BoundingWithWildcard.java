@@ -13,6 +13,8 @@ public class BoundingWithWildcard<T> {
 		
 		List<?> a = new ArrayList<String>(); // unbounded list
 //		a.add("abc"); // wildcard bound types become immutable
+//		a.add(new Object());
+		a.add(null);
 //		List<?> b = new ArrayList<?>(); // instantiated object must set a type
 //		List<E extends Number> genericList; // does not compile
 //		List<T extends Number> genericFromClassList; // does not compile
@@ -37,6 +39,7 @@ public class BoundingWithWildcard<T> {
 //		List<? extends Mammal> objs = new ArrayList<Object>(); // does not compile breaks upper bound Mammal
 		
 //		mammals.add(new Mammal()); // upper bound & unbound list become immutable
+		mammals.add(null);
 		
 		List<? super Goat> goatList = new ArrayList<Goat>();
 		List<? super Goat> mammalList = new ArrayList<Mammal>();
