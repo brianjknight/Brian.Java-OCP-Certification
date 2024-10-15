@@ -18,8 +18,8 @@ public class ConcurrencyAPI {
 				});
 			
 				System.out.println(result);
-				result.get(3, TimeUnit.SECONDS); // Returns null for Runnable; can throw checked exception
-//				result.get(10, TimeUnit.NANOSECONDS); // timeout on the Future result but does NOT timeout the thread in service
+//				result.get(3, TimeUnit.SECONDS); // Returns null for Runnable; can throw checked exception
+				result.get(10, TimeUnit.NANOSECONDS); // timeout on the Future result but does NOT timeout the thread in service
 				System.out.println(result);
 				System.out.println("result.get(): " + result.get()); // now waits for future result; get on a Future of a Runnable is always null
 				System.out.println("result.isCancelled(): " + result.isCancelled());
@@ -58,11 +58,11 @@ public class ConcurrencyAPI {
 		System.out.println();
 		
 		ExecutorService excutorService = Executors.newSingleThreadScheduledExecutor();
-//		excutorService.scheduleWithFixedDelay(() -> { // lose access to scheduled methods
-//			System.out.println("Open Zoo");
-////			return null; // w2
-//			}, 0, 1, TimeUnit.MINUTES);
-
+//		excutorService.scheduleWithFixedDelay(
+//					() -> { // lose access to scheduled methods
+//							System.out.println("Open Zoo");
+//							}, 
+//					0, 1, TimeUnit.MINUTES);
 		
 		ScheduledExecutorService scheduledService = Executors.newSingleThreadScheduledExecutor();
 		scheduledService.scheduleWithFixedDelay(() -> { 

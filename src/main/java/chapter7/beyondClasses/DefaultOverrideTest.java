@@ -1,7 +1,7 @@
 package chapter7.beyondClasses;
 
 public class DefaultOverrideTest implements Walk, Run {
-	public int getSpeed() {return 1;}
+	public int getSpeed() {return 1;} // required override
 	
 	public int getWalkSpeed() {
 //		return super.getSpeed(); // super is Object type

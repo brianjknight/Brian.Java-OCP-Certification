@@ -27,6 +27,7 @@ public class Primitives {
         Double zero = 0.0;
         System.out.println(-1.0/zero); // divide by zero with wrapper does not throw exception
         System.out.println(1.0/zero);
+        System.out.println(0.0/0.0); // Nan
         
         System.out.println();
         p.testMethod();

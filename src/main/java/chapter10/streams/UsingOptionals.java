@@ -12,6 +12,7 @@ public class UsingOptionals {
 		System.out.println(dubOpt);
 //		System.out.println(dubNull);
 		System.out.println(dubOFnull);
+//		System.out.println(dubOFnull.get()); // NoSuchElementException
 		
 		if (dubOpt.isPresent()) {
 			System.out.println(dubOpt.get());

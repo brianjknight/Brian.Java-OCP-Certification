@@ -42,7 +42,7 @@ public class UsingExceptions {
 		int j = 1;
 	    try {
 //	    	int i = throwException() / j++; // prints 1; exception is thrown prior to j++ executing
-	    	int i = j++ / throwException(); // prints 2; j++ executes before doIt() throws exception
+	    	int i = j++ / throwException(); // prints 2; j++ executes before throws exception
 	    } catch (Exception e) {
 	    	System.out.println(" j = " + j);
 	    }
@@ -191,7 +191,7 @@ public class UsingExceptions {
 	
 	public static int getValue(){ //throws clause is not needed
 		try{ throw new Exception(); }
-		finally{ 
+		finally { 
 			System.out.println("In finally"); 
 			return 3; // Exception will NOT be thrown
 		}

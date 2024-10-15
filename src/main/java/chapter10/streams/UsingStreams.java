@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class UsingStreams {
+	
 	public static void main(String[] args) {
 		
 		var streamQR = Stream.iterate("", (q) -> q + "1");
@@ -26,8 +27,8 @@ public class UsingStreams {
 		
 		Stream<String> bear1 = Stream.of("brown bear-", "grizzly-");
 //		bear1.sorted(Comparator.reverseOrder()); // compiles but does nothing since a terminal operation is not called
-//		bear1.forEach(System.out::print); // bear1 already operated on or closed
 		bear1.sorted(Comparator.reverseOrder()).forEach(System.out::print);
+//		bear1.forEach(System.out::print); // bear1 already operated on or closed
 		
 //		Stream<String> bear2 = Stream.of("brown bear-", "grizzly-");
 //		bear2.sorted(Comparator::reverseOrder).forEach(System.out::print); // does not compile; 

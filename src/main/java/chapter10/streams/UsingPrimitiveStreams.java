@@ -5,6 +5,7 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -59,6 +60,7 @@ public class UsingPrimitiveStreams {
 		Stream<Integer> intStr1 = IntStream.of(1,2,3).mapToObj(x -> x);
 		Stream<Integer> intStr2 = IntStream.of(1,2,3).boxed();
 		Stream<Integer> intStr3 = LongStream.of(1,2,3).mapToObj(x -> (int) x);
+//		Stream<Integer> intStr4 = IntStream.of(1,2,3).mapToObj(Function.identity()); // not an IntToObj function
 		
 		OptionalDouble optD = IntStream.rangeClosed(0,10).average();
 		System.out.println("optD average: " + optD.orElse(0.0));

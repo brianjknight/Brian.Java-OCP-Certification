@@ -2,8 +2,8 @@ package chapter13.concurrency;
 
 public class IntroThreads {
 
-//	private static long count = 0;
-	private static volatile long count = 0;
+	private static long count = 0;
+//	private static volatile long count = 0;
 	
 	public static void main(String[] args) {
 //**********************************************************************************************
@@ -18,16 +18,17 @@ public class IntroThreads {
 		System.out.println("begin");
 		Thread printThread = new Thread(printInventory);
 		Thread printRecordsThread = new Thread(printRecords);
+		printThread.start();
 		System.out.println("printRecordsThread state prior to .start(): " + printRecordsThread.getState());
 		printRecordsThread.start();
 		System.out.println("printRecordsThread state after .start(): " + printRecordsThread.getState());
-		printRecordsThread.interrupt(); // only WAITING/TIME_WAITING threads can be interrupted NOT BLOCKED threads
-		System.out.println("printRecordsThread state after .interrupt(): " + printRecordsThread.getState());
-		System.out.println("printRecordsThread.interrupted(): " + printRecordsThread.interrupted());
+//		printRecordsThread.interrupt(); // only WAITING/TIME_WAITING threads can be interrupted NOT BLOCKED threads
+//		System.out.println("printRecordsThread state after .interrupt(): " + printRecordsThread.getState());
+//		System.out.println("printRecordsThread.interrupted(): " + printRecordsThread.interrupted());
 		try {
 			System.out.println("try block");
-			printRecordsThread.sleep(500);
-			System.out.println("printThread state after .sleep(1000)" + printRecordsThread.getState());
+			printRecordsThread.sleep(1000);
+			System.out.println("printThread state after .sleep()" + printRecordsThread.getState());
 		} catch (InterruptedException e) {
 			System.out.println("caught InterruptedException");
 			System.out.println("printRecordsThread state after .interrupt(): " + printRecordsThread.getState());
@@ -77,8 +78,9 @@ public class IntroThreads {
 		Thread mainThread = Thread.currentThread();
 		
 		Thread myCounter = new Thread( () -> { 
-			for(int i = 0; i < limit; i++) 
-				count++;
+			for(int i = 0; i < limit; i++) {
+					count++;
+				}
 				mainThread.interrupt(); // when myCounter thread is done, the program is allowed to interrupt the main method
 										// the result is interrupting the sleep 1 second called below
 				System.out.println("in for loop > mainThread.getState(): " + mainThread.getState());
@@ -92,6 +94,7 @@ public class IntroThreads {
 			
 			try {
 				mainThread.sleep(1_000);  // sleep on main() thread. when myCounter thread finishes, then the sleeping main thread is interrupted
+				// note the main thread is interrupted, throws exception which is caught HOWEVER myCounter thread is NOT interrupted
 			} catch (InterruptedException e) {
 				System.out.println("Interrupted!"); 
 				System.out.println("in for catch > mainThread.getState(): " + mainThread.getState());

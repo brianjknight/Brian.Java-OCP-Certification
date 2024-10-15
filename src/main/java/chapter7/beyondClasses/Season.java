@@ -67,6 +67,8 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 	public static String staticField = "static field";
 	private static final String CONSTANT = "c";
 	
+	private enum A{}
+	
 	// constructors can only be private
 //	public Season() {
 //		this.expectedVisitors = "Medium";
@@ -83,7 +85,7 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		this("Medium");
 	}
 	
-	 public void printExpectedVisitors() {
+	public void printExpectedVisitors() {
 		 System.out.println(expectedVisitors);
 	}
 	
