@@ -26,28 +26,38 @@ public class NumericPromotion {
 
         byte one = 1;
         byte negOne = -1;
-        byte okOne = --one;
+        byte okOne = --one; // increment/decrement operators implicitly casts like compound assignment
         byte xOne = one;
-//        byte badOne = -one; // variable used Java assumes int type 
+//        byte badOne = -one; // variable with unary operator Java promotes to int 
+        long oneLong = 1L;
+//        byte longByte = oneLong;
         
         byte num = 1 + 2; // literals are considered int by default BUT can fit into byte 
 //        byte four = num + 1; // when variable is present, operands are ALWAYS promoted to int
         					// Java doesn't know at compile type if 'num' value fits into byte primitive
-//        byte four = (byte) num + 1; // even when casting, a binary operator and variable are used 
-        								// so after cast numeric promotion happens
+//        byte four = (byte) num + 1; // order of operations is cast then binary operator to type promotion occurs
 //        byte four = (byte) num + (byte) 1; // still bad
         
         
         final int intFinal = 1;
         final long longFinal = 1;
-        byte weird = -intFinal + 1; // oneFinal is a known compile time constant since it is FINAL; type promotion to ints but fits in byte
-//        byte noGood = longFinal + 1; // type promotion to long so not allowed
+        byte weird = -intFinal + 1; // intFinal is a known compile time constant since it is FINAL; type promotion to ints but fits in byte
+//        byte noGood = -longFinal + 1; // type promotion to long so not allowed
         final Byte b1 = 1;
 //        Byte b2 = -b1; //will not compile even though b1 is final and wrappers are immutable;
         // above the reference is final not the underlying object/value 
         // different than final byte primitive above
         
-        byte two = ++one; // unary and compound operators are exceptions to rule and implicitly cast
+        final byte _21 = 21;
+        final char _12 = 12;
+        char _33 = _21 + _12; // binary operator numeric promotion to int, BUT compile time constants and result fits into char
+        byte _3_3 = _21 + _12;
+        System.out.println("final char _12: " + _12);
+        System.out.println("char _33 = " + _33); 
+        System.out.println("byte _3_3 = " + _3_3);
+        System.out.println(_12 + _21); 
+        
+        byte two = ++one; // increment/decrement and compound operators are exceptions to rule and implicitly cast
         byte three = 0;
         three += two + 1;
         
@@ -64,8 +74,8 @@ public class NumericPromotion {
         int m = 'a' + 1; // char literal value promoted to int
         byte n = 'a' + 1; // promotion but result fits in a byte
         char o = 97;
-//        int oo = 97;
-//        char oooo = oo;  // bad variable oo is now and assumed to be default int type
+        int oo = 97;
+//        char oooo = oo;  // bad variable oo is an int 
         System.out.println("char o = 97; is " + o);
         
         
@@ -84,7 +94,7 @@ public class NumericPromotion {
         // && takes precedence over ||
         // associatively grouped
         // the operating left to right short circuits before bb and cc are assigned
-        // therefore bool becomes (aa = true) || (  (bb = true) && (cc = true)  )
+        // therefore bool below becomes (aa = true) || (  (bb = true) && (cc = true)  )
         boolean bool = (aa = true) || (bb = true) && (cc = true) ;
 //        boolean bool = (aa = true) | (bb = true) && (cc = true) ; // compare to not short circuiting
         System.out.println(aa + ", " + bb + ", "+ cc );
@@ -94,7 +104,7 @@ public class NumericPromotion {
     	byte b = 1;
 //    	b = b<<1;
     	int c = b<<1;
-//    	byte d += b;
+//    	byte d += b; // d has not been instantiated yet
     	byte e = 0;
     	e += b;
     }

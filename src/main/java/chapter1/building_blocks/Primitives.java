@@ -31,6 +31,9 @@ public class Primitives {
         
         System.out.println();
         p.testMethod();
+        
+        System.err.println();
+        p.testIntFormat();
     }
 
     String n; // variables can use letters, numbers, currency symbol, and underscore
@@ -105,5 +108,18 @@ public class Primitives {
     	l += 1;
     	l++;
     	System.out.println("testMethod l=" + l);
+    }
+    
+    void testIntFormat() {
+    	int i = 10_00;
+    	String s = "10_00"; // bad format for parsing string
+    	
+//    	Integer x = Integer.parseInt(s);
+//    	Integer y = Integer.valueOf(s);
+    	int z = Integer.valueOf(i);
+//    	int X = Integer.parseInt("0b0101"); // cannot parse binary
+//    	int Y = Integer.parseInt("1.017"); // bad format for int
+    	Double d = Double.parseDouble("-.0017");  // allowed
+    	System.out.println(d);
     }
 }

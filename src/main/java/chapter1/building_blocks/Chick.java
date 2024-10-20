@@ -1,7 +1,9 @@
 package chapter1.building_blocks;
 
 public class Chick {
-    public static void main(){};
+    public static void main(){}
+    int main(String s) {return 0;}
+    void main(int[] i) {}
 	
 	{ System.out.println("setting field"); }
 
@@ -29,4 +31,6 @@ public class Chick {
         Chick chick = new Chick();
         System.out.println(chick.name);
     }
+    
 }
+

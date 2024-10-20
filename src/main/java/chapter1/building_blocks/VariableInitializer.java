@@ -11,7 +11,8 @@ public class VariableInitializer {
 //	Boolean boolean = false; // primitives ARE reserved keywords
 	
 	void declareVars() {
-//		var a = 1, b = 2;  multiple declaration not allowed with var
+//		var x; // var must be initialized when declared
+//		var a = 1, b = 2;  //multiple declaration not allowed with var
 //		var a = null; // Java must know var reference type at compile time
 		var a = "AAA";
 		a = null;
@@ -29,7 +30,7 @@ public class VariableInitializer {
 //		List<var> varList; // not allowed
 	}
 	
-//	void noGood(var a) { 
+//	void noGood(var a) { // parameter not a local variable
 //		// code
 //	}
 

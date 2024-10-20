@@ -2,6 +2,19 @@ package chapter2.operators;
 
 public class ComparingValues {
     public static void main(String[] args) {
+    	
+        Character grade = 'x';
+        Character g = 'x';
+        System.out.println(grade == g); // Java uses integer cache pool for values -128 to 127
+        System.out.println(grade.equals(g));
+        Integer one = 1;
+        Integer ONE = 1;
+        System.out.println(one == ONE); // true due to integer cache pool -128 to 127
+        Integer big = 200;
+        Integer BIG = 200;
+        System.out.println(big == BIG); // false outside of cache pool
+        System.out.println();
+        
         boolean bool = 3 < 'a';
 
         byte b = 1;
@@ -13,12 +26,14 @@ public class ComparingValues {
         boolean charELong = c>=l;
 //        boolean bad = b == bool;
 //        boolean badNull = b==null; // primitives cannot be null
+        Object o = null;
         boolean nullBool = null == null;
+        boolean nulll = null == o;
 
         String s = "1";
         Integer i = 1;
-//        boolean bbb = s == i; // incompatible types
-        boolean BBB = s.equals(i);
+//        boolean bbb = s == i; // known incompatible types
+        boolean BBB = s.equals(i); // both are Objects > uses Object equals() method which checks nulls and type relation
         System.out.println("BBB: " + BBB);
         
         long fivePrimitive = 5L;

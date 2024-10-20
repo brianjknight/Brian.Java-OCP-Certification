@@ -10,14 +10,19 @@ public class SwitchStatements {
 		return income * 
 				switch(taxBracket){
 					case 0 : yield 0.1; //observe the new keyword yield
+//							 break; // yield akin to return for switch so this line is unreachable 
 					case 1 : { yield 0.2; } //enclosing the code within { } is optional
+//					case 2 : break; // break not allowed for switch expression since it must return a value
 					default : yield 0.3;
 				};
 		}
 	
+	static int getSix() {return 6;}
+	
     public static void main(String[] args) {
     	
     	// switch expressions means it returns value. CAN STILL use old syntax with ':' and yield
+    	// yield required regardless of {} when not using new -> syntax
     	DayOfWeek day = DayOfWeek.FRIDAY;
     	String v = switch(day) {
     		case MONDAY : yield "sucks";
@@ -31,7 +36,7 @@ public class SwitchStatements {
     	System.out.println();
     	
 //        long x = 1; type not allowed for switch parameter
-        int x = 9;
+        var x = 9;
         switch (x) {
             case 1,2:
                 System.out.println("ONE");
@@ -92,6 +97,8 @@ public class SwitchStatements {
 
         System.out.println();
 
+        // case values must be known-at-compile time i.e. literals or constants
+        final int getSix = getSix();
         int y = 6;
         int six = 6;
         final var SIX = 6;
@@ -106,6 +113,7 @@ public class SwitchStatements {
             }
             case 4, 5 -> "four or five";
 //            case six -> "six";
+//            case getSix -> "six";
             case SIX -> "six"; // compile time known literal and final
             case 7 -> {
                 // yield not needed for this case
@@ -161,6 +169,9 @@ public class SwitchStatements {
         final char a = 'A', e = 'E';
         final byte b = 120;
         Character grade = 'x';
+        Character g = 'x';
+        System.out.println(grade == g); 
+        System.out.println(grade.equals(g));
         switch (grade) {
             default: System.out.println("\tdefault ");
             case a:
@@ -245,7 +256,7 @@ public class SwitchStatements {
 	        case (byte) 5: 
 	        case (short) 22:
 	        case 33:
-	        case bb:  // Java will cast primitive values 
+	        case bb:  // Java will implicitly cast primitive values  to the switch param
 	        case ss:  // however remember it CANNOT autobox AND cast at the same time if switch param is a Wrapper
 	        case cc:
 	        case vv:

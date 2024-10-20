@@ -27,7 +27,7 @@ public class ComplementOperators {
         System.out.println("aCharComplement: " + aCharComplement); // complement of integer 97 not 'a'
         System.out.println("ascii test (char) 10_000: " + (char) 10_000);
         System.out.print("'a' + 'b': ");
-        System.out.println('a' + 'b');
+        System.out.println('a' + 'b'); // promoted to int
 
         byte two = 2;
         // below does not compile because java assumes the number literal of two to be an int

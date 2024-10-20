@@ -13,10 +13,9 @@ public class PatternMatching {
         Number one = 1.0; 
         // *update note that Number is the reference type; 
         // the actual literal 1.0 double is autoboxed to Double which is the actual object type of the instance
-        // below asks if ONE Double, is an instance of an integer; Both are related as Numbers which is why this compiles but does not print
         if (one instanceof Double) 
             System.out.println("it's a Double");
-        // I think this is allowed to compile because ONE reference type is an abstract class and List is an interface. make more sense after you read Chapter 7
+        
 //        if (ONE instanceof List<?>) // also compiles
         if (one instanceof List) // *update omitting the generic type is equivalent of List<Object>
             System.out.println("It is a list");
@@ -34,10 +33,10 @@ public class PatternMatching {
         Double seven = 7.0;
         pm.printOnlyIntegers(six);
         pm.printOnlyIntegers(seven);
-
+//
         pm.printOnlyIntegersFlowScopingCompiles(six);
         pm.printOnlyIntegersFlowScopingCompiles(seven);
-        
+//        
         System.out.println();
         pm.subtypeTest();
     }
@@ -46,23 +45,23 @@ public class PatternMatching {
 //        if (!(number instanceof Number data)) // Does not compile because data is not assigned
 //        	System.out.println("printOnlyIntegers: " + data.intValue());
         if (number instanceof Integer data)
-            System.out.println("printOnlyIntegers: " + data.intValue());
+            System.out.println("printOnlyIntegers: " + data);
         else
 //        	System.out.println(data); // 'data' not declared if not an Integer
             return;
     }
 
     void printOnlyIntegersFlowScopingCompiles(Number number) {
-        if (!(number instanceof Integer data)) {
+        if (!(number instanceof final Integer data)) { // final modifier allowed
 //        	System.out.println(data); // 'data' not declared
         	System.out.println("flow scoping not instance of Integer: " + number);
             return; // ensures the next line of code is NOT reached if data is not assigned
         }
         System.out.println("flow scoping IS integer: " + data.intValue());
         
-        while (true) {
-        	System.out.println(data.intValue());
-        }
+//        while (true) {
+//        	System.out.println(data.intValue());
+//        }
     }
     
     void moreFlowScoping(Number number) {
@@ -103,7 +102,7 @@ public class PatternMatching {
     	// from book
     	Integer value = 123;
     	if(value instanceof Integer) {}
-//    	if(value instanceof Integer data) {} // book says "DOES NOT COMPILE"
+//    	if(value instanceof Integer data) {} // book says "DOES NOT COMPILE" > issues with my IDE originally compiled with Java 21
     	
     	// from OCP Java 17/21 book page 252
     	Number n = null;

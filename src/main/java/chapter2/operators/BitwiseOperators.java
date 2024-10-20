@@ -29,6 +29,10 @@ public class BitwiseOperators {
         System.out.println(5 | 7);
         System.out.println(5 & 7);
         System.out.println(5 ^ 7);
+        
+        System.out.println(true | true);
+        System.out.println(true & true);
+        System.out.println(true ^ true);
 	}
 }
 

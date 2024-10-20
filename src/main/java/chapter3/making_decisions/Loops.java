@@ -25,8 +25,8 @@ public class Loops {
             } while (hungryHippopotamus>5); // notice no statement or block after this while
 
             hungryHippopotamus--;
-            System.out.println(hungryHippopotamus);
         }
+        System.out.println("hungryHippopotamus = " + hungryHippopotamus);
         
         PRINT_LABEL: System.out.println();
         
@@ -86,8 +86,9 @@ public class Loops {
 //        	System.out.println("unreachable?");
 //        };
         
+        final boolean ff = false;
         boolean f = false;
-        while(f) { // variable values are unknown at compile time
+        while(f) { // non-final variable values are unknown at compile time
         	System.out.println("unreachable?");
         }
         if(false) { // does compile since if statements are used for condtional execution logic 
@@ -105,21 +106,21 @@ public class Loops {
         while (false);
         
         
-        // NOT an infinite loop due to underflow of byte
-        byte bbb = 10;
+        // NOT an infinite loop due to primitive underflow
+        byte bbb = -120;
         do {
         	bbb--;
         	System.out.println(bbb);
-        } while(bbb<10);
+        } while(bbb<0);
         
         
         System.out.println();
         System.out.println("multidemnsional arrays:" );
         int[] _1D1 = new int[]{1, 2, 3};
+        int[][] _2D1 = new int[][]{ _1D1 }; // Two day array with only one array
 //        _2D1[1] = new int[] {4,5,6}; // out of bounds
-        int[][] _2D1 = new int[][]{ _1D1 };
-        int[][] _2D2 = new int[][]{ _1D1, _1D1 };
-        int[][][] _3D = new int[][][]{ _2D1, _2D2 };
+        int[][] _2D2 = { _1D1, _1D1 };
+        int[][][] _3D = new int[][][]{ _2D1, _2D2 }; // think of array of 2D arrays
         
         System.out.println("_2D1:");
         for(int[] ia : _2D1) System.out.println(Arrays.toString(ia));
@@ -132,10 +133,11 @@ public class Loops {
         }
         
         System.out.println();
+        
         System.out.println("loop test using expressions for inialization: ");
-        for(System.out.println("starting the loop now"); i<5; i++); //method call
-        int z;
-        for(printHello(), z = 9; ai.get()<5; addOne()); //method call
+        for(System.out.println("starting the loop now"); i<5; i++); //method call.  ';' ends loop
+        int z; 
+        for(printHello(), z = 9; ai.get()<5; addOne()); //method calls in for loop initializer, boolean, and update statements
         System.out.println("z = " + z);
         System.out.println();
         List<Integer> myList = Arrays.asList(1,2,3);
