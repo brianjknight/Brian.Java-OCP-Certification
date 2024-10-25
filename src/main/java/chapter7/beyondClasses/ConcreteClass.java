@@ -24,6 +24,10 @@ public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Bin
 	public String getLetter() {
 		return "C";
 	}
+	
+	public String methodZZZ() { // compatible with AInterface & BInterface
+		return "ZZZ";
+	}
 
 	public void testDefaultMethods() {
 		System.out.println("Testing default methods: ");
@@ -45,19 +49,20 @@ public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Bin
 //		System.out.println(doMath()); // default are non-static methods
 		System.out.println();
 		
+//		TwoInterface.caller(); // static interface METHODS are not inherited
+		OneInterface.caller();
 //		System.out.println("ONE: " + ONE); // constants are inherited however this cannot be used in an ambiguous context when inherited by more than one interface
 		System.out.println("MyFirstInterface.ONE: " + MyFirstInterface.ONE);
 		System.out.println("OneInterface.ONE: " + OneInterface.ONE);
 		System.out.println("TwoInterface.ONE: " + TwoInterface.ONE); // constants are inherited		
+		System.out.println(TEN); // inherited only once
 		
-//		ONE = 2; // fields in interfaces are implicitly constants
+//		ONE = 2; // fields in interfaces are implicitly constants i.e. final
 		
-		System.out.println();
+		System.out.println();		
 		
-		OneInterface.caller();
-		
-//		TwoInterface.caller(); // static interface members are not inherited
 		System.out.println();
 		cc.testDefaultMethods();
+		
 	}
 }

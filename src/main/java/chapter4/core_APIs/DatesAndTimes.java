@@ -37,11 +37,13 @@ public class DatesAndTimes {
         // comparing date/time
 //        int compare = now.compareTo(d); // compareTo must be same type
         int compare = d.compareTo(start);
+        System.out.println("d.compareTo(start): " + d.compareTo(start));
         boolean d_Start = d.isBefore(start); // must be same type
         boolean equals = d.equals(now); // input is Object type
         boolean IS_equal = d.isEqual(start); // only for LocatDate and LocalDateTime
         boolean IS_eql = now.isEqual(LocalDateTime.now());
         System.out.println("LocalDateTime  isEqual(): " + IS_eql);
+        System.out.println("Period.between(dec, start): " + Period.between(dec, start));
         
         while (start.isBefore(dec)) {
             System.out.println(start);
@@ -51,7 +53,11 @@ public class DatesAndTimes {
         LocalTime timeNow = LocalTime.now();
 //        timeNow = timeNow.plus(p); // throws runtime exception
         
-        Period periodChained = Period.ofYears(1).ofMonths(6);
+        // Note .of methods always return a new Temporal Unit without combining previous
+        Period periodChained = 
+        		Period.ofYears(1) // P1Y
+        			  .ofMonths(6) // P6M > new Period
+        			  .plusDays(1); // P6M1D add to previous period
         System.out.println("periodChained = " + periodChained);
         Duration durationChained = Duration.ofHours(8).ofMinutes(60);
         System.out.println("durationChained: " + durationChained);
@@ -70,7 +76,7 @@ public class DatesAndTimes {
 
         Duration secDays = Duration.ofSeconds(172800);
         System.out.println("sec many = " + secDays);
-        Duration secMin = Duration.ofSeconds(172890);
+        Duration secMin = Duration.ofSeconds(172890); // extra 90 seconds
         System.out.println("sec many = " + secMin);
         Duration sec = Duration.ofSeconds(5);
         System.out.println("sec = " + sec);
@@ -100,12 +106,14 @@ public class DatesAndTimes {
         LocalDateTime ld = LocalDateTime.of(2022, Month.NOVEMBER, 5, 10, 0);
 
         ZonedDateTime date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern"));
+        System.out.println("date prior: " + date);
         date = date.plus(Duration.ofDays(1));
         System.out.println(date);
 
         date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern"));
         date = date.plus(Period.ofDays(1));
         System.out.println(date);
+        System.out.println();
         
         // OCP book page 206; difference is method plus(Duration) vs plusHours(long)
         System.out.println("OCP example:");

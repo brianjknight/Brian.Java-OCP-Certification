@@ -49,7 +49,7 @@ public class ArrayMethods {
         int def[][] = new int[4][];
         def[0] = new int[4];
         
-        int intF, f[], g[][], h[][][][];
+        int intF, f[], g[][], h[][][][][][][];
 
         int i[], j;
         j = 2;
@@ -93,6 +93,7 @@ public class ArrayMethods {
        System.out.println(Arrays.compare(new char[] {'h','a'}, new char[] {'a'}));
        System.out.println(Arrays.compare(new int[] {7,1}, new int[] {1}));
        System.out.println(Character.compare('h', 'a'));
+       System.out.println(Character.compare('a','h'));
        System.out.println(Integer.compare(7, 1));
      
        System.out.println();

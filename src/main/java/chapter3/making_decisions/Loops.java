@@ -89,6 +89,7 @@ public class Loops {
         final boolean ff = false;
         boolean f = false;
         while(f) { // non-final variable values are unknown at compile time
+//        while(ff) { // compile time constant results in unreachable code
         	System.out.println("unreachable?");
         }
         if(false) { // does compile since if statements are used for condtional execution logic 
@@ -101,7 +102,7 @@ public class Loops {
         while (true) 
         	break;
         
-        do
+        do  // not unreachable since do happens first
         	System.out.println("do while loop");
         while (false);
         

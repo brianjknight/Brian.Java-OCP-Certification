@@ -18,8 +18,9 @@ public abstract class AbstractClass {
 		System.out.println("Hi");
 	}
 	
-//	abstract static void sayHello(); // static methods cannot be abstract
-//	final abstract void abstractVoid(); // cannot be final
+	// abstract methods cannot be private, final, or static
+//	abstract static void sayHello();
+//	final abstract void abstractVoid();
 //	private abstract void abstractVoid();
 	
 	abstract void abstractVoid();

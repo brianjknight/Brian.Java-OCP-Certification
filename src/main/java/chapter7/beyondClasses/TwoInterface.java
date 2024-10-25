@@ -3,6 +3,7 @@ package chapter7.beyondClasses;
 public abstract interface TwoInterface extends OneInterface {
 	
 	int ONE = 2; 
+	int TEN = 10;
 	
 	public abstract void methodA();
 	
@@ -14,13 +15,13 @@ public abstract interface TwoInterface extends OneInterface {
 	private void methodE() {}
 
 	private static void methodF() {
-//		methodE();
+		//		methodE();
 		System.out.println("methodF");
 	}
 	
 	private void methodX() {
 		OneInterface.caller();
-//		caller() // static methods are not inherited
+//		caller() // static methods are not inherited with interfaces
 	}
 	
 	public static void main(String[] args) {

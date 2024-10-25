@@ -8,7 +8,7 @@ public class AutoboxingUnboxing {
 //      Long a = 8; 
 //    	Double aa = 8;
         Long b = 8L;
-        long c = 8; // int literal 8 needs to be implicitly cast to a long widening type
+        long c = 8; // int literal 8 needs is implicitly cast to a long widening type
         Long xx = -c;
         int yy = 8;
 //        Long yyyy = yy;
@@ -16,8 +16,8 @@ public class AutoboxingUnboxing {
         Short five = 5; // Java knows the larger int literal 5 can fit in the narrowing type short and does not need to implicitly cast.
         // so only autoboxing occurs above for Short five = 5;
         short FIVE = 5;
-//        Short anotherFive = -five; // operator is used so short variable is promoted to int
-        Short anotherFIVE = five; // five autoboxed to Short
+//        Short anotherFive = -five; // operator is used so Short wrapper is unboxed to primitive then short variable is promoted to int
+        Short anotherFIVE = FIVE; // five autoboxed to Short
         
 //        Byte tooBig = 500; // cannot convert int to Byte cast and autobox required since 500 literal cannot fit into byte
         
@@ -50,7 +50,7 @@ public class AutoboxingUnboxing {
         Character f = null;
 //        char g = f; // throws NullPointerException. f is not known at compile time
         			// Behind the scenes Java is trying to call method f.charValue() on a null object
-//        char gg = null;
+//        char gg = null; // does not compile known literal null value assigned to primitive
         
         AutoboxingUnboxing auto = new AutoboxingUnboxing();
         // Java will not autobox arrays

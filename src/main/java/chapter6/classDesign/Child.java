@@ -1,10 +1,9 @@
 package chapter6.classDesign;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.remote.SubjectDelegationPermission;
 
 public class Child extends Parent {
 	// variables are never overridden only hidden
@@ -21,7 +20,7 @@ public class Child extends Parent {
 //		this(""); // only one other constructor call allowed
 	}
 	
-	public Child(String x) {
+	public Child(String x) throws IOException {
 		super();
 	}
 	
@@ -37,7 +36,7 @@ public class Child extends Parent {
 //	public Integer getAge() throws IOException { // cannot throw broadening CHECKED exception
 //	public Integer getAge() throws FileSystemException { // cannot throw new CHECKED exception
 //	public Object getAge() throws FileNotFoundException, RuntimeException { // return type must be same or subtype 
-	public Integer getAge() throws FileNotFoundException, RuntimeException { // CAN throw broadening RUNTIME exception 
+	public Integer getAge() throws FileNotFoundException, RuntimeException { // CAN throw new or broadening RUNTIME exception 
 		// cannot subtract Number objects
 		// object on heap is an Autoboxed Integer
 		return super.getAge().intValue() - (short) age; 
@@ -48,7 +47,7 @@ public class Child extends Parent {
 		return 10;
 	}
 	
-	// hidden method NOT overridden because static makes it a class member not instance member
+	// static methods can only be hidden in child not overridden, however overriding rules still apply
 //	@Override // produces compiler error
 	public static String greeting() {
 		doStaticWork(); // inherited static method
@@ -86,8 +85,14 @@ public class Child extends Parent {
 		System.out.println(staticNum);
 		
 		Child c = new Child();
-//		System.out.println(c.secret);
+//		System.out.println(c.secret); // private in Parent
 		System.out.println("secret: " + c.getSecret());
+		
+		System.out.println(Child.staticNum);
+		System.out.println(Parent.staticNum);
+		
+		System.out.println("greeting():" + greeting());
+		System.out.println();
 		
 	}
 }

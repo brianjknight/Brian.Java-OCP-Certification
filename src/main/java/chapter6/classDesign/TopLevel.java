@@ -14,12 +14,12 @@ public class TopLevel {
 }
 
 //public class other {} only ONE public top level class allowed in a file
-//static class otherTopLevel {} // only nested classes can be static
+
+//only nested classes can be static, private, or protected
+//static class otherTopLevel {}
+//private class SecretLevel {}
+//protected class TopSecretLevel {}
 
 abstract class otherTpLvl {}
 
 final class NotLevel {}
-
-//private class SecretLevel {} // not allowed
-
-//protected class TopSecretLevel {} // not allowed

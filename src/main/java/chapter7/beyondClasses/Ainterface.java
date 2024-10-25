@@ -4,6 +4,6 @@ public interface Ainterface {
 	default String getLetter() {
 		return "A";
 	}
+	
+	Object methodZZZ();
 }
-
-

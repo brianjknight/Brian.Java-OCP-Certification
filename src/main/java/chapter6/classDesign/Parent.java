@@ -20,7 +20,7 @@ public class Parent {
 	public void setSecret(String secret) {this.secret = secret;};
 	
 	// if made public, getSize() in Child no longer compiles
-	// return type of int is not a covariant of String
+	// return type of int is not a covariant of String and also reduces accessibility
 	private String getSize() {
 		return "10";
 	}
@@ -37,7 +37,9 @@ public class Parent {
 		System.out.println("get to work");
 	}
 	
-	static void doStaticWork() {}
+	static void doStaticWork() {
+		System.out.println("parent do static work");
+	}
 	
 	public void sayGoodBye() {
 		System.out.println("good bye from parent");

@@ -2,6 +2,8 @@ package chapter7.beyondClasses;
 
 import java.util.Arrays;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 public enum Season implements EnumInterface { // allowed to implement interfaces
 //	WINTER_SEASON, summer, sPrIng, Fall // valid; notice no semi-colon for simple enum
 	
@@ -23,26 +25,26 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		// abstract interface methods must be implemented by every enum value
 		// can be inherited by declaring it in the ENUM itself
 		public void sayHello() {} 
-	}, 
-	SPRING() {
+	},
+	SPRING { // uses no args constructor
 		public String getTemp() {
 			return "20 to 70";
 		}
 		public String getHours() {
 			return "8 to 7";
 		}
-	}, 
+	},
 	SUMMER("High") {
 		public String getTemp() {
 			return "45 to 100+";
 		}
-	}, 
+	},
 	FALL() {
 		public String getTemp() {
 			return "20 to 70";
 		}
 		public void sayHello() {}
-	}, 
+	},
 	NON_SEASON("not a season") {
 		public String getTemp() {
 			return "unknown";
@@ -66,8 +68,21 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 	private final String expectedVisitors; 
 	public static String staticField = "static field";
 	private static final String CONSTANT = "c";
+	public String other = "other";
 	
-	private enum A{}
+	private enum A{
+		AENUM();
+		// default no args constructor inserted
+	}
+	static enum B{}
+//	final enum C{}
+	void localEnum() {
+		enum D {}
+//		public enum E {} // local variables not allowed access modifiers
+//		final enum F {} // enum can never use final
+		
+		System.out.println("");
+	}
 	
 	// constructors can only be private
 //	public Season() {

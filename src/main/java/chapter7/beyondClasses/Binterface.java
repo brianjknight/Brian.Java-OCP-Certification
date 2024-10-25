@@ -4,6 +4,6 @@ public interface Binterface {
 	default String getLetter() {
 		return "B";
 	}
+	
+	CharSequence methodZZZ();
 }
-
-

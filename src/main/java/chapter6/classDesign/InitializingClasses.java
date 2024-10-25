@@ -4,7 +4,7 @@ public class InitializingClasses {
 	static {  // A
 		System.out.println("static initializer A");
 		printOneAndTwo();
-//		new InitializingClasses().print(); // does compile and run; call initialization first makes methods and default variables values available
+		new InitializingClasses().print(); // does compile and run; call initialization first makes methods and default variables values available
 		System.out.println();
 	}
 
@@ -26,15 +26,16 @@ public class InitializingClasses {
 	static { // C
 		System.out.println("static initializer C");
 		// although class initialization creates memory space and default value for members, 
-		// you cannot use them prior to declaration in the initializers
+		// you cannot forward reference them directly
 //		System.out.println("three = " + three); // does not compile; 
-		printThree();
+		printThree();  // however you can forward methods that use the variable
 		System.out.println();
 	}
 	static int three; // not a final field
 	
 	static { // D
 		System.out.println("static initializer D");
+		System.out.println("three = " + three);
 		printThree();
 		System.out.println();
 	}

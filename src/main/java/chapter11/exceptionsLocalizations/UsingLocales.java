@@ -67,7 +67,7 @@ public class UsingLocales {
 		
 		////////////////////////////////////////////////
 		// Formatting date/time
-		
+		System.out.println("Formatting date/time");
 		LocalDateTime ltd = LocalDateTime.now();
 		DateTimeFormatter dtfMedium = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
 //		DateTimeFormatter dtfBad = DateTimeFormatter.withLocale(Locale.CANADA_FRENCH).ofLocalizedDate(FormatStyle.MEDIUM); // style must be set first

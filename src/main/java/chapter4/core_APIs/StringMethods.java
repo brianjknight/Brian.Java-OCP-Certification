@@ -39,7 +39,9 @@ public class StringMethods {
         var b = "Hello World"; // literal
         var b2 = "Hello" + " World"; //compile time constant
         var world = " World";
+        final var worldFinal = " World"; // compile time constant with final
         var b3 = "Hello" + world;
+        var b4 = "Hello" + worldFinal;
         var c = new String("Hello World");
         var d = "Hello World".strip();  // first creates string which is already in pool, then calls strip
         var e = " Hello World\n".strip(); // with space and return is NOT in String pool yet
@@ -57,6 +59,7 @@ public class StringMethods {
         System.out.println("a==b2: " + (a==b2));
         System.out.println("a==b3: " + (a==b3));
         System.out.println("a.equals(b3): " + a.equals(b3)); // overridden method compares characters in the object
+        System.out.println("a==b4: " + (a==b4));
         System.out.println("a==c: " + (a==c));
         System.out.println("a==d: " + (a==d));
         System.out.println("a==e: " + (a==e));
@@ -104,7 +107,7 @@ public class StringMethods {
         testMethod();
         
         System.out.println();
-//        textBlock();
+        textBlock();
         
         System.out.println();
         String newBlock = """
@@ -119,9 +122,9 @@ public class StringMethods {
     	String s = "a";
     	String[] sa = { "a", s, s.substring(0, 1), new String("a"), ""+'a' };
     	for(int i=0; i<sa.length; i++){
-    	System.out.println(i);
-    	System.out.println(s == sa[i]);
-    	System.out.println(s.equals(sa[i]));
+	    	System.out.println(i);
+	    	System.out.println(s == sa[i]);
+	    	System.out.println(s.equals(sa[i]));
     	}
     }
     
@@ -136,7 +139,7 @@ public class StringMethods {
     			"""
     			<head/>
     			<meta charset="utf-8" />
-    			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    			<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     			</head>
     			""";
     			

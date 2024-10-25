@@ -7,12 +7,17 @@ public class ComparingValues {
         Character g = 'x';
         System.out.println(grade == g); // Java uses integer cache pool for values -128 to 127
         System.out.println(grade.equals(g));
-        Integer one = 1;
+        Integer oneInteger = 1;
         Integer ONE = 1;
-        System.out.println(one == ONE); // true due to integer cache pool -128 to 127
+        System.out.println(oneInteger == ONE); // true due to integer cache pool -128 to 127
         Integer big = 200;
         Integer BIG = 200;
         System.out.println(big == BIG); // false outside of cache pool
+        Byte oneByte = 1;
+//        System.out.println(oneInteger == oneByte); // Incompatible types
+        byte bOne = 1;
+        int iOne = 1;
+        System.out.println("bOne == iOne: " + (bOne == iOne) ); //type promotion
         System.out.println();
         
         boolean bool = 3 < 'a';

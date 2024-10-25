@@ -15,6 +15,7 @@ public class MathAPIs {
 		byte e = 5;
 		byte f = 6;
 		
+		Integer II = 1;
 		double AA = Math.min(a, b);
 		Double BB = Math.min(a, b);
 //		int CC = Math.min(c, a); // does not compile. Math API uses double params to fit both types

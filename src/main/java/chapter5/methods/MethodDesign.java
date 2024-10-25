@@ -55,13 +55,11 @@ public class MethodDesign {
 //    	
 //    }
 
-    // does not compile
-//	void method5() {
+//	void method5() { // does not compile
 //		return "hello";
 //	}
-    // compiles but with unreachable code
-
-    public String method6(int x) {
+    
+    public String method6(int x) {  // compiles but with unreachable code
         if (5<10) {
         	return "less";
 //        	System.out.println("unreachable compile error");
