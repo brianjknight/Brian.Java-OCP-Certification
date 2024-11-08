@@ -12,7 +12,8 @@ public class UsingListsInterface {
 		
 //		List<String> strList = List.of("a", null); // runtime NullPointer exception; factory methods .of() & .copyOf() do not allow null values
 		ArrayList<String> a1;
-//		ArrayList<> a2; // compiler has no way to infer the type
+//		ArrayList<> a2; // compiler has no way to infer the type parameter
+		ArrayList a3;
 //		Integer iValue1 = ListProcessor.processList(new ArrayList<>()); //Integer inferred (ListProcessor example class from book pg 442)
 		
 		// enthuware OCP 17 test 1 question 9
@@ -140,7 +141,7 @@ public class UsingListsInterface {
 		
 		List<Integer> moreInts = new ArrayList<>();
 		moreInts.add(10);
-//		moreInts.add(15, 2); // index out of bounds
+//		moreInts.add(3, 11); // index out of bounds
 		System.out.println();
 		System.out.println(moreInts);
 		

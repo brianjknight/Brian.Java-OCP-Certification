@@ -128,6 +128,10 @@ public class DatesAndTimes {
         System.out.println(dateTime); // 2022–03-­13T03:30-­04:00[US/Eastern]
         System.out.println(dateTime.getHour());   // 3
         System.out.println(dateTime.getOffset()); // -04:00
+        
+        System.out.println();
+        LocalDate ldt = LocalDate.parse("2018-02-14T18:12:12"); // exception
+        System.out.println(ldt);
     }
 
 }

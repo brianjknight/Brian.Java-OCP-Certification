@@ -48,7 +48,7 @@ public class FormattingValues {
 		
 		NumberFormat nf = NumberFormat.getInstance();
 		try {
-			Number num = nf.parse("123 456,789 !f(8324fddK"); // formatting with default enUS stops at the space returns 123
+			Number num = nf.parse("123 456,789 !a(8%~"); // formatting with default enUS stops at the space returns 123
 			System.out.println(num);
 		} catch(Exception e) {
 			System.out.println("format exception");

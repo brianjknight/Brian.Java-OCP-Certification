@@ -16,6 +16,11 @@ public sealed interface MyFirstInterface permits OneInterface {
 	public static void main(String[] args) {
 		// allowed
 	}
+	
+//	static {
+//		System.out.println("initializers not allowed");
+//	}
+
 }
 
 

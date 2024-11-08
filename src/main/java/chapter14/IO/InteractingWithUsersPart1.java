@@ -24,7 +24,7 @@ public class InteractingWithUsersPart1 {
 		
 		InputStream systemIn = System.in;
 		System.out.println("enter a byte:");
-		int byteIn = systemIn.read();
+		int byteIn = systemIn.read(); // multiple bytes entered remain in the stream
 		System.out.println("System in int: " + byteIn);
 		System.out.println("System in (char): " + (char)byteIn);
 		System.out.println();
@@ -34,14 +34,14 @@ public class InteractingWithUsersPart1 {
 		int charIn = charInpStr.read(); // '\n' charater is still in the System.in stream from entering name so int value is 10
 		System.out.println(charIn);
 		
-		System.in.close(); 
-//		String bad = reader.readLine(); // System.in InputStream DOES throw checked IOException
+//		System.in.close(); // System.in InputStream DOES throw checked IOException; would cause Exception next line
+		
+		String bad = reader.readLine(); 
 		// note if the above line is NOT commented out, the system waits for user input before proceeding
 		// There is not prompt to enter anything so appears nothing is happening.
 		
-		
 		Map<String,String> env = System.getenv();
-//		System.out.println("env size:" + env.size());
+		System.out.println("env size:" + env.size());
 //		env.forEach((k,v) -> System.out.println(k + ":" + v));
 		
 		// Input/OutputStreams and Reader/Writers are part of java.io NOT java.nio

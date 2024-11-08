@@ -11,14 +11,22 @@ public class IntroThreads {
 		Runnable printInventory = () -> System.out.println("Printing zoo inventory");
 		Runnable printRecords = () -> {
 			for (int i = 0; i <= 50_000; i++)
-				if (i % 10000 == 0) System.out.println("Printing record: " + i);
+				if (i % 10000 == 0) {
+					System.out.println("Printing record: " + i);
+					try {
+						Thread.currentThread().sleep(500); // static method is now called on the correct CURRENT thread no the object in try block below.
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 		};
 		
 		// multi-threading results are unknown until runtime 
 		System.out.println("begin");
-		Thread printThread = new Thread(printInventory);
+		Thread printInventoryThread = new Thread(printInventory);
 		Thread printRecordsThread = new Thread(printRecords);
-		printThread.start();
+		printInventoryThread.start();
 		System.out.println("printRecordsThread state prior to .start(): " + printRecordsThread.getState());
 		printRecordsThread.start();
 		System.out.println("printRecordsThread state after .start(): " + printRecordsThread.getState());
@@ -27,7 +35,7 @@ public class IntroThreads {
 //		System.out.println("printRecordsThread.interrupted(): " + printRecordsThread.interrupted());
 		try {
 			System.out.println("try block");
-			printRecordsThread.sleep(1000);
+			printRecordsThread.sleep(3000); // .sleep() is a static method on CURRENTLY executing thread NOT the OBJECT
 			System.out.println("printThread state after .sleep()" + printRecordsThread.getState());
 		} catch (InterruptedException e) {
 			System.out.println("caught InterruptedException");

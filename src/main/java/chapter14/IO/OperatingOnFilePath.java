@@ -24,7 +24,9 @@ public class OperatingOnFilePath {
 			// notice how getRoot() and toAbsolutePath() change if this is a root or relative path
 			Path zooTxtFile = Path.of("src/./main/../main/resources/chapter14/zoo.txt"); 
 			Path zooSameFile = Path.of("src/main//resources/chapter14/zoo.txt");
-			System.out.println("zooTxtFile.equals(zooSameFile): " + zooTxtFile.equals(zooSameFile));
+			Path zooSameOther = Path.of("src/main//resources/chapter14/zoo.txt");
+			System.out.println("zooTxtFile.equals(zooSameFile): " + zooTxtFile.equals(zooSameFile)); // overridden equals checks path strings
+			System.out.println("zooSameFile.equals(zooSameOther): " + zooSameFile.equals(zooSameOther));
 			System.out.println("Files.isSameFile(p1, p2): " + Files.isSameFile(zooTxtFile, zooSameFile));
 			System.out.println("normalized > zooTxtFile.equals(zooSameFile): " + zooTxtFile.normalize().equals(zooSameFile.normalize()));
 			System.out.println("toRealPath equals: " + zooTxtFile.toRealPath().equals(zooSameFile.toRealPath()));

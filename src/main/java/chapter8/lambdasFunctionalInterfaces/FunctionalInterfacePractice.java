@@ -22,7 +22,7 @@ public class FunctionalInterfacePractice {
 		Supplier<LocalDate> s1 = LocalDate::now;
 		System.out.println("Supplier s1: " + s1);
 		LocalDate d1 = s1.get();
-//		LocalDate d2 = LocalDate::now;
+//		LocalDate d2 = LocalDate::now; // only allowed where a lambda can be used as a Functional interface
 		System.out.println("date: " + d1);
 		
 		Supplier<ArrayList<String>> s2 = () -> new ArrayList<>();
@@ -33,7 +33,7 @@ public class FunctionalInterfacePractice {
 		Consumer<String> c1 = System.out::println;
 		c1.accept("Hello Brian");
 		
-		BiConsumer<String, Integer> bc1 = (a,b) -> System.out.println("Day: " + a + " date: " + b);
+		BiConsumer<String, Integer> bc1 = (var a, var b) -> System.out.println("Day: " + a + " date: " + b);
 		bc1.accept("Sunday",14);
 		
 		Map<String,Integer> map = new HashMap<>();

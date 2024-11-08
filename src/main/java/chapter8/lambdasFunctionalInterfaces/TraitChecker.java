@@ -11,7 +11,7 @@ public interface TraitChecker {
 		System.out.println("helper");
 	}
 	
-	default String defMet() {
+	default String defaultMethod() {
 		return "still a single abstract method";
 	}
 	
@@ -24,6 +24,6 @@ public interface TraitChecker {
 	public boolean equals(Object o);
 //	public boolean equals(Number o); // this is overloaded not overridden therefore an extra abstract method
 	
-	// implicit public abstract
+	// implicit public abstract for an interface
 	int hashCode();
 }

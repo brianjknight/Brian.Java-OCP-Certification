@@ -22,6 +22,7 @@ public class SortingData {
 		badDucks.add(new DuckNotComparable("b", 2, 2.0, "y", 2));
 //		Collections.sort(badDucks); // does not compile on trying to sort
 		Collections.sort(badDucks, Comparator.comparing(DuckNotComparable::getName));
+//		Collections.sort(badDucks, (d1, d2) -> d1.getName().compareTo(d2.getName()));
 		System.out.println("badDucks: ");
 		badDucks.forEach(System.out::println);
 		

@@ -16,10 +16,11 @@ public class UsingLocales {
 		System.out.println(Locale.getDefault());
 		
 		Locale german = new Locale.Builder().setLanguage("GERMAN").build();
+		System.out.println(new Locale.Builder().setLanguage("GERMAN"));
 		System.out.println(german); // must call .build() to return a Locale instead of the builder
 		System.out.println("german.getCountry(): " + german.getCountry()); // returns empty string, not null, since region was not set
 		System.out.println(Locale.GERMANY);
-		System.out.println(new Locale("DE")); // single param is still language and will be normalized to lowercase
+		System.out.println(new Locale("DE")); // single param is still language case insensitive
 		System.out.println(new Locale("de","AT")); // german and Austria
 		System.out.println(new Locale("de12!@abcdefghi","ATXX456789")); // allowed but may have unexpected behavior
 		
@@ -57,8 +58,8 @@ public class UsingLocales {
 		
 		long x = 314_900_000L;
 		NumberFormat compactDefault = NumberFormat.getCompactNumberInstance();
-		NumberFormat compactShort = NumberFormat.getCompactNumberInstance(Locale.getDefault(),NumberFormat.Style.SHORT);
-		NumberFormat compactLong = NumberFormat.getCompactNumberInstance(Locale.getDefault(),Style.LONG);
+		NumberFormat compactShort = NumberFormat.getCompactNumberInstance(Locale.getDefault(), NumberFormat.Style.SHORT);
+		NumberFormat compactLong = NumberFormat.getCompactNumberInstance(Locale.getDefault(), Style.LONG);
 		System.out.println(compactDefault.format(x));
 		System.out.println(compactShort.format(x));
 		System.out.println(compactLong.format(x-314_000_000));

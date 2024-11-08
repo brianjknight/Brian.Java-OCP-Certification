@@ -13,7 +13,7 @@ public class UsingStreams {
 	public static void main(String[] args) {
 		
 		var streamQR = Stream.iterate("", (q) -> q + "1");
-		System.out.println(streamQR.limit(2).map(r -> r + "2").toList()); // seed "" is first element > map "" + 2 > "1" > "1" + 2 
+		System.out.println(streamQR.limit(3).map(r -> r + "2").toList()); // seed "" is first element > map "" + 2 > "1" > "1" + 2 
 		System.out.println();
 		
 		Stream<String> empty = Stream.of();
@@ -53,7 +53,7 @@ public class UsingStreams {
 						.peek(e -> System.out.print(e + "!")) // e is a List
 						.map(List::size)
 						.forEach(System.out::println);
-		// performs each pipeline to termination in turn
+		// performs each pipeline step to termination in turn with no stateful operations
 			// first peek prints each element of each element/list, second peek prints the element/list, converts and prints list size
 		
 		System.out.println();
@@ -63,7 +63,8 @@ public class UsingStreams {
 //		Stream<List<?>> upperStream = Stream.of(upper);
 //		Stream<List<?>> lowerAndUpper = Stream.concat(lowerStream, upperStream);
 		var listOfLists = List.of(lower, upper);
-		List<?> result = listOfLists.stream()
+		Stream<List<Character>> streamOfLists = listOfLists.stream();
+		List<?> result = streamOfLists
 									.peek(System.out::print) // intermediate step prints each list > [a,b,c] continue [A,B,C]
 									.flatMap(list -> list.stream()) // intermediate step flattening map
 									.peek(System.out::print) // intermediate step prints each element of a list > abc continues ABC
@@ -127,9 +128,9 @@ public class UsingStreams {
 		
 		List<Integer> ls = Arrays.asList(3,4,6,9,2,5,7);
 		System.out.println(ls.stream().reduce(Integer.MIN_VALUE, (a, b)-> a>b ? a : b)); //1
-		System.out.println(ls.stream().max(Integer::max).get()); //2 max takes a comparator using -,0,+ to determine order so this always returns positive value for comparison
-		System.out.println(ls.stream().max(Integer::compare).get()); //3
-		System.out.println(ls.stream().max((a, b)-> a>b ? a : b)); //4
+		System.out.println(ls.stream().max(Integer::max).get()); //2 Integer.max(3,4) returns 4, however this is a comparator of elements a,b > 4 is a positive result i.e. 3 > 4
+		System.out.println(ls.stream().max(Integer::compare).get()); //3 Integer.compare(3,4) returns -i; therefore 3<4 or 4>3 and keeps max int value
+		System.out.println(ls.stream().max((a, b)-> a>b ? a : b)); //4 similar to Integer::max; returns larger int value which is used as the comparator for 3 in relation to 4
 		
 		System.out.println();
 		System.out.println("enthuware test 5 question 11");

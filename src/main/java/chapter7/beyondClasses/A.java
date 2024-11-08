@@ -11,7 +11,7 @@ public class A {
 			
 			public void printX() {
 				int xOfC = x;
-//				public class F { access modifiers not allowed for local classes or variables
+//				public class F { access modifiers not allowed for local members
 				class F { // local class within a method
 					int getXofC() {
 						System.out.println("xxx: " + xxx); // allowed to access instance and class members
@@ -29,7 +29,7 @@ public class A {
 					// watch for curly braces; this is not instantiating the abstract class G directly
 					G gAnonymousClass = new G() {}; // anonymous class of an abstract class
 					
-//					F ExtendedAnonClass = new F() { // anonymous class extending concrete class
+//					F AnonExtendedClass = new F() { // anonymous class extending concrete class
 //						@Override
 //						int getXofC() {
 //							return 0;

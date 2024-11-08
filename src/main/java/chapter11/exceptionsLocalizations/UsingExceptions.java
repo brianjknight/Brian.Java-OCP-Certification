@@ -189,6 +189,10 @@ public class UsingExceptions {
 		throw new Exception("FORGET IT");  
 	}
 	
+	public void runtimeException() {
+		throw new IllegalArgumentException();
+	}
+	
 	public static int getValue(){ //throws clause is not needed
 		try{ throw new Exception(); }
 		finally { 

@@ -8,6 +8,7 @@ public class UsingOptionals {
 		Optional<Double> dubOpt = Optional.of(2.0);
 //		Optional<Double> dubNull = Optional.of(null); // runtime error passing null param
 		Optional<Double> dubOFnull = Optional.ofNullable(null);
+		Optional objOpt = Optional.of(new Object());
 		System.out.println(dubOptEmpty);
 		System.out.println(dubOpt);
 //		System.out.println(dubNull);

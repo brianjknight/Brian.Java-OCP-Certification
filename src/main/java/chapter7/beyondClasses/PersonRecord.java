@@ -7,16 +7,20 @@ record EmptyRecord() {} // allowed to compile
 // can implement interfaces
 // cannot use extend but implicitly extends java.lang.Record
 // implicitly and ONLY allowed to be public & final
-public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) implements Serializable{
+public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) implements Serializable {
 	
 	public static String species;
 	static {
 		species = "human";
 	}
-//	private final String insField = "instance field"; // new instance fields are not allowed
-//	{System.out.println("instance initializer");} // instance initializers also not allowed
 	
-	// implicit all arg constructor but can implement 
+	private record NestedRecord(String s) {} // nested allowed with any access modifier
+	
+	// new instance fields and initializers are not allowed
+//	private final String insField = "instance field";
+//	{System.out.println("instance initializer");}
+	
+	// implicit long/canonical/all-arg constructor but can implement 
 	// allows you to set instance fields
 //	public PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) {
 //		this.first = first.toUpperCase();
@@ -31,6 +35,7 @@ public final record PersonRecord(String first, String last, int age, int weight,
 	// special compact constructor; no params or ()
 	// acts as the all args constructor when called new PersonRecord(, , , , , ); CANNOT have both all args and compact
 	public PersonRecord { // canonical constructor cannot use throws
+//		super(); // compact constructor cannot have explicit constructor call (overloaded can)
 		if (last == null) {
 //			 this.last = "n/a"; // cannot modify the fields directly in compact constructor 
 		}
@@ -48,6 +53,7 @@ public final record PersonRecord(String first, String last, int age, int weight,
 	// Overloaded constructor
 	public PersonRecord(String first, String last) throws Exception {
 //		first = first.toUpperCase();
+//		super(); // overloaded constructors must call the canonical constructor i.e. all args
 		this(first, last, 0, 0, 0, "pickles"); // MUST call this(...); constructed with this therefore next line has no affect on the object
 		first = "" + first.substring(0,2).toLowerCase() + first.substring(2).toUpperCase(); // validation check
 		System.out.println(first); // param was changed however the instance was already created with this() call
