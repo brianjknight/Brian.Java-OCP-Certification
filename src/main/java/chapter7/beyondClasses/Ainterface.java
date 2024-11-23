@@ -6,4 +6,9 @@ public interface Ainterface {
 	}
 	
 	Object methodZZZ();
+	
+}
+
+interface AchildInterface extends Ainterface{
+	public String getLetter();
 }

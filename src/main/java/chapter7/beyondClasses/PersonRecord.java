@@ -6,7 +6,7 @@ record EmptyRecord() {} // allowed to compile
 
 // can implement interfaces
 // cannot use extend but implicitly extends java.lang.Record
-// implicitly and ONLY allowed to be public & final
+// implicitly final
 public final record PersonRecord(String first, String last, int age, int weight, double height, String favortieFood) implements Serializable {
 	
 	public static String species;
@@ -71,7 +71,7 @@ public final record PersonRecord(String first, String last, int age, int weight,
 	
 	public int getWeight() {
 		int weight = this.weight; // allowed to access this fields
-		System.out.println("not default accessor");
+		System.out.println("not default weight() accessor");
 		return weight;
 	}
 	

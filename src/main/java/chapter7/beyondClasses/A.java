@@ -3,6 +3,7 @@ package chapter7.beyondClasses;
 public class A {
 	private int x = 10;
 	private int xxx = 0;
+	
 	class B {
 		private int x = 10 + A.this.x;
 		
@@ -37,7 +38,7 @@ public class A {
 //					};
 										
 					void methA() {
-						var BBB = new B();
+						var BBB = new B(); // instance method so A instance must already exist
 					}
 					static void methB() {
 //						var bbb = new B(); // static method needs an instance of A
@@ -47,7 +48,7 @@ public class A {
 				
 //				xOfC += 1; // local classes like F can only access effectively final local variables like xOfC
 				
-				F.G gAnonFromF = new F().new G() {};
+				F.G gAnonFromF = new F().new G() {}; // still within a the instance method
 				
 				F f = new F();
 				System.out.println("f.getXofC(): " + f.getXofC());
@@ -81,6 +82,12 @@ public class A {
 //		B b0 = new B(); // inside this class/static method needs an instance of A
 		B b1 = new A().new B();
 		System.out.println(b1.x);
+	}
+	
+	public void notStatic() {
+		B b = new B();
+		B.C c = new B().new C();
+		
 	}
 	
 	public static void main(String[] args) {

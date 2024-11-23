@@ -118,6 +118,9 @@ public class UsingExceptions {
 		catch (FileNotFoundException | NotSerializableException e) {
 			System.out.println(e);
 		}
+		catch (RuntimeException | Error e) { // Runtime is NOT a child of Error
+			System.out.println(e);
+		}
 		catch (IOException | SQLException e) { // Super IOException includes FileNotFoundException
 			System.out.println(e);
 		}
@@ -200,6 +203,7 @@ public class UsingExceptions {
 			return 3; // Exception will NOT be thrown
 		}
 	}
+	
 }
 
 

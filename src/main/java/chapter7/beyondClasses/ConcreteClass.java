@@ -33,7 +33,8 @@ public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Bin
 		System.out.println("Testing default methods: ");
 		System.out.println(doMath());
 //		System.out.println(super.doMath()); // super refers to parent object not interface
-//		System.out.println(OneInterface.super.doMath()); // no conflicting default method so does not compile
+//		System.out.println(OneInterface.super.doMath()); // cannot bypass a more specific super interface; TwoInterface inherits the method
+		System.out.println(TwoInterface.super.doMath());
 		
 		System.out.println(getLetter());
 //		System.out.println(super.getLetter());

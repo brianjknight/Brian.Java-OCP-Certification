@@ -15,7 +15,7 @@ public abstract interface TwoInterface extends OneInterface {
 	private void methodE() {}
 
 	private static void methodF() {
-		//		methodE();
+//		methodE();
 		System.out.println("methodF");
 	}
 	
@@ -27,6 +27,5 @@ public abstract interface TwoInterface extends OneInterface {
 	public static void main(String[] args) {
 		methodF();
 		System.out.println(ONE);
-//		caller(); 
 	}
 }

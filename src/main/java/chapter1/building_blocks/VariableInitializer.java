@@ -10,10 +10,19 @@ public class VariableInitializer {
 	Boolean Boolean = false;
 //	Boolean boolean = false; // primitives ARE reserved keywords
 	
+	// contextual but not reserved keywords
+	String exports = "";
+	String sealed = "";
+	String module = "";
+	String record = "";
+	String yield = "";
+	String Object = "";
+	
 	void declareVars() {
 //		var x; // var must be initialized when declared
 //		var a = 1, b = 2;  //multiple declaration not allowed with var
 //		var a = null; // Java must know var reference type at compile time
+		var var = "var"; // not a reserved keyword
 		var a = "AAA";
 		a = null;
 		

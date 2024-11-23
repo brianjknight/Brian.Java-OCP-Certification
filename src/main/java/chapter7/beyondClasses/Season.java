@@ -13,16 +13,14 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 //	static {System.out.println("Class/Enum initialization");} // enum values MUST be first statement
 	
 	WINTER("Low") { // calls Season(String expectedVisitors) constructor
-		public String getTemp() {
+		public String getTemp() { // abstract interface methods must be implemented by every enum value
 			return "-10 to 40";
 		}
 		@Override
-		public String getHours() {
+		public String getHours() { // Overridden Enum method
 			return "10 to 4";
 		}
-		// abstract interface methods must be implemented by every enum value
-		// BUT be inherited by declaring it in the ENUM itself
-		public void sayHello() {} 
+		public void sayHello() {} // Overridden interface method
 	},
 	SPRING { // uses no args constructor
 		public String getTemp() {

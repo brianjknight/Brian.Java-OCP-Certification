@@ -1,12 +1,23 @@
 package chapter13.concurrency;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 public class ParallelStreams {
 
 	static int total = 0;
 	
+	private static int seal = 0;
+	private static volatile int tiger = 0;
+	private static AtomicInteger lion = new AtomicInteger(0);
+	
+	
 	public static void main(String[] args) {
+		
+		Stream.iterate(0, i -> i + 1).parallel().limit(100).forEach(i -> {seal++; tiger++; lion.incrementAndGet();}); // incrementing 100 times NOT adding i
+		System.out.println(seal + "," + tiger + ","+ lion);
+		System.out.println();
 		
 		System.out.println(List.of("w", "o", "l", "f","a","b","c","d","e","f")
 				.parallelStream()

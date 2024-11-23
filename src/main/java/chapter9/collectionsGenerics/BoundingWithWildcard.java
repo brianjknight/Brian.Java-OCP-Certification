@@ -107,6 +107,11 @@ public class BoundingWithWildcard<T> {
 //		List<? extends Number & Comparable & Runnable> multiUpperBoundedList = null;
 		
 	}
+	
+	public ArrayList<? super Integer> getList() {
+		return new ArrayList<Number>();
+	}
+	
 }
 
 

@@ -48,6 +48,7 @@ public class ArrayMethods {
         int[][] abc = new int[4][4];
         int def[][] = new int[4][];
         def[0] = new int[4];
+        Object[] objArr = abc;
         
         int intF, f[], g[][], h[][][][][][][];
 

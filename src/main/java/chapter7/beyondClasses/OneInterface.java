@@ -31,6 +31,8 @@ public non-sealed interface OneInterface extends MyFirstInterface {
 	
 //	private void nothing(); // private cannot be abstract so must have a body
 	
+//	private default void bad() {}; // default is meant to be inherited therefore cannot be private
+	
 	default int doMath() { // implicitly public for default method
 		staticHelper();
 		divide(); // access to an abstract method not yet implemented

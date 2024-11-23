@@ -7,6 +7,11 @@ public abstract class AbstractClass {
 	String name = "Brian";
 	static int age = 39;
 	int num = 10;
+	private int p = 'p';
+	
+	{System.out.println("instance initializer");}
+	
+	static {System.out.println("static initializer");}
 	
 //	abstract AbstractClass() {} // only instance methods can be abstract
 	

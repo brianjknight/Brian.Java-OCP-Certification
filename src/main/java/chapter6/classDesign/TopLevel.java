@@ -11,6 +11,14 @@ public class TopLevel {
 	static class PakcageLevel {}
 	
 	private class PrivateLevel {}
+	
+
+	public TopLevel() {
+		System.out.println(this); 
+	}
+	public static void main(String[] args) {
+		new TopLevel();
+	}
 }
 
 //public class other {} only ONE public top level class allowed in a file

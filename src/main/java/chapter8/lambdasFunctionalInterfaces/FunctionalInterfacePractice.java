@@ -36,6 +36,8 @@ public class FunctionalInterfacePractice {
 		BiConsumer<String, Integer> bc1 = (var a, var b) -> System.out.println("Day: " + a + " date: " + b);
 		bc1.accept("Sunday",14);
 		
+//		BiConsumer<Integer, Double> bIntDoub = (a,b) -> a+b; 
+		
 		Map<String,Integer> map = new HashMap<>();
 		BiConsumer<String, Integer> bc2 = map::put;
 		BiConsumer<String, Integer> bc3 = (t,u) -> map.put(t, u);

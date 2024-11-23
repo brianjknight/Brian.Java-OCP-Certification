@@ -69,6 +69,7 @@ public class UsingListsInterface {
 		asList.set(0, "ten");
 //		of.set(0, "four"); // runtime exception
 //		copyOf.set(0, "ten"); // runtime exception
+//		Collections.sort(ofA); // immutable collection List.of(...)
 		System.out.println(asList);
 		System.out.println("*********************");
 		System.out.println();

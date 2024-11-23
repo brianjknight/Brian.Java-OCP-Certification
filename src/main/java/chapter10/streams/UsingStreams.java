@@ -177,6 +177,9 @@ public class UsingStreams {
 		Stream<List<String>> animals = Stream.of(zero, one, two);
 		animals.flatMap(m -> m.stream()).peek(System.out::println).forEach(System.out::println);
 		
+		System.out.println();
+		Stream.iterate(0, i -> i +1).limit(5).forEach(System.out::println); // Starts with seed
+		
 	}
 	
 	public record Book(String title, String Author) {}
