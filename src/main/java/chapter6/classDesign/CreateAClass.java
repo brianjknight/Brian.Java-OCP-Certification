@@ -36,6 +36,11 @@ public class CreateAClass {
     	middle = newMiddle;
     	this.last = last;
     }
+    
+    void thisMethod( ) {
+    	var var = this; // use of "this" with no fields/methods allowed
+    	System.out.println(var);  
+    }
 
 
     public static void main(String[] args) {
@@ -45,5 +50,7 @@ public class CreateAClass {
         red   .   changeName();
 //        red.    color;
         System.out.println(Math .   random (  )   );
+        
+        orange.thisMethod();
     }
 }

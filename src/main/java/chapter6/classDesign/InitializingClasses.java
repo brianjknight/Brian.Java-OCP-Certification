@@ -64,6 +64,8 @@ public class InitializingClasses {
 	}
 	
 	void print() {
-		System.out.println("instance method");
+		System.out.println("instance method print()");
+		System.out.println("one = " + one);
+		System.out.println("two = " + two);
 	}
 }

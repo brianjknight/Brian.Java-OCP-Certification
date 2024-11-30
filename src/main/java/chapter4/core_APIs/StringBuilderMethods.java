@@ -7,6 +7,11 @@ public class StringBuilderMethods {
         sb.delete(3,100);
         System.out.println(sb);
         System.out.println(sb.capacity());
+        sb.setLength(1);
+        System.out.println("setLength(1): " + sb);
+        sb.setLength(5);
+        System.out.println("setLength(5): " + sb);
+        
         System.out.println();
         
         StringBuilder sb1 = new StringBuilder(1000);

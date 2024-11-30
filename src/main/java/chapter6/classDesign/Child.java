@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.remote.SubjectDelegationPermission;
+
 public class Child extends Parent {
 	// variables are never overridden only hidden
 	private Number age = 15;
@@ -65,6 +67,13 @@ public class Child extends Parent {
 	}
 	
 //	void doStaticWork() {} // cannot override static methods; only hide
+	
+	static void hiddenStatic() {
+//		super.hiddentStatic();
+		Child c = new Child();
+//		c.super.hiddenStatic();
+		System.out.println("Child hiddenStatic()");
+	}
 	
 	public ArrayList<String> hairy(List<String> list){ // triangle in gutter indicates override
 		return null;

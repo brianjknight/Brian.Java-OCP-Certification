@@ -14,10 +14,10 @@ public class ComparingValues {
         Integer BIG = 200;
         System.out.println(big == BIG); // false outside of cache pool
         Byte oneByte = 1;
-//        System.out.println(oneInteger == oneByte); // Incompatible types
+//        System.out.println(oneInteger == oneByte); // Incompatible TYPES do not extend a hierarchy like Number > Integer
         byte bOne = 1;
         int iOne = 1;
-        System.out.println("bOne == iOne: " + (bOne == iOne) ); //type promotion
+        System.out.println("bOne == iOne: " + (bOne == iOne) ); // works with primitives integrals
         System.out.println();
         
         boolean bool = 3 < 'a';
@@ -50,6 +50,7 @@ public class ComparingValues {
 //        boolean yyy = 1 == num; // literal and Number object are not related
         boolean zzz = i == num; // comparing wrapper objects which are related
         
+        System.out.println("instance of:");
 //        System.out.println(fivePrimitive instanceof Object);
 //        System.out.println(five instanceof String); 
         System.out.println(five instanceof Long); 

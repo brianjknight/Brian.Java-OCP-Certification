@@ -12,7 +12,6 @@ public class Primitives {
         System.out.println(0 + '_'); // promote char to int then adds
 
         Primitives p = new Primitives();
-        System.out.println(p.n);
         System.out.println(Math.max((double) 2.0,2.0f));
 
         
@@ -25,29 +24,21 @@ public class Primitives {
         System.out.println();
         
         Double zero = 0.0;
-        System.out.println(-1.0/zero); // divide by zero with wrapper does not throw exception
+        System.out.println(-1.0/zero); // divide by zero with floating point primitive or type does not throw exception
         System.out.println(1.0/zero);
         System.out.println(0.0/0.0); // Nan
         
         System.out.println();
         p.testMethod();
         
-        System.err.println();
+        System.out.println();
         p.testIntFormat();
     }
 
-    String n; // variables can use letters, numbers, currency symbol, and underscore
-    String _n;
-    String $n;
-    String €n;
-    String ¥n;
-//    String 2n; // bad
-//    String _; // bad
-//    String n%; // bad
-
     int hex = 0xa3f;
     int octal = 0105;
-//    int notOctal = 0108; // octals have 0 prefix with valus 0-7
+//    int notOctal = 0108; // octals have 0 prefix with values 0-7
+    int extraZeros = 000;  // valid but an octal
     int binary = 0b0101;
     
     byte b = 127;
@@ -86,7 +77,7 @@ public class Primitives {
     Integer two = Integer.valueOf("2");
     // 3 becomes int primitive but is then autoboxed to Integer
     Integer three = Integer.parseInt("3");
-//    Double badDouble = Integer.parseInt("1"); // autobox & implicit cast
+//    Double badDouble = Integer.parseInt("1"); // autobox & implicit cast to a large type
     
     byte bTwo = two.byteValue();
     short sTwo = two. shortValue();
@@ -95,8 +86,10 @@ public class Primitives {
     int iiiTwo = two;
     long lTwo = two.longValue();
 
-    double dTwo = two; // unboxed and cast to double primitive
+    double dTwo = two; // unboxed and implicitly cast to widening double primitive
 //    Double Dtwo = two; // requires unboxing two Integer to int; but cannot cast & autobox double > Double
+//    byte b2b = two; // Java cannot unbox and implicitly cast to narrowing type at same time
+//    byte b2b2 = (byte) two; // attempt to explicitly cast prevents unboxing
     byte bbbTwo = (byte) (int) two;
     
     

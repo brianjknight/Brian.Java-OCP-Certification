@@ -33,6 +33,7 @@ public class MathAPIs {
 		long roundFloat = Math.round(d); // rounding float returns an int
 		int roundD = Math.round(d);
 		
+		System.out.println();
 		System.out.println(Math.round(a));
 		System.out.println(Math.ceil(a));
 		System.out.println("Math.ceil(5.0): " + Math.ceil(5.0));

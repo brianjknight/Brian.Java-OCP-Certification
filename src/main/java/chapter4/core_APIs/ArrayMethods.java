@@ -61,6 +61,7 @@ public class ArrayMethods {
         Integer[] z = new Integer[] {1,2};
         // must be of same type
 //        Arrays.equals(x, y); // primitive and Obj
+//        boolean arrBool = y == z;
         Arrays.equals(y, z); // both Obj
 //        Arrays.mismatch(x, y);
 //        Arrays.compare(x, y);

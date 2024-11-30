@@ -21,6 +21,7 @@ public class DatesAndTimes {
         System.out.println(Month.FEBRUARY);
         System.out.println(Month.FEBRUARY.getValue());
         System.out.println(d.getMonthValue());
+        System.out.println(Month.FEBRUARY.ordinal());
         System.out.println("length of month: " + d.lengthOfMonth());
 
         LocalDateTime now = LocalDateTime.now();
@@ -106,7 +107,8 @@ public class DatesAndTimes {
         LocalDateTime ld = LocalDateTime.of(2022, Month.NOVEMBER, 5, 10, 0);
 
         ZonedDateTime date = ZonedDateTime.of(ld, ZoneId.of("US/Eastern"));
-        System.out.println("date prior: " + date);
+        System.out.println("date prior: ");
+        System.out.println(date);
         date = date.plus(Duration.ofDays(1));
         System.out.println(date);
 

@@ -41,7 +41,7 @@ public class NumericPromotion {
         
         final int intFinal = 1;
         final long longFinal = 1;
-        byte weird = -intFinal + 1; // intFinal is a known compile time constant since it is FINAL; type promotion to ints but fits in byte
+        byte weird = -intFinal + 1; // intFinal is a known compile time constant since it is FINAL; type promotion to int but fits in byte
 //        byte noGood = -longFinal + 1; // type promotion to long so not allowed
         final Byte b1 = 1;
 //        Byte b2 = -b1; //will not compile even though b1 is final and wrappers are immutable;
@@ -75,7 +75,7 @@ public class NumericPromotion {
         byte n = 'a' + 1; // promotion but result fits in a byte
         char o = 97;
         int oo = 97;
-//        char oooo = oo;  // bad variable oo is an int 
+//        char oooo = oo;  // bad variable oo is a wider primitive int and requires explicit cast 
         System.out.println("char o = 97; is " + o);
         
         
@@ -84,7 +84,7 @@ public class NumericPromotion {
         
         Integer fifteen = 15;
         Integer twenty = 20;
-        System.out.println(fifteen + twenty);
+        System.out.println(fifteen + twenty); // unboxing for binary operator
         System.out.println();
         
         boolean aa = false;
@@ -96,7 +96,7 @@ public class NumericPromotion {
         // the operating left to right short circuits before bb and cc are assigned
         // therefore bool below becomes (aa = true) || (  (bb = true) && (cc = true)  )
         boolean bool = (aa = true) || (bb = true) && (cc = true) ;
-//        boolean bool = (aa = true) | (bb = true) && (cc = true) ; // compare to not short circuiting
+//        boolean bool = (aa = true) | (bb = true) && (cc = true) ; // logical operator does not short circuit
         System.out.println(aa + ", " + bb + ", "+ cc );
     }
     

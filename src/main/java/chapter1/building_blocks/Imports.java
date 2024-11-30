@@ -35,6 +35,8 @@ import java.sql.*;
 
 public class Imports {
 
+	static String hello = "hello";
+	
 	public static void main(String[] args) {
 		double d = Math.PI;
 		double pi = PI;
@@ -52,6 +54,8 @@ public class Imports {
 		java.util.Date utilDate2 = new java.util.Date();
 		java.sql.Date sqlDate1 = new java.sql.Date(0);
 		
+		
+		String h = chapter1.building_blocks.Imports.hello;
 	}
 	
 	void testNonStaticStaticImport() {

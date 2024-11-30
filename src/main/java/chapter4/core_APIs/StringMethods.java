@@ -3,7 +3,10 @@ package chapter4.core_APIs;
 public class StringMethods {
 
     public static void main(String[] args) {
-        String animal = "elephants";
+        String nnn = null;
+    	System.out.println("NULL: " + nnn);
+    	
+    	String animal = "elephants";
 
         int pChar = animal.indexOf('p');
         int pInt= animal.indexOf(112); // 112 is the ascii int value for p
@@ -80,7 +83,9 @@ public class StringMethods {
         System.out.println(block);
         
         // 3 spaces after a
-        var concat = "a   \n" + "  b\n" + "c";
+        var concat = " a   \n" + // trailing incidental whitespace gets stripped BUT NOT the return \n
+                     "   b\n" + 
+        		     " c";
         System.out.println("concat.length(): " + concat.length());
         System.out.println(concat);
         System.out.println("stripIndent length: " + concat.stripIndent().length());
@@ -145,6 +150,7 @@ public class StringMethods {
     			
     	System.out.println(commonHeader);
     	System.out.println(sameHeader);
+    	System.out.println(commonHeader.equals(sameHeader));  //escapes needed in concatenation
     }
 
 }

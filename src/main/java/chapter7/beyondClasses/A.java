@@ -22,7 +22,7 @@ public class A {
 						System.out.println(D.y);
 //						System.out.println(y);
 						
-						return xOfC; // allowed to access local variables only if effectively final
+						return xOfC; // local class allowed to access local variables only if effectively final
 					}
 					
 					abstract class G {}

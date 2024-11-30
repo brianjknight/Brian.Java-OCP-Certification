@@ -8,6 +8,9 @@ public class GrandChild extends Child {
 	
 	public void doMoreWork() {
 		super.doWork(); // inherited from Child which was inherited from Parent
+		
+//		Parent p = new Parent();
+//		Parent.super.doWork();  // syntax is used for conflicting Interface methods only
 	}
 	
 	public static void main(String[] args) {

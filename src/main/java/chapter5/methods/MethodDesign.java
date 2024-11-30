@@ -46,11 +46,11 @@ public class MethodDesign {
     }
     
     void method4() {
-        return;
+        return;  // return with void but not returning anything
     }
     
     final protected void _$(){}
-    
+    void $() {}
 //    void _() { 
 //    	
 //    }

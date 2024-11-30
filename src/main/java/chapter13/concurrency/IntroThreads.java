@@ -14,7 +14,7 @@ public class IntroThreads {
 				if (i % 10000 == 0) {
 					System.out.println("Printing record: " + i);
 					try {
-						Thread.currentThread().sleep(500); // static method is now called on the correct CURRENT thread no the object in try block below.
+						Thread.currentThread().sleep(500); // static method is now called on the correct CURRENT thread not the object in try block below.
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

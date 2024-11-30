@@ -4,7 +4,7 @@ import chapter6.classDesign.ConcreteChild;
 
 public class ConcreteClass implements OneInterface,TwoInterface, Ainterface, Binterface {
 
-	ConcreteChild concChild = null; // import package from project
+	ConcreteChild concChild = null; // testing import other package from project
 	
 	@Override
 	public void divide() {

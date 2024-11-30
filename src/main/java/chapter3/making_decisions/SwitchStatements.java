@@ -19,6 +19,13 @@ public class SwitchStatements {
 	
 	static int getSix() {return 6;}
 	
+	int switchReturn() {
+		switch(1) {
+			case 1: return 1;
+			default: return 1;
+		}
+	}
+	
     public static void main(String[] args) {
     	
     	// switch expressions means it returns value. CAN STILL use old syntax with ':' and yield

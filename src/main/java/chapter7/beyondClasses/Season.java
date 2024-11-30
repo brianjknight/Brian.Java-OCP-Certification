@@ -150,5 +150,6 @@ public enum Season implements EnumInterface { // allowed to implement interfaces
 		
 		System.out.println("WINTER.compareTo(SUMMER): " + WINTER.compareTo(SUMMER));
 		System.out.println("NON_SEASON.compareTo(WINTER): " + NON_SEASON.compareTo(WINTER));
+//		System.out.println("comparison > : " + (WINTER > FALL)); // works with Wrappers since they can be unboxed
 	}
 }

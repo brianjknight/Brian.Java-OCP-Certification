@@ -18,6 +18,15 @@ public class VariableInitializer {
 	String yield = "";
 	String Object = "";
 	
+    String n; // variables can use letters, numbers, currency symbol, and underscore
+    String _n;
+    String $n;
+    String €n;
+    String ¥n;
+//    String 2n; // bad
+//    String _; // bad
+//    String n%; // bad	
+	
 	void declareVars() {
 //		var x; // var must be initialized when declared
 //		var a = 1, b = 2;  //multiple declaration not allowed with var

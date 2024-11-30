@@ -1,5 +1,6 @@
 package chapter13.concurrency;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
@@ -45,6 +46,29 @@ public class ParallelStreams {
 				.reduce(0, (a,b) -> (a-b))); // probably need a much larger list for this to happen
 				// 0-1-2-3-4-5-6 = -21 not parallel
 				// could be -1, -2, -3, -4, -5, -6 -> -1-(-2)=1, -3-(-4)=1, -5-(-6)=1 -> 1-1-1...
+		
+		
+		System.out.println();
+		System.out.println("Enthuware Test 15 question 31:");
+		List<String> vals = Arrays.asList("a", "b", "c", "d", "e", "f", "g",
+				"a", "b", "c", "d", "e", "f", "g",
+				"a", "b", "c", "d", "e", "f", "g",
+				"a", "b", "c", "d", "e", "f", "g");
+				String join = vals.parallelStream()
+				        .peek(System.out::println) //this shows how the elements are retrieved from the stream
+				        .reduce("_",
+				                (a, b)->{
+				                    System.out.println("reducing "+a+" and "+b
+				                         +" Thread: "+Thread.currentThread().getName());
+				                    return a.concat(b);
+				                },
+				                (a, b)->{
+				                    System.out.println("combining "+a+" and "+b
+				                         +" Thread: "+Thread.currentThread().getName());
+				                    return a.concat(b);
+				                }
+				        );
+				System.out.println(join);
 	}
 	
 }

@@ -34,11 +34,15 @@ public class Parent {
 	}
 	
 	public void doWork() {
-		System.out.println("get to work");
+		System.out.println("parent get to work");
 	}
 	
 	static void doStaticWork() {
 		System.out.println("parent do static work");
+	}
+	
+	static void hiddenStatic() {
+		System.out.println("Parent hiddenStatic()");
 	}
 	
 	public void sayGoodBye() {

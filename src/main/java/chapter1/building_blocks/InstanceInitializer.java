@@ -1,14 +1,15 @@
 package chapter1.building_blocks;
 
 public class InstanceInitializer {
-    
-	{hello = "HELLO!";}
-	
-//	{System.out.println(hello);}
-	
+    	
 	{System.out.println("test 1");}
 	
+	
+	{hello = "HELLO!";}
+//	{System.out.println(hello);}  // initializers can initialize variable but NOT reference them otherwise until declared in lines code
 	String hello = "Hello in class";
+	{System.out.println(hello);}
+	
 	
 	{System.out.println("test 2");}
 	
