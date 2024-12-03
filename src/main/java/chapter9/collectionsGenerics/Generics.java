@@ -46,7 +46,7 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 	}
 	
 	
-//	public <F extends G> void first() {}
+//	public <F extends G> void first() {} // G is uknown type
 //	public <F super Number> void first() {} // super only used with wildcard ? not for bounding generics
 	public <F extends T> void firstFirst() {} // declaring type F used within this method must extend T declared in class
 	public <F extends Number> void otherFirst() {} 
@@ -61,7 +61,8 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 //	public <K> void otherFourth(List<K extends Object> list) {}
 //	public <K> void fifth(List<K extends T> list) {}
 	public <K> void sixth(List<? extends K> list) {} 
-	public <K> void seventh(List<? super K> list) {} 
+	public <K> void seventh(List<? super K> list) {}
+	public List<? super Object> eigth(){return new ArrayList();}
 	
 //	List<E extends Number> genericList; // typed generics are NOT allowed for declaring VARIABLES (are allowed declaring class and methods)
 //	List<T extends Number> genericFromClassList; // does not compile
@@ -151,6 +152,10 @@ public class Generics<T, U, hamburger, _H0tdo9s extends Number> { // follows nam
 	}
 	static double averageWildcard(List<? extends Number> list){ // equivalent to averageExN()
 		double sum = 0.0;
+//		list.add((Number) 10.0); // ? bound with extends becomes immutable
+		List<? super Number> lstNum = new ArrayList<>();
+		lstNum.add((Number) 10.0);
+		
 		for(Number n : list){ sum += n.doubleValue(); }
 		return sum/list.size();
 	}

@@ -16,7 +16,7 @@ public class GenericsChild extends Generics {
 	
 	// Double is a subtype of object not an interface
 //	public void doNothing(List<Double> in) {} // same type erasure as parent method
-	
+
 }
 
 

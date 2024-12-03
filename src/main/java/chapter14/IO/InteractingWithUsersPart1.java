@@ -27,6 +27,10 @@ public class InteractingWithUsersPart1 {
 		int byteIn = systemIn.read(); // multiple bytes entered remain in the stream
 		System.out.println("System in int: " + byteIn);
 		System.out.println("System in (char): " + (char)byteIn);
+		int b;
+//		while ( (b = systemIn.read()) != -1) {
+//			System.out.println("next byte: " + (char)b);
+//		}
 		System.out.println();
 		
 		var charInpStr = new InputStreamReader(System.in);

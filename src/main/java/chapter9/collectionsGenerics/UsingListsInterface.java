@@ -22,7 +22,7 @@ public class UsingListsInterface {
 //	    var ls = new ArrayList<String>(Arrays.asList(sa));
 	    var ls = Arrays.asList(sa); // returns a list BACKED BY the array. Changes to the array affect the list.
 	    List<String> strList = List.of(sa);
-	    var coll = Collections.unmodifiableList(ls); // unmodifiable VIEW backed by given collection
+	    var coll = Collections.unmodifiableList(ls); // unmodifiable VIEW BACKED by given collection
 	    sa[2] = "alex";
 	    ls.sort((var a, var b) -> a.compareTo(b));
 	    System.out.println(sa[0]+" "+ls.get(0));

@@ -3,9 +3,8 @@ package chapter10.streams;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.util.List;
-import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.function.Function;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -35,8 +34,10 @@ public class UsingPrimitiveStreams {
 		System.out.println(randomDoubles);
 		System.out.println();
 		
-//		IntStream fiveRandInts = new Random().ints().limit(5); // not on exam
-//		fiveRandInts.forEach(System.out::println);
+		IntStream fiveRandInts = new Random().ints().limit(5); // not on exam?
+		fiveRandInts.forEach(System.out::println);
+		System.out.println();
+		
 		System.out.println("odds between 0-10 " + IntStream.range(0,10)
 														   .boxed()  // boxed() is necessary to use Stream.collect(Collector);
 														   .collect( Collectors.filtering(i -> i%2!=0, Collectors.toList()) ) 
@@ -73,7 +74,7 @@ public class UsingPrimitiveStreams {
         integerList.add(List.of(4, 5, 6));
         integerList.add(List.of(7, 8, 9));
         // mapToDouble for each nested list then flatMapToDouble to flatten the 3 lists
-		DoubleStream doublesFromInts = integerList.stream().flatMapToDouble(list -> list.stream().mapToDouble(i -> i)); // mapToDouble(ToDoubleFunctin<T>) implicit cast Integer to Double
+		DoubleStream doublesFromInts = integerList.stream().flatMapToDouble(list -> list.stream().mapToDouble(i -> i)); // mapToDouble(ToDoubleFunctin<T>) unboxes Integer fits in double
 		List<Double> doubleStreamList = doublesFromInts.boxed().toList(); // boxed returns Stream<Double>
 //		List<Double> otherDoublesList = doublesFromInts.mapToObj(d -> d).toList(); //also works
 		System.out.println("doubleStreamList: " + doubleStreamList);

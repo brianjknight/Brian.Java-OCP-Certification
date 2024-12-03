@@ -116,13 +116,22 @@ public class UsingExceptions {
 //			System.out.println(e);
 //		}
 		catch (FileNotFoundException | NotSerializableException e) {
-			System.out.println(e);
+			System.out.println("print e: " + e);
+			System.out.println("e.getMessage(): " + e.getMessage());
+			System.out.println("e.printStackTrace(): ");
+			e.printStackTrace();
 		}
 		catch (RuntimeException | Error e) { // Runtime is NOT a child of Error
-			System.out.println(e);
+			System.out.println("print e: " + e);
+			System.out.println("e.getMessage(): " + e.getMessage());
+			System.out.println("e.printStackTrace(): ");
+			e.printStackTrace();
 		}
 		catch (IOException | SQLException e) { // Super IOException includes FileNotFoundException
-			System.out.println(e);
+			System.out.println("print e: " + e);
+			System.out.println("e.getMessage(): " + e.getMessage());
+			System.out.println("e.printStackTrace(): ");
+			e.printStackTrace();
 		}
 		finally {
 			System.out.println("finally method B part ONE");

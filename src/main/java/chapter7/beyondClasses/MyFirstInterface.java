@@ -25,3 +25,4 @@ public sealed interface MyFirstInterface permits OneInterface {
 
 
 interface OtherInterface {}
+//interface ImplementOther implements OtherInterface {} // not allowed

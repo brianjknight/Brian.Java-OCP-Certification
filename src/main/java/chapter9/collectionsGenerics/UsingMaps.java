@@ -27,7 +27,9 @@ public class UsingMaps {
 		Map<String, Integer> ages = new HashMap<>();
 		ages.put("Brian", 39);
 		ages.put("Allison", null);
+		ages.put(null, 1);
 		System.out.println(ages);
+		ages.remove(null);
 
 		Integer brianAge = ages.putIfAbsent("Brian", 100); // returns existing value or null
 		Integer allisonAge = ages.putIfAbsent("Allison", 42); // existing key with null value is considered absent

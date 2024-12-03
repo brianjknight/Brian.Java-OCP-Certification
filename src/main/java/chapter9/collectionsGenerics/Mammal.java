@@ -14,6 +14,10 @@ public class Mammal {
 	public List<CharSequence> run(List<Number> nums) {
 		return new ArrayList<>();
 	}
+	
+	public List<? super Number> getObj() {return null;}
+	public List<? extends Number> getWild() {return null;}
+	public List<Number> getNums() {return null;}
 }
 
 

@@ -10,7 +10,8 @@ public class VariablesInLambdas {
 		BiPredicate<String, String> bp1 = (x, y) -> true;
 		BiPredicate<String, Integer> bp1_2 = (x, y) -> true;
 //		Bipredicate<String, String> bp1_3 = (String x, y) -> true; // cannot mix declared and inferred types
-		BiPredicate<String, String> bp2 = (var x, var y) -> true;
+		BiPredicate<String, String> bp2 = (var x, var y) -> true; // allowed since types can be inferred from reference type
+//		var bpCannotInferType = (var x, var y) -> true; // cannot infer type here
 		BiPredicate<String, String> bp3 = (String x, String y) -> true;
 		BiPredicate<String, Integer> bp4 = (String x, Integer y) -> true;
 //		BiPredicate<String, Integer> bp5 = (String x, var y) -> true; // cannot mix var with other types
